@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-25",
+  "flutter": "3.47.8",
+  "dart": "3.13.7",
+  "studios": 17,
+  "entries": 102,
+  "interactiveMeasurementLabs": 6,
+  "unitAndWidgetTestsPassed": 17,
+  "androidIntegrationWorkflowsPassed": 1,
+  "androidApi": 37,
+  "androidModel": "sdk_gphone16k_x86_64",
+  "profileBuildAndOfflineLaunch": true,
+  "debugBuildInstallAndOfflineLaunch": true,
+  "iosVerified": false,
+  "apkBytes": 253560976,
+  "apkSha256": "8A98098B22AA065F881266441287157A20CE15F720C6AA6A2FF6A02DA4E2E2FB",
+  "limitations": ["Procedural rather than photorealistic artwork", "No physical-device performance benchmark", "iOS verification pending"]
+}
