@@ -1,4 +1,4 @@
-# Physics Atelier — Phase 1
+# Physics Atelier — Phase 2
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -12,6 +12,7 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 - Search across studio names, entry names and principles; real Continue Learning and explicit activity completion.
 - Shared Learn, Experiment, Visualize, Formulas and Results workspace.
 - Six interactive Measurement instruments: ruler, external vernier caliper, micrometer, spherometer, simulated balance/track/stopwatch, and uncertainty analysis.
+- Eighteen additional interactive Mechanics, Motion & Kinematics, and Force & Newton’s Laws labs, with deterministic simulation, graphs, challenges and saved trials.
 - Drag and precise numeric controls, magnified scales, signed calibration correction, guided reading practice, recorded trials and notes.
 - Local SQLite notebook, versioned sessions, reopen, CSV file sharing; preferences and recovery notices.
 - Introductory learning content/formulas for remaining labs, with experiments explicitly reserved for later phases. Concept Overview contains basic navigation/learning tools.
@@ -30,7 +31,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase1-debug.apk` for handoff).
+Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase2-debug.apk` for handoff), version 1.1.0+2.
 
 Device integration and screenshot capture:
 
@@ -62,4 +63,4 @@ $env:JAVA_TOOL_OPTIONS='-Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true'
 - [iOS verification checklist](docs/IOS_VERIFICATION.md)
 - [Phase 1 handover](docs/HANDOVER.md)
 
-No Phase 2 simulations are implemented. No login or network is required after installation.
+Current handover: [Phase 2 completion](docs/PHASE2_HANDOVER.md), [scientific models](docs/PHASE2_SCIENCE.md), and [validation evidence](docs/PHASE2_VALIDATION.md). The Phase 1 documents above remain historical records. There are 24 interactive labs across four studios; remaining studios retain introductory content. No Phase 3 simulations were added. No login or network is required after installation.

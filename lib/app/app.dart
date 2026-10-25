@@ -10,11 +10,13 @@ import '../core/design_system/theme.dart';
 import '../core/persistence/notebook.dart';
 import '../core/rendering/apparatus.dart';
 import '../features/lab_workspace/workspace.dart';
+import '../features/dynamics/workspace.dart';
 
 final notebookProvider = Provider<LocalNotebook>(
   (ref) => throw UnimplementedError('Initialize notebook'),
 );
 final router = GoRouter(
+  observers: [dynamicsRouteObserver],
   routes: [
     GoRoute(path: '/', builder: (c, s) => const HomeScreen()),
     GoRoute(
@@ -25,10 +27,15 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => Workspace(
-        key: ValueKey(s.pathParameters['id']),
-        entry: entryById(s.pathParameters['id']!),
-      ),
+      builder: (c, s) => entryById(s.pathParameters['id']!).dynamics
+          ? DynamicsWorkspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            )
+          : Workspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            ),
     ),
     GoRoute(path: '/notebook', builder: (c, s) => const NotebookScreen()),
     GoRoute(path: '/settings', builder: (c, s) => const SettingsScreen()),
@@ -342,13 +349,13 @@ class StudioCard extends StatelessWidget {
                   Text(s.title, style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 10),
                   Text(
-                    index == 1
+                    index >= 1 && index <= 4
                         ? '● Six interactive labs'
                         : index == 0
                         ? 'Introductory navigation tools'
                         : 'Learning content available',
                     style: TextStyle(
-                      color: index == 1 ? teal : muted,
+                      color: index >= 1 && index <= 4 ? teal : muted,
                       fontSize: 12,
                     ),
                   ),
@@ -571,7 +578,7 @@ class SettingsScreen extends ConsumerWidget {
                       contentPadding: EdgeInsets.zero,
                       title: const Text('Reduced motion'),
                       subtitle: const Text(
-                        'Use a static track scene while the timer runs.',
+                        'Measurement track stays static. Dynamics hides trails; physics playback remains explicit.',
                       ),
                       value: store.reducedMotion,
                       onChanged: (v) => store.settings(motion: v),
@@ -596,8 +603,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 1 · Measurement',
-                  'Six interactive Measurement labs, 17 studios and 102 destinations. Remaining physical simulations are planned for later phases. Illustrations are simplified scientific models.',
+                  'Phase 2 · Dynamics',
+                  '24 interactive labs across Measurement, Mechanics, Motion & Kinematics and Force & Newton’s Laws; 17 studios and 102 destinations. Remaining studio experiments are planned for later phases. Illustrations are scientific models.',
                 ),
               ),
             ],

@@ -6,12 +6,14 @@ import 'package:sqflite/sqflite.dart';
 
 import '../physics/measurement.dart';
 import '../../content/catalog.dart';
+import '../physics/dynamics.dart';
 
 class Trial {
   final String id, labId, quantity, unit, note, created;
   final double value;
   final double? resolution;
   final Map<String, dynamic> configuration;
+  final String model;
   Trial({
     required this.id,
     required this.labId,
@@ -19,10 +21,14 @@ class Trial {
     required this.unit,
     required this.value,
     required this.resolution,
-    required this.configuration,
+    required Map<String, dynamic> configuration,
     this.note = '',
+    this.model = modelVersion,
     String? created,
-  }) : created = created ?? DateTime.now().toUtc().toIso8601String();
+  }) : configuration = Map<String, dynamic>.from(
+         jsonDecode(jsonEncode(configuration)),
+       ),
+       created = created ?? DateTime.now().toUtc().toIso8601String();
   Map<String, dynamic> toJson() => {
     'id': id,
     'labId': labId,
@@ -33,7 +39,7 @@ class Trial {
     'configuration': configuration,
     'note': note,
     'created': created,
-    'model': modelVersion,
+    'model': model,
   };
   factory Trial.fromJson(Map<String, dynamic> m) {
     const units = {
@@ -42,6 +48,11 @@ class Trial {
       'speed': 'm/s',
       'mass': 'kg',
       'time': 's',
+      'velocity': 'm/s',
+      'acceleration': 'm/s²',
+      'force': 'N',
+      'torque': 'N·m',
+      'momentum': 'kg·m/s',
     };
     if (!units.containsKey(m['quantity']) ||
         units[m['quantity']] != m['unit'] ||
@@ -52,7 +63,7 @@ class Trial {
     final resolution = (m['resolution'] as num?)?.toDouble();
     if (!value.isFinite ||
         (resolution != null && (!resolution.isFinite || resolution < 0)) ||
-        m['model'] != modelVersion) {
+        ![modelVersion, dynamicsVersion].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }
     return Trial(
@@ -65,6 +76,7 @@ class Trial {
       configuration: Map<String, dynamic>.from(m['configuration']),
       note: m['note'] ?? '',
       created: m['created'],
+      model: m['model'],
     );
   }
 }
@@ -77,6 +89,8 @@ abstract class ExperimentRepository {
 }
 
 class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
+  final String? databasePath;
+  LocalNotebook({this.databasePath});
   Database? _db;
   late SharedPreferences preferences;
   List<Trial> trials = [];
@@ -100,8 +114,8 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
             defaultTargetPlatform == TargetPlatform.macOS)) {
       try {
         _db = await openDatabase(
-          '${await getDatabasesPath()}/physics_notebook.db',
-          version: 2,
+          databasePath ?? '${await getDatabasesPath()}/physics_notebook.db',
+          version: 3,
           onCreate: (db, v) async {
             await db.execute(
               'CREATE TABLE trials(id TEXT PRIMARY KEY, body TEXT NOT NULL)',
@@ -109,11 +123,19 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
             await db.execute(
               'CREATE TABLE sessions(id TEXT PRIMARY KEY, body TEXT NOT NULL)',
             );
+            await db.execute(
+              'CREATE TABLE challenge_attempts(id TEXT PRIMARY KEY, lab_id TEXT NOT NULL, body TEXT NOT NULL)',
+            );
           },
           onUpgrade: (db, old, v) async {
             if (old < 2) {
               await db.execute(
                 'CREATE TABLE IF NOT EXISTS sessions(id TEXT PRIMARY KEY, body TEXT NOT NULL)',
+              );
+            }
+            if (old < 3) {
+              await db.execute(
+                'CREATE TABLE IF NOT EXISTS challenge_attempts(id TEXT PRIMARY KEY, lab_id TEXT NOT NULL, body TEXT NOT NULL)',
               );
             }
           },
@@ -202,6 +224,22 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
     notifyListeners();
   }
 
+  Future<void> recordAttempt(String labId, Map<String, dynamic> attempt) async {
+    final id = DateTime.now().microsecondsSinceEpoch.toString();
+    if (_db != null) {
+      await _db!.insert('challenge_attempts', {
+        'id': id,
+        'lab_id': labId,
+        'body': jsonEncode(attempt),
+      });
+    } else {
+      await preferences.setStringList('attempts:$labId', [
+        ...preferences.getStringList('attempts:$labId') ?? [],
+        jsonEncode(attempt),
+      ]);
+    }
+  }
+
   Future<void> complete(String id) async {
     completed.add(id);
     await preferences.setStringList('completed', completed.toList());
@@ -231,7 +269,7 @@ String csvEncode(List<Trial> trials) {
         t.unit,
         t.resolution,
         t.note,
-        modelVersion,
+        t.model,
         jsonEncode(t.configuration),
       ].map(cell).join(','),
     ),

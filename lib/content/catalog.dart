@@ -11,10 +11,11 @@ class Entry {
     this.studioIndex,
     this.index,
   );
-  bool get interactive => studioIndex == 1;
+  bool get interactive => studioIndex >= 1 && studioIndex <= 4;
+  bool get dynamics => studioIndex >= 2 && studioIndex <= 4;
   bool get tool => studioIndex == 0;
   String get availability => interactive
-      ? 'Interactive · Phase 1'
+      ? 'Interactive · Phase ${dynamics ? 2 : 1}'
       : tool
       ? 'Introductory tool'
       : 'Learn now · Lab in a later phase';

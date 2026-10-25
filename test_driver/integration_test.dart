@@ -14,8 +14,17 @@ Future<void> main() => integrationDriver(
           .writeAsBytes(base64Decode(entry.value));
     }
     if (data?['csv'] != null) {
-      await File('${dir.path}/verified-results.csv')
+      await File('${dir.path}/${data?['csvFile'] ?? 'verified-results.csv'}')
           .writeAsString(data!['csv']);
+    }
+    if (data?['phase2Performance'] != null) {
+      await File('${dir.path}/phase2-performance.json').writeAsString(
+        const JsonEncoder.withIndent('  ').convert(data!['phase2Performance']),
+      );
+    }
+    if (data?['environment'] != null) {
+      await File('${dir.path}/phase2-profile.json')
+          .writeAsString(const JsonEncoder.withIndent('  ').convert(data));
     }
   },
 );

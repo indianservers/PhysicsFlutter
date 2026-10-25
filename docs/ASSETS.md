@@ -16,3 +16,6 @@ All 17 PNGs in `Target UI/` were supplied by the user. They were inspected as a 
 ## Known visual gap
 
 The app is implemented with actual widgets, controls and procedural scenes. It does not reproduce the mockups' photorealistic 3D apparatus or photographic studio thumbnails. The current representations are schematic with material shading. Unique licensed photorealistic assets, a final iOS icon set and additional apparatus art polish remain product-quality review items. No unsupported 3D plugin was introduced.
+# Phase 2 provenance
+
+The eighteen Phase 2 scenes are original Flutter CustomPainter geometry with procedural shading. No downloaded apparatus images or third-party texture assets were introduced. User-supplied target boards 03, 04 and 05 informed composition; they remain in the excluded Target UI directory and are not scientific references or bundled backgrounds. No redistribution license is asserted for those boards. The scenes remain schematic and do not claim photographic parity.

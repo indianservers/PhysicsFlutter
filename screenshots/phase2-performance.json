@@ -1,0 +1,9 @@
+{
+  "mode": "debug integration; software rendering",
+  "frameCount": 4871,
+  "medianTotalMs": 30.81,
+  "p95TotalMs": 60.699,
+  "framesOver16_67ms": 4371,
+  "migrationFixturePreserved": true,
+  "measurementIdsPreserved": 0
+}

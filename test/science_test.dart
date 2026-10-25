@@ -38,7 +38,8 @@ void main() {
       expect(studios.every((s) => s.entries.length == 6), true);
       expect(allEntries.length, 102);
       expect(allEntries.map((e) => e.id).toSet().length, 102);
-      expect(allEntries.where((e) => e.interactive).length, 6);
+      expect(allEntries.where((e) => e.interactive).length, 24);
+      expect(studios[1].entries.where((e) => e.interactive).length, 6);
       expect(allEntries.where((e) => e.tool).length, 6);
       expect(studios[1].entries.map((e) => e.title), [
         'Meter Scale',
@@ -154,7 +155,9 @@ void main() {
     for (int k = 0; k < 6; k++) {
       final original = Experiment(k), restored = Experiment(k);
       original.note = 'Observation';
-      original.propagationInputs=['1','.1','2','.2'];original.propagationOp='×';original.propagationOutput='2.00 ± 0.28 m²';
+      original.propagationInputs = ['1', '.1', '2', '.2'];
+      original.propagationOp = '×';
+      original.propagationOutput = '2.00 ± 0.28 m²';
       expect(restored.restore(original.toJson()), true);
       expect(restored.toJson(), original.toJson());
       expect(restored.running, false);

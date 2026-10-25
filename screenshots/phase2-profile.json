@@ -1,0 +1,30 @@
+{
+  "s02-e00": {
+    "frameCount": 90,
+    "medianBuildMs": 1.7,
+    "p95BuildMs": 5.01,
+    "medianRasterMs": 1.786,
+    "p95RasterMs": 6.943,
+    "p95TotalMs": 34.538,
+    "framesOver16_67Ms": 47
+  },
+  "s03-e05": {
+    "frameCount": 90,
+    "medianBuildMs": 0.99,
+    "p95BuildMs": 2.89,
+    "medianRasterMs": 1.48,
+    "p95RasterMs": 3.986,
+    "p95TotalMs": 35.003,
+    "framesOver16_67Ms": 31
+  },
+  "s04-e05": {
+    "frameCount": 90,
+    "medianBuildMs": 1.186,
+    "p95BuildMs": 3.833,
+    "medianRasterMs": 2.268,
+    "p95RasterMs": 7.729,
+    "p95TotalMs": 33.056,
+    "framesOver16_67Ms": 36
+  },
+  "environment": "Android 17 API37 x86_64 emulator, 720x1280@320dpi; profile mode; Skia/OpenGL; host RTX3050. Not a physical mid-range device."
+}

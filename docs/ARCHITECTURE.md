@@ -21,3 +21,6 @@ CSV export shares UTF-8 bytes through share_plus and includes real trial data, S
 ## Dependencies
 
 Versions are pinned by `pubspec.lock` and were resolved against Flutter 3.47.8 / Dart 3.13.7. flutter_riverpod injects state; go_router supplies stable routes; sqflite supplies structured mobile storage/migrations; shared_preferences holds lightweight settings; flutter_math_fork renders bundled offline equations; share_plus invokes platform file sharing. These packages publish Android/iOS support. Charts are original CustomPainter plots, avoiding an extra chart dependency. No 3D, shader or Android-only scientific plugin is used.
+# Phase 2 extension
+
+Current schema is version 3: previous trials and sessions are retained, with a challenge_attempts table added. Trial JSON carries a model identifier and a deep snapshot of configuration. Legacy Measurement records default to measurement-1.0. Dynamics models use dynamics-2.0, replay ticks and actual observations. New code resides in core/physics/dynamics.dart and features/dynamics/{curriculum,scene,workspace}.dart. A 120 Hz fixed clock advances pure Dart models; bounded graph samples and simulation-driven painters consume their state. Route/lifecycle changes pause simulation. The earlier Phase 1 details below remain applicable to Measurement.

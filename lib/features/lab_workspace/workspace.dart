@@ -1077,8 +1077,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
           Paragraph('Introductory ${entry.title}', switch (entry.index) {
             0 => 'Browse every studio by its scientific domain.',
             1 => 'Measurement → Motion → Force → Energy. These relationships are a learning guide; an interactive graph is planned for a later phase.',
-            2 => 'Recommended path: Meter Scale → Vernier Caliper → Micrometer → Spherometer → Mass & Time → Uncertainty.',
-            3 => 'Launch one of the six interactive Measurement labs below.',
+            2 => 'Recommended path: Measurement → Mechanics → Motion & Kinematics → Force & Newton’s Laws. Complete each six-lab sequence in order.',
+            3 => 'Discover all 24 currently interactive labs below. Later studios retain introductory learning content.',
             4 => 'Compare precision: ruler 1 mm; caliper 0.1 mm; micrometer 0.01 mm. A smaller division does not remove systematic error.',
             _ => 'Introductory challenge: A ruler reading starts at 12 mm and ends at 66 mm. What is the length? Advanced assessment is planned for a later phase.',
           }),
@@ -1089,14 +1089,14 @@ class _WorkspaceState extends ConsumerState<Workspace>
               ),
               child: const Text('Explain the answer'),
             ),
-          for (final s in (entry.index == 0 ? studios : [studios[1]]))
+          for (final s in (entry.index == 0 ? studios : studios.sublist(1, 5)))
             TextButton.icon(
               onPressed: () => context.push('/studio/${s.id}'),
               icon: const Icon(Icons.arrow_forward, size: 16),
               label: Text(s.title),
             ),
           if (entry.index == 2 || entry.index == 3)
-            for (final e in studios[1].entries)
+            for (final e in allEntries.where((e) => e.interactive))
               ListTile(
                 title: Text(e.title),
                 trailing: const Icon(Icons.chevron_right),
