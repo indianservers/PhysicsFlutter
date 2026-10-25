@@ -1,0 +1,40 @@
+{
+  "s08-e02": {
+    "frameCount": 90,
+    "startTicks": 3,
+    "endTicks": 462,
+    "medianBuildMs": 2.477,
+    "p95BuildMs": 6.436,
+    "medianRasterMs": 4.217,
+    "p95RasterMs": 20.534,
+    "p95TotalMs": 40.06,
+    "framesOver16_67Ms": 51,
+    "activity": "Animated physical model, fixed clock and bounded cached sampling"
+  },
+  "s08-e04": {
+    "frameCount": 90,
+    "startTicks": 4,
+    "endTicks": 418,
+    "medianBuildMs": 0.617,
+    "p95BuildMs": 2.823,
+    "medianRasterMs": 2.541,
+    "p95RasterMs": 11.696,
+    "p95TotalMs": 34.967,
+    "framesOver16_67Ms": 38,
+    "activity": "Animated physical model, fixed clock and bounded cached sampling"
+  },
+  "s09-e05": {
+    "frameCount": 90,
+    "startTicks": 0,
+    "endTicks": 0,
+    "medianBuildMs": 1.683,
+    "p95BuildMs": 5.313,
+    "medianRasterMs": 2.588,
+    "p95RasterMs": 10.486,
+    "p95TotalMs": 38.658,
+    "framesOver16_67Ms": 54,
+    "activity": "90 actual detector-slider updates, same cached intensity curve"
+  },
+  "profileFile": "phase4-profile.json",
+  "environment": "Physics_Phase3 emulator-5556, Android 17 API37 x86_64 16KB, 720x1280@320dpi, 2 cores 2048 MB; profile Skia/OpenGL host RTX3050. Not a physical mid-range device."
+}

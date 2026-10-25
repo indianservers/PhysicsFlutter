@@ -1,0 +1,8 @@
+{
+  "coherentCancellation": true,
+  "fixedEndpointsAndHarmonic": true,
+  "twoToneAndOddHarmonicFft": true,
+  "criticalAndTir": true,
+  "lensAndMirrorRealVirtualInfinity": true,
+  "diffractionSharedProfileDetector": true
+}

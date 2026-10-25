@@ -1,0 +1,9 @@
+{
+  "newLabsVerified": 12,
+  "originalTrialsExactlyPreserved": 80,
+  "actualSQLiteV2MigrationPreserved": true,
+  "model": "waves-optics-4.0",
+  "device": "Physics_Phase3 emulator-5556, Android 17 API37 x86_64 16KB, 720x1280@320dpi, 2 cores, 2048 MB",
+  "rendering": "debug software rendering",
+  "source": "Generated wave/optical calculations; microphone verified separately"
+}

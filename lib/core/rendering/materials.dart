@@ -6,6 +6,71 @@ import 'package:flutter/material.dart';
 
 /// Deterministic apparatus materials. No motion or numerical state lives here.
 class LabMaterials {
+  // A unit mesh survives camera/position changes; at most four texture resources.
+  static final _sphereMeshes =
+      <ui.Image, ({ui.Vertices vertices, Paint paint})>{};
+  static ({ui.Vertices vertices, Paint paint}) _mesh(ui.Image texture) {
+    final existing = _sphereMeshes[texture];
+    if (existing != null) return existing;
+    if (_sphereMeshes.length >= 4) {
+      final key = _sphereMeshes.keys.first;
+      _sphereMeshes.remove(key)!.vertices.dispose();
+    }
+    final positions = <Offset>[], coords = <Offset>[], indices = <int>[];
+    const n = 24;
+    for (int j = 0; j <= n; j++) {
+      final lat = -math.pi / 2 + j * math.pi / n;
+      for (int i = 0; i <= n; i++) {
+        final lon = -math.pi / 2 + i * math.pi / n;
+        positions.add(Offset(math.cos(lat) * math.sin(lon), math.sin(lat)));
+        coords.add(
+          Offset(
+            (.5 + lon / (2 * math.pi)) * texture.width,
+            (.5 + lat / math.pi) * texture.height,
+          ),
+        );
+        if (i < n && j < n) {
+          final a = j * (n + 1) + i;
+          indices.addAll([a, a + 1, a + n + 1, a + 1, a + n + 2, a + n + 1]);
+        }
+      }
+    }
+    final result = (
+      vertices: ui.Vertices(
+        ui.VertexMode.triangles,
+        positions,
+        textureCoordinates: coords,
+        indices: indices,
+      ),
+      paint: Paint()
+        ..shader = ui.ImageShader(
+          texture,
+          TileMode.clamp,
+          TileMode.clamp,
+          Float64List.fromList([
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+          ]),
+        ),
+    );
+    _sphereMeshes[texture] = result;
+    return result;
+  }
+
   static void shadow(Canvas c, Rect r) => c.drawOval(
     r,
     Paint()
@@ -126,64 +191,12 @@ class LabMaterials {
         ).createShader(rect),
     );
     if (texture != null) {
-      final positions = <Offset>[], coords = <Offset>[], indices = <int>[];
-      const n = 24;
-      for (int j = 0; j <= n; j++) {
-        final lat = -math.pi / 2 + j * math.pi / n;
-        for (int i = 0; i <= n; i++) {
-          final lon = -math.pi / 2 + i * math.pi / n;
-          positions.add(
-            centre +
-                Offset(
-                  radius * math.cos(lat) * math.sin(lon),
-                  radius * math.sin(lat),
-                ),
-          );
-          coords.add(
-            Offset(
-              (.5 + lon / (2 * math.pi)) * texture.width,
-              (.5 + lat / math.pi) * texture.height,
-            ),
-          );
-          if (i < n && j < n) {
-            final a = j * (n + 1) + i;
-            indices.addAll([a, a + 1, a + n + 1, a + 1, a + n + 2, a + n + 1]);
-          }
-        }
-      }
-      c.drawVertices(
-        ui.Vertices(
-          ui.VertexMode.triangles,
-          positions,
-          textureCoordinates: coords,
-          indices: indices,
-        ),
-        BlendMode.srcOver,
-        Paint()
-          ..shader = ui.ImageShader(
-            texture,
-            TileMode.clamp,
-            TileMode.clamp,
-            Float64List.fromList([
-              1,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              1,
-              0,
-              0,
-              0,
-              0,
-              1,
-            ]),
-          ),
-      );
+      final mesh = _mesh(texture);
+      c.save();
+      c.translate(centre.dx, centre.dy);
+      c.scale(radius);
+      c.drawVertices(mesh.vertices, BlendMode.srcOver, mesh.paint);
+      c.restore();
       c.drawCircle(
         centre,
         radius,

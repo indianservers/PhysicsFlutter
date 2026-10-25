@@ -8,6 +8,7 @@ import '../physics/measurement.dart';
 import '../../content/catalog.dart';
 import '../physics/dynamics.dart';
 import '../physics/advanced.dart';
+import '../physics/waves_optics.dart';
 
 class Trial {
   final String id, labId, quantity, unit, note, created;
@@ -60,6 +61,10 @@ class Trial {
       'damping': 'kg/s',
       'angularFrequency': 'rad/s',
       'efficiency': '',
+      'frequency': 'Hz',
+      'angle': '°',
+      'vergence': 'm⁻¹',
+      'relativeIntensity': '',
     };
     if (!units.containsKey(m['quantity']) ||
         units[m['quantity']] != m['unit'] ||
@@ -74,6 +79,7 @@ class Trial {
           modelVersion,
           dynamicsVersion,
           advancedVersion,
+          waveOpticsVersion,
         ].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }

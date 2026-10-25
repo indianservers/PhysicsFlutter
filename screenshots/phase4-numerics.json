@@ -1,0 +1,19 @@
+{
+  "qualification": "Host pure-Dart elapsed numerical cost, not device frame times; includes allocations; 10 warmups then 100 calls.",
+  "model": "waves-optics-4.0",
+  "Interference — mechanical": {
+    "medianMs": 0.593,
+    "p95Ms": 1.03,
+    "iterations": 100
+  },
+  "Sound Spectrum": {
+    "medianMs": 0.232,
+    "p95Ms": 0.484,
+    "iterations": 100
+  },
+  "Diffraction": {
+    "medianMs": 0.163,
+    "p95Ms": 0.74,
+    "iterations": 100
+  }
+}

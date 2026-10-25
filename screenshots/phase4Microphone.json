@@ -1,0 +1,12 @@
+{
+  "actualNativePcmCapture": true,
+  "analyzedFrames": 15,
+  "outputSampleRate": 48000,
+  "windowSamples": 2048,
+  "rmsFullScale": 0.00013145839200441869,
+  "peakBinHz": 187.5,
+  "rawAudioSaved": false,
+  "backgroundStopped": true,
+  "explicitAnalysisRestore": true,
+  "signalQualification": "Emulator native PCM stream; no acoustic calibration or known physical test tone. Silence is a valid actual input."
+}

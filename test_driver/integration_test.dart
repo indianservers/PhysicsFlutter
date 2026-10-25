@@ -37,5 +37,17 @@ Future<void> main() => integrationDriver(
         const JsonEncoder.withIndent('  ').convert(data!['phase3Preservation']),
       );
     }
+    for (final key in [
+      'phase4Validation',
+      'phase4Microphone',
+      'phase4MicrophoneDenied',
+      'phase4Modes',
+    ]) {
+      if (data?[key] != null) {
+        await File(
+          '${dir.path}/$key.json',
+        ).writeAsString(const JsonEncoder.withIndent('  ').convert(data![key]));
+      }
+    }
   },
 );

@@ -1,0 +1,17 @@
+{
+  "appVersion": "1.3.0+4",
+  "entry": "lib/main.dart",
+  "apk": "deliverables/physics-atelier-phase4-debug.apk",
+  "bytes": 209754116,
+  "sha256": "a6e301bd1f8abe6532deddb862ead1345572fcadbbe1e0483096a5795bd78e57",
+  "tests": 108,
+  "analyze": "No issues found",
+  "nativeAllTwelveLabs": "passed",
+  "nativeModes": "passed",
+  "nativeMicrophoneDenied": "passed",
+  "nativeMicrophoneActualPcm": "passed",
+  "profileThreeCases": "passed with emulator frame-time jank documented",
+  "ordinaryInstall": "adb install -r succeeded; versionCode 4 versionName 1.3.0",
+  "offlineStartup": "airplane mode enabled; ordinary default renderer; screenshot captured",
+  "ios": "Source/plist only; no macOS/Xcode available"
+}

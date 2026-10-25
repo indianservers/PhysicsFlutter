@@ -1077,8 +1077,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
           Paragraph('Introductory ${entry.title}', switch (entry.index) {
             0 => 'Browse every studio by its scientific domain.',
             1 => 'Measurement → Motion → Force → Energy. These relationships are a learning guide; an interactive graph is planned for a later phase.',
-            2 => 'Recommended path: Measurement → Mechanics → Motion & Kinematics → Force & Newton’s Laws → Work/Energy/Power → Gravitation → Oscillations. Complete each six-lab sequence in order.',
-            3 => 'Discover all 42 currently interactive labs below. Later studios retain introductory learning content.',
+            2 => 'Recommended path: Measurement → Mechanics → Motion & Kinematics → Force & Newton’s Laws → Work/Energy/Power → Gravitation → Oscillations → Waves & Sound → Optics. Complete each six-lab sequence in order.',
+            3 => 'Discover all 54 currently interactive labs below. Later studios retain introductory learning content.',
             4 => 'Compare precision: ruler 1 mm; caliper 0.1 mm; micrometer 0.01 mm. A smaller division does not remove systematic error.',
             _ => 'Introductory challenge: A ruler reading starts at 12 mm and ends at 66 mm. What is the length? Advanced assessment is planned for a later phase.',
           }),
