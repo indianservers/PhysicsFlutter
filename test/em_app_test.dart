@@ -69,7 +69,7 @@ void main() {
           child: const PhysicsApp(),
         ),
       );
-      expect(allEntries.where((e) => e.interactive).length, 66);
+      expect(allEntries.where((e) => e.interactive).length, 78);
       for (final e in allEntries.where((e) => e.electromagnetism)) {
         router.go('/lab/${e.id}');
         await t.pumpAndSettle();

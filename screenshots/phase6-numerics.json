@@ -1,0 +1,807 @@
+{
+  "model": "electronics-thermal-6.0",
+  "qualification": "Host pure-Dart elapsed cost including allocation; 10 warmups then 100 iterations. Not Android frame measurements.",
+  "Semiconductor full 161-point profile": {
+    "medianMs": 0.267,
+    "p95Ms": 0.574,
+    "iterations": 100
+  },
+  "Diode 161 operating points and junction curve": {
+    "medianMs": 0.461,
+    "p95Ms": 0.786,
+    "iterations": 100
+  },
+  "Light sensor 161 shared-MNA divider solutions": {
+    "medianMs": 0.952,
+    "p95Ms": 2.376,
+    "iterations": 100
+  },
+  "Radiation full deterministic replay": {
+    "medianMs": 2.202,
+    "p95Ms": 3.074,
+    "iterations": 100
+  },
+  "Carnot complete 161-point cycle": {
+    "medianMs": 0.383,
+    "p95Ms": 0.641,
+    "iterations": 100
+  },
+  "allModelEndpoints": {
+    "0:0": {
+      "initial": {
+        "temperature": 300.0,
+        "doping": 100000000000000000000.0
+      },
+      "finalState": {
+        "t": 0.0,
+        "ni": 10000000000000000.0,
+        "electrons": 10000000000000000.0,
+        "holes": 10000000000000000.0,
+        "donors": 0.0,
+        "acceptors": 0.0,
+        "neutrality": 0.0,
+        "massAction": 1e+32,
+        "mobilityN": 0.14,
+        "mobilityP": 0.05,
+        "conductivity": 0.00030441356046000004,
+        "fermiOffset": 0.0,
+        "bandGap": 1.7944378300800001e-19
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "0:1": {
+      "initial": {
+        "temperature": 300.0,
+        "doping": 100000000000000000000.0
+      },
+      "finalState": {
+        "t": 0.0,
+        "ni": 10000000000000000.0,
+        "electrons": 100000001000000000000.0,
+        "holes": 999999990000.0002,
+        "donors": 100000000000000000000.0,
+        "acceptors": 0.0,
+        "neutrality": 0.0,
+        "massAction": 1e+32,
+        "mobilityN": 0.14,
+        "mobilityP": 0.05,
+        "conductivity": 2.2430473180413557,
+        "fermiOffset": 3.8148741714105104e-20,
+        "bandGap": 1.7944378300800001e-19
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "0:2": {
+      "initial": {
+        "temperature": 300.0,
+        "doping": 100000000000000000000.0
+      },
+      "finalState": {
+        "t": 0.0,
+        "ni": 10000000000000000.0,
+        "electrons": 999999990000.0002,
+        "holes": 100000001000000000000.0,
+        "donors": 0.0,
+        "acceptors": 100000000000000000000.0,
+        "neutrality": 0.0,
+        "massAction": 1e+32,
+        "mobilityN": 0.14,
+        "mobilityP": 0.05,
+        "conductivity": 0.8010883474413558,
+        "fermiOffset": -3.8148741714105104e-20,
+        "bandGap": 1.7944378300800001e-19
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "1:0": {
+      "initial": {
+        "supply": 1.0,
+        "resistance": 1000.0,
+        "temperature": 300.0,
+        "ideality": 1.5,
+        "referenceIs": 1e-12
+      },
+      "finalState": {
+        "t": 0.0,
+        "current": 0.000250130663898838,
+        "diodeVoltage": 0.7498693360939797,
+        "resistorVoltage": 0.25013066390602035,
+        "saturationCurrent": 1e-12,
+        "thermalVoltage": 0.025851999786435535,
+        "kvlError": -7.182254790905063e-12,
+        "iterations": 38.0,
+        "diodePower": 0.00018756531487456804
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "2:0": {
+      "initial": {
+        "drive": 1.2,
+        "baseResistance": 10000.0,
+        "supply": 5.0,
+        "collectorResistance": 1000.0,
+        "beta": 100.0
+      },
+      "finalState": {
+        "t": 0.0,
+        "baseCurrent": 0.000054999999999999995,
+        "collectorCurrent": 0.0048672566371681415,
+        "emitterCurrent": 0.004922256637168142,
+        "baseVoltage": 0.65,
+        "collectorVoltage": 0.1327433628318584,
+        "emitterVoltage": 0.0,
+        "vce": 0.1327433628318584,
+        "effectiveBeta": 88.49557522123895,
+        "region": 2.0,
+        "collectorPower": 0.0006460960137833815,
+        "currentBalance": 0.0
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "3:0": {
+      "initial": {
+        "amplitude": 0.2,
+        "offset": 0.0,
+        "frequency": 2.0,
+        "feedback": 10000.0,
+        "inputResistance": 2000.0,
+        "rail": 5.0,
+        "margin": 0.2
+      },
+      "finalState": {
+        "t": 1.0,
+        "gain": 6.0,
+        "inputVoltage": -9.797174393178826e-17,
+        "outputVoltage": -5.878304635907296e-16,
+        "unclippedOutput": -5.878304635907296e-16,
+        "swingLimit": 4.8,
+        "clipped": 0.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "3:1": {
+      "initial": {
+        "amplitude": 0.2,
+        "offset": 0.0,
+        "frequency": 2.0,
+        "feedback": 10000.0,
+        "inputResistance": 2000.0,
+        "rail": 5.0,
+        "margin": 0.2
+      },
+      "finalState": {
+        "t": 1.0,
+        "gain": -5.0,
+        "inputVoltage": -9.797174393178826e-17,
+        "outputVoltage": 4.898587196589413e-16,
+        "unclippedOutput": 4.898587196589413e-16,
+        "swingLimit": 4.8,
+        "clipped": 0.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "4:0": {
+      "initial": {
+        "inputA": 0.0,
+        "inputB": 1.0
+      },
+      "finalState": {
+        "t": 30.0,
+        "inputA": 0.0,
+        "inputB": 1.0,
+        "logicOutput": 0.0
+      },
+      "ticks": 3600,
+      "samples": 301,
+      "profilePoints": 4
+    },
+    "4:1": {
+      "initial": {
+        "inputA": 0.0,
+        "inputB": 1.0
+      },
+      "finalState": {
+        "t": 30.0,
+        "inputA": 0.0,
+        "inputB": 1.0,
+        "logicOutput": 1.0
+      },
+      "ticks": 3600,
+      "samples": 301,
+      "profilePoints": 4
+    },
+    "4:2": {
+      "initial": {
+        "inputA": 0.0,
+        "inputB": 1.0
+      },
+      "finalState": {
+        "t": 30.0,
+        "inputA": 0.0,
+        "inputB": 1.0,
+        "logicOutput": 1.0
+      },
+      "ticks": 3600,
+      "samples": 301,
+      "profilePoints": 4
+    },
+    "4:3": {
+      "initial": {
+        "inputA": 0.0,
+        "inputB": 1.0
+      },
+      "finalState": {
+        "t": 30.0,
+        "inputA": 0.0,
+        "inputB": 1.0,
+        "logicOutput": 1.0
+      },
+      "ticks": 3600,
+      "samples": 301,
+      "profilePoints": 4
+    },
+    "4:4": {
+      "initial": {
+        "inputA": 0.0,
+        "inputB": 1.0
+      },
+      "finalState": {
+        "t": 30.0,
+        "inputA": 0.0,
+        "inputB": 1.0,
+        "logicOutput": 0.0
+      },
+      "ticks": 3600,
+      "samples": 301,
+      "profilePoints": 4
+    },
+    "4:5": {
+      "initial": {
+        "inputA": 0.0,
+        "inputB": 1.0
+      },
+      "finalState": {
+        "t": 30.0,
+        "inputA": 0.0,
+        "inputB": 1.0,
+        "logicOutput": 1.0
+      },
+      "ticks": 3600,
+      "samples": 301,
+      "profilePoints": 4
+    },
+    "4:6": {
+      "initial": {
+        "inputA": 0.0,
+        "inputB": 1.0
+      },
+      "finalState": {
+        "t": 30.0,
+        "inputA": 0.0,
+        "inputB": 1.0,
+        "logicOutput": 0.0
+      },
+      "ticks": 3600,
+      "samples": 301,
+      "profilePoints": 4
+    },
+    "5:0": {
+      "initial": {
+        "temperature": 301.65,
+        "lux": 100.0,
+        "distance": 1.0,
+        "airTemperature": 293.15
+      },
+      "finalState": {
+        "t": 0.0,
+        "sensorOutput": 0.785,
+        "temperatureC": 28.5,
+        "saturated": 0.0
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "5:1": {
+      "initial": {
+        "temperature": 301.65,
+        "lux": 100.0,
+        "distance": 1.0,
+        "airTemperature": 293.15
+      },
+      "finalState": {
+        "t": 0.0,
+        "sensorOutput": 1.65,
+        "ldrResistance": 10000.0,
+        "effectiveLux": 100.0,
+        "saturated": 0.0
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "5:2": {
+      "initial": {
+        "temperature": 301.65,
+        "lux": 100.0,
+        "distance": 1.0,
+        "airTemperature": 293.15
+      },
+      "finalState": {
+        "t": 0.0,
+        "sensorOutput": 0.005823772639916137,
+        "roundTripTime": 0.005823772639916137,
+        "soundSpeed": 343.42,
+        "echoDistance": 0.9999999999999999,
+        "saturated": 0.0
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "6:0": {
+      "initial": {
+        "sampleT": 333.15,
+        "probeT": 293.15,
+        "probeTau": 4.0,
+        "ambientT": 293.15,
+        "mass": 0.25,
+        "cp": 4180.0,
+        "h": 25.0,
+        "surface": 0.1
+      },
+      "finalState": {
+        "t": 20.0,
+        "sampleTemperature": 333.15,
+        "probeTemperature": 332.88048212003656,
+        "celsius": 59.730482120036584,
+        "fahrenheit": 139.51486781606587
+      },
+      "ticks": 3000,
+      "samples": 301,
+      "profilePoints": 161
+    },
+    "6:1": {
+      "initial": {
+        "sampleT": 333.15,
+        "probeT": 293.15,
+        "probeTau": 4.0,
+        "ambientT": 293.15,
+        "mass": 0.25,
+        "cp": 4180.0,
+        "h": 25.0,
+        "surface": 0.1
+      },
+      "finalState": {
+        "t": 2090.0,
+        "sampleTemperature": 293.4195178799634,
+        "probeTemperature": 293.42212191745097,
+        "heatOut": 41518.35381543823,
+        "deltaU": -41518.35381543823,
+        "energyResidual": 0.0,
+        "celsius": 20.27212191745099,
+        "fahrenheit": 68.48981945141178
+      },
+      "ticks": 3000,
+      "samples": 301,
+      "profilePoints": 161
+    },
+    "7:0": {
+      "initial": {
+        "conductivity": 205.0,
+        "area": 0.0002,
+        "length": 0.2,
+        "leftT": 333.15,
+        "rightT": 293.15,
+        "probe": 0.5,
+        "initialT": 333.15,
+        "ambientT": 293.15,
+        "h": 12.0,
+        "surface": 0.05,
+        "mass": 0.25,
+        "cp": 900.0,
+        "density": 2700.0,
+        "emissivity": 0.8
+      },
+      "finalState": {
+        "t": 0.0,
+        "heatRate": 8.2,
+        "probeTemperature": 313.15,
+        "gradient": -200.0
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "7:1": {
+      "initial": {
+        "conductivity": 205.0,
+        "area": 0.0002,
+        "length": 0.2,
+        "leftT": 333.15,
+        "rightT": 293.15,
+        "probe": 0.5,
+        "initialT": 333.15,
+        "ambientT": 293.15,
+        "h": 12.0,
+        "surface": 0.05,
+        "mass": 0.25,
+        "cp": 900.0,
+        "density": 2700.0,
+        "emissivity": 0.8
+      },
+      "finalState": {
+        "t": 1874.9999999999998,
+        "temperature": 293.4195178799634,
+        "heatRate": 0.16171072797804983,
+        "heatOut": 8939.35847700823,
+        "deltaU": -8939.35847700823,
+        "energyResidual": 0.0,
+        "biot": 0.00010840108401084011,
+        "tau": 374.99999999999994
+      },
+      "ticks": 3000,
+      "samples": 301,
+      "profilePoints": 161
+    },
+    "7:2": {
+      "initial": {
+        "conductivity": 205.0,
+        "area": 0.0002,
+        "length": 0.2,
+        "leftT": 333.15,
+        "rightT": 293.15,
+        "probe": 0.5,
+        "initialT": 333.15,
+        "ambientT": 293.15,
+        "h": 12.0,
+        "surface": 0.05,
+        "mass": 0.25,
+        "cp": 900.0,
+        "density": 2700.0,
+        "emissivity": 0.8
+      },
+      "finalState": {
+        "t": 3353.523471622088,
+        "temperature": 294.2489353276099,
+        "heatRate": 0.25258924357750506,
+        "heatOut": 8752.73955128805,
+        "deltaU": -8752.739551287768,
+        "energyResidual": 2.8194335754960775e-10
+      },
+      "ticks": 3001,
+      "samples": 301,
+      "profilePoints": 161
+    },
+    "8:0": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "pressure": 55429.75078768826,
+        "volume": 0.0045000000000000005,
+        "temperature": 300.0,
+        "initialPressure": 99773.55141783888,
+        "initialVolume": 0.0025,
+        "initialTemperature": 300.0,
+        "deltaU": 0.0,
+        "work": 146.61390758332905,
+        "heat": 146.61390758332905,
+        "energyResidual": 0.0,
+        "progress": 1.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "8:1": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "pressure": 119728.26170140665,
+        "volume": 0.0025,
+        "temperature": 360.0,
+        "initialPressure": 99773.55141783888,
+        "initialVolume": 0.0025,
+        "initialTemperature": 300.0,
+        "deltaU": 74.83016356337916,
+        "work": 0.0,
+        "heat": 74.83016356337916,
+        "energyResidual": 0.0,
+        "progress": 1.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "8:2": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "pressure": 99773.55141783887,
+        "volume": 0.0045000000000000005,
+        "temperature": 540.0,
+        "initialPressure": 99773.55141783888,
+        "initialVolume": 0.0025,
+        "initialTemperature": 300.0,
+        "deltaU": 299.32065425351664,
+        "work": 199.5471028356778,
+        "heat": 498.86775708919447,
+        "energyResidual": -2.842170943040401e-14,
+        "progress": 1.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "9:0": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "pressure": 119728.26170140665,
+        "volume": 0.0025,
+        "temperature": 360.0,
+        "initialPressure": 99773.55141783888,
+        "initialVolume": 0.0025,
+        "initialTemperature": 300.0,
+        "deltaU": 74.83016356337916,
+        "work": 0.0,
+        "heat": 74.83016356337916,
+        "energyResidual": 0.0,
+        "progress": 1.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "9:1": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "pressure": 99773.55141783887,
+        "volume": 0.0045000000000000005,
+        "temperature": 540.0,
+        "initialPressure": 99773.55141783888,
+        "initialVolume": 0.0025,
+        "initialTemperature": 300.0,
+        "deltaU": 299.32065425351664,
+        "work": 199.5471028356778,
+        "heat": 498.86775708919447,
+        "energyResidual": -2.842170943040401e-14,
+        "progress": 1.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "9:2": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "pressure": 55429.75078768826,
+        "volume": 0.0045000000000000005,
+        "temperature": 300.0,
+        "initialPressure": 99773.55141783888,
+        "initialVolume": 0.0025,
+        "initialTemperature": 300.0,
+        "deltaU": 0.0,
+        "work": 146.61390758332905,
+        "heat": 146.61390758332905,
+        "energyResidual": 0.0,
+        "progress": 1.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "9:3": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "pressure": 37459.43787277931,
+        "volume": 0.0045000000000000005,
+        "temperature": 202.7400665191133,
+        "initialPressure": 99773.55141783888,
+        "initialVolume": 0.0025,
+        "initialTemperature": 300.0,
+        "deltaU": -121.29961217563549,
+        "work": 121.29961217563549,
+        "heat": 0.0,
+        "energyResidual": 0.0,
+        "progress": 1.0
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "10:0": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0,
+        "finalT": 330.0,
+        "expanded": 1.0,
+        "body1T": 343.15,
+        "body2T": 293.15,
+        "capacity1": 500.0,
+        "capacity2": 700.0,
+        "conductance": 10.0
+      },
+      "finalState": {
+        "t": 10.0,
+        "temperature": 330.0,
+        "volume": 0.0045000000000000005,
+        "pressure": 60972.72586645708,
+        "entropy": 0.607580964344642,
+        "deltaU": 37.41508178168958
+      },
+      "ticks": 1200,
+      "samples": 151,
+      "profilePoints": 161
+    },
+    "10:1": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0,
+        "finalT": 330.0,
+        "expanded": 1.0,
+        "body1T": 343.15,
+        "body2T": 293.15,
+        "capacity1": 500.0,
+        "capacity2": 700.0,
+        "conductance": 10.0
+      },
+      "finalState": {
+        "t": 0.0,
+        "temperature": 300.0,
+        "volume": 0.0045000000000000005,
+        "pressure": 55429.75078768826,
+        "entropy": 0.4887130252777635,
+        "deltaU": 0.0,
+        "heat": 0.0,
+        "work": 0.0,
+        "energyResidual": 0.0
+      },
+      "ticks": 0,
+      "samples": 1,
+      "profilePoints": 161
+    },
+    "10:2": {
+      "initial": {
+        "amount": 0.1,
+        "initialT": 300.0,
+        "initialVolume": 0.0025,
+        "volumeRatio": 1.8,
+        "temperatureRatio": 1.2,
+        "duration": 10.0,
+        "finalT": 330.0,
+        "expanded": 1.0,
+        "body1T": 343.15,
+        "body2T": 293.15,
+        "capacity1": 500.0,
+        "capacity2": 700.0,
+        "conductance": 10.0
+      },
+      "finalState": {
+        "t": 145.83333333333337,
+        "body1Temperature": 314.17985678747334,
+        "body2Temperature": 313.8429594375191,
+        "equilibriumTemperature": 313.98333333333335,
+        "entropy1": -44.101027556249726,
+        "entropy2": 47.74581574828867,
+        "entropy": 3.644788192038945,
+        "equilibriumEntropy": 3.6449560674498755,
+        "energyResidual": 5.638867150992155e-11,
+        "tau": 29.16666666666667
+      },
+      "ticks": 3001,
+      "samples": 301,
+      "profilePoints": 161
+    },
+    "11:0": {
+      "initial": {
+        "amount": 0.1,
+        "hotT": 600.0,
+        "coldT": 300.0,
+        "initialVolume": 0.002,
+        "volumeRatio": 2.0,
+        "duration": 16.0
+      },
+      "finalState": {
+        "t": 16.0,
+        "volume": 0.002,
+        "temperature": 600.0,
+        "pressure": 249433.8785445972,
+        "stage": 3.0,
+        "stageFraction": 1.0,
+        "stageWork": -374.1508178168958,
+        "stageHeat": 0.0,
+        "work": 172.89438964931938,
+        "heat": 172.89438964931938,
+        "deltaU": 0.0,
+        "energyResidual": 0.0,
+        "hotHeatReference": 345.78877929863876,
+        "coldHeatReference": 172.89438964931938,
+        "netWorkReference": 172.89438964931938,
+        "efficiency": 0.5,
+        "phase": 4.0,
+        "v1": 0.002,
+        "v2": 0.004,
+        "v3": 0.01131370849898476,
+        "v4": 0.00565685424949238
+      },
+      "ticks": 1920,
+      "samples": 241,
+      "profilePoints": 161
+    }
+  }
+}

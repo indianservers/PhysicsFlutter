@@ -1,0 +1,15 @@
+# Phase 6 handover
+
+Implemented twelve Electronics and Thermodynamics laboratories, `s12-e00`…`s12-e05` and `s13-e00`…`s13-e05`. The app now contains **78 interactive labs**, retaining all **17 studios / 102 stable destinations** and the earlier notebook schema. Version **1.5.0+6**. Repository remote remains `https://github.com/indianservers/PhysicsFlutter`.
+
+Each lab has Learn, Experiment, Visualize, Formulas and Results, calculated apparatus/readouts, model-relevant numeric/slider inputs, drag adjustment, explicit invalid states, actual graph data, scientific assumptions, worked/current-value equations, predictions, notes, trials, paused session restoration and CSV export. Live traces and replay use the shared fixed clock. Logic preserves timestamped input edges; First Law retains a bounded process ledger. Completion is earned from actual activity.
+
+Electronics: neutral semiconductor carrier populations and conductivity; converged resistor/diode operating points; generic NPN cutoff/active/saturation; ideal rail-limited inverting/non-inverting amplification with explicit feedback schematic; seven Boolean gates; three offline sensor transfer functions. Thermodynamics: separate sample/probe temperatures; steady conduction, valid lumped convection and Kelvin radiation; process-constrained ideal gas; Q−W internal energy; state entropy/free expansion/finite thermal contact; and a closed four-stage Carnot cycle.
+
+The new engine is pure Dart and reuses the Phase 5 MNA divider, existing clock, shared plots/text/material helpers and notebook. No dependency, platform permission, independent store or new unit subsystem was introduced. Earlier EM scenes now avoid redundant paints without missing physics/layout changes. Overview and guided navigation include both new studios.
+
+Deliverable: `deliverables/physics-atelier-phase6-debug.apk`, ordinary Android debug build with adjacent SHA256. Source and evidence are committed locally; APK binaries remain ignored as in earlier phases. The final package, install, offline launch and raw data-preservation results are in `screenshots/phase6-validation-summary.json` and `phase6-preservation.json`.
+
+Validation: **181 passing unit/widget tests**, clean analysis, native all-lab/all-mode, boundary-case, audit and real SQLite migration checks. Consult [validation and performance](PHASE6_VALIDATION.md), [science/references](PHASE6_SCIENCE.md), [per-lab ranges/equations](PHASE6_LAB_SPECIFICATIONS.md), and [assets/audit](PHASE6_ASSETS_AND_AUDIT.md). `screenshots/contact-phase6-s1-e.jpg` indexes the twelve finished labs; individual full-resolution captures and actual plots remain alongside it.
+
+The models are bounded educational approximations, not SPICE, calibrated hardware or microscopic molecular dynamics. Apparatus is original procedural schematic art, with no photographic-parity claim. Emulator raster jank remains an observed limitation; physical-device performance and independent accessibility testing remain open. iOS compilation/testing was not performed on this Windows host. No Phase 7 implementation is included.

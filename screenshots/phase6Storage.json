@@ -1,0 +1,8 @@
+{
+  "actualV2toV3Upgrade": true,
+  "oldTrialBodyUnchanged": true,
+  "oldSessionNoteAndParametersRetained": true,
+  "newConductivityTrialRoundTrip": true,
+  "mainDatabaseOriginalTrials": 118,
+  "mainDatabaseRecoveryMessage": null
+}

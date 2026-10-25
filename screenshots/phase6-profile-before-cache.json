@@ -1,0 +1,46 @@
+{
+  "s12-e03": {
+    "frameCount": 90,
+    "startTicks": 4,
+    "endTicks": 837,
+    "medianBuildMs": 2.128,
+    "p95BuildMs": 8.019,
+    "medianRasterMs": 75.007,
+    "p95RasterMs": 133.244,
+    "p95TotalMs": 267.782,
+    "framesOver16_67Ms": 90,
+    "activity": "90 active playback frames; actual physical clock and calculated apparatus",
+    "sampleCount": 105,
+    "profilePoints": 161
+  },
+  "s13-e01": {
+    "frameCount": 90,
+    "startTicks": 1,
+    "endTicks": 823,
+    "medianBuildMs": 1.916,
+    "p95BuildMs": 8.833,
+    "medianRasterMs": 74.323,
+    "p95RasterMs": 141.814,
+    "p95TotalMs": 245.292,
+    "framesOver16_67Ms": 89,
+    "activity": "90 active playback frames; actual physical clock and calculated apparatus",
+    "sampleCount": 103,
+    "profilePoints": 161
+  },
+  "s13-e05": {
+    "frameCount": 90,
+    "startTicks": 2,
+    "endTicks": 536,
+    "medianBuildMs": 1.525,
+    "p95BuildMs": 4.913,
+    "medianRasterMs": 45.107,
+    "p95RasterMs": 67.571,
+    "p95TotalMs": 116.328,
+    "framesOver16_67Ms": 88,
+    "activity": "90 active playback frames; actual physical clock and calculated apparatus",
+    "sampleCount": 68,
+    "profilePoints": 161
+  },
+  "profileFile": "phase6-profile.json",
+  "environment": "Dedicated Physics_Phase3 emulator-5556; Android 17 API37 x86_64 16KB, 720x1280@320dpi, 2 cores 2048 MB; profile Skia/OpenGL, host RTX3050. Not physical-device performance."
+}

@@ -11,14 +11,17 @@ class Entry {
     this.studioIndex,
     this.index,
   );
-  bool get interactive => studioIndex >= 1 && studioIndex <= 11;
+  bool get interactive => studioIndex >= 1 && studioIndex <= 13;
+  bool get electronicsThermal => studioIndex >= 12 && studioIndex <= 13;
   bool get electromagnetism => studioIndex >= 10 && studioIndex <= 11;
   bool get wavesOptics => studioIndex >= 8 && studioIndex <= 9;
   bool get advanced => studioIndex >= 5 && studioIndex <= 7;
   bool get dynamics => studioIndex >= 2 && studioIndex <= 4;
   bool get tool => studioIndex == 0;
   String get availability => interactive
-      ? 'Interactive · Phase ${electromagnetism
+      ? 'Interactive · Phase ${electronicsThermal
+            ? 6
+            : electromagnetism
             ? 5
             : wavesOptics
             ? 4

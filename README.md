@@ -1,4 +1,4 @@
-# Physics Atelier — Phase 5 of 9
+# Physics Atelier — Phase 6 of 9
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -34,7 +34,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase5-debug.apk` for handoff), version 1.4.0+5.
+Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase6-debug.apk` for handoff), version 1.5.0+6.
 
 Device integration and screenshot capture:
 
@@ -66,7 +66,7 @@ $env:JAVA_TOOL_OPTIONS='-Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true'
 - [iOS verification checklist](docs/IOS_VERIFICATION.md)
 - [Phase 1 handover](docs/HANDOVER.md)
 
-Current phase: [Phase 5 handover](docs/PHASE5_HANDOVER.md), [science](docs/PHASE5_SCIENCE.md), [per-lab specifications](docs/PHASE5_LAB_SPECIFICATIONS.md), [assets and audit](docs/PHASE5_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE5_VALIDATION.md). Earlier phase reports remain historical. Eleven studios contain 66 interactive labs within their documented limits; all 17 studios and 102 destinations remain accessible. No login or network is required after installation. Optional Phase 4 microphone input remains contextual; no raw audio is saved or uploaded.
+Current phase: [Phase 6 handover](docs/PHASE6_HANDOVER.md), [science](docs/PHASE6_SCIENCE.md), [per-lab specifications](docs/PHASE6_LAB_SPECIFICATIONS.md), [assets and audit](docs/PHASE6_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE6_VALIDATION.md). Earlier phase reports remain historical. Thirteen studios contain 78 interactive labs within their documented limits; all 17 studios and 102 destinations remain accessible. No login or network is required after installation. Optional Phase 4 microphone input remains contextual; no raw audio is saved or uploaded.
 
 ## Nine-phase roadmap
 
@@ -80,4 +80,4 @@ Current phase: [Phase 5 handover](docs/PHASE5_HANDOVER.md), [science](docs/PHASE
 8. Astronomy/Astrophysics and completed cross-studio Concept Overview tools.
 9. Full scientific, visual, accessibility, performance and release validation.
 
-Phase 5 native targets: `phase5_test.dart`, `phase5_modes_test.dart`, `phase5_audit_test.dart` and `phase5_profile_test.dart` under `integration_test/`. Use `--keep-app-running` and a dedicated device/emulator to retain the notebook. This host uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator. Earlier targets remain available, including Phase 4 microphone permission tests. No Phase 6 work is included.
+Phase 6 native targets: `phase6_test.dart`, `phase6_modes_test.dart`, `phase6_audit_test.dart` and `phase6_profile_test.dart` under `integration_test/`. Use `--keep-app-running` and a dedicated device/emulator to retain the notebook. This host uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator. Earlier targets remain available, including Phase 4 microphone permission tests. No Phase 7 work is included.

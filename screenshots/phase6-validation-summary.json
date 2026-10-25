@@ -1,0 +1,92 @@
+{
+  "verifiedUTC": "2026-10-25T21:41:00.593115+00:00",
+  "apk": "deliverables\\physics-atelier-phase6-debug.apk",
+  "bytes": 210406059,
+  "sha256": "92cf86134dcd0af3e7686e5ec2249f9812c8103b83f25d9a3cb4adf1418f7b1b",
+  "installedSha256Matches": true,
+  "versionName": "1.5.0",
+  "versionCode": 6,
+  "entryPoint": "lib/main.dart",
+  "variant": "ordinary debug APK, not an integration-test entry point",
+  "device": "emulator-5556",
+  "airplaneMode": true,
+  "interactiveLabs": 78,
+  "stableDestinations": 102,
+  "studios": 17,
+  "unitWidgetTestsPassed": 181,
+  "analysis": "No issues found",
+  "nativeModelSelections": 33,
+  "nativeNewTrialCount": 12,
+  "nativeTargetsPassed": [
+    "phase6_test",
+    "phase6_modes_test",
+    "phase6_storage_test",
+    "phase6_audit_test",
+    "phase6_profile_test"
+  ],
+  "preservation": {
+    "originalTrialBodiesByteForBytePreserved": 106,
+    "currentTrials": 118,
+    "originalChallengeBodiesExactlyPreserved": 88,
+    "oldSessionNotesAndParametersPreserved": 66,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+  },
+  "profile": {
+    "s12-e03": {
+      "frameCount": 90,
+      "startTicks": 2,
+      "endTicks": 464,
+      "medianBuildMs": 1.203,
+      "p95BuildMs": 2.075,
+      "medianRasterMs": 36.035,
+      "p95RasterMs": 60.524,
+      "p95TotalMs": 99.588,
+      "framesOver16_67Ms": 89,
+      "activity": "90 active playback frames; actual physical clock and calculated apparatus",
+      "sampleCount": 59,
+      "profilePoints": 161
+    },
+    "s13-e01": {
+      "frameCount": 90,
+      "startTicks": 3,
+      "endTicks": 455,
+      "medianBuildMs": 1.282,
+      "p95BuildMs": 3.7,
+      "medianRasterMs": 34.686,
+      "p95RasterMs": 53.976,
+      "p95TotalMs": 90.904,
+      "framesOver16_67Ms": 89,
+      "activity": "90 active playback frames; actual physical clock and calculated apparatus",
+      "sampleCount": 57,
+      "profilePoints": 161
+    },
+    "s13-e05": {
+      "frameCount": 90,
+      "startTicks": 3,
+      "endTicks": 432,
+      "medianBuildMs": 1.242,
+      "p95BuildMs": 1.952,
+      "medianRasterMs": 35.662,
+      "p95RasterMs": 49.093,
+      "p95TotalMs": 87.797,
+      "framesOver16_67Ms": 89,
+      "activity": "90 active playback frames; actual physical clock and calculated apparatus",
+      "sampleCount": 55,
+      "profilePoints": 161
+    },
+    "profileFile": "phase6-profile.json",
+    "environment": "Dedicated Physics_Phase3 emulator-5556; Android 17 API37 x86_64 16KB, 720x1280@320dpi, 2 cores 2048 MB; profile Skia/OpenGL, host RTX3050. Not physical-device performance."
+  },
+  "remainingChecks": [
+    "iOS/macOS Xcode compilation and device testing",
+    "physical Android profiling",
+    "independent accessibility user testing",
+    "photographic apparatus parity",
+    "production signing and release hardening"
+  ],
+  "performanceQualification": "Observed emulator raster jank remains; no 60 fps or physical-device performance claim."
+}

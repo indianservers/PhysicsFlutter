@@ -14,6 +14,7 @@ import '../features/dynamics/workspace.dart';
 import '../features/advanced/workspace.dart';
 import '../features/waves/workspace.dart';
 import '../features/electromagnetism/workspace.dart';
+import '../features/electronics_thermal/workspace.dart';
 
 final notebookProvider = Provider<LocalNotebook>(
   (ref) => throw UnimplementedError('Initialize notebook'),
@@ -30,7 +31,12 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => entryById(s.pathParameters['id']!).electromagnetism
+      builder: (c, s) => entryById(s.pathParameters['id']!).electronicsThermal
+          ? ETWorkspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            )
+          : entryById(s.pathParameters['id']!).electromagnetism
           ? EMWorkspace(
               key: ValueKey(s.pathParameters['id']),
               entry: entryById(s.pathParameters['id']!),
@@ -622,8 +628,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 5 of 9 · Electricity & Magnetism',
-                  '66 interactive labs across eleven studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
+                  'Phase 6 of 9 · Electronics & Thermodynamics',
+                  '78 interactive labs across thirteen studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
                 ),
               ),
             ],

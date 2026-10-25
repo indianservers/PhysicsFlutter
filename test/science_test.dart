@@ -38,7 +38,7 @@ void main() {
       expect(studios.every((s) => s.entries.length == 6), true);
       expect(allEntries.length, 102);
       expect(allEntries.map((e) => e.id).toSet().length, 102);
-      expect(allEntries.where((e) => e.interactive).length, 66);
+      expect(allEntries.where((e) => e.interactive).length, 78);
       expect(studios[1].entries.where((e) => e.interactive).length, 6);
       expect(allEntries.where((e) => e.tool).length, 6);
       expect(studios[1].entries.map((e) => e.title), [

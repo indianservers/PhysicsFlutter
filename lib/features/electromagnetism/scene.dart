@@ -12,7 +12,8 @@ class EMPainter extends ScientificScene {
   final bool labels, overlays, fieldLines, electrons;
   final double azimuth, elevation;
   final String? selected;
-  const EMPainter(
+  final int revision, layoutHash;
+  EMPainter(
     this.run, {
     this.labels = true,
     this.overlays = true,
@@ -21,7 +22,10 @@ class EMPainter extends ScientificScene {
     this.azimuth = .6,
     this.elevation = .4,
     this.selected,
-  });
+  }) : revision = run.revision,
+       layoutHash = Object.hashAll(
+         run.circuit.parts.map((p) => Object.hash(p.id, p.x, p.y)),
+       );
   static const tool = DynamicsPainter(kind: 0, s: {}, p: {}, samples: []),
       navy = Color(0xff173458),
       blue = Color(0xff245ce7),
@@ -37,7 +41,17 @@ class EMPainter extends ScientificScene {
   String get accessibleSummary =>
       'Computed electromagnetic apparatus $kind. ${run.invalid.isEmpty ? run.state.entries.map((e) => '${e.key} ${emNumber(e.value)}').join('; ') : run.invalid}';
   @override
-  bool shouldRepaint(covariant EMPainter old) => true;
+  bool shouldRepaint(covariant EMPainter old) =>
+      old.run != run ||
+      old.revision != revision ||
+      old.layoutHash != layoutHash ||
+      old.labels != labels ||
+      old.overlays != overlays ||
+      old.fieldLines != fieldLines ||
+      old.electrons != electrons ||
+      old.azimuth != azimuth ||
+      old.elevation != elevation ||
+      old.selected != selected;
   void text(
     Canvas c,
     String s,

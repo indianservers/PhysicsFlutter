@@ -10,6 +10,7 @@ import '../physics/dynamics.dart';
 import '../physics/advanced.dart';
 import '../physics/waves_optics.dart';
 import '../physics/electromagnetism.dart';
+import '../physics/electronics_thermal.dart';
 
 class Trial {
   final String id, labId, quantity, unit, note, created;
@@ -71,6 +72,12 @@ class Trial {
       'voltage': 'V',
       'current': 'A',
       'capacitance': 'F',
+      'conductivity': 'S/m',
+      'gain': '',
+      'logicState': '',
+      'temperature': 'K',
+      'pressure': 'Pa',
+      'entropy': 'J/K',
     };
     if (!units.containsKey(m['quantity']) ||
         units[m['quantity']] != m['unit'] ||
@@ -87,6 +94,7 @@ class Trial {
           advancedVersion,
           waveOpticsVersion,
           emVersion,
+          etVersion,
         ].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }

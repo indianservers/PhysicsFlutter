@@ -1,0 +1,350 @@
+{
+  "modes": {
+    "s12-e00:0": {
+      "t": 0.0,
+      "ni": 10000000000000000.0,
+      "electrons": 10000000000000000.0,
+      "holes": 10000000000000000.0,
+      "donors": 0.0,
+      "acceptors": 0.0,
+      "neutrality": 0.0,
+      "massAction": 1e+32,
+      "mobilityN": 0.14,
+      "mobilityP": 0.05,
+      "conductivity": 0.00030441356046000004,
+      "fermiOffset": 0.0,
+      "bandGap": 1.7944378300800001e-19
+    },
+    "s12-e00:1": {
+      "t": 0.0,
+      "ni": 10000000000000000.0,
+      "electrons": 100000001000000000000.0,
+      "holes": 999999990000.0002,
+      "donors": 100000000000000000000.0,
+      "acceptors": 0.0,
+      "neutrality": 0.0,
+      "massAction": 1e+32,
+      "mobilityN": 0.14,
+      "mobilityP": 0.05,
+      "conductivity": 2.2430473180413557,
+      "fermiOffset": 3.8148741714105104e-20,
+      "bandGap": 1.7944378300800001e-19
+    },
+    "s12-e00:2": {
+      "t": 0.0,
+      "ni": 10000000000000000.0,
+      "electrons": 999999990000.0002,
+      "holes": 100000001000000000000.0,
+      "donors": 0.0,
+      "acceptors": 100000000000000000000.0,
+      "neutrality": 0.0,
+      "massAction": 1e+32,
+      "mobilityN": 0.14,
+      "mobilityP": 0.05,
+      "conductivity": 0.8010883474413558,
+      "fermiOffset": -3.8148741714105104e-20,
+      "bandGap": 1.7944378300800001e-19
+    },
+    "s12-e01:0": {
+      "t": 0.0,
+      "current": 0.000250130663898838,
+      "diodeVoltage": 0.7498693360939797,
+      "resistorVoltage": 0.25013066390602035,
+      "saturationCurrent": 1e-12,
+      "thermalVoltage": 0.025851999786435535,
+      "kvlError": -7.182254790905063e-12,
+      "iterations": 38.0,
+      "diodePower": 0.00018756531487456804
+    },
+    "s12-e02:0": {
+      "t": 0.0,
+      "baseCurrent": 0.000054999999999999995,
+      "collectorCurrent": 0.0048672566371681415,
+      "emitterCurrent": 0.004922256637168142,
+      "baseVoltage": 0.65,
+      "collectorVoltage": 0.1327433628318584,
+      "emitterVoltage": 0.0,
+      "vce": 0.1327433628318584,
+      "effectiveBeta": 88.49557522123895,
+      "region": 2.0,
+      "collectorPower": 0.0006460960137833815,
+      "currentBalance": 0.0
+    },
+    "s12-e03:0": {
+      "t": 0.1,
+      "gain": 6.0,
+      "inputVoltage": 0.1902113032590307,
+      "outputVoltage": 1.1412678195541843,
+      "unclippedOutput": 1.1412678195541843,
+      "swingLimit": 4.8,
+      "clipped": 0.0
+    },
+    "s12-e03:1": {
+      "t": 0.1,
+      "gain": -5.0,
+      "inputVoltage": 0.1902113032590307,
+      "outputVoltage": -0.9510565162951535,
+      "unclippedOutput": -0.9510565162951535,
+      "swingLimit": 4.8,
+      "clipped": 0.0
+    },
+    "s12-e04:0": {
+      "t": 1.0,
+      "inputA": 0.0,
+      "inputB": 1.0,
+      "logicOutput": 0.0
+    },
+    "s12-e04:1": {
+      "t": 1.0,
+      "inputA": 0.0,
+      "inputB": 1.0,
+      "logicOutput": 1.0
+    },
+    "s12-e04:2": {
+      "t": 1.0,
+      "inputA": 0.0,
+      "inputB": 1.0,
+      "logicOutput": 1.0
+    },
+    "s12-e04:3": {
+      "t": 1.0,
+      "inputA": 0.0,
+      "inputB": 1.0,
+      "logicOutput": 1.0
+    },
+    "s12-e04:4": {
+      "t": 1.0,
+      "inputA": 0.0,
+      "inputB": 1.0,
+      "logicOutput": 0.0
+    },
+    "s12-e04:5": {
+      "t": 1.0,
+      "inputA": 0.0,
+      "inputB": 1.0,
+      "logicOutput": 1.0
+    },
+    "s12-e04:6": {
+      "t": 1.0,
+      "inputA": 0.0,
+      "inputB": 1.0,
+      "logicOutput": 0.0
+    },
+    "s12-e05:0": {
+      "t": 0.0,
+      "sensorOutput": 0.785,
+      "temperatureC": 28.5,
+      "saturated": 0.0
+    },
+    "s12-e05:1": {
+      "t": 0.0,
+      "sensorOutput": 1.65,
+      "ldrResistance": 10000.0,
+      "effectiveLux": 100.0,
+      "saturated": 0.0
+    },
+    "s12-e05:2": {
+      "t": 0.0,
+      "sensorOutput": 0.005823772639916137,
+      "roundTripTime": 0.005823772639916137,
+      "soundSpeed": 343.42,
+      "echoDistance": 0.9999999999999999,
+      "saturated": 0.0
+    },
+    "s13-e00:0": {
+      "t": 0.8,
+      "sampleTemperature": 333.15,
+      "probeTemperature": 300.4007698768807,
+      "celsius": 27.250769876880724,
+      "fahrenheit": 81.05138577838531
+    },
+    "s13-e00:1": {
+      "t": 83.6,
+      "sampleTemperature": 325.89923012311925,
+      "probeTemperature": 326.2156477716243,
+      "heatOut": 7577.0545213403575,
+      "deltaU": -7577.0545213403575,
+      "energyResidual": 0.0,
+      "celsius": 53.0656477716243,
+      "fahrenheit": 127.51816598892374
+    },
+    "s13-e01:0": {
+      "t": 0.0,
+      "heatRate": 8.2,
+      "probeTemperature": 313.15,
+      "gradient": -200.0
+    },
+    "s13-e01:1": {
+      "t": 74.99999999999999,
+      "temperature": 325.89923012311925,
+      "heatRate": 19.649538073871568,
+      "heatOut": 1631.423222298163,
+      "deltaU": -1631.423222298163,
+      "energyResidual": 0.0,
+      "biot": 0.00010840108401084011,
+      "tau": 374.99999999999994
+    },
+    "s13-e01:2": {
+      "t": 134.1409388648835,
+      "temperature": 327.0928169571588,
+      "heatRate": 9.21241596645161,
+      "heatOut": 1362.8661846392763,
+      "deltaU": -1362.8661846392674,
+      "energyResidual": 8.86757334228605e-12
+    },
+    "s13-e02:0": {
+      "t": 1.0,
+      "pressure": 92382.91797948044,
+      "volume": 0.0027,
+      "temperature": 300.0,
+      "initialPressure": 99773.55141783888,
+      "initialVolume": 0.0025,
+      "initialTemperature": 300.0,
+      "deltaU": 0.0,
+      "work": 19.1966909874148,
+      "heat": 19.1966909874148,
+      "energyResidual": 0.0,
+      "progress": 0.1
+    },
+    "s13-e02:1": {
+      "t": 1.0,
+      "pressure": 101769.02244619565,
+      "volume": 0.0025,
+      "temperature": 306.0,
+      "initialPressure": 99773.55141783888,
+      "initialVolume": 0.0025,
+      "initialTemperature": 300.0,
+      "deltaU": 7.483016356337917,
+      "work": 0.0,
+      "heat": 7.483016356337917,
+      "energyResidual": 0.0,
+      "progress": 0.1
+    },
+    "s13-e02:2": {
+      "t": 1.0,
+      "pressure": 99773.55141783888,
+      "volume": 0.0027,
+      "temperature": 324.0,
+      "initialPressure": 99773.55141783888,
+      "initialVolume": 0.0025,
+      "initialTemperature": 300.0,
+      "deltaU": 29.932065425351666,
+      "work": 19.954710283567785,
+      "heat": 49.88677570891945,
+      "energyResidual": 0.0,
+      "progress": 0.1
+    },
+    "s13-e03:0": {
+      "t": 1.0,
+      "pressure": 101769.02244619565,
+      "volume": 0.0025,
+      "temperature": 306.0,
+      "initialPressure": 99773.55141783888,
+      "initialVolume": 0.0025,
+      "initialTemperature": 300.0,
+      "deltaU": 7.483016356337917,
+      "work": 0.0,
+      "heat": 7.483016356337917,
+      "energyResidual": 0.0,
+      "progress": 0.1
+    },
+    "s13-e03:1": {
+      "t": 1.0,
+      "pressure": 99773.55141783888,
+      "volume": 0.0027,
+      "temperature": 324.0,
+      "initialPressure": 99773.55141783888,
+      "initialVolume": 0.0025,
+      "initialTemperature": 300.0,
+      "deltaU": 29.932065425351666,
+      "work": 19.954710283567785,
+      "heat": 49.88677570891945,
+      "energyResidual": 0.0,
+      "progress": 0.1
+    },
+    "s13-e03:2": {
+      "t": 1.0,
+      "pressure": 92382.91797948044,
+      "volume": 0.0027,
+      "temperature": 300.0,
+      "initialPressure": 99773.55141783888,
+      "initialVolume": 0.0025,
+      "initialTemperature": 300.0,
+      "deltaU": 0.0,
+      "work": 19.1966909874148,
+      "heat": 19.1966909874148,
+      "energyResidual": 0.0,
+      "progress": 0.1
+    },
+    "s13-e03:3": {
+      "t": 1.0,
+      "pressure": 87762.53757150983,
+      "volume": 0.0027,
+      "temperature": 284.9959911127828,
+      "initialPressure": 99773.55141783888,
+      "initialVolume": 0.0025,
+      "initialTemperature": 300.0,
+      "deltaU": -18.712540652280957,
+      "work": 18.712540652280957,
+      "heat": 0.0,
+      "energyResidual": 0.0,
+      "progress": 0.1
+    },
+    "s13-e04:0": {
+      "t": 1.0,
+      "temperature": 303.0,
+      "volume": 0.002651351204035047,
+      "pressure": 95018.80284537101,
+      "entropy": 0.06128105061531476,
+      "deltaU": 3.7415081781689583
+    },
+    "s13-e04:1": {
+      "t": 0.0,
+      "temperature": 300.0,
+      "volume": 0.0045000000000000005,
+      "pressure": 55429.75078768826,
+      "entropy": 0.4887130252777635,
+      "deltaU": 0.0,
+      "heat": 0.0,
+      "work": 0.0,
+      "energyResidual": 0.0
+    },
+    "s13-e04:2": {
+      "t": 5.833333333333334,
+      "body1Temperature": 337.8629802981078,
+      "body2Temperature": 296.92644264420875,
+      "equilibriumTemperature": 313.98333333333335,
+      "entropy1": -7.763619897616218,
+      "entropy2": 8.960011797175664,
+      "entropy": 1.1963918995594458,
+      "equilibriumEntropy": 3.6449560674498755,
+      "energyResidual": 5.093170329928398e-11,
+      "tau": 29.16666666666667
+    },
+    "s13-e05:0": {
+      "t": 1.0,
+      "volume": 0.002378414230005442,
+      "temperature": 600.0,
+      "pressure": 209748.05431098223,
+      "stage": 0.0,
+      "stageFraction": 0.25,
+      "stageWork": 86.44719482465968,
+      "stageHeat": 86.44719482465968,
+      "work": 86.44719482465968,
+      "heat": 86.44719482465968,
+      "deltaU": 0.0,
+      "energyResidual": 0.0,
+      "hotHeatReference": 345.78877929863876,
+      "coldHeatReference": 172.89438964931938,
+      "netWorkReference": 172.89438964931938,
+      "efficiency": 0.5,
+      "phase": 0.25,
+      "v1": 0.002,
+      "v2": 0.004,
+      "v3": 0.01131370849898476,
+      "v4": 0.00565685424949238
+    }
+  },
+  "newTrials": 12,
+  "originalTrialsPreserved": 106
+}
