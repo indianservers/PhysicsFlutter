@@ -1,0 +1,8 @@
+{
+  "actualV2toV3Upgrade": true,
+  "oldTrialBodyUnchanged": true,
+  "oldSessionNoteAndParametersRetained": true,
+  "newActivityTrialRoundTrip": true,
+  "mainDatabaseOriginalTrials": 130,
+  "mainDatabaseRecoveryMessage": null
+}

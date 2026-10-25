@@ -291,20 +291,36 @@ class StudioVignette {
         line(const Offset(57, 67), const Offset(57, 39), width: 12);
         line(const Offset(260, 67), const Offset(260, 33), width: 12);
       case 15:
-        sphere(const Offset(160, 83), 10, amber);
-        for (int i = 0; i < 3; i++) {
-          c.save();
-          c.translate(160, 83);
-          c.rotate(i * math.pi / 3);
-          c.drawOval(
-            Rect.fromCenter(center: Offset.zero, width: 169, height: 63),
-            Paint()
-              ..style = PaintingStyle.stroke
-              ..color = teal,
-          );
-          c.restore();
+        // A stationary well probability diagram replaces classical electron orbits.
+        metal(const Rect.fromLTWH(62, 43, 7, 96));
+        metal(const Rect.fromLTWH(246, 43, 7, 96));
+        line(
+          const Offset(69, 138),
+          const Offset(246, 138),
+          color: teal,
+          width: 1,
+        );
+        final probability = Path();
+        for (int i = 0; i <= 120; i++) {
+          final u = i / 120,
+              x = 69 + 177 * u,
+              y = 137.0 - 76 * math.pow(math.sin(2 * math.pi * u), 2);
+          if (i == 0) {
+            probability.moveTo(x, y);
+          } else {
+            probability.lineTo(x, y);
+          }
         }
-        sphere(const Offset(237, 83), 6, blue);
+        c.drawPath(
+          probability,
+          Paint()
+            ..color = blue
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 3,
+        );
+        for (final y in [115.0, 91.0, 51.0]) {
+          line(Offset(270, y), Offset(299, y), color: amber, width: 2);
+        }
       case 16:
         c.save();
         c.translate(158, 75);

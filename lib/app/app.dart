@@ -15,6 +15,7 @@ import '../features/advanced/workspace.dart';
 import '../features/waves/workspace.dart';
 import '../features/electromagnetism/workspace.dart';
 import '../features/electronics_thermal/workspace.dart';
+import '../features/fluid_modern/workspace.dart';
 
 final notebookProvider = Provider<LocalNotebook>(
   (ref) => throw UnimplementedError('Initialize notebook'),
@@ -31,7 +32,12 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => entryById(s.pathParameters['id']!).electronicsThermal
+      builder: (c, s) => entryById(s.pathParameters['id']!).fluidModern
+          ? FMWorkspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            )
+          : entryById(s.pathParameters['id']!).electronicsThermal
           ? ETWorkspace(
               key: ValueKey(s.pathParameters['id']),
               entry: entryById(s.pathParameters['id']!),
@@ -628,8 +634,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 6 of 9 · Electronics & Thermodynamics',
-                  '78 interactive labs across thirteen studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
+                  'Phase 7 of 9 · Fluid Mechanics & Modern Physics',
+                  '90 interactive labs across fifteen studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
                 ),
               ),
             ],

@@ -1,0 +1,241 @@
+{
+  "qualification": "Host Dart JIT microbenchmarks, warmed once; not frame timings or physical-device performance.",
+  "model": "fluid-modern-7.0",
+  "dataset": "nist-isotope-central-ptb-half-life-2026-10",
+  "sampler": "xorshift32-beta-binomial-ptrs-1",
+  "matter4096CdfBuild": {
+    "medianMs": 1.167,
+    "maxMs": 2.394,
+    "runs": 7
+  },
+  "100CachedPipeProbeChanges": {
+    "medianMs": 1.699,
+    "maxMs": 2.562,
+    "runs": 7
+  },
+  "billionAtomsFull2400TickReplay": {
+    "medianMs": 16.895,
+    "maxMs": 17.881,
+    "runs": 7
+  },
+  "defaultEndpoints": {
+    "0": {
+      "invalid": "",
+      "ticks": 0,
+      "state": {
+        "t": 0.0,
+        "absolutePressure": 104266.995,
+        "gaugePressure": 2941.9949999999953,
+        "fluidDensity": 1000.0,
+        "objectDensity": 1000.0,
+        "depth": 0.3,
+        "gradient": 9806.65
+      },
+      "detections": 0
+    },
+    "1": {
+      "invalid": "",
+      "ticks": 0,
+      "state": {
+        "t": 0.0,
+        "leftLevel": 0.25,
+        "rightLevel": 0.35,
+        "interfaceLevel": 0.25,
+        "layerHeight": 0.0,
+        "heightDifference": 0.1,
+        "baseVolume": 0.012,
+        "initialBaseVolume": 0.012,
+        "volumeResidual": 0.0,
+        "pressureBalance": 0.0,
+        "datumPressureRightGauge": 3432.3275,
+        "deltaPressure": 980.665
+      },
+      "detections": 0
+    },
+    "2": {
+      "invalid": "",
+      "ticks": 0,
+      "state": {
+        "t": 0.0,
+        "volume": 0.0005759999999999999,
+        "mass": 0.40319999999999995,
+        "bottomDepth": 0.084,
+        "submergedHeight": 0.084,
+        "displacedVolume": 0.0004032,
+        "submergedFraction": 0.7000000000000001,
+        "buoyantForce": 3.9540412799999998,
+        "weight": 3.9540412799999993,
+        "freeNetForceUp": 4.440892098500626e-16,
+        "supportForceUp": -4.440892098500626e-16,
+        "equilibriumFraction": 0.7,
+        "regime": 0.0
+      },
+      "detections": 0
+    },
+    "3": {
+      "invalid": "",
+      "ticks": 1440,
+      "state": {
+        "t": 12.0,
+        "speed": 0.09947183943243461,
+        "area": 0.00020106192982974675,
+        "inletSpeed": 0.02829421210522584,
+        "throatSpeed": 0.09947183943243461,
+        "inletArea": 0.0007068583470577034,
+        "throatArea": 0.00020106192982974675,
+        "flowRate": 0.00002,
+        "continuityResidual": 0.0,
+        "probeX": 0.0
+      },
+      "detections": 0
+    },
+    "4": {
+      "invalid": "",
+      "ticks": 1440,
+      "state": {
+        "t": 12.0,
+        "speed": 0.09947183943243461,
+        "area": 0.00020106192982974675,
+        "inletSpeed": 0.02829421210522584,
+        "throatSpeed": 0.09947183943243461,
+        "inletArea": 0.0007068583470577034,
+        "throatArea": 0.00020106192982974675,
+        "flowRate": 0.00002,
+        "continuityResidual": 0.0,
+        "probeX": 0.0,
+        "pressure": 101820.4529577993,
+        "inletPressure": 101825.0,
+        "throatPressure": 101820.4529577993,
+        "inletHead": 0.050985810648896415,
+        "throatHead": 0.05052214138358098,
+        "probeHead": 0.05052214138358098,
+        "energyPerVolume": 101825.40028121934,
+        "bernoulliResidual": -1.4551915228366852e-11
+      },
+      "detections": 0
+    },
+    "5": {
+      "invalid": "",
+      "ticks": 1440,
+      "state": {
+        "t": 244.7320300035916,
+        "position": 0.19999999999999998,
+        "speed": 0.0008172208333333336,
+        "terminalSpeed": 0.0008172208333333336,
+        "terminalReynolds": 0.0008172208333333336,
+        "reynolds": 0.0008172208333333336,
+        "tau": 0.00013888888888888892,
+        "weight": 0.000012836874831802646,
+        "buoyantForce": 0.0000051347499327210576,
+        "drag": 0.000007702124899081588,
+        "netForceDown": 0.0,
+        "arrivalTime": 244.7320300035916
+      },
+      "detections": 0
+    },
+    "6": {
+      "invalid": "",
+      "ticks": 2400,
+      "state": {
+        "t": 20.0,
+        "energy": 2.4098669576146366e-19,
+        "energyEV": 1.5041206484194904,
+        "normalization": 0.9999999999999997,
+        "measurementCount": 800.0,
+        "histogramIntegral": 1.0,
+        "observedMean": 4.792834486488454e-10
+      },
+      "detections": 800
+    },
+    "7": {
+      "invalid": "",
+      "ticks": 0,
+      "state": {
+        "t": 0.0,
+        "frequency": 749481145000000.0,
+        "wavelength": 4e-7,
+        "photonEnergy": 4.966114642872322e-19,
+        "maximumKineticEnergy": 1.7617613748723222e-19,
+        "thresholdFrequency": 483597848416983.6,
+        "stoppingPotential": 1.099604960830007,
+        "photonFlux": 2013646627017083.8,
+        "saturationCurrent": 0.00003226217574939685,
+        "collectionFraction": 1.0,
+        "current": 0.00003226217574939685,
+        "emitting": 1.0
+      },
+      "detections": 0
+    },
+    "8": {
+      "invalid": "",
+      "ticks": 2400,
+      "state": {
+        "t": 20.0,
+        "wavelength": 1.2264259653234232e-10,
+        "momentum": 5.4027477706349975e-24,
+        "kineticEnergy": 1.6021766339999996e-17,
+        "fringeSpacing": 0.00036792778959702697,
+        "fresnelNumber": 0.0002717924626175289,
+        "conditionalNormalization": 1.0,
+        "measurementCount": 800.0,
+        "histogramIntegral": 1.0,
+        "observedMean": -0.00004323668159666732
+      },
+      "detections": 800
+    },
+    "9": {
+      "invalid": "",
+      "ticks": 0,
+      "state": {
+        "t": 0.0,
+        "wavelength": 9.725475649381408e-8,
+        "frequency": 3082548029607872.5,
+        "photonEnergy": 2.042517948492604e-18,
+        "lowerEnergy": -2.178685811725444e-18,
+        "upperEnergy": -1.3616786323284025e-19,
+        "seriesLimit": 9.11763342129507e-8,
+        "spectralRegion": 0.0,
+        "absorption": 0.0
+      },
+      "detections": 0
+    },
+    "10": {
+      "invalid": "",
+      "ticks": 0,
+      "state": {
+        "t": 0.0,
+        "protons": 1.0,
+        "neutrons": 1.0,
+        "massNumber": 2.0,
+        "atomicMass": 3.3444946913495014e-27,
+        "atomicMassU": 2.01410177812,
+        "nuclearCharge": 1.602176634e-19,
+        "bindingEnergy": 3.5641483581819536e-13,
+        "bindingPerNucleon": 1.7820741790909768e-13
+      },
+      "detections": 0
+    },
+    "11": {
+      "invalid": "",
+      "ticks": 2400,
+      "state": {
+        "t": 948305880.0,
+        "expectedRemaining": 500000.0,
+        "expectedActivity": 0.0003654660353682217,
+        "decayConstant": 7.309320707364434e-10,
+        "halfLife": 948305880.0,
+        "expectedDetectorRate": 0.00010136650884205542,
+        "expectedDecays": 500000.0,
+        "expectedDetected": 125000.0,
+        "expectedBackground": 9483.0588,
+        "remaining": 500862.0,
+        "simulatedDecays": 499138.0,
+        "detectedSourceCounts": 124733.0,
+        "backgroundCounts": 9550.0,
+        "detectorCounts": 134283.0,
+        "realizationActivity": 0.00036609609881319656
+      },
+      "detections": 0
+    }
+  }
+}

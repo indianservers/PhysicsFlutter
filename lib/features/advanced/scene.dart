@@ -734,7 +734,17 @@ class LabPlot extends CustomPainter {
   final List<String> keys;
   final String xLabel, unit;
   final int cursor;
-  const LabPlot(this.data, this.keys, this.xLabel, this.unit, this.cursor);
+  final bool scatter;
+  final Set<String> histogramKeys;
+  const LabPlot(
+    this.data,
+    this.keys,
+    this.xLabel,
+    this.unit,
+    this.cursor, {
+    this.scatter = false,
+    this.histogramKeys = const {},
+  });
   static const colors = [
     Color(0xff245ce7),
     Color(0xff008e95),
@@ -755,8 +765,11 @@ class LabPlot extends CustomPainter {
     final yrange = plotRange(values, includeZero: true),
         xrange = plotRange(data.map((s) => s['t']!));
     final lo = yrange.min, hi = yrange.max;
-    final xmin = xrange.min,
-        xmax = xrange.max,
+    final halfBin = histogramKeys.isNotEmpty && data.length > 1
+        ? (data[1]['t']! - data[0]['t']!).abs() / 2
+        : 0.0;
+    final xmin = xrange.min - halfBin,
+        xmax = xrange.max + halfBin,
         area = Rect.fromLTWH(65, 20, size.width - 82, size.height - 58);
     Offset point(LabState s, String key) => Offset(
       area.left + (s['t']! - xmin) / (xmax - xmin) * area.width,
@@ -776,6 +789,28 @@ class LabPlot extends CustomPainter {
       );
     }
     for (int j = 0; j < keys.length; j++) {
+      if (scatter || histogramKeys.contains(keys[j])) {
+        for (final row in data) {
+          if (!(row[keys[j]]?.isFinite ?? false)) continue;
+          final pt = point(row, keys[j]);
+          if (scatter) {
+            c.drawCircle(pt, 3.5, Paint()..color = colors[j % colors.length]);
+          } else {
+            final width = area.width / data.length,
+                zero = area.bottom - ((0 - lo) / (hi - lo)) * area.height;
+            c.drawRect(
+              Rect.fromLTRB(
+                pt.dx - width * .46,
+                math.min(pt.dy, zero),
+                pt.dx + width * .46,
+                math.max(pt.dy, zero),
+              ),
+              Paint()..color = colors[j % colors.length].withValues(alpha: .55),
+            );
+          }
+        }
+        continue;
+      }
       final path = Path();
       bool started = false;
       for (final s in data) {

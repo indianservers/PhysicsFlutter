@@ -48,3 +48,8 @@ The existing FixedClock, route observer, graph, numeric input, preferences and S
 Current schema remains **3** with trials, sessions and challenge_attempts. New quantity/model validation extends existing JSON without rewriting old records. Full SI inputs, model/kind/mode, initial conditions/ticks, held capacitor charge, circuit parts/wires/layout, probes, notes, attempts and view preferences are stored. Trial snapshots remain deep detached copies. Scientific readout validity is independent of drawing normalization. See PHASE5_SCIENCE.md and PHASE5_VALIDATION.md.
 
 The shared graph now uses unit-independent plot ranges. Repeated Canvas text uses a bounded192-paragraph cache that disposes evictions; positions remain current on every paint. Old scientific computations are unchanged. The Magnetism studio vignette's N/S field direction was corrected.
+
+
+## Phase 7 extension
+
+`fluid_modern.dart` holds pure scientific models and bounded dataset constants; `stochastic.dart` holds independently seeded samplers and finite-grid distributions. `fluid_modern_run.dart` composes exact analytic state, fixed-tick observations and cached geometries/CDFs. `features/fluid_modern` contains curriculum, workspace/persistence and apparatus painting. Route selection prefers this workspace for studios14/15; stable IDs and old78 models remain. Schema3 is unchanged; activity Bq was added as a scientific quantity. Histograms/discrete plots are optional shared LabPlot features. See PHASE7_SCIENCE.md for units, conventions and replay provenance. Fifteen studios/90 labs are interactive; Astronomy and advanced Concept Overview remain Phase8.
