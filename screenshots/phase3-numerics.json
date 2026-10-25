@@ -1,0 +1,12 @@
+{
+  "model": "energy-gravity-oscillation-3.0",
+  "circularOrbitPhysicalDurationS": 24000.0,
+  "circularOrbitRelativeEnergyError": 1.7065238111513281e-12,
+  "circularOrbitRelativeRadiusError": 0.0000011134288981917706,
+  "trackAbsoluteBudgetErrorJ": 5.163638228111722e-8,
+  "dragTrackAbsoluteBudgetErrorJ": 1.7739663960014695e-8,
+  "pendulumAbsoluteEnergyErrorJ": 5.867306640539027e-12,
+  "pendulumMeasuredMinusPredictedPeriodS": 1.7024771370444114e-8,
+  "unequalCoupledAbsoluteEnergyErrorJ": 5.551115123125783e-17,
+  "note": "Actual deterministic computed reference cases, not physical sensor measurements. Timestep convergence assertions are in advanced_science_test.dart."
+}

@@ -7,6 +7,7 @@ import 'package:sqflite/sqflite.dart';
 import '../physics/measurement.dart';
 import '../../content/catalog.dart';
 import '../physics/dynamics.dart';
+import '../physics/advanced.dart';
 
 class Trial {
   final String id, labId, quantity, unit, note, created;
@@ -53,6 +54,12 @@ class Trial {
       'force': 'N',
       'torque': 'N·m',
       'momentum': 'kg·m/s',
+      'energy': 'J',
+      'power': 'W',
+      'specificEnergy': 'J/kg',
+      'damping': 'kg/s',
+      'angularFrequency': 'rad/s',
+      'efficiency': '',
     };
     if (!units.containsKey(m['quantity']) ||
         units[m['quantity']] != m['unit'] ||
@@ -63,7 +70,11 @@ class Trial {
     final resolution = (m['resolution'] as num?)?.toDouble();
     if (!value.isFinite ||
         (resolution != null && (!resolution.isFinite || resolution < 0)) ||
-        ![modelVersion, dynamicsVersion].contains(m['model'])) {
+        ![
+          modelVersion,
+          dynamicsVersion,
+          advancedVersion,
+        ].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }
     return Trial(

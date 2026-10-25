@@ -1,0 +1,10 @@
+{
+  "earlierTrialIdsPreserved": 0,
+  "earlierCompletionIdsPreserved": 0,
+  "newLabsVerified": 18,
+  "model": "energy-gravity-oscillation-3.0",
+  "device": "Physics_Phase3 emulator-5556, Android 17 API37 x86_64 16KB, 720x1280@320dpi, 2 cores, 2048 MB",
+  "mode": "debug software-rendered native integration",
+  "notesAndReplay": true,
+  "baselineNote": "Original-notebook transfer initially failed. This run had an empty baseline; independent original-record preservation is verified separately in phase3-preservation.json and phase3-preservation-native.json."
+}

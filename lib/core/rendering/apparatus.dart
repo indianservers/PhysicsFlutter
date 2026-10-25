@@ -3,6 +3,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../physics/measurement.dart';
+import 'materials.dart';
+import 'studio_vignette.dart';
 
 /// Model coordinates are SI. Canvas scale and InteractiveViewer affect only the view.
 abstract class ScientificScene extends CustomPainter {
@@ -74,44 +76,18 @@ class ApparatusPainter extends ScientificScene {
       ..strokeWidth = width,
   );
   void metal(Canvas c, Rect r, {double radius = 4}) {
-    c.drawRRect(
-      RRect.fromRectAndRadius(
-        r.shift(const Offset(1, 5)),
-        Radius.circular(radius),
-      ),
-      Paint()
-        ..color = Colors.black.withValues(alpha: .13)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
-    );
-    c.drawRRect(
-      RRect.fromRectAndRadius(r, Radius.circular(radius)),
-      Paint()
-        ..shader = const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xff687981),
-            Color(0xfff5f7f8),
-            Color(0xffa6b0b4),
-            Color(0xffedf1f3),
-            Color(0xff718087),
-          ],
-        ).createShader(r),
-    );
-    for (double y = r.top + 2; y < r.bottom; y += 3) {
-      line(
-        c,
-        Offset(r.left + 2, y),
-        Offset(r.right - 2, y),
-        color: Colors.white.withValues(alpha: .16),
-      );
-    }
+    LabMaterials.metal(c, r);
   }
 
   @override
   void paint(Canvas canvas, Size size) {
     canvas.save();
-    canvas.scale(size.width / 360, size.height / 240);
+    final fit = math.min(size.width / 360, size.height / 240);
+    canvas.translate(
+      (size.width - 360 * fit) / 2,
+      (size.height - 240 * fit) / 2,
+    );
+    canvas.scale(fit);
     final c = canvas;
     c.drawRect(
       const Rect.fromLTWH(0, 0, 360, 240),
@@ -519,121 +495,18 @@ class StudioIllustration extends CustomPainter {
   @override
   bool shouldRepaint(covariant StudioIllustration old) => old.index != index;
   @override
-  void paint(Canvas c, Size s) {
+  void paint(Canvas c, Size size) {
+    c.drawRect(Offset.zero & size, Paint()..color = const Color(0xfff1f5f8));
+    final fit = math.min(size.width / 320, size.height / 160);
     c.save();
-    c.scale(s.width / 320, s.height / 160);
-    final bg = Paint()
-      ..shader = LinearGradient(
-        colors: [
-          const Color(0xffe9f1fc),
-          index % 3 == 0 ? const Color(0xffe2f3f1) : const Color(0xfff4f7fb),
-        ],
-      ).createShader(const Rect.fromLTWH(0, 0, 320, 160));
-    c.drawRect(const Rect.fromLTWH(0, 0, 320, 160), bg);
-    final p = Paint()
-      ..color = const Color(0xff245cdf)
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
+    c.translate((size.width - 320 * fit) / 2, (size.height - 160 * fit) / 2);
+    c.scale(fit);
     if (index == 1) {
-      c.save();
       c.translate(48, 4);
       c.scale(.72, .64);
       const ApparatusPainter(1, a: .0236).paint(c, const Size(320, 240));
-      c.restore();
-    } else if ([0, 6, 15, 16].contains(index)) {
-      for (int i = 0; i < 3; i++) {
-        c.save();
-        c.translate(160, 80);
-        c.rotate(i * math.pi / 3);
-        c.drawOval(
-          Rect.fromCenter(center: Offset.zero, width: 200, height: 70),
-          p..color = const Color(0xff2463db).withValues(alpha: .45),
-        );
-        c.restore();
-      }
-      c.drawCircle(
-        const Offset(160, 80),
-        26,
-        Paint()
-          ..shader = const RadialGradient(
-            center: Alignment(-.4, -.4),
-            colors: [Color(0xff60c6cc), Color(0xff15488e)],
-          ).createShader(const Rect.fromLTWH(134, 54, 52, 52)),
-      );
-      c.drawCircle(
-        const Offset(253, 69),
-        7,
-        Paint()..color = const Color(0xffe0ad50),
-      );
-    } else if ([7, 8, 9, 11, 12].contains(index)) {
-      final path = Path();
-      for (int i = 0; i < 280; i++) {
-        double x = 20 + i.toDouble(),
-            y = 80 + math.sin(i / 25) * (index == 9 ? i * .15 : 32);
-        if (i == 0) {
-          path.moveTo(x, y);
-        } else {
-          path.lineTo(x, y);
-        }
-      }
-      c.drawPath(path, p);
-      c.drawLine(
-        const Offset(20, 80),
-        const Offset(300, 80),
-        p
-          ..color = const Color(0xff95b1c7)
-          ..strokeWidth = .6,
-      );
-      if (index == 9) {
-        c.drawOval(
-          const Rect.fromLTWH(145, 25, 30, 110),
-          Paint()..color = const Color(0xff56b7c9).withValues(alpha: .25),
-        );
-      }
-    } else if ([10, 13, 14].contains(index)) {
-      for (int i = 0; i < 4; i++) {
-        c.drawRRect(
-          RRect.fromRectAndRadius(
-            Rect.fromLTWH(
-              68 + i * 48,
-              55 - (i % 2) * 17,
-              30,
-              72 + (i % 2) * 17,
-            ),
-            const Radius.circular(8),
-          ),
-          p..color = const Color(0xff477b9c),
-        );
-        c.drawRect(
-          Rect.fromLTWH(72 + i * 48, 95 - (i % 3) * 10, 22, 28 + (i % 3) * 10),
-          Paint()..color = const Color(0xff36a7b2).withValues(alpha: .5),
-        );
-      }
     } else {
-      c.drawLine(
-        const Offset(40, 132),
-        const Offset(280, 91),
-        p
-          ..color = const Color(0xffc08e45)
-          ..strokeWidth = 9,
-      );
-      final rect = const Rect.fromLTWH(124, 60, 63, 49);
-      c.drawRRect(
-        RRect.fromRectAndRadius(rect, const Radius.circular(5)),
-        Paint()
-          ..shader = const LinearGradient(
-            colors: [Color(0xff75a1c1), Color(0xff17416f)],
-          ).createShader(rect),
-      );
-      c.drawLine(
-        const Offset(155, 57),
-        const Offset(195, 26),
-        p
-          ..color = const Color(0xffdfaa3a)
-          ..strokeWidth = 3,
-      );
-      c.drawLine(const Offset(195, 26), const Offset(183, 29), p);
-      c.drawLine(const Offset(195, 26), const Offset(190, 39), p);
+      StudioVignette.paint(c, index);
     }
     c.restore();
   }

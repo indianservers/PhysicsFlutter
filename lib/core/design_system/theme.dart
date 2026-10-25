@@ -12,7 +12,7 @@ ThemeData physicsTheme() => ThemeData(
     surface: Colors.white,
     onSurface: navy,
   ),
-  scaffoldBackgroundColor: const Color(0xfff6f8fc),
+  scaffoldBackgroundColor: const Color(0xfffbfcfe),
   fontFamily: 'sans-serif',
   textTheme: const TextTheme(
     headlineLarge: TextStyle(
@@ -40,9 +40,16 @@ ThemeData physicsTheme() => ThemeData(
     bodyMedium: TextStyle(fontSize: 14, height: 1.55, color: navy),
   ),
   appBarTheme: const AppBarTheme(
-    backgroundColor: Color(0xfff6f8fc),
+    backgroundColor: Colors.white,
+    surfaceTintColor: Colors.transparent,
+    scrolledUnderElevation: 0,
     foregroundColor: navy,
     centerTitle: false,
+  ),
+  navigationBarTheme: const NavigationBarThemeData(
+    backgroundColor: Colors.white,
+    surfaceTintColor: Colors.transparent,
+    indicatorColor: Color(0xffedf3ff),
   ),
   cardTheme: CardThemeData(
     color: Colors.white,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/physics/dynamics.dart';
 import '../../core/rendering/apparatus.dart';
+import '../../core/rendering/materials.dart';
 
 class WorldViewport {
   final Size size;
@@ -101,48 +102,11 @@ class DynamicsPainter extends ScientificScene {
   }
 
   void metal(Canvas c, Rect r) {
-    c.drawRRect(
-      RRect.fromRectAndRadius(
-        r.shift(const Offset(0, 4)),
-        const Radius.circular(4),
-      ),
-      Paint()
-        ..color = Colors.black12
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3),
-    );
-    c.drawRRect(
-      RRect.fromRectAndRadius(r, const Radius.circular(4)),
-      Paint()
-        ..shader = const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color(0xff687f8c),
-            Color(0xfff5fafb),
-            Color(0xff9eafb6),
-            Color(0xff476170),
-          ],
-        ).createShader(r),
-    );
+    LabMaterials.metal(c, r);
   }
 
   void wood(Canvas c, Rect r) {
-    c.drawRRect(
-      RRect.fromRectAndRadius(r, const Radius.circular(3)),
-      Paint()
-        ..shader = const LinearGradient(
-          colors: [Color(0xffc79759), Color(0xfff0d3a3), Color(0xff996d38)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ).createShader(r),
-    );
-    for (double y = r.top + 3; y < r.bottom; y += 4) {
-      c.drawLine(
-        Offset(r.left, y),
-        Offset(r.right, y + 1),
-        Paint()..color = const Color(0xff59371c).withValues(alpha: .16),
-      );
-    }
+    LabMaterials.wood(c, r);
   }
 
   void cart(
@@ -210,7 +174,19 @@ class DynamicsPainter extends ScientificScene {
       width: 49,
       height: 44,
     );
+    LabMaterials.shadow(
+      c,
+      Rect.fromCenter(center: point + const Offset(1, 2), width: 55, height: 7),
+    );
     wood(c, r);
+    for (final at in [
+      r.topLeft + const Offset(4, 4),
+      r.topRight + const Offset(-4, 4),
+      r.bottomLeft + const Offset(4, -4),
+      r.bottomRight + const Offset(-4, -4),
+    ]) {
+      LabMaterials.screw(c, at);
+    }
     final line = Paint()
       ..color = const Color(0xff8f6535)
       ..strokeWidth = 3;

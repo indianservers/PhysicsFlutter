@@ -11,6 +11,7 @@ import '../core/persistence/notebook.dart';
 import '../core/rendering/apparatus.dart';
 import '../features/lab_workspace/workspace.dart';
 import '../features/dynamics/workspace.dart';
+import '../features/advanced/workspace.dart';
 
 final notebookProvider = Provider<LocalNotebook>(
   (ref) => throw UnimplementedError('Initialize notebook'),
@@ -27,7 +28,12 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => entryById(s.pathParameters['id']!).dynamics
+      builder: (c, s) => entryById(s.pathParameters['id']!).advanced
+          ? AdvancedWorkspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            )
+          : entryById(s.pathParameters['id']!).dynamics
           ? DynamicsWorkspace(
               key: ValueKey(s.pathParameters['id']),
               entry: entryById(s.pathParameters['id']!),
@@ -349,13 +355,13 @@ class StudioCard extends StatelessWidget {
                   Text(s.title, style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 10),
                   Text(
-                    index >= 1 && index <= 4
+                    index >= 1 && index <= 7
                         ? '● Six interactive labs'
                         : index == 0
                         ? 'Introductory navigation tools'
                         : 'Learning content available',
                     style: TextStyle(
-                      color: index >= 1 && index <= 4 ? teal : muted,
+                      color: index >= 1 && index <= 7 ? teal : muted,
                       fontSize: 12,
                     ),
                   ),
@@ -603,8 +609,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 2 · Dynamics',
-                  '24 interactive labs across Measurement, Mechanics, Motion & Kinematics and Force & Newton’s Laws; 17 studios and 102 destinations. Remaining studio experiments are planned for later phases. Illustrations are scientific models.',
+                  'Phase 3 of 9 · Energy, Gravity & Oscillations',
+                  '42 interactive labs across seven studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
                 ),
               ),
             ],

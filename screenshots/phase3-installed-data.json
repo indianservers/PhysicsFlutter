@@ -1,0 +1,12 @@
+{
+  "emulator-5554": {
+    "trialsAfterMainApkInstall": 36,
+    "original36RowsExact": true,
+    "integrity": "ok"
+  },
+  "emulator-5556": {
+    "trialsAfterMainApkInstall": 80,
+    "original36RowsExact": true,
+    "integrity": "ok"
+  }
+}

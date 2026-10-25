@@ -1,0 +1,36 @@
+# Phase 3 asset provenance and realism audit
+
+## Source inventory and provenance
+
+- `assets/textures/earth-illustrative.png`: generated for this project with the built-in image generation tool on 25 October 2026. Original output 1254×1254 PNG, 3,355,765 bytes. No external photograph or map was downloaded. No third-party Creative Commons/public-domain license is asserted; this generated asset is used under the applicable generation-service terms. No pixel edits; runtime decoding limits it to 512 pixels and an orthographic spherical mesh maps the surface, with directional shading. Intended for the six Gravitation apparatus scenes. It is an artistic Earth-like surface, not a geographic dataset, observation or ephemeris. A neutral companion sphere remains procedural.
+- `lib/core/rendering/materials.dart`: original project procedural construction. Brushed steel/brass gradients and grain lines, timber grain paths, contact shadows, slotted screws, attached coil geometry and lit spheres. No external asset license or attribution is required for downloaded material because none was introduced. Complexity: a textured sphere uses 625 vertices and 1152 triangles; spring path uses twelve segments per turn. No third-party 3D renderer/dependency.
+- `lib/core/rendering/studio_vignette.dart`: seventeen distinct studio motifs (Measurement reuses its calibrated caliper), original geometry, no emoji, static educational previews. No animation/physical result is implied by a studio thumbnail.
+- `lib/features/advanced/scene.dart`: original moving apparatus, motor/drum/sheave, load, captive track, spring/dashpot, satellite and sector geometry. The model determines every moving attachment point. Graphs, scales, arrows and text remain vector drawing rather than baked into the texture.
+- `Target UI/01_Concept_Overview.png` through `08_Oscillations.png`: user-supplied visual references, inspected in full including all eighteen new panels. Source/redistribution rights were not supplied; no license is invented. They remain excluded from Git and the app bundle. No entire board or screen crop is used as an app background or numerical evidence.
+
+Exact generation prompt (built-in mode):
+
+> Use case: scientific-educational. Asset type: square equirectangular-style planet surface texture for a physics learning app, original illustrative Earth-like map. Entire image filled edge to edge with blue ocean, natural green/brown continents, polar ice, sparse wisps of cloud, subtle terrain details. Flat unlit surface map, no sphere, no shadow, no text, no frame, no stars, no logos. This is an artistic texture not geographical reference data. 1024 square.
+
+The generated resolution differed from the requested resolution; both are recorded above. Original generated output was inspected and copied into the project. The app needs no network to render it.
+
+## Previous-module audit
+
+Native before captures: `screenshots/phase3-before-home.png`, five `phase3-before-studio-*.png` and all twenty-four `phase3-before-s01…s04-*.png`. The contact sheet `contact-phase3-before-s0-e.jpg` makes the earlier apparatus comparable. Existing Phase 2 reports and scientific tests were read; a baseline run passed all 42 existing tests. An app-only databases/shared-preferences tar backup was taken before new native observations.
+
+- **Home and Concept Overview:** repeated generic orbit/wave/ramp imagery obscured studio differences. Replaced studio previews with distinct dimensional scientific motifs across the seventeen studios; kept navigation, search, stable IDs and explicit introductory-tool status. The interface background is now near-white; navy/cobalt/teal hierarchy remains. Launcher/guided-path availability expands to this phase. Full Concept Overview interactive tools remain scheduled for Phase 8.
+- **Measurement s01-e00 ruler:** reading/edge/zero geometry and millimetre marks already derive from state; retain. Improve steel block finish/contact depth and preserve aspect ratio rather than stretching the instrument.
+- **s01-e01 caliper:** ten-division vernier, movable-jaw geometry and magnified scale were already tied to state; retain calibration and improve brushed-metal appearance/aspect handling.
+- **s01-e02 micrometer:** sleeve half-millimetre marks, thimble divisions and wire-contact stop already worked. Retain screw motion, improve material detail; no decorative turns disconnected from the reading.
+- **s01-e03 spherometer:** signed-height geometry and outer-leg-radius convention already worked. Keep supports/contact/reading calculations; shared metal finish improves the apparatus.
+- **s01-e04 mass/time:** explicitly simulated balance/track/timer, not sensor observations. Preserve motion/timing; refine shared steel surfaces. Rail and balance remain procedural, with a known photographic-parity gap.
+- **s01-e05 uncertainty:** diagram/plot rather than a photorealistic instrument; preserve precise scale, actual samples and uncertainty calculations. No texture is placed behind the plot.
+- **Mechanics s02-e00 free-body, e01 ramp, e02 pulley, e03 torque, e04 COM, e05 collisions:** inspected each native scene against board 03. Improve wooden grain, crate fasteners/contact shadow and brushed support/beam/rail finishes. Keep existing force attachment points, inclined coordinates, beam pivot/arms, COM/plumb geometry, collision-contact sizes and pulley rope constraints. No Phase 2 physics solver was replaced for appearance.
+- **Motion s03-e00 position, e01 velocity, e02 acceleration, e03 projectile, e04 relative, e05 circular:** inspected all six against board 04. Shared rail/support material upgrades apply; preserve trajectory/graph correspondence, distinct train lanes, velocity frame transformations and constrained circular model. Previous plain carts/launcher remain schematic rather than photographic; no smoke, decorative camera motion or false rolling energy is added.
+- **Force s04-e00 inertia, e01 F/m, e02 reaction pair, e03 friction, e04 support, e05 multiple forces:** inspected all six against board 05. Shared material/contact upgrades apply while retaining force/body attachment points, air-table simulation, finite internal actuator pulse, static/kinetic transitions and supported-contact limits. Human-skater artwork was not substituted for the clearly defined cart-pair model.
+
+After captures use `phase3-after-*` for home, all seventeen studios and twenty-four earlier labs. Before/after image files remain separate; before images are never overwritten. Capture state can reflect previously saved time/configuration; material changes do not imply a new scientific reading. Native regression workflows separately exercise manipulation and persistence.
+
+## Remaining visual limits
+
+The app now has distinct dimensional previews, a textured/relit celestial surface and articulated procedural apparatus. Procedural materials are still stylized, particularly the earlier carts, balance, launcher and mechanical fixtures. This is a material improvement, not a claim of photorealistic parity with every reference. Physical/illustrative scale, 480× orbital time and view auto-fit are labeled. No particles, glow or arbitrary animation curves stand in for physics.

@@ -19,3 +19,7 @@ The app is implemented with actual widgets, controls and procedural scenes. It d
 # Phase 2 provenance
 
 The eighteen Phase 2 scenes are original Flutter CustomPainter geometry with procedural shading. No downloaded apparatus images or third-party texture assets were introduced. User-supplied target boards 03, 04 and 05 informed composition; they remain in the excluded Target UI directory and are not scientific references or bundled backgrounds. No redistribution license is asserted for those boards. The scenes remain schematic and do not claim photographic parity.
+
+## Phase 3
+
+See [Phase 3 asset provenance and audit](PHASE3_ASSETS_AND_AUDIT.md) for the generated original surface texture, exact prompt, resolution, runtime mesh complexity, material upgrades and all earlier-lab audit findings. Earlier phase provenance above describes those phases at handover time.

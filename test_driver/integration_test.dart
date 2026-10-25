@@ -23,8 +23,19 @@ Future<void> main() => integrationDriver(
       );
     }
     if (data?['environment'] != null) {
-      await File('${dir.path}/phase2-profile.json')
-          .writeAsString(const JsonEncoder.withIndent('  ').convert(data));
+      final profile = Map<String, dynamic>.from(data!)..remove('images');
+      await File('${dir.path}/${data['profileFile'] ?? 'phase2-profile.json'}')
+          .writeAsString(const JsonEncoder.withIndent('  ').convert(profile));
+    }
+    if (data?['phase3Validation'] != null) {
+      await File('${dir.path}/phase3-validation.json').writeAsString(
+        const JsonEncoder.withIndent('  ').convert(data!['phase3Validation']),
+      );
+    }
+    if (data?['phase3Preservation'] != null) {
+      await File('${dir.path}/phase3-preservation-native.json').writeAsString(
+        const JsonEncoder.withIndent('  ').convert(data!['phase3Preservation']),
+      );
     }
   },
 );

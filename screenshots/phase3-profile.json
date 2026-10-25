@@ -1,0 +1,31 @@
+{
+  "s06-e03": {
+    "frameCount": 90,
+    "medianBuildMs": 1.072,
+    "p95BuildMs": 1.636,
+    "medianRasterMs": 2.049,
+    "p95RasterMs": 6.819,
+    "p95TotalMs": 27.8,
+    "framesOver16_67Ms": 24
+  },
+  "s07-e04": {
+    "frameCount": 90,
+    "medianBuildMs": 1.263,
+    "p95BuildMs": 2.464,
+    "medianRasterMs": 3.483,
+    "p95RasterMs": 26.064,
+    "p95TotalMs": 43.831,
+    "framesOver16_67Ms": 41
+  },
+  "s07-e05": {
+    "frameCount": 90,
+    "medianBuildMs": 1.292,
+    "p95BuildMs": 2.556,
+    "medianRasterMs": 3.7,
+    "p95RasterMs": 10.746,
+    "p95TotalMs": 35.426,
+    "framesOver16_67Ms": 39
+  },
+  "profileFile": "phase3-profile.json",
+  "environment": "Physics_Phase3 emulator-5556, 2 cores, 2048 MB; Android 17 API37 x86_64, 720x1280@320dpi; profile mode; Skia/OpenGL; host RTX3050. Not a physical mid-range device."
+}

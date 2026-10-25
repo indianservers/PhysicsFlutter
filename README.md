@@ -1,4 +1,4 @@
-# Physics Atelier — Phase 2
+# Physics Atelier — Phase 3 of 9
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -13,6 +13,7 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 - Shared Learn, Experiment, Visualize, Formulas and Results workspace.
 - Six interactive Measurement instruments: ruler, external vernier caliper, micrometer, spherometer, simulated balance/track/stopwatch, and uncertainty analysis.
 - Eighteen additional interactive Mechanics, Motion & Kinematics, and Force & Newton’s Laws labs, with deterministic simulation, graphs, challenges and saved trials.
+- Eighteen Work/Energy/Power, Gravitation and Oscillations labs; shared material upgrades and distinct studio previews. New calculations use model `energy-gravity-oscillation-3.0`; earlier saved models remain supported.
 - Drag and precise numeric controls, magnified scales, signed calibration correction, guided reading practice, recorded trials and notes.
 - Local SQLite notebook, versioned sessions, reopen, CSV file sharing; preferences and recovery notices.
 - Introductory learning content/formulas for remaining labs, with experiments explicitly reserved for later phases. Concept Overview contains basic navigation/learning tools.
@@ -31,7 +32,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase2-debug.apk` for handoff), version 1.1.0+2.
+Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase3-debug.apk` for handoff), version 1.2.0+3.
 
 Device integration and screenshot capture:
 
@@ -63,4 +64,18 @@ $env:JAVA_TOOL_OPTIONS='-Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true'
 - [iOS verification checklist](docs/IOS_VERIFICATION.md)
 - [Phase 1 handover](docs/HANDOVER.md)
 
-Current handover: [Phase 2 completion](docs/PHASE2_HANDOVER.md), [scientific models](docs/PHASE2_SCIENCE.md), and [validation evidence](docs/PHASE2_VALIDATION.md). The Phase 1 documents above remain historical records. There are 24 interactive labs across four studios; remaining studios retain introductory content. No Phase 3 simulations were added. No login or network is required after installation.
+Current phase: [Phase 3 handover](docs/PHASE3_HANDOVER.md), [scientific models](docs/PHASE3_SCIENCE.md), [assets and before/after audit](docs/PHASE3_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE3_VALIDATION.md). Earlier reports remain historical records. Seven studios contain 42 interactive labs within their documented model limits; all 17 studios and 102 entries remain accessible. No login or network is required after installation.
+
+## Nine-phase roadmap
+
+1. Foundation, inventory, Measurement.
+2. Mechanics, Motion/Kinematics, Force/Newton.
+3. Earlier-module realism, Work/Energy/Power, Gravitation, Oscillations (current).
+4. Waves/Sound and Optics.
+5. Electricity and Magnetism.
+6. Electronics and Thermodynamics.
+7. Fluid Mechanics and Modern Physics.
+8. Astronomy/Astrophysics and completed cross-studio Concept Overview tools.
+9. Full scientific, visual, accessibility, performance and release validation.
+
+Phase 4 experiments have not been implemented. Native Phase 3 targets are `integration_test/phase3_test.dart`, `phase3_audit_test.dart` (`--dart-define=AUDIT_STAGE=after`) and `phase3_profile_test.dart` (profile mode). Use `--keep-app-running` to retain the installed notebook, and a dedicated emulator/device. On this host Phase 3 validation uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator.

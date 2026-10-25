@@ -1,0 +1,18 @@
+{
+  "source": "Exact binary backup from original emulator-5554; original app data unchanged by reconciliation",
+  "destination": "Dedicated emulator-5556 Physics_Phase3",
+  "sourceTrials": 36,
+  "sourceModels": {
+    "dynamics-2.0": 18,
+    "measurement-1.0": 8,
+    "energy-gravity-oscillation-3.0": 10
+  },
+  "isolatedTrialsBeforeMerge": 44,
+  "totalMergedTrials": 80,
+  "allOriginalIdsAndBodiesExactlyPreserved": true,
+  "allIsolatedIdsAndBodiesExactlyPreserved": true,
+  "legacySessionsExactlyPreserved": 24,
+  "integrityCheck": "ok",
+  "mergedDatabaseSha256": "340cba6751811b76f7809161fab5e68c07394465ceb8b81ddda61a41a8181590",
+  "note": "The initial isolated-workflow report had an empty baseline after a failed transfer. This independent exact-content comparison supersedes that preservation claim."
+}

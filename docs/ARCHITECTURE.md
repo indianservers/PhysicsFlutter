@@ -24,3 +24,9 @@ Versions are pinned by `pubspec.lock` and were resolved against Flutter 3.47.8 /
 # Phase 2 extension
 
 Current schema is version 3: previous trials and sessions are retained, with a challenge_attempts table added. Trial JSON carries a model identifier and a deep snapshot of configuration. Legacy Measurement records default to measurement-1.0. Dynamics models use dynamics-2.0, replay ticks and actual observations. New code resides in core/physics/dynamics.dart and features/dynamics/{curriculum,scene,workspace}.dart. A 120 Hz fixed clock advances pure Dart models; bounded graph samples and simulation-driven painters consume their state. Route/lifecycle changes pause simulation. The earlier Phase 1 details below remain applicable to Measurement.
+
+## Phase 3 extension
+
+`core/physics/advanced.dart` provides pure Dart energy, gravitation and oscillator calculations. `features/advanced/` provides curriculum, articulated painters and the shared five-section workspace for stable studio IDs 05–07. Earlier model implementations and routes remain intact. The fixed wall clock and route observer are reused. No new rendering dependency is introduced: the original texture is decoded once at 512 px and mapped with Flutter Canvas vertices.
+
+SQLite stays at schema 3: its JSON payload tables already support additional model versions without destructive migrations. Trial validation adds the Phase 3 model and energy, power, specific-energy, damping, angular-frequency and dimensionless-efficiency quantities. Old model versions remain accepted. Sessions carry model/kind, initial parameters, replay ticks, notes, guided progress, attempts, display preferences and speed. Trial snapshots additionally store actual bounded observations and final state, detached by the existing deep copy. The notebook's CSV still emits each record's own model version and SI unit. No generated prediction curve is inserted as an observation.
