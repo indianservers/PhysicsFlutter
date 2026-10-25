@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../core/physics/dynamics.dart';
 import '../../core/rendering/apparatus.dart';
 import '../../core/rendering/materials.dart';
+import '../../core/rendering/scientific_text.dart';
 
 class WorldViewport {
   final Size size;
@@ -54,18 +55,7 @@ class DynamicsPainter extends ScientificScene {
     Color color = const Color(0xff173458),
     double font = 11,
   }) {
-    final t = TextPainter(
-      text: TextSpan(
-        text: value,
-        style: TextStyle(
-          color: color,
-          fontSize: font,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout(maxWidth: 310);
-    t.paint(c, xy);
+    ScientificText.paint(c, value, xy, color: color, font: font);
   }
 
   void arrow(

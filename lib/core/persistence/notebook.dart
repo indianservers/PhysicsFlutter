@@ -9,6 +9,7 @@ import '../../content/catalog.dart';
 import '../physics/dynamics.dart';
 import '../physics/advanced.dart';
 import '../physics/waves_optics.dart';
+import '../physics/electromagnetism.dart';
 
 class Trial {
   final String id, labId, quantity, unit, note, created;
@@ -65,6 +66,11 @@ class Trial {
       'angle': '°',
       'vergence': 'm⁻¹',
       'relativeIntensity': '',
+      'electricField': 'N/C',
+      'magneticField': 'T',
+      'voltage': 'V',
+      'current': 'A',
+      'capacitance': 'F',
     };
     if (!units.containsKey(m['quantity']) ||
         units[m['quantity']] != m['unit'] ||
@@ -80,6 +86,7 @@ class Trial {
           dynamicsVersion,
           advancedVersion,
           waveOpticsVersion,
+          emVersion,
         ].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }

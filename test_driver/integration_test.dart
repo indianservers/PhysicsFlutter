@@ -42,6 +42,8 @@ Future<void> main() => integrationDriver(
       'phase4Microphone',
       'phase4MicrophoneDenied',
       'phase4Modes',
+      'phase5Validation',
+      'phase5Modes',
     ]) {
       if (data?[key] != null) {
         await File(

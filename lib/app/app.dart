@@ -13,6 +13,7 @@ import '../features/lab_workspace/workspace.dart';
 import '../features/dynamics/workspace.dart';
 import '../features/advanced/workspace.dart';
 import '../features/waves/workspace.dart';
+import '../features/electromagnetism/workspace.dart';
 
 final notebookProvider = Provider<LocalNotebook>(
   (ref) => throw UnimplementedError('Initialize notebook'),
@@ -29,7 +30,12 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => entryById(s.pathParameters['id']!).wavesOptics
+      builder: (c, s) => entryById(s.pathParameters['id']!).electromagnetism
+          ? EMWorkspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            )
+          : entryById(s.pathParameters['id']!).wavesOptics
           ? WaveWorkspace(
               key: ValueKey(s.pathParameters['id']),
               entry: entryById(s.pathParameters['id']!),
@@ -362,13 +368,13 @@ class StudioCard extends StatelessWidget {
                   Text(s.title, style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 10),
                   Text(
-                    index >= 1 && index <= 9
+                    index >= 1 && index <= 11
                         ? '● Six interactive labs'
                         : index == 0
                         ? 'Introductory navigation tools'
                         : 'Learning content available',
                     style: TextStyle(
-                      color: index >= 1 && index <= 9 ? teal : muted,
+                      color: index >= 1 && index <= 11 ? teal : muted,
                       fontSize: 12,
                     ),
                   ),
@@ -616,8 +622,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 4 of 9 · Waves, Sound & Optics',
-                  '54 interactive labs across nine studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
+                  'Phase 5 of 9 · Electricity & Magnetism',
+                  '66 interactive labs across eleven studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
                 ),
               ),
             ],

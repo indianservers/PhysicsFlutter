@@ -1,4 +1,7 @@
 import 'dart:math' as math;
+
+import '../../core/physics/plot_range.dart';
+
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -749,13 +752,11 @@ class LabPlot extends CustomPainter {
           if (s[key]?.isFinite ?? false) s[key]!,
     ];
     if (values.isEmpty) return;
-    double lo = math.min(0, values.reduce(math.min)),
-        hi = math.max(0, values.reduce(math.max));
-    if ((hi - lo).abs() < 1e-12) {
-      hi = lo + 1;
-    }
-    final xmin = data.first['t']!,
-        xmax = math.max(xmin + 1e-6, data.last['t']!),
+    final yrange = plotRange(values, includeZero: true),
+        xrange = plotRange(data.map((s) => s['t']!));
+    final lo = yrange.min, hi = yrange.max;
+    final xmin = xrange.min,
+        xmax = xrange.max,
         area = Rect.fromLTWH(65, 20, size.width - 82, size.height - 58);
     Offset point(LabState s, String key) => Offset(
       area.left + (s['t']! - xmin) / (xmax - xmin) * area.width,

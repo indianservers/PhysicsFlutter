@@ -219,7 +219,25 @@ class StudioVignette {
           width: 24,
         );
         for (int i = 0; i < 3; i++) {
-          arrow(Offset(133, 56 + i * 10), Offset(188, 56 + i * 10), teal);
+          arrow(Offset(188, 56 + i * 10), Offset(133, 56 + i * 10), teal);
+        }
+        for (final (label, point) in [
+          ('S', const Offset(108, 53)),
+          ('N', const Offset(202, 53)),
+        ]) {
+          final text = TextPainter(
+            text: TextSpan(
+              text: label,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            textDirection: TextDirection.ltr,
+          )..layout();
+          text.paint(c, point);
+          text.dispose();
         }
       case 12:
         c.drawRRect(

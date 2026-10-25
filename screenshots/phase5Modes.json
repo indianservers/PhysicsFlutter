@@ -1,0 +1,11 @@
+{
+  "actualTopologyAddWireShort": true,
+  "floatingNoFabricatedMeters": true,
+  "isolatedChargeAndRcContinuity": true,
+  "sourceExclusion": true,
+  "borisEnergyAndChargeDirection": true,
+  "wireReference": true,
+  "finiteLongSolenoid": true,
+  "fluxMotionPolarityAndStationaryEmf": true,
+  "airCoreAndLinearValidity": true
+}

@@ -1,4 +1,4 @@
-# Physics Atelier — Phase 4 of 9
+# Physics Atelier — Phase 5 of 9
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -15,6 +15,7 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 - Eighteen additional interactive Mechanics, Motion & Kinematics, and Force & Newton’s Laws labs, with deterministic simulation, graphs, challenges and saved trials.
 - Eighteen Work/Energy/Power, Gravitation and Oscillations labs; shared material upgrades and distinct studio previews. New calculations use model `energy-gravity-oscillation-3.0`; earlier saved models remain supported.
 - Twelve Waves & Sound and Optics labs using model `waves-optics-4.0`: analytic waves/pulses/coherent fields, fixed-end modes, generated/native microphone FFT, retarded-time collinear Doppler, vector reflection/Snell, lenses/mirrors and optical interference/diffraction.
+- Twelve Electricity and Magnetism labs using `electromagnetism-5.0`, including a real terminal-graph DC circuit builder/MNA solver, connected/isolated plates and RC modes, Boris 3-D trajectories and finite-loop induction flux.
 - Drag and precise numeric controls, magnified scales, signed calibration correction, guided reading practice, recorded trials and notes.
 - Local SQLite notebook, versioned sessions, reopen, CSV file sharing; preferences and recovery notices.
 - Introductory learning content/formulas for remaining labs, with experiments explicitly reserved for later phases. Concept Overview contains basic navigation/learning tools.
@@ -33,7 +34,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase4-debug.apk` for handoff), version 1.3.0+4.
+Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase5-debug.apk` for handoff), version 1.4.0+5.
 
 Device integration and screenshot capture:
 
@@ -65,18 +66,18 @@ $env:JAVA_TOOL_OPTIONS='-Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true'
 - [iOS verification checklist](docs/IOS_VERIFICATION.md)
 - [Phase 1 handover](docs/HANDOVER.md)
 
-Current phase: [Phase 4 handover](docs/PHASE4_HANDOVER.md), [science](docs/PHASE4_SCIENCE.md), [per-lab specifications](docs/PHASE4_LAB_SPECIFICATIONS.md), [assets and audit](docs/PHASE4_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE4_VALIDATION.md). Earlier reports remain historical. Nine studios contain 54 interactive labs within their documented model limits; all 17 studios and 102 entries remain accessible. No login or network is required after installation. Microphone input is contextual and optional; no raw audio is saved or uploaded.
+Current phase: [Phase 5 handover](docs/PHASE5_HANDOVER.md), [science](docs/PHASE5_SCIENCE.md), [per-lab specifications](docs/PHASE5_LAB_SPECIFICATIONS.md), [assets and audit](docs/PHASE5_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE5_VALIDATION.md). Earlier phase reports remain historical. Eleven studios contain 66 interactive labs within their documented limits; all 17 studios and 102 destinations remain accessible. No login or network is required after installation. Optional Phase 4 microphone input remains contextual; no raw audio is saved or uploaded.
 
 ## Nine-phase roadmap
 
 1. Foundation, inventory, Measurement.
 2. Mechanics, Motion/Kinematics, Force/Newton.
 3. Earlier-module realism, Work/Energy/Power, Gravitation, Oscillations.
-4. Waves/Sound and Optics (current).
-5. Electricity and Magnetism.
+4. Waves/Sound and Optics.
+5. Electricity and Magnetism (current).
 6. Electronics and Thermodynamics.
 7. Fluid Mechanics and Modern Physics.
 8. Astronomy/Astrophysics and completed cross-studio Concept Overview tools.
 9. Full scientific, visual, accessibility, performance and release validation.
 
-Phase 4 native targets: `phase4_test.dart`, `phase4_modes_test.dart`, `phase4_microphone_test.dart`, `phase4_audit_test.dart` and `phase4_profile_test.dart` under `integration_test/`. Permission setup and profile commands are documented in the validation report. Use `--keep-app-running` to retain the installed notebook, and a dedicated emulator/device. On this host validation uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator. No Phase 5 work is included.
+Phase 5 native targets: `phase5_test.dart`, `phase5_modes_test.dart`, `phase5_audit_test.dart` and `phase5_profile_test.dart` under `integration_test/`. Use `--keep-app-running` and a dedicated device/emulator to retain the notebook. This host uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator. Earlier targets remain available, including Phase 4 microphone permission tests. No Phase 6 work is included.

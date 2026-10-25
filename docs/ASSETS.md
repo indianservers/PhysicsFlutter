@@ -27,3 +27,7 @@ See [Phase 3 asset provenance and audit](PHASE3_ASSETS_AND_AUDIT.md) for the gen
 ## Phase 4
 
 See [Phase 4 provenance and earlier-module audit](PHASE4_ASSETS_AND_AUDIT.md). Twelve original procedural wave/optics apparatus scenes and a bounded globe mesh cache were added. No new raster/AI asset or externally sourced 3-D model was introduced. The record plugin's actual bundled license is preserved in docs/licenses.
+
+## Phase 5
+
+See [Phase 5 provenance and audit](PHASE5_ASSETS_AND_AUDIT.md) for the twelve original procedural electromagnetic apparatus, corrected studio polarity, shared plot/text fixes and exact before/after evidence. No new raster/AI image, external model, package or asset license is introduced. Earlier phase provenance remains applicable.

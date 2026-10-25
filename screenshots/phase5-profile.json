@@ -1,0 +1,52 @@
+{
+  "s10-e02": {
+    "frameCount": 90,
+    "startTicks": 0,
+    "endTicks": 0,
+    "medianBuildMs": 3.024,
+    "p95BuildMs": 15.66,
+    "medianRasterMs": 55.106,
+    "p95RasterMs": 186.704,
+    "p95TotalMs": 324.754,
+    "framesOver16_67Ms": 87,
+    "activity": "90 actual probe-control edits, three sources, cached contour/line geometry",
+    "parts": null,
+    "fieldTraces": 0,
+    "contourSegments": 559,
+    "trailPoints": 0
+  },
+  "s10-e04": {
+    "frameCount": 90,
+    "startTicks": 0,
+    "endTicks": 0,
+    "medianBuildMs": 1.581,
+    "p95BuildMs": 6.709,
+    "medianRasterMs": 44.229,
+    "p95RasterMs": 90.78,
+    "p95TotalMs": 155.44,
+    "framesOver16_67Ms": 84,
+    "activity": "90 layout-control edits, solved 12-part graph, cached MNA solution",
+    "parts": 12,
+    "fieldTraces": 0,
+    "contourSegments": 0,
+    "trailPoints": 0
+  },
+  "s11-e01": {
+    "frameCount": 90,
+    "startTicks": 723,
+    "endTicks": 1296,
+    "medianBuildMs": 1.706,
+    "p95BuildMs": 10.344,
+    "medianRasterMs": 46.616,
+    "p95RasterMs": 80.26,
+    "p95TotalMs": 144.224,
+    "framesOver16_67Ms": 89,
+    "activity": "Active B-only Boris run, bounded 3-D trail and real physical clock",
+    "parts": null,
+    "fieldTraces": 0,
+    "contourSegments": 0,
+    "trailPoints": 324
+  },
+  "profileFile": "phase5-profile.json",
+  "environment": "Dedicated Physics_Phase3 emulator-5556; Android 17 API37 x86_64 16KB, 720x1280@320dpi, 2 cores 2048 MB; profile Skia/OpenGL, host RTX3050. Not physical-device performance."
+}

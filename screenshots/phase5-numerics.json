@@ -1,0 +1,29 @@
+{
+  "model": "electromagnetism-5.0",
+  "qualification": "Host pure-Dart elapsed numerical cost, includes allocation; 10 warmups, 100 iterations. Not device frame measurements.",
+  "Two-source field/contour rebuild": {
+    "medianMs": 1.18,
+    "p95Ms": 1.574,
+    "iterations": 100
+  },
+  "Cached-geometry probe update": {
+    "medianMs": 0.062,
+    "p95Ms": 0.126,
+    "iterations": 100
+  },
+  "Twelve-part MNA solve": {
+    "medianMs": 0.099,
+    "p95Ms": 0.153,
+    "iterations": 100
+  },
+  "256-sample finite-loop flux and derivative": {
+    "medianMs": 0.041,
+    "p95Ms": 0.398,
+    "iterations": 100
+  },
+  "Boris tick, worst supported gyrofrequency": {
+    "medianMs": 0.002,
+    "p95Ms": 0.003,
+    "iterations": 100
+  }
+}

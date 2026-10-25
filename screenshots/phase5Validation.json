@@ -1,0 +1,9 @@
+{
+  "newLabsVerified": 12,
+  "originalTrialsExactlyPreserved": 94,
+  "actualSQLiteV2MigrationPreserved": true,
+  "model": "electromagnetism-5.0",
+  "device": "Physics_Phase3 emulator-5556, Android 17 API37 x86_64 16KB, 720x1280@320dpi, 2 cores, 2048 MB",
+  "rendering": "debug software rendering",
+  "source": "Actual electric/magnetic calculations and graph solver"
+}
