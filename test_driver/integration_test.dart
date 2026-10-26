@@ -60,6 +60,7 @@ Future<void> main() => integrationDriver(
       'micrometerAudit',
       'librariesAudit',
       'targetUiAudit',
+      'homeAudit',
     ]) {
       if (data?[key] != null) {
         await File(

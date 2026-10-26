@@ -1,0 +1,75 @@
+{
+  "version": "1.11.0+14",
+  "testsPassed": 327,
+  "analysis": "No issues found",
+  "nativeAudit": {
+    "studiosOpened": 17,
+    "scrollRestorations": 17,
+    "artworkDecoded": 18,
+    "searchAndSavedNavigation": true,
+    "trialCountUnchanged": true
+  },
+  "preservation": {
+    "originalTrialBodiesByteForBytePreserved": 428,
+    "currentTrials": 428,
+    "originalSessionStatesExactlyPreserved": 108,
+    "originalChallengeBodiesExactlyPreserved": 123,
+    "oldSessionNotesAndParametersPreserved": 108,
+    "originalPreferencesPreserved": 5,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+  },
+  "builds": {
+    "device": "emulator-5556",
+    "version": "1.11.0+14",
+    "target": "lib/main.dart",
+    "artifacts": [
+      {
+        "mode": "release-development-signed",
+        "path": "deliverables/physics-atelier-home-release-dev-signed.apk",
+        "bytes": 106859261,
+        "sha256": "f1cf0088c013abf3fdb602536078349f485726e9627f7eb731632d8511b34dd2",
+        "installedBytesMatch": true,
+        "offlineProcessAlive": true,
+        "fatalExceptionObserved": false,
+        "launchWaitTimeoutRetried": false,
+        "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='14' versionName='1.11.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "permissions": [
+          "package: com.indianservers.physics_atelier",
+          "uses-permission: name='android.permission.RECORD_AUDIO'",
+          "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+        ],
+        "signing": "Existing local development/debug certificate; not production signing"
+      },
+      {
+        "mode": "debug",
+        "path": "deliverables/physics-atelier-home-debug.apk",
+        "bytes": 247582130,
+        "sha256": "6786bd594ab0182eafbc0c25855371abd65521370833729274ce850414e8d845",
+        "installedBytesMatch": true,
+        "offlineProcessAlive": true,
+        "fatalExceptionObserved": false,
+        "launchWaitTimeoutRetried": false,
+        "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='14' versionName='1.11.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "permissions": [
+          "package: com.indianservers.physics_atelier",
+          "uses-permission: name='android.permission.INTERNET'",
+          "uses-permission: name='android.permission.RECORD_AUDIO'",
+          "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+        ],
+        "signing": "Existing local development/debug certificate; not production signing"
+      }
+    ],
+    "qualification": "Ordinary main-entrypoint APKs installed with -r, bytes matched installed base APK and processes launched while Wi-Fi/mobile data disabled. No destructive reset, upload or publication. Not exhaustive offline/UI/device certification."
+  },
+  "generatedArtworkAssets": 18,
+  "generatedArtworkBytes": 419546,
+  "fontLicense": "assets/home/Manrope-OFL.txt",
+  "scope": "Home only; lab behavior and canonical studio identities retained"
+}

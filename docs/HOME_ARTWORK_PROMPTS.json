@@ -1,0 +1,149 @@
+{
+  "mode": "Built-in image_gen",
+  "assets": [
+    {
+      "id": "hero",
+      "prompt": "Use case: product-mockup. Asset type: Flutter home hero artwork. Create a premium photorealistic scientific product composition matching the supplied reference: a transparent triangular glass prism on the left refracting one white beam into a delicate rainbow spectrum across a white floor toward an elegant polished chrome and golden brass three-ring gyroscope on the right. Gyroscope upright, all objects completely in frame. Landscape 1.8:1, pure snow-white seamless background and white reflective floor, soft diffuse studio light, subtle grounded shadows and restrained glass caustics. Accurate-looking refraction and believable glass edges, metallic reflections. No text, numbers, logo, watermark, border, cards or UI. Artwork only; app will render all typography and controls separately.",
+      "asset": "assets/home/hero.webp",
+      "generationId": "exec-e6cf8d89-09de-4b71-848a-ef71c611d6be",
+      "bytes": 62306,
+      "sha256": "3389349bee3d8371bcd409b35d00ceaebb69267316093ac11d17e14aac5e097d"
+    },
+    {
+      "id": "s00",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: an elegant brass and polished chrome three-ring gyroscope beside a small clear optical prism, coherent premium science still life",
+      "asset": "assets/home/s00.webp",
+      "generationId": "exec-3684f58b-0788-467d-986d-864af0e22bd4",
+      "bytes": 24136,
+      "sha256": "70b1f5454356f3ca3f96635fc5ae424b9239b367e76e682cb54c2f31b23c8a41"
+    },
+    {
+      "id": "s01",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a precision polished steel vernier caliper with slightly open jaws and a dark metal micrometer, recognizable measuring instruments, no legible scale text",
+      "asset": "assets/home/s01.webp",
+      "generationId": "exec-7c342620-0c49-4c89-8f9a-6a29788dbddf",
+      "bytes": 20016,
+      "sha256": "5912976e1f2f3fb2ba45085b7182c31924b9913d3f1ad675db4419bc7c8cc404"
+    },
+    {
+      "id": "s02",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a polished steel pulley with a tan braided rope correctly seated around the wheel, supporting one hanging cylindrical golden brass mass, rope descending diagonally toward bottom left",
+      "asset": "assets/home/s02.webp",
+      "generationId": "exec-94f11516-0949-406b-968f-593711d0e494",
+      "bytes": 12968,
+      "sha256": "e741854ff50a01b0f2c586de4a267b2edae4a0c48b817cc305e85bd0adf564ca"
+    },
+    {
+      "id": "s03",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a vivid cobalt blue four-wheeled laboratory dynamics cart on two polished horizontal aluminium rails, cart facing right",
+      "asset": "assets/home/s03.webp",
+      "generationId": "exec-07bc2c6b-4c32-436b-b81b-d7bc8924bd51",
+      "bytes": 15442,
+      "sha256": "cc057d5a64755e0692160012d59156df524ce7052eacce745b66864d1a76a46b"
+    },
+    {
+      "id": "s04",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a small wooden block on a laboratory incline with a mechanical spring force gauge attached, realistic classroom Newtonian mechanics equipment",
+      "asset": "assets/home/s04.webp",
+      "generationId": "exec-1fe1756f-2e13-43ed-b075-f6669e7f16ef",
+      "bytes": 18044,
+      "sha256": "9778c868bbee3e13e068b20808a4b091805b802247397c99800499d5bd098135"
+    },
+    {
+      "id": "s05",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a horizontal polished steel compression spring beside a reddish copper cube, spring touching the left face of the cube, both resting on a white surface",
+      "asset": "assets/home/s05.webp",
+      "generationId": "exec-422a074d-3a53-40b0-bb32-bd1c3d14941d",
+      "bytes": 22856,
+      "sha256": "d5623b149cd4bdbee52997818e5cefb5d726eab0a9321d1fa876e6caa177f78f"
+    },
+    {
+      "id": "s06",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a realistic blue Earth globe with accurate-looking continents and white cloud cover beside a much smaller gray cratered Moon, illustrative sizes, no orbit lines",
+      "asset": "assets/home/s06.webp",
+      "generationId": "exec-400814ba-5226-491d-a822-4f3adcd69fd2",
+      "bytes": 34730,
+      "sha256": "033e0a06cd24029b793a375ddb7081e8acacdc51dcb8147c05165e9c8c74cfdc"
+    },
+    {
+      "id": "s07",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a polished chrome Newton's cradle with five correctly suspended identical steel spheres, one outer sphere lifted left, slim double suspension wires on a chrome stand",
+      "asset": "assets/home/s07.webp",
+      "generationId": "exec-80611c50-8bcf-45f5-9fb0-8bd1d1eb9ed9",
+      "bytes": 16944,
+      "sha256": "c83fb15693183c58562322eed472be009803ff0844f2e05af65d423e4ee8bab6"
+    },
+    {
+      "id": "s08",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a single polished steel tuning fork lying diagonally from bottom left to upper right, faint translucent pale blue concentric sound wave arcs to its right, illustrative wave overlay",
+      "asset": "assets/home/s08.webp",
+      "generationId": "exec-093f09e8-226f-44a1-b44d-89c834132676",
+      "bytes": 12698,
+      "sha256": "43250a4a562e0a6cfb231b34a4d6c22cc3776e7775ab688594c65544be00bdde"
+    },
+    {
+      "id": "s09",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a transparent triangular glass prism beside a clear semicircular glass optical block, one incoming white beam splitting into a restrained physically plausible rainbow spectrum exiting the prism, delicate caustics",
+      "asset": "assets/home/s09.webp",
+      "generationId": "exec-76add5d2-fb17-422d-9875-a816534493f6",
+      "bytes": 15236,
+      "sha256": "9dc8f141cf5fef3b8b65e818bf4c7128909045a3d8170fd4971734c354628d1d"
+    },
+    {
+      "id": "s10",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a recognizable closed simple electric circuit: black-and-copper cylindrical battery in holder, red insulated wires joining a striped resistor on a white breadboard and returning to the other battery terminal, correct complete loop, no lettering",
+      "asset": "assets/home/s10.webp",
+      "generationId": "exec-94f8e2f6-787d-4cc9-b8ff-9349a122973a",
+      "bytes": 17288,
+      "sha256": "7540c61ef2ec8105e5d986e96bd39f73f7557aebf930940ab8a937d32a60ffc8"
+    },
+    {
+      "id": "s11",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a red and cobalt blue horseshoe magnet surrounded by realistic fine dark iron filings arranged in curved magnetic field patterns on a white surface, no labels",
+      "asset": "assets/home/s11.webp",
+      "generationId": "exec-e73f1234-c39d-4299-a445-ad0a55b06b44",
+      "bytes": 55576,
+      "sha256": "974f2f77dfa25f22e3ed1c1c6a691571f831ea054d46defda965ecc6f3ce9695"
+    },
+    {
+      "id": "s12",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a clean white breadboard with a black transistor, one small integrated circuit chip, resistor and three neat jumper leads, macro laboratory electronic components, no legible markings",
+      "asset": "assets/home/s12.webp",
+      "generationId": "exec-168c9fd9-06bf-4e55-bd0c-a229a651ebec",
+      "bytes": 20398,
+      "sha256": "56ac5b200414b2ba6806c29fc69d88bbcfb003ef65bfa45ad7f1f5efd6a3e254"
+    },
+    {
+      "id": "s13",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a clear glass red-alcohol laboratory thermometer leaning beside a reddish copper cube, believable glass edges, red bulb and column, no readable numbers",
+      "asset": "assets/home/s13.webp",
+      "generationId": "exec-ce9c4343-7705-4b04-b71e-6d1f6a249909",
+      "bytes": 18966,
+      "sha256": "dc0fa0e7cbe6ded0f4f21dba076ad27ba4cc67124bc46345b4d1af2c99f92c0d"
+    },
+    {
+      "id": "s14",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a transparent cylindrical laboratory beaker half filled with clear pale blue water, believable water meniscus, a few tiny bubbles, visible thick glass boundaries and reflections, no printed scales",
+      "asset": "assets/home/s14.webp",
+      "generationId": "exec-8746264d-0345-4b42-8254-7150999723bb",
+      "bytes": 9530,
+      "sha256": "c98727a8ccbd2cfde4b5fbe6d4a36581c05d97120ac07911b9c638887928d77f"
+    },
+    {
+      "id": "s15",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: an educational atomic model with a compact red and blue proton/neutron nucleus and three slender metallic elliptical supports bearing small blue electron spheres, illustrative model rather than literal electron trajectories",
+      "asset": "assets/home/s15.webp",
+      "generationId": "exec-8e589113-a8d6-4ce4-86e8-83b7b27f3925",
+      "bytes": 17560,
+      "sha256": "337e20f3a97ecef10675614e690e621ca39f6bb1e84b4cd6030ac81509ff3a2e"
+    },
+    {
+      "id": "s16",
+      "prompt": "Use case: product-mockup. Asset type: production Flutter home studio-card artwork. Create ONE isolated scientific composition described below, in the premium photorealistic studio-product style of the supplied reference. Landscape 2.3:1 composition, snow-white seamless floor and background, very soft realistic grounding shadow, cool neutral diffuse studio light, physically believable transparent glass and polished metal, crisp realistic material detail. Keep the entire object within frame with generous margins, concentrated in the right 65 percent and lower 80 percent, leaving the upper-left area clean white for code-rendered titles. No text, no numbers, no logos, no watermark, no border, no cards, no UI. Do not add extra objects. Subject: a polished brass and dark navy astronomical refracting telescope on a restrained equatorial mount beside a small detailed blue Earth sphere, precise premium scientific product photography",
+      "asset": "assets/home/s16.webp",
+      "generationId": "exec-8b819110-0fe1-4a6c-af97-3368425f7a2e",
+      "bytes": 24852,
+      "sha256": "1e8c41a03aa2d1cdd5970eef10fad168c6379a71fc8faafd086730c515e86063"
+    }
+  ]
+}

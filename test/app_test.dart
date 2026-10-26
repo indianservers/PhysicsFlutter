@@ -95,7 +95,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('Your first discovery starts here'), findsOneWidget);
+    expect(find.text('A world of\ndiscovery.'), findsOneWidget);
     expect(store.completed, isEmpty);
     await tester.enterText(find.byKey(const Key('search')), 'Vernier');
     await tester.pumpAndSettle();

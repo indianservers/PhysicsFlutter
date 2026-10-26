@@ -322,7 +322,7 @@ class SettingsScreen extends ConsumerWidget {
                 onTap: () => showLicensePage(
                   context: c,
                   applicationName: 'Physics Atelier',
-                  applicationVersion: '1.10.0+13',
+                  applicationVersion: '1.11.0+14',
                 ),
               ),
               const Panel(

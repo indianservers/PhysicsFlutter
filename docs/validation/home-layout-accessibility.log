@@ -1,0 +1,10 @@
+00:00 +0: loading C:/Indian Servers/Android Physics/test/home_screen_test.dart
+00:00 +0: C:/Indian Servers/Android Physics/test/home_screen_test.dart: Home presentation uses all 17 canonical identities exactly once
+00:00 +1: C:/Indian Servers/Android Physics/test/home_screen_test.dart: Every studio opens and back preserves catalogue scroll
+00:00 +2: C:/Indian Servers/Android Physics/test/home_screen_test.dart: Every studio opens and back preserves catalogue scroll
+00:00 +3: C:/Indian Servers/Android Physics/test/home_screen_test.dart: Every studio opens and back preserves catalogue scroll
+00:02 +4: C:/Indian Servers/Android Physics/test/phase9_accessibility_test.dart: All studios support small phone tablet landscape and 200 percent text
+00:03 +5: C:/Indian Servers/Android Physics/test/home_screen_test.dart: Search, empty reset, filters, real resume and saved labs work
+00:03 +6: C:/Indian Servers/Android Physics/test/home_screen_test.dart: Search, empty reset, filters, real resume and saved labs work
+00:03 +7: C:/Indian Servers/Android Physics/test/home_screen_test.dart: Small phone, 200% text and tablet have no clipped layout errors
+00:04 +8: All tests passed!

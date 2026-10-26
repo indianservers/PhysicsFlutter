@@ -1,10 +1,12 @@
-# Physics Atelier — reference-style workspaces (1.10.0+13)
+# Physics Atelier — Physics home and studios (1.11.0+14)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
 Repository: https://github.com/indianservers/PhysicsFlutter
 
 Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI` folder remains intact and ignored. Runtime copies in `assets/reference_previews` provide static launcher thumbnails; their provenance remains user-supplied.
+
+Current Home: [implementation, routes and screenshots](docs/HOME_SCREEN_QA.md), [generated artwork and exact prompts](docs/HOME_ARTWORK_PROMPTS.json).
 
 ## Included
 
@@ -55,7 +57,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable version **1.10.0+13**: [debug APK](deliverables/physics-atelier-target-ui-debug.apk) and [release APK with development signing](deliverables/physics-atelier-target-ui-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
+Installable version **1.11.0+14**: [debug APK](deliverables/physics-atelier-home-debug.apk) and [release APK with development signing](deliverables/physics-atelier-home-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
 
 Device integration and screenshot capture:
 
