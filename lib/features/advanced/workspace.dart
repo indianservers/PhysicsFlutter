@@ -444,6 +444,7 @@ class _AdvancedState extends ConsumerState<AdvancedWorkspace>
     ),
   );
   List<Widget> learn() => [
+    relatedLabs(entry.id),
     Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     const SizedBox(height: 12),
     Panel(

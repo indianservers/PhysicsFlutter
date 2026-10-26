@@ -20,5 +20,5 @@ void main() {
     out.writeln('\n');
   }
   File('docs/PHASE7_LAB_SPECIFICATIONS.md')
-      .writeAsStringSync(out.toString().trimRight() + '\n');
+      .writeAsStringSync('${out.toString().trimRight()}\n');
 }

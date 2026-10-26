@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 
 /// Deterministic apparatus materials. No motion or numerical state lives here.
 class LabMaterials {
-  // A unit mesh survives camera/position changes; at most four texture resources.
+  // A unit mesh survives camera/position changes; at most twelve texture resources (eight planets plus shared apparatus).
   static final _sphereMeshes =
       <ui.Image, ({ui.Vertices vertices, Paint paint})>{};
   static ({ui.Vertices vertices, Paint paint}) _mesh(ui.Image texture) {
     final existing = _sphereMeshes[texture];
     if (existing != null) return existing;
-    if (_sphereMeshes.length >= 4) {
+    if (_sphereMeshes.length >= 12) {
       final key = _sphereMeshes.keys.first;
       _sphereMeshes.remove(key)!.vertices.dispose();
     }
@@ -69,6 +69,10 @@ class LabMaterials {
     );
     _sphereMeshes[texture] = result;
     return result;
+  }
+
+  static void releaseTexture(ui.Image texture) {
+    _sphereMeshes.remove(texture)?.vertices.dispose();
   }
 
   static void shadow(Canvas c, Rect r) => c.drawOval(

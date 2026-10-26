@@ -1,4 +1,4 @@
-# Physics Atelier — Phase 7 of 9
+# Physics Atelier — Phase 8 of 9
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -20,7 +20,8 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 - Twelve Fluid Mechanics and Modern Physics labs using `fluid-modern-7.0`: conserving manometers, exact block immersion, circular continuity/Bernoulli, low-Re Stokes motion, stationary quantum wells, photoelectric current, conditional matter-wave detections, hydrogen spectra, sourced isotope binding energy and seeded aggregate decay.
 - Drag and precise numeric controls, magnified scales, signed calibration correction, guided reading practice, recorded trials and notes.
 - Local SQLite notebook, versioned sessions, reopen, CSV file sharing; preferences and recovery notices.
-- Introductory learning content/formulas for remaining labs, with experiments explicitly reserved for later phases. Concept Overview contains basic navigation/learning tools.
+- Six Astronomy & Astrophysics labs using `astronomy-8.0`: frozen J2000 Kepler orbits, sourced MIST stellar tracks, synthetic spectra, galaxy rotation with optional SPARC observations, flat FLRW distances, and exact uniform-star transit overlap.
+- Six Concept Overview tools: Physics Atlas, Relationship Map, eight Guided Paths, Experiment Launcher, five Compare Phenomena workspaces, and a validated 16-question Mastery Challenge bank covering six task types. One catalog supplies all 96 lab routes, favorites, saved configurations and real completion progress.
 
 The graphics are original procedural instrument drawings with material shading. Photorealistic apparatus and photographic thumbnails remain a visual quality gap relative to the targets. iOS compilation and device QA are pending. See the handover for precise limits; this is not a claim of store-release readiness.
 
@@ -36,7 +37,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase7-debug.apk` for handoff), version 1.6.0+7.
+Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase8-debug.apk` for handoff), version 1.7.0+8.
 
 Device integration and screenshot capture:
 
@@ -68,7 +69,7 @@ $env:JAVA_TOOL_OPTIONS='-Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true'
 - [iOS verification checklist](docs/IOS_VERIFICATION.md)
 - [Phase 1 handover](docs/HANDOVER.md)
 
-Current phase: [Phase 7 handover](docs/PHASE7_HANDOVER.md), [science](docs/PHASE7_SCIENCE.md), [per-lab specifications](docs/PHASE7_LAB_SPECIFICATIONS.md), [assets and audit](docs/PHASE7_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE7_VALIDATION.md). Earlier phase reports remain historical. Fifteen studios contain 90 interactive labs within their documented limits; all 17 studios and 102 destinations remain accessible. No login or network is required after installation. Optional Phase 4 microphone input remains contextual; no raw audio is saved or uploaded.
+Current phase: [Phase 8 handover](docs/PHASE8_HANDOVER.md), [science](docs/PHASE8_SCIENCE.md), [lab specifications](docs/PHASE8_LAB_SPECIFICATIONS.md), [tool specifications](docs/PHASE8_TOOLS.md), [asset audit](docs/PHASE8_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE8_VALIDATION.md). Earlier reports are historical. Sixteen subject studios contain 96 interactive lab workspaces within their documented model bounds, alongside six functional overview tools. This inventory is not a blanket claim of release completion; the handover lists evidence-based Phase 9 gaps. No login/network is required after installation. Optional microphone input remains contextual; no raw audio is saved or uploaded.
 
 ## Nine-phase roadmap
 
@@ -78,8 +79,8 @@ Current phase: [Phase 7 handover](docs/PHASE7_HANDOVER.md), [science](docs/PHASE
 4. Waves/Sound and Optics.
 5. Electricity and Magnetism.
 6. Electronics and Thermodynamics.
-7. Fluid Mechanics and Modern Physics (current).
-8. Astronomy/Astrophysics and completed cross-studio Concept Overview tools.
+7. Fluid Mechanics and Modern Physics.
+8. Astronomy/Astrophysics and cross-studio Concept Overview tools (current).
 9. Full scientific, visual, accessibility, performance and release validation.
 
-Phase 7 native targets: `phase7_test.dart`, `phase7_modes_test.dart`, `phase7_audit_test.dart` and `phase7_profile_test.dart` under `integration_test/`. Use `--keep-app-running` and a dedicated device/emulator to retain the notebook. This host uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator. Earlier targets remain available, including Phase 4 microphone permission tests. Phase 8 is not included. `phase7_modes_test` expects the real OS background/resume companion `tool/phase7_device_watch.py`; see the validation report.
+Phase 8 native targets: `phase8_test.dart`, `phase8_boundaries_test.dart`, `phase8_audit_test.dart` (also runs the isolated SQLite migration fixture), and `phase8_profile_test.dart`. Use a dedicated device/emulator and retain the notebook. This host uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator. See the validation report for the real OS lifecycle companion `tool/phase8_device_watch.py`, profile commands, and automation limitations. Earlier integration targets remain available.

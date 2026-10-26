@@ -520,6 +520,7 @@ class _FMWorkspaceState extends ConsumerState<FMWorkspace>
     ),
   );
   List<Widget> learn() => [
+    relatedLabs(entry.id),
     Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     panel([
       Paragraph(

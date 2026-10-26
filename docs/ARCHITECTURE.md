@@ -53,3 +53,14 @@ The shared graph now uses unit-independent plot ranges. Repeated Canvas text use
 ## Phase 7 extension
 
 `fluid_modern.dart` holds pure scientific models and bounded dataset constants; `stochastic.dart` holds independently seeded samplers and finite-grid distributions. `fluid_modern_run.dart` composes exact analytic state, fixed-tick observations and cached geometries/CDFs. `features/fluid_modern` contains curriculum, workspace/persistence and apparatus painting. Route selection prefers this workspace for studios14/15; stable IDs and old78 models remain. Schema3 is unchanged; activity Bq was added as a scientific quantity. Histograms/discrete plots are optional shared LabPlot features. See PHASE7_SCIENCE.md for units, conventions and replay provenance. Fifteen studios/90 labs are interactive; Astronomy and advanced Concept Overview remain Phase8.
+
+
+## Phase 8 extension
+
+`astronomy.dart` holds bounded pure Dart models; `astronomy_data.dart` contains selected sourced MIST 1.2 tracks and `galaxy_observations.dart` the documented SPARC NGC2403 measurements. `astronomy_run.dart` composes model state, cached profiles, seeded noise and fixed-tick observations. `features/astronomy/` provides the six curricula, scenes and five-section workspace. Numerical integration/profile generation stays outside widget build methods. Original clocks, units, graph, repository and lifecycle handling are reused.
+
+`content/learning.dart` derives the 96-lab inventory from the existing catalog and holds explained relationships, eight advisory prerequisite DAGs and 16 source-backed challenge configurations. `features/overview/` uses it for five navigation/assessment tools plus a dedicated comparison workspace; `comparisons.dart` calls the earlier source models for five explicitly bounded analogies. No independent progress or physics framework was added. Earlier Learn views now link related labs. Native navigation pauses hidden workspaces and returning restores their state.
+
+Schema remains 3. Astronomy model/quantity support and JSON metadata are additive. Favorites, recents, question attempts and tool sessions reuse existing preferences/tables. Default launch backs up an existing configuration before a one-use default request. Incompatible saved astronomy datasets remain protected until an explicit adoption saves a backup. Captured scientific trials contain SI inputs/outputs, model/dataset/epoch, noise seed, observation clock and graph-axis conventions. Existing trial bodies and old notes/parameters are checked against an exact pre-change archive.
+
+Planet meshes use a bounded 12-entry material cache; disposed astronomy images release owned cached meshes. Orbit geometry, stellar tracks, spectra and observational references are cached, histories bounded, and hidden/background tickers stopped. Comparison scenes use one clock and separate units/axes. See PHASE8_SCIENCE.md, PHASE8_TOOLS.md and PHASE8_VALIDATION.md for limits and evidence.

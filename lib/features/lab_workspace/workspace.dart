@@ -260,6 +260,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
   }
 
   List<Widget> learn() => [
+    relatedLabs(entry.id),
     Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     const SizedBox(height: 12),
     Text(entry.principle, style: const TextStyle(fontSize: 17, height: 1.6)),

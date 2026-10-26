@@ -1,0 +1,288 @@
+{
+  "verifiedUTC": "2026-10-26T01:02:20.843823+00:00",
+  "apk": "deliverables\\physics-atelier-phase8-debug.apk",
+  "bytes": 211994295,
+  "sha256": "8417f3df718495909971ce15ec8b3950df37a7e252b4a73116de042c52701515",
+  "installedSha256Matches": true,
+  "versionName": "1.7.0",
+  "versionCode": 8,
+  "entryPoint": "lib/main.dart",
+  "variant": "ordinary debug APK, not an integration-test entry point",
+  "device": "emulator-5556",
+  "airplaneMode": true,
+  "interactiveLabs": 96,
+  "stableDestinations": 102,
+  "studios": 17,
+  "unitWidgetTestsPassed": 268,
+  "analysis": "No issues found",
+  "nativeModelSelections": 17,
+  "nativeNewTrialCount": 6,
+  "nativeTargetsPassed": [
+    "phase8_test",
+    "phase8_boundaries_test",
+    "phase8_storage_test (via audit)",
+    "phase8_audit_test",
+    "phase8_profile_test"
+  ],
+  "preservation": {
+    "originalTrialBodiesByteForBytePreserved": 130,
+    "currentTrials": 142,
+    "originalChallengeBodiesExactlyPreserved": 88,
+    "oldSessionNotesAndParametersPreserved": 90,
+    "originalNonNavigationPreferencesPreserved": 0,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+  },
+  "profile": {
+    "s16-e00": {
+      "frameCount": 90,
+      "startTicks": 8,
+      "endTicks": 597,
+      "medianBuildMs": 1.604,
+      "p95BuildMs": 7.704,
+      "medianRasterMs": 49.213,
+      "p95RasterMs": 82.181,
+      "p95TotalMs": 152.955,
+      "framesOver16_67Ms": 89,
+      "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+    },
+    "s16-e01": {
+      "frameCount": 90,
+      "startTicks": 3,
+      "endTicks": 499,
+      "medianBuildMs": 1.605,
+      "p95BuildMs": 5.639,
+      "medianRasterMs": 37.608,
+      "p95RasterMs": 65.002,
+      "p95TotalMs": 104.552,
+      "framesOver16_67Ms": 89,
+      "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+    },
+    "s16-e05": {
+      "frameCount": 90,
+      "startTicks": 1,
+      "endTicks": 505,
+      "medianBuildMs": 1.231,
+      "p95BuildMs": 2.055,
+      "medianRasterMs": 39.514,
+      "p95RasterMs": 68.523,
+      "p95TotalMs": 101.077,
+      "framesOver16_67Ms": 88,
+      "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+    },
+    "comparison0": {
+      "frameCount": 90,
+      "startTicks": 1,
+      "endTicks": 467,
+      "medianBuildMs": 1.512,
+      "p95BuildMs": 5.127,
+      "medianRasterMs": 37.708,
+      "p95RasterMs": 56.631,
+      "p95TotalMs": 93.643,
+      "framesOver16_67Ms": 89,
+      "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+    },
+    "comparison4": {
+      "frameCount": 90,
+      "startTicks": 2,
+      "endTicks": 498,
+      "medianBuildMs": 1.631,
+      "p95BuildMs": 6.566,
+      "medianRasterMs": 33.851,
+      "p95RasterMs": 58.267,
+      "p95TotalMs": 94.878,
+      "framesOver16_67Ms": 81,
+      "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+    },
+    "profileFile": "phase8-profile.json",
+    "environment": "Dedicated emulator-5556, Physics_Phase3, Android17 API37 x86_64 16KB,720x1280@320dpi,2 cores/2048MB; profile Skia/OpenGL host RTX3050. Not physical-device performance."
+  },
+  "nativeBoundariesAndLifecycle": {
+    "resolvedShiftedSpectrum": {
+      "continuum": 0.8498212728703124,
+      "syntheticFlux": 0.43593263303461083,
+      "restReference": 0.847890681258082,
+      "peakWavelength": 5.006167803940067e-07,
+      "radialVelocity": 600000.0,
+      "dopplerFactor": 1.0020033913556317,
+      "wavelength": 6.57784771867808e-07,
+      "playbackSeconds": 0.0
+    },
+    "redshiftFive": {
+      "redshift": 5.0,
+      "scaleFactor": 0.16666666666666666,
+      "lookback": 3.8846134471832896e+17,
+      "lightTravelDistance": 1.1645778137109316e+26,
+      "comovingDistance": 2.398460214018708e+26,
+      "luminosityDistance": 1.4390761284112247e+27,
+      "angularDistance": 3.99743369003118e+25,
+      "recessionNow": 544101613.170369,
+      "hubbleAtEmission": 1.8376135768816777e-17,
+      "omegaLambda": 0.6999099999999999,
+      "omegaRadiation": 9e-05,
+      "hubbleSI": 2.2685455026110557e-18,
+      "playbackSeconds": 0.0
+    },
+    "grazingTransit": {
+      "x": 0.0,
+      "y": 730484999.9999999,
+      "projectedSeparation": 730484999.9999999,
+      "front": 1.0,
+      "impactParameter": 1.0499999999999998,
+      "flux": 0.9981114356329345,
+      "instantDepth": 0.0018885643670655465,
+      "midDepth": 0.0018885643670655465,
+      "smallPlanetFullDepth": 0.010000000000000002,
+      "duration": 3677.8357254632515,
+      "semiMajorAxis": 8560644525.09867,
+      "period": 432000.0,
+      "starRadius": 695700000.0,
+      "planetRadius": 69570000.0,
+      "timeFromMidTransit": 0.0,
+      "playbackSeconds": 0.0
+    },
+    "read-vernier-01": {
+      "model": "learning-tools-8.0",
+      "challengeId": "read-vernier-01",
+      "sourceModel": "measurement-1.0",
+      "modelConfiguration": {
+        "opening_m": 0.0236,
+        "zeroError_m": 0,
+        "leastCount_m": 0.0001
+      },
+      "labId": "s01-e01",
+      "type": "Instrument reading",
+      "answer": 0.0236,
+      "target": 0.0236,
+      "tolerance": 5e-05,
+      "unit": "m",
+      "correct": true,
+      "created": "2026-10-26T00:54:50.565744Z"
+    },
+    "force-vector-01": {
+      "model": "learning-tools-8.0",
+      "challengeId": "force-vector-01",
+      "sourceModel": "dynamics-2.0",
+      "modelConfiguration": {
+        "force_N": 4,
+        "angle_rad": 1.0471975511965976,
+        "mass_kg": 2,
+        "friction": 0,
+        "axis": "horizontal, positive right"
+      },
+      "labId": "s02-e00",
+      "type": "Force/vector reasoning",
+      "answer": 1.0000000000000002,
+      "target": 1.0000000000000002,
+      "tolerance": 0.02,
+      "unit": "m/s\u00b2",
+      "correct": true,
+      "created": "2026-10-26T00:54:54.658787Z"
+    },
+    "shm-graph-01": {
+      "model": "learning-tools-8.0",
+      "challengeId": "shm-graph-01",
+      "sourceModel": "energy-gravity-oscillation-3.0",
+      "modelConfiguration": {
+        "mass_kg": 1,
+        "spring_N_per_m": 4,
+        "damping_kg_per_s": 0,
+        "initialPosition_m": 0.1,
+        "initialVelocity_m_per_s": 0,
+        "time_s": 1.5707963267948966
+      },
+      "labId": "s07-e00",
+      "type": "Graph interpretation",
+      "answer": -0.1,
+      "target": -0.1,
+      "tolerance": 0.002,
+      "unit": "m",
+      "correct": true,
+      "created": "2026-10-26T00:55:00.844308Z"
+    },
+    "optics-01": {
+      "model": "learning-tools-8.0",
+      "challengeId": "optics-01",
+      "sourceModel": "waves-optics-4.0",
+      "modelConfiguration": {
+        "n1": 1.5,
+        "n2": 1,
+        "incidenceFromNormal_rad": 1.0471975511965976
+      },
+      "labId": "s09-e01",
+      "type": "Concept selection",
+      "answer": 2.0,
+      "target": 2.0,
+      "tolerance": 0.0,
+      "unit": "choice",
+      "correct": true,
+      "created": "2026-10-26T00:55:07.000946Z"
+    },
+    "resistor-target-01": {
+      "model": "learning-tools-8.0",
+      "challengeId": "resistor-target-01",
+      "sourceModel": "electromagnetism-5.0",
+      "modelConfiguration": {
+        "sourceVoltage_V": 5,
+        "targetCurrent_A": 0.002,
+        "resistanceBounds_ohm": [
+          250,
+          10000
+        ],
+        "network": "one ideal voltage source and one resistor, two common nodes"
+      },
+      "labId": "s10-e04",
+      "type": "Parameter adjustment",
+      "answer": 2500.0,
+      "target": 2500.0,
+      "tolerance": 25.0,
+      "unit": "\u03a9",
+      "correct": true,
+      "created": "2026-10-26T00:55:15.125357Z"
+    },
+    "astronomy-01": {
+      "model": "learning-tools-8.0",
+      "challengeId": "astronomy-01",
+      "sourceModel": "astronomy-8.0",
+      "modelConfiguration": {
+        "stellarMass_solar": 1,
+        "stellarRadius_solar": 1,
+        "radiusRatio": 0.1,
+        "period_day": 5,
+        "inclination_deg": 90,
+        "timeFromMidTransit_s": 0,
+        "limbDarkening": false
+      },
+      "labId": "s16-e05",
+      "type": "Numerical prediction",
+      "answer": 0.010000000000000002,
+      "target": 0.010000000000000002,
+      "tolerance": 0.0001,
+      "unit": "1",
+      "correct": true,
+      "created": "2026-10-26T00:55:19.126694Z"
+    }
+  },
+  "nativeMigration": {
+    "actualV2toV3Upgrade": true,
+    "comparisonAndMasteryRoundTrip": true,
+    "documentedDefaultsBackupRetained": true,
+    "oldTrialBodyUnchanged": true,
+    "oldSessionNoteAndParametersRetained": true,
+    "newAstronomySITrialRoundTrip": true,
+    "mainDatabaseOriginalTrials": 142,
+    "mainDatabaseRecoveryMessage": null
+  },
+  "remainingChecks": [
+    "iOS/macOS Xcode compilation and device testing",
+    "physical Android profiling",
+    "independent accessibility user testing",
+    "photographic apparatus parity",
+    "production signing and release hardening"
+  ],
+  "performanceQualification": "Observed emulator raster jank remains; no 60 fps or physical-device performance claim."
+}

@@ -6,6 +6,10 @@ import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../content/catalog.dart';
+import '../content/learning.dart';
+import '../features/astronomy/workspace.dart';
+import '../features/overview/workspace.dart';
+import '../features/overview/compare_workspace.dart';
 import '../core/design_system/theme.dart';
 import '../core/persistence/notebook.dart';
 import '../core/rendering/apparatus.dart';
@@ -32,7 +36,19 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => entryById(s.pathParameters['id']!).fluidModern
+      builder: (c, s) => entryById(s.pathParameters['id']!).tool
+          ? (entryById(s.pathParameters['id']!).index == 4
+                ? const CompareWorkspace()
+                : OverviewWorkspace(
+                    key: ValueKey(s.pathParameters['id']),
+                    entry: entryById(s.pathParameters['id']!),
+                  ))
+          : entryById(s.pathParameters['id']!).astronomy
+          ? AstronomyWorkspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            )
+          : entryById(s.pathParameters['id']!).fluidModern
           ? FMWorkspace(
               key: ValueKey(s.pathParameters['id']),
               entry: entryById(s.pathParameters['id']!),
@@ -380,13 +396,15 @@ class StudioCard extends StatelessWidget {
                   Text(s.title, style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 10),
                   Text(
-                    index >= 1 && index <= 11
+                    s.entries.every((e) => e.interactive)
                         ? '● Six interactive labs'
                         : index == 0
-                        ? 'Introductory navigation tools'
+                        ? 'Six interactive learning tools'
                         : 'Learning content available',
                     style: TextStyle(
-                      color: index >= 1 && index <= 11 ? teal : muted,
+                      color: s.entries.every((e) => e.interactive)
+                          ? teal
+                          : muted,
                       fontSize: 12,
                     ),
                   ),
@@ -634,8 +652,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 7 of 9 · Fluid Mechanics & Modern Physics',
-                  '90 interactive labs across fifteen studios; 17 studios and 102 destinations. The remaining experiments follow the nine-phase roadmap. Illustrative apparatus and explicit model assumptions accompany calculated observations.',
+                  'Phase 8 of 9 · Astronomy & Connected Learning',
+                  '96 interactive labs across sixteen studios and six Concept Overview tools. All102 stable destinations are implemented within documented bounds; Phase9 comprehensive validation and release work remains. Completion reflects learner activity, not page visits.',
                 ),
               ),
             ],
@@ -644,4 +662,27 @@ class SettingsScreen extends ConsumerWidget {
       ),
     );
   }
+}
+
+Widget relatedLabs(String id) {
+  final links = relatedDestinations[id] ?? const <String>[];
+  if (links.isEmpty) return const SizedBox.shrink();
+  return Builder(
+    builder: (context) => Panel(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Eyebrow(
+            'Connected learning — return retains your current state',
+          ),
+          for (final target in links)
+            TextButton.icon(
+              onPressed: () => context.push('/lab/$target'),
+              icon: const Icon(Icons.link),
+              label: Text(entryById(target).title),
+            ),
+        ],
+      ),
+    ),
+  );
 }

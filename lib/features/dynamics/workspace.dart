@@ -463,6 +463,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
     ),
   );
   List<Widget> learn() => [
+    relatedLabs(entry.id),
     Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     const SizedBox(height: 14),
     Panel(

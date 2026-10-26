@@ -436,6 +436,7 @@ class _ETWorkspaceState extends ConsumerState<ETWorkspace>
     ),
   );
   List<Widget> learn() => [
+    relatedLabs(entry.id),
     Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     panel([
       Paragraph('Apparatus', lesson.apparatus),

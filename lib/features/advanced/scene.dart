@@ -736,6 +736,7 @@ class LabPlot extends CustomPainter {
   final int cursor;
   final bool scatter;
   final Set<String> histogramKeys;
+  final Map<String, String> errorKeys;
   const LabPlot(
     this.data,
     this.keys,
@@ -744,6 +745,7 @@ class LabPlot extends CustomPainter {
     this.cursor, {
     this.scatter = false,
     this.histogramKeys = const {},
+    this.errorKeys = const {},
   });
   static const colors = [
     Color(0xff245ce7),
@@ -761,6 +763,14 @@ class LabPlot extends CustomPainter {
         for (final key in keys)
           if (s[key]?.isFinite ?? false) s[key]!,
     ];
+    for (final row in data) {
+      for (final entry in errorKeys.entries) {
+        final y = row[entry.key], err = row[entry.value];
+        if (y != null && err != null && y.isFinite && err.isFinite && err >= 0) {
+          values.addAll([y - err, y + err]);
+        }
+      }
+    }
     if (values.isEmpty) return;
     final yrange = plotRange(values, includeZero: true),
         xrange = plotRange(data.map((s) => s['t']!));
@@ -794,6 +804,31 @@ class LabPlot extends CustomPainter {
           if (!(row[keys[j]]?.isFinite ?? false)) continue;
           final pt = point(row, keys[j]);
           if (scatter) {
+            final err = row[errorKeys[keys[j]]];
+            if (err != null && err.isFinite && err >= 0) {
+              final upper = point({
+                    ...row,
+                    keys[j]: row[keys[j]]! + err,
+                  }, keys[j]),
+                  lower = point({
+                    ...row,
+                    keys[j]: row[keys[j]]! - err,
+                  }, keys[j]),
+                  pen = Paint()
+                    ..color = colors[j % colors.length]
+                    ..strokeWidth = 1;
+              c.drawLine(upper, lower, pen);
+              c.drawLine(
+                upper - const Offset(3, 0),
+                upper + const Offset(3, 0),
+                pen,
+              );
+              c.drawLine(
+                lower - const Offset(3, 0),
+                lower + const Offset(3, 0),
+                pen,
+              );
+            }
             c.drawCircle(pt, 3.5, Paint()..color = colors[j % colors.length]);
           } else {
             final width = area.width / data.length,

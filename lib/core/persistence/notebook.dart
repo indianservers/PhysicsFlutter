@@ -12,6 +12,7 @@ import '../physics/waves_optics.dart';
 import '../physics/electromagnetism.dart';
 import '../physics/electronics_thermal.dart';
 import '../physics/fluid_modern.dart';
+import '../physics/astronomy.dart' show astroVersion;
 
 class Trial {
   final String id, labId, quantity, unit, note, created;
@@ -98,6 +99,7 @@ class Trial {
           emVersion,
           etVersion,
           fmVersion,
+          astroVersion,
         ].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }
@@ -130,12 +132,21 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
   late SharedPreferences preferences;
   List<Trial> trials = [];
   String? lastLab;
+  Set<String> favorites = {};
+  List<String> recent = [];
+  final _defaultRequests = <String>{};
   Set<String> completed = {};
   bool reducedMotion = false, haptics = false;
   String? recoveryMessage;
   Future<void> initialize() async {
     preferences = await SharedPreferences.getInstance();
     lastLab = preferences.getString('lastLab');
+    favorites = (preferences.getStringList('favorites') ?? [])
+        .where((id) => allEntries.any((e) => e.id == id && e.interactive))
+        .toSet();
+    recent = (preferences.getStringList('recent') ?? [])
+        .where((id) => allEntries.any((e) => e.id == id))
+        .toList();
     if (!allEntries.any((e) => e.id == lastLab)) {
       lastLab = null;
     }
@@ -229,6 +240,7 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
 
   @override
   Future<Map<String, dynamic>?> readSession(String id) async {
+    if (_defaultRequests.remove(id)) return null;
     try {
       final rows = _db == null
           ? null
@@ -254,6 +266,8 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
 
   Future<void> visit(String id) async {
     lastLab = id;
+    recent = [id, ...recent.where((x) => x != id)].take(32).toList();
+    await preferences.setStringList('recent', recent);
     await preferences.setString('lastLab', id);
     await preferences.setString('lastStudio', id.split('-').first);
     notifyListeners();
@@ -273,6 +287,61 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
         jsonEncode(attempt),
       ]);
     }
+  }
+
+  Future<void> toggleFavorite(String id) async {
+    if (!allEntries.any((e) => e.id == id && e.interactive)) {
+      throw ArgumentError('Known lab required');
+    }
+    if (!favorites.add(id)) favorites.remove(id);
+    await preferences.setStringList('favorites', favorites.toList());
+    notifyListeners();
+  }
+
+  Future<List<String>> savedSessionIds() async {
+    if (_db != null) {
+      return (await _db!.query(
+        'sessions',
+        columns: ['id'],
+      )).map((r) => r['id'] as String).toList();
+    }
+    return preferences
+        .getKeys()
+        .where((k) => k.startsWith('session:'))
+        .map((k) => k.substring(8))
+        .toList();
+  }
+
+  Future<void> requestDocumentedDefaults(String id) async {
+    final old = await readSession(id);
+    if (old != null) {
+      await saveSession('backup:$id:${DateTime.now().microsecondsSinceEpoch}', {
+        'backupFor': id,
+        'original': old,
+      });
+    }
+    _defaultRequests.add(id);
+  }
+
+  Future<List<Map<String, dynamic>>> readAttempts(String id) async {
+    final bodies = _db == null
+        ? (preferences.getStringList('attempts:$id') ?? [])
+        : (await _db!.query(
+            'challenge_attempts',
+            columns: ['body'],
+            where: 'lab_id=?',
+            whereArgs: [id],
+            orderBy: 'id DESC',
+          )).map((r) => r['body'] as String).toList();
+    final result = <Map<String, dynamic>>[];
+    for (final body in _db == null ? bodies.reversed : bodies) {
+      try {
+        result.add(Map<String, dynamic>.from(jsonDecode(body)));
+      } catch (_) {
+        recoveryMessage = 'An incompatible challenge record was skipped; original stored body retained.';
+      }
+    }
+    return result;
   }
 
   Future<void> complete(String id) async {

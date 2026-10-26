@@ -32,6 +32,10 @@ try {
   # phase7_modes_test includes REAL OS background/resume and needs the companion
   # tool/phase7_device_watch.py (dedicated emulator-5556). See PHASE7_VALIDATION.md.
   # Permission tests require deliberate pm grant/revoke; see PHASE4_VALIDATION.md.
+  # Phase 8 native lifecycle tests require the companion watcher on this API37
+  # host. Run the exact logged commands in docs/PHASE8_VALIDATION.md separately:
+  # phase8_test, phase8_boundaries_test, phase8_audit_test (includes storage),
+  # then phase8_profile_test in profile mode without competing host builds.
   & $Flutter build apk --debug --target lib/main.dart
   if($LASTEXITCODE){throw 'APK build failed'}
 } finally {Pop-Location}

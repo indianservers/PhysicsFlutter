@@ -1,0 +1,134 @@
+{
+  "qualification": "Warmed host Dart JIT,7 repeats; not mobile frame timing",
+  "model": "astronomy-8.0",
+  "dataset": "jpl-j2000-frozen-mist1.2-sparc2016-2026-10",
+  "cosmologyFull121PointProfile1024Simpson": {
+    "medianMs": 5.628,
+    "maxMs": 5.909,
+    "repeats": 7
+  },
+  "adaptiveSyntheticSpectrumProfile": {
+    "medianMs": 4.425,
+    "maxMs": 5.789,
+    "repeats": 7
+  },
+  "100CachedOrbitTimeChanges": {
+    "medianMs": 4.074,
+    "maxMs": 11.262,
+    "repeats": 7
+  },
+  "1000MatterDetectionsAt20s": {
+    "medianMs": 0.18,
+    "maxMs": 0.266,
+    "repeats": 7
+  },
+  "defaultEndpoints": {
+    "0": {
+      "ticks": 2400,
+      "state": {
+        "x": -7879452254.614464,
+        "y": -69088842357.75795,
+        "z": -4920609205.1562,
+        "distance": 69710589590.94913,
+        "speed": 38933.1960103521,
+        "semiMajorAxis": 57909226541.52439,
+        "period": 7600561.8576633455,
+        "meanSpeed": 47361.87419975229,
+        "daysFromJ2000": 7305.0,
+        "energy": -1145866107.405503,
+        "playbackSeconds": 20.0
+      },
+      "profilePoints": 241,
+      "invalid": ""
+    },
+    "1": {
+      "ticks": 1440,
+      "state": {
+        "age": 361822762628833500.0,
+        "luminosity": 6.066358909858747e+26,
+        "temperature": 47622.62925586055,
+        "radius": 12865495.34173929,
+        "phase": 6.0,
+        "logL": 0.19995617221438927,
+        "logT": 4.677813369224881,
+        "initialMass": 1.988409870698051e+30,
+        "playbackSeconds": 12.0
+      },
+      "profilePoints": 298,
+      "invalid": ""
+    },
+    "2": {
+      "ticks": 0,
+      "state": {
+        "continuum": 0.849820695548411,
+        "syntheticFlux": 0.5725959369254329,
+        "restReference": 0.5725959369254329,
+        "peakWavelength": 4.996158543103448e-7,
+        "radialVelocity": 0.0,
+        "dopplerFactor": 1.0,
+        "wavelength": 6.5647e-7,
+        "playbackSeconds": 0.0
+      },
+      "profilePoints": 1225,
+      "invalid": ""
+    },
+    "3": {
+      "ticks": 0,
+      "state": {
+        "radius": 246854206519309370000.0,
+        "speed": 175994.65157558103,
+        "bulgeSpeed": 21568.854791790487,
+        "diskSpeed": 130341.4818320738,
+        "haloSpeed": 116275.53482998906,
+        "potential": -6780026021.9896755,
+        "sphericalEquivalentMass": 1.1456019611447332e+41,
+        "playbackSeconds": 0.0
+      },
+      "profilePoints": 241,
+      "invalid": ""
+    },
+    "4": {
+      "ticks": 0,
+      "state": {
+        "redshift": 0.5,
+        "scaleFactor": 0.6666666666666666,
+        "lookback": 159063214128101570.0,
+        "lightTravelDistance": 4.76859519408439e+25,
+        "comovingDistance": 5.827403606800781e+25,
+        "luminosityDistance": 8.741105410201171e+25,
+        "angularDistance": 3.8849357378671875e+25,
+        "recessionNow": 132197302.44107357,
+        "hubbleAtEmission": 2.968992781194928e-18,
+        "omegaLambda": 0.6999099999999999,
+        "omegaRadiation": 0.00009,
+        "hubbleSI": 2.2685455026110557e-18,
+        "playbackSeconds": 0.0
+      },
+      "profilePoints": 121,
+      "invalid": ""
+    },
+    "5": {
+      "ticks": 2400,
+      "state": {
+        "x": 4124121952.645017,
+        "y": 130923589.69114363,
+        "projectedSeparation": 4126199566.9897213,
+        "front": 1.0,
+        "impactParameter": 0.21475326666253663,
+        "flux": 1.0,
+        "instantDepth": 0.0,
+        "midDepth": 0.010000000000000002,
+        "smallPlanetFullDepth": 0.010000000000000002,
+        "duration": 12073.355443037724,
+        "semiMajorAxis": 8560644525.09867,
+        "period": 432000.0,
+        "starRadius": 695700000.0,
+        "planetRadius": 69570000.0,
+        "timeFromMidTransit": 34560.0,
+        "playbackSeconds": 20.0
+      },
+      "profilePoints": 241,
+      "invalid": ""
+    }
+  }
+}

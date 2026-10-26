@@ -97,7 +97,7 @@ void main() {
       final store = await notebook();
       await fmBoot(t, store, 's14-e00');
       expect(allEntries.length, 102);
-      expect(allEntries.where((e) => e.interactive).length, 90);
+      expect(allEntries.where((e) => e.interactive).length, 96);
       for (final e in allEntries.where((e) => e.fluidModern)) {
         router.go('/lab/${e.id}');
         await t.pumpAndSettle();

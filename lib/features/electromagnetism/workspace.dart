@@ -498,6 +498,7 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
     ),
   );
   List<Widget> learn() => [
+    relatedLabs(entry.id),
     Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     Panel(
       child: Column(

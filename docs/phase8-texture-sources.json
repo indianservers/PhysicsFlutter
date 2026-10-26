@@ -1,0 +1,90 @@
+[
+  {
+    "planet": "mercury",
+    "page": "https://space.jpl.nasa.gov/tmaps/mercury.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/mer0muu2.jpg",
+    "sourceSha256": "4de739ff535e2537a62d4f5a01ac06a0a59b67a85ad8e5910c3357afdf76326f",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-mercury.jpg",
+    "credit": "Caltech/JPL/USGS; Mariner10, processed at USGS; partial longitude coverage",
+    "classification": "Processed spacecraft mosaic, incomplete coverage",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  },
+  {
+    "planet": "venus",
+    "page": "https://space.jpl.nasa.gov/tmaps/venus.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/ven0aaa2.jpg",
+    "sourceSha256": "096477d63cfd2abf7224f06e6e62f4b56829a25ed917227d14763cad02172625",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-venus.jpg",
+    "credit": "JPL/Caltech; Magellan radar mosaic; missing regions filled",
+    "classification": "Radar composite / false-color surface visualization, not visible-light clouds",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  },
+  {
+    "planet": "earth",
+    "page": "https://space.jpl.nasa.gov/tmaps/earth.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/ear0xuu2.jpg",
+    "sourceSha256": "15888f83a67d5e3deb2601c5fa41a689790f30e8e3533222a4f6e3700f016780",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-earth.jpg",
+    "credit": "Caltech/JPL/USGS; source page identifies topographic land/ocean coloring, underlying source unknown",
+    "classification": "Processed topographic illustration, not a current Earth photograph",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  },
+  {
+    "planet": "mars",
+    "page": "https://space.jpl.nasa.gov/tmaps/mars.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/mar0kuu2.jpg",
+    "sourceSha256": "0f9a3faf586ac857623660504e63dd3e2b8358203d8d0c32c27c5fe1585548c6",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-mars.jpg",
+    "credit": "Caltech/JPL/USGS; Viking, processed at USGS",
+    "classification": "Processed spacecraft mosaic",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  },
+  {
+    "planet": "jupiter",
+    "page": "https://space.jpl.nasa.gov/tmaps/jupiter.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/jup0vss1.jpg",
+    "sourceSha256": "f93dc6cc23f0d8b6bfd08504f33a5ddc02495c7fa006aff62381dcc536092756",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-jupiter.jpg",
+    "credit": "JPL/Caltech; David Seal; Voyager, heavily processed",
+    "classification": "Representative processed spacecraft mosaic",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  },
+  {
+    "planet": "saturn",
+    "page": "https://space.jpl.nasa.gov/tmaps/saturn.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/sat0fds1.jpg",
+    "sourceSha256": "8cc796286007b26f53a9ddabf78467ada3ba98f7dfd2b61dc1c5708ffcb3140f",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-saturn.jpg",
+    "credit": "JPL/Caltech; Don Davis; fictional storms",
+    "classification": "Artist impression, not observational surface data",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  },
+  {
+    "planet": "uranus",
+    "page": "https://space.jpl.nasa.gov/tmaps/uranus.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/ura0fss1.jpg",
+    "sourceSha256": "07020f4707f67a6572f8e823c4bbb00d71028d4550be684b8297ebea8f896aa2",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-uranus.jpg",
+    "credit": "JPL/Caltech; David Seal; fictional solid blue",
+    "classification": "Artist impression / representative solid-color atmosphere",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  },
+  {
+    "planet": "neptune",
+    "page": "https://space.jpl.nasa.gov/tmaps/neptune.html",
+    "url": "https://space.jpl.nasa.gov/tmaps/pix/nep0fds1.jpg",
+    "sourceSha256": "8f3be9e5d06eb5cf73fe791832ecc5b7ade6d99e4ce18116b9b98d39c1c1146f",
+    "modification": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "file": "assets\\textures\\phase8-neptune.jpg",
+    "credit": "JPL/Caltech; Don Davis; fictional clouds",
+    "classification": "Artist impression, not observational surface data",
+    "permission": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos."
+  }
+]

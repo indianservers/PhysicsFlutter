@@ -1,0 +1,64 @@
+{
+  "s16-e00": {
+    "frameCount": 90,
+    "startTicks": 8,
+    "endTicks": 597,
+    "medianBuildMs": 1.604,
+    "p95BuildMs": 7.704,
+    "medianRasterMs": 49.213,
+    "p95RasterMs": 82.181,
+    "p95TotalMs": 152.955,
+    "framesOver16_67Ms": 89,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+  },
+  "s16-e01": {
+    "frameCount": 90,
+    "startTicks": 3,
+    "endTicks": 499,
+    "medianBuildMs": 1.605,
+    "p95BuildMs": 5.639,
+    "medianRasterMs": 37.608,
+    "p95RasterMs": 65.002,
+    "p95TotalMs": 104.552,
+    "framesOver16_67Ms": 89,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+  },
+  "s16-e05": {
+    "frameCount": 90,
+    "startTicks": 1,
+    "endTicks": 505,
+    "medianBuildMs": 1.231,
+    "p95BuildMs": 2.055,
+    "medianRasterMs": 39.514,
+    "p95RasterMs": 68.523,
+    "p95TotalMs": 101.077,
+    "framesOver16_67Ms": 88,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+  },
+  "comparison0": {
+    "frameCount": 90,
+    "startTicks": 1,
+    "endTicks": 467,
+    "medianBuildMs": 1.512,
+    "p95BuildMs": 5.127,
+    "medianRasterMs": 37.708,
+    "p95RasterMs": 56.631,
+    "p95TotalMs": 93.643,
+    "framesOver16_67Ms": 89,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+  },
+  "comparison4": {
+    "frameCount": 90,
+    "startTicks": 2,
+    "endTicks": 498,
+    "medianBuildMs": 1.631,
+    "p95BuildMs": 6.566,
+    "medianRasterMs": 33.851,
+    "p95RasterMs": 58.267,
+    "p95TotalMs": 94.878,
+    "framesOver16_67Ms": 81,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced"
+  },
+  "profileFile": "phase8-profile.json",
+  "environment": "Dedicated emulator-5556, Physics_Phase3, Android17 API37 x86_64 16KB,720x1280@320dpi,2 cores/2048MB; profile Skia/OpenGL host RTX3050. Not physical-device performance."
+}

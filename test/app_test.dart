@@ -114,8 +114,10 @@ void main() {
       router.go('/lab/${e.id}');
       await tester.pumpAndSettle();
       expect(find.text(e.title), findsWidgets);
-      await tester.tap(find.text('Formulas').last);
-      await tester.pumpAndSettle();
+      if (!e.tool) {
+        await tester.tap(find.text('Formulas').last);
+        await tester.pumpAndSettle();
+      }
       paths.add(router.routeInformationProvider.value.uri.path);
     }
     expect(paths.toSet().length, 102);

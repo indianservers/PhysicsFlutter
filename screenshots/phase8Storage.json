@@ -1,0 +1,10 @@
+{
+  "actualV2toV3Upgrade": true,
+  "comparisonAndMasteryRoundTrip": true,
+  "documentedDefaultsBackupRetained": true,
+  "oldTrialBodyUnchanged": true,
+  "oldSessionNoteAndParametersRetained": true,
+  "newAstronomySITrialRoundTrip": true,
+  "mainDatabaseOriginalTrials": 142,
+  "mainDatabaseRecoveryMessage": null
+}

@@ -593,6 +593,7 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     ),
   );
   List<Widget> learn() => [
+    relatedLabs(entry.id),
     Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     const SizedBox(height: 12),
     Panel(

@@ -1,0 +1,48 @@
+{
+  "sourceArchive": "https://mist.science/data/tarballs_v1.2/MIST_v1.2_feh_p0.00_afe_p0.0_vvcrit0.0_EEPS.txz",
+  "archiveSha256": "a445d926c1765e951eb1bf6811dbfb14635725efcf63aaaa883d02f36cc58741",
+  "MIST": "1.2",
+  "MESA": 7503,
+  "metallicity": {
+    "FeH": 0,
+    "alphaFe": 0,
+    "Zinit": 0.0142857,
+    "Yinit": 0.2703,
+    "v_vcrit": 0
+  },
+  "tracks": [
+    {
+      "file": "00100M.track.eep",
+      "sha256": "a962600501741588e17ac133d60040ca686c62a2e5f07100f9eeeec3be1bc4f3",
+      "rows": 1710,
+      "columns": [
+        "star_age yr",
+        "log_L solar",
+        "log_Teff K",
+        "phase"
+      ]
+    },
+    {
+      "file": "00300M.track.eep",
+      "sha256": "6e247b220b3d7c5ee02dfc24d44662162622691d638b12ef52e90a624542e5c0",
+      "rows": 1710,
+      "columns": [
+        "star_age yr",
+        "log_L solar",
+        "log_Teff K",
+        "phase"
+      ]
+    },
+    {
+      "file": "01500M.track.eep",
+      "sha256": "5a59b5d0f517aa3fbe972855c5d2942e9a598727d1bfde3ab171d394d826b5c4",
+      "rows": 808,
+      "columns": [
+        "star_age yr",
+        "log_L solar",
+        "log_Teff K",
+        "phase"
+      ]
+    }
+  ]
+}
