@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/design_system/theme.dart';
+import '../../core/design_system/reading_presentation.dart';
 import '../../core/design_system/reference_style.dart';
 import '../../content/catalog.dart';
 import '../../core/persistence/notebook.dart';
@@ -94,7 +95,9 @@ class LabBackButton extends StatelessWidget {
 class LabSectionMenu extends StatelessWidget {
   final int section;
   final ValueChanged<int> select;
-  final VoidCallback? controls, save, camera;
+  final VoidCallback? controls, save, camera, guide;
+  final String? labId;
+  final LocalNotebook? notebook;
   final bool showSections;
   const LabSectionMenu({
     super.key,
@@ -103,14 +106,34 @@ class LabSectionMenu extends StatelessWidget {
     this.controls,
     this.save,
     this.camera,
+    this.guide,
+    this.labId,
+    this.notebook,
     this.showSections = true,
   });
   @override
   Widget build(BuildContext context) => PopupMenuButton<int>(
     tooltip: 'Lab options',
     icon: const Icon(Icons.more_vert),
-    onSelected: (value) {
-      if (value == 7) {
+    onSelected: (value) async {
+      if (value == 8 && notebook != null && labId != null) {
+        await notebook!.toggleFavorite(labId!);
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                notebook!.favorites.contains(labId)
+                    ? 'Lab saved to your collection'
+                    : 'Lab removed from your collection',
+              ),
+            ),
+          );
+        }
+      } else if (value == 9 && labId != null) {
+        context.push('/studio/${labId!.split('-').first}');
+      } else if (value == 10) {
+        guide?.call();
+      } else if (value == 7) {
         camera?.call();
       } else if (value == 5) {
         controls?.call();
@@ -134,6 +157,20 @@ class LabSectionMenu extends StatelessWidget {
           (4, 'Results'),
         ])
           PopupMenuItem(value: pair.$1, child: Text(pair.$2)),
+      if (guide != null)
+        const PopupMenuItem(value: 10, child: Text('Guided investigation')),
+      if (notebook != null &&
+          allEntries.any((e) => e.id == labId && e.interactive))
+        PopupMenuItem(
+          value: 8,
+          child: Text(
+            notebook!.favorites.contains(labId)
+                ? 'Remove from saved labs'
+                : 'Save to your collection',
+          ),
+        ),
+      if (labId != null)
+        const PopupMenuItem(value: 9, child: Text('Explore this studio')),
       if (save != null)
         const PopupMenuItem(value: 6, child: Text('Save session')),
     ],
@@ -561,7 +598,12 @@ class _InstrumentShellState extends State<InstrumentShell> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          for (final item in widget.readings().take(3).indexed) ...[
+          for (final item
+              in widget
+                  .readings()
+                  .take(3)
+                  .map((r) => presentReading(r.label, r.value, r.unit))
+                  .indexed) ...[
             if (item.$1 > 0)
               Container(
                 width: 1,
@@ -572,7 +614,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
             Expanded(
               flex: item.$1 == 0 ? 13 : 10,
               child: Tooltip(
-                message: '${item.$2.label}: ${item.$2.value} ${item.$2.unit}',
+                message: item.$2.tooltip,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -743,27 +785,46 @@ class _InstrumentShellState extends State<InstrumentShell> {
     if (entries.isEmpty) return const SizedBox.shrink();
     return Container(
       margin: const EdgeInsets.fromLTRB(10, 3, 10, 2),
-      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
       decoration: BoxDecoration(
         color: const Color(0xffedf6ff),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         children: [
-          const Icon(
-            Icons.lightbulb_outline,
-            color: Color(0xffefa600),
-            size: 21,
-          ),
-          const SizedBox(width: 8),
           Expanded(
             child: InkWell(
+              borderRadius: BorderRadius.circular(8),
               onTap: () => widget.selectSection(0),
-              child: Text(
-                entries.first.principle,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 10, height: 1.25, color: navy),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minHeight: 48),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 9,
+                    vertical: 5,
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.lightbulb_outline,
+                        color: Color(0xffefa600),
+                        size: 21,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          entries.first.principle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 10,
+                            height: 1.25,
+                            color: navy,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
@@ -773,7 +834,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
               tooltip: widget.recordLabel,
               onPressed: widget.canRecord() ? widget.record : null,
               icon: const Icon(Icons.add_circle_outline, size: 20),
-              constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
+              constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               padding: EdgeInsets.zero,
             ),
         ],
@@ -1098,6 +1159,14 @@ class _InstrumentShellState extends State<InstrumentShell> {
             icon: const Icon(Icons.help_outline),
           ),
           LabSectionMenu(
+            labId: widget.id,
+            notebook: widget.store,
+            guide: widget.guidedStep == null
+                ? null
+                : () {
+                    widget.pause();
+                    setState(() => guideVisible = !guideVisible);
+                  },
             showSections: widget.showLabSections,
             section: widget.section,
             controls: more,
@@ -1305,7 +1374,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
                   final hasPlot =
                       widget.referenceChart != null &&
                       pane == WorkspacePane.scene &&
-                      b.maxHeight > 350 &&
+                      b.maxHeight > 320 &&
                       MediaQuery.textScalerOf(context).scale(1) < 1.5;
                   if (hasPlot) {
                     return SingleChildScrollView(
@@ -1346,26 +1415,30 @@ class _InstrumentShellState extends State<InstrumentShell> {
                                   12,
                                   5,
                                 ),
-                                child: InkWell(
-                                  onTap: () => choose(WorkspacePane.graph),
-                                  child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(
-                                        color: const Color(0xffdce7f1),
+                                child: Semantics(
+                                  label: 'Open interactive graph',
+                                  button: true,
+                                  child: InkWell(
+                                    onTap: () => choose(WorkspacePane.graph),
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: const Color(0xffdce7f1),
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(3),
-                                      child: ListenableBuilder(
-                                        listenable: widget.changes,
-                                        builder: (c, _) => CustomPaint(
-                                          key: const Key(
-                                            'reference-compact-chart',
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3),
+                                        child: ListenableBuilder(
+                                          listenable: widget.changes,
+                                          builder: (c, _) => CustomPaint(
+                                            key: const Key(
+                                              'reference-compact-chart',
+                                            ),
+                                            size: Size.infinite,
+                                            painter: widget.referenceChart!(),
                                           ),
-                                          size: Size.infinite,
-                                          painter: widget.referenceChart!(),
                                         ),
                                       ),
                                     ),

@@ -35,11 +35,15 @@ class LabThumbnail extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Semantics(
     image: true,
-    label: '${entry.title}, static apparatus reference preview',
-    child: ReferencePreview(
-      entry,
-      fallback: RepaintBoundary(child: CustomPaint(painter: _Preview(entry))),
-    ),
+    label: '${entry.title}, static reference illustration',
+    child: entry.studioIndex == 1 && entry.index == 5
+        ? RepaintBoundary(child: CustomPaint(painter: _Preview(entry)))
+        : ReferencePreview(
+            entry,
+            fallback: RepaintBoundary(
+              child: CustomPaint(painter: _Preview(entry)),
+            ),
+          ),
   );
 }
 

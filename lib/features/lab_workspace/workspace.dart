@@ -1,3 +1,5 @@
+import '../workbench/learning_header.dart';
+
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -823,6 +825,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
           title: ReferenceLabHeading(entry.id, entry.title),
           actions: [
             LabSectionMenu(
+              labId: entry.id,
+              notebook: store,
               section: section,
               save: save,
               select: (value) {
@@ -880,6 +884,10 @@ class _WorkspaceState extends ConsumerState<Workspace>
   }
 
   List<Widget> learn() => [
+    LabLearningHeader(
+      entry: entry,
+      onExplore: () => setState(() => section = 1),
+    ),
     relatedLabs(entry.id),
     const SizedBox(height: 12),
     Text(entry.principle, style: const TextStyle(fontSize: 17, height: 1.6)),
@@ -1036,6 +1044,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
                   : e.elapsed,
               guides: e.guides,
               samples: e.samples,
+              sampleUnit: e.siUnit,
               progress: store.reducedMotion ? 0 : e.travelled / e.distance,
             );
 
@@ -1125,6 +1134,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
           : e.elapsed,
       guides: e.guides,
       samples: e.samples,
+      sampleUnit: e.siUnit,
       progress: store.reducedMotion ? 0 : e.travelled / e.distance,
     );
     return Panel(

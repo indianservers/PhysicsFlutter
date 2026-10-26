@@ -1,4 +1,4 @@
-# Physics Atelier — Physics home and studios (1.11.0+14)
+# Physics Atelier — studio and lab exploration (1.12.0+15)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -6,7 +6,9 @@ Repository: https://github.com/indianservers/PhysicsFlutter
 
 Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI` folder remains intact and ignored. Runtime copies in `assets/reference_previews` provide static launcher thumbnails; their provenance remains user-supplied.
 
-Current Home: [implementation, routes and screenshots](docs/HOME_SCREEN_QA.md), [generated artwork and exact prompts](docs/HOME_ARTWORK_PROMPTS.json).
+Current studio/lab audit: [changes and verification](docs/EXPLORATION_QA.md), [all102 entries](docs/EXPLORATION_SCREEN_AUDIT.csv), [running-app screenshots](docs/EXPLORATION_SCREENSHOTS.md).
+
+Home design: [implementation, routes and screenshots](docs/HOME_SCREEN_QA.md), [generated artwork and exact prompts](docs/HOME_ARTWORK_PROMPTS.json).
 
 ## Included
 
@@ -57,7 +59,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable version **1.11.0+14**: [debug APK](deliverables/physics-atelier-home-debug.apk) and [release APK with development signing](deliverables/physics-atelier-home-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
+Installable version **1.12.0+15**: [debug APK](deliverables/physics-atelier-exploration-debug.apk) and [release APK with development signing](deliverables/physics-atelier-exploration-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
 
 Device integration and screenshot capture:
 

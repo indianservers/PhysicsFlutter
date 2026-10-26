@@ -19,6 +19,7 @@ class ApparatusPainter extends ScientificScene {
   final double? progress;
   final bool guides;
   final List<double> samples;
+  final String sampleUnit;
   const ApparatusPainter(
     this.kind, {
     this.a = .012,
@@ -28,10 +29,12 @@ class ApparatusPainter extends ScientificScene {
     this.progress,
     this.guides = true,
     this.samples = const [],
+    this.sampleUnit = 'm',
   });
   @override
-  String get accessibleSummary =>
-      'Scientific model, instrument $kind, primary value $a SI, secondary value $b SI';
+  String get accessibleSummary => kind == 5
+      ? 'Repeated readings in $sampleUnit; ${samples.length} samples'
+      : 'Scientific model, instrument $kind, primary value $a SI, secondary value $b SI';
   @override
   bool shouldRepaint(covariant ApparatusPainter old) =>
       kind != old.kind ||
@@ -41,7 +44,8 @@ class ApparatusPainter extends ScientificScene {
       time != old.time ||
       progress != old.progress ||
       guides != old.guides ||
-      samples != old.samples;
+      samples != old.samples ||
+      sampleUnit != old.sampleUnit;
   void label(
     Canvas c,
     String text,
@@ -412,7 +416,7 @@ class ApparatusPainter extends ScientificScene {
         }
         label(
           c,
-          'Mean ${mean.toStringAsPrecision(5)} SI',
+          'Mean ${mean.toStringAsPrecision(5)} $sampleUnit',
           const Offset(65, 210),
           size: 11,
         );

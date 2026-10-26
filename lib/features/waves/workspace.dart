@@ -1,3 +1,5 @@
+import '../workbench/learning_header.dart';
+
 import 'dart:convert';
 import 'dart:async';
 import 'dart:math' as math;
@@ -683,6 +685,8 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
       title: ReferenceLabHeading(entry.id, entry.title),
       actions: [
         LabSectionMenu(
+          labId: entry.id,
+          notebook: store,
           section: section,
           save: save,
           select: (value) {
@@ -733,6 +737,10 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     ),
   );
   List<Widget> learn() => [
+    LabLearningHeader(
+      entry: entry,
+      onExplore: () => setState(() => section = 1),
+    ),
     relatedLabs(entry.id),
     const SizedBox(height: 12),
     Panel(

@@ -71,7 +71,7 @@ class _ReferencePreviewState extends State<ReferencePreview> {
       AssetImage(
         'assets/reference_previews/${referenceFiles[widget.entry.studioIndex]}',
       ),
-      width: 660,
+      width: 1100,
     ).resolve(createLocalImageConfiguration(context));
     if (next.key == stream?.key) return;
     stream?.removeListener(listener);
@@ -111,16 +111,31 @@ class _ReferenceImage extends CustomPainter {
     final tall = entry.studioIndex >= 10;
     final col = entry.index % 3, row = entry.index ~/ 3;
     // Source atlas regions contain apparatus/diagrams only, not the full phone UI.
-    final x = tall ? .025 + col * .324 : .08 + col * .296;
-    final y = tall ? .037 + row * .51 : .10 + row * .493;
-    final w = tall ? .293 : .274, h = tall ? .135 : .145;
+    var x = tall ? .025 + col * .324 : .08 + col * .296;
+    var y = tall ? .037 + row * .51 : .10 + row * .493;
+    var w = tall ? .293 : .274, h = tall ? .135 : .145;
+    if (entry.studioIndex == 1) {
+      if (entry.index == 0) {
+        h = .155;
+      }
+      if (entry.index == 1 || entry.index == 2) {
+        h = .18;
+      }
+      if (entry.index == 3) {
+        // Isolate the complete instrument; exclude the source's illustrative readings.
+        x = .078;
+        y = .583;
+        w = .168;
+        h = .178;
+      }
+    }
     final src = Rect.fromLTWH(
       x * image.width,
       y * image.height,
       w * image.width,
       h * image.height,
     );
-    final out = applyBoxFit(BoxFit.cover, src.size, s);
+    final out = applyBoxFit(BoxFit.contain, src.size, s);
     final crop = Alignment.center.inscribe(out.source, src);
     final dest = Alignment.center.inscribe(out.destination, Offset.zero & s);
     c.drawImageRect(

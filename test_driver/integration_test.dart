@@ -61,6 +61,9 @@ Future<void> main() => integrationDriver(
       'librariesAudit',
       'targetUiAudit',
       'homeAudit',
+      'explorationAudit',
+      'explorationVisualRefinement',
+      'explorationStatisticsUnits',
     ]) {
       if (data?[key] != null) {
         await File(

@@ -6,12 +6,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart' show notebookProvider;
 import '../../content/catalog.dart';
+import '../../core/design_system/theme.dart' show muted;
 import '../../core/persistence/notebook.dart';
 import 'studio_registry.dart';
 
-const _ink = Color(0xff071746),
-    _quiet = Color(0xff7e8baa),
-    _blue = Color(0xff0064ff);
+const _ink = Color(0xff071746), _quiet = muted, _blue = Color(0xff0064ff);
 
 class CompactHome extends ConsumerStatefulWidget {
   const CompactHome({super.key});
@@ -826,9 +825,7 @@ class HomeNavigation extends StatelessWidget {
                             HomeSymbol.settings,
                           ][i],
                           size: 20,
-                          color: selected == i
-                              ? _blue
-                              : const Color(0xff657498),
+                          color: selected == i ? _blue : muted,
                         ),
                         const SizedBox(height: 3),
                         Text(
@@ -840,9 +837,7 @@ class HomeNavigation extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 10,
-                            color: selected == i
-                                ? _blue
-                                : const Color(0xff657498),
+                            color: selected == i ? _blue : muted,
                             fontWeight: selected == i
                                 ? FontWeight.w700
                                 : FontWeight.w500,

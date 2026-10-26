@@ -1,3 +1,5 @@
+import '../workbench/learning_header.dart';
+
 import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
@@ -529,6 +531,8 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
       title: ReferenceLabHeading(entry.id, entry.title),
       actions: [
         LabSectionMenu(
+          labId: entry.id,
+          notebook: store,
           section: section,
           save: save,
           select: (value) {
@@ -573,6 +577,10 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
           ),
   );
   List<Widget> learn() => [
+    LabLearningHeader(
+      entry: entry,
+      onExplore: () => setState(() => section = 1),
+    ),
     panel([
       Paragraph(
         'Objectives',

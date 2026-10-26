@@ -1,0 +1,86 @@
+{
+  "version": "1.12.0+15",
+  "testsPassed": 333,
+  "analysis": "No issues found",
+  "nativeAudit": {
+    "catalogScreens": 102,
+    "studioScreens": 17,
+    "benches": 5,
+    "otherScreens": 4,
+    "illustratedGuides": 96,
+    "guideReturnStatePreserved": 96,
+    "familyFormulaResultScreens": 32,
+    "readableCompactGraphScreens": 90,
+    "uncaughtErrors": 0
+  },
+  "focusedReferenceRefresh": {
+    "measurementGuideImagesRefreshed": 6,
+    "studioImagesRefreshed": 1,
+    "astronomyGuideLabelsRefreshed": 6,
+    "referenceLabelsExplicit": true
+  },
+  "statisticalUnits": {
+    "livePlotAndExampleUnitsExplicit": true,
+    "uncertaintyGuideReturnedToExperiment": true
+  },
+  "preservation": {
+    "originalTrialBodiesByteForBytePreserved": 428,
+    "currentTrials": 428,
+    "originalSessionStatesExactlyPreserved": 108,
+    "originalChallengeBodiesExactlyPreserved": 123,
+    "oldSessionNotesAndParametersPreserved": 108,
+    "originalPreferencesPreserved": 5,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+  },
+  "builds": {
+    "device": "emulator-5556",
+    "version": "1.12.0+15",
+    "target": "lib/main.dart",
+    "artifacts": [
+      {
+        "mode": "release-development-signed",
+        "path": "deliverables/physics-atelier-exploration-release-dev-signed.apk",
+        "bytes": 106957589,
+        "sha256": "084b9bd5bfe1e3c021fe35057c10e35389ec9500a9d897bd9305e49312eda75d",
+        "installedBytesMatch": true,
+        "offlineProcessAlive": true,
+        "fatalExceptionObserved": false,
+        "launchWaitTimeoutRetried": false,
+        "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='15' versionName='1.12.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "permissions": [
+          "package: com.indianservers.physics_atelier",
+          "uses-permission: name='android.permission.RECORD_AUDIO'",
+          "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+        ],
+        "signing": "Existing local development/debug certificate; not production signing"
+      },
+      {
+        "mode": "debug",
+        "path": "deliverables/physics-atelier-exploration-debug.apk",
+        "bytes": 247678016,
+        "sha256": "fe38d49ec399d0468d71b8ca584c7313dc690922f4990df375cc2e869165e2f1",
+        "installedBytesMatch": true,
+        "offlineProcessAlive": true,
+        "fatalExceptionObserved": false,
+        "launchWaitTimeoutRetried": false,
+        "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='15' versionName='1.12.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "permissions": [
+          "package: com.indianservers.physics_atelier",
+          "uses-permission: name='android.permission.INTERNET'",
+          "uses-permission: name='android.permission.RECORD_AUDIO'",
+          "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+        ],
+        "signing": "Existing local development/debug certificate; not production signing"
+      }
+    ],
+    "qualification": "Ordinary main-entrypoint APKs installed with -r, bytes matched installed base APK and processes launched while Wi-Fi/mobile data disabled. No destructive reset, upload or publication. Not exhaustive offline/UI/device certification."
+  },
+  "visualQualification": "Live apparatus remains procedural. Reference images are labeled separately; no pixel-identical photography or physical-device/iOS certification is claimed."
+}

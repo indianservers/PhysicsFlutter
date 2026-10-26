@@ -1,3 +1,5 @@
+import '../workbench/learning_header.dart';
+
 import 'dart:convert';
 import 'dart:math' as math;
 
@@ -520,6 +522,8 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
       title: ReferenceLabHeading(entry.id, entry.title),
       actions: [
         LabSectionMenu(
+          labId: entry.id,
+          notebook: store,
           section: section,
           save: save,
           select: (value) {
@@ -573,6 +577,10 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
     ),
   );
   List<Widget> learn() => [
+    LabLearningHeader(
+      entry: entry,
+      onExplore: () => setState(() => section = 1),
+    ),
     relatedLabs(entry.id),
     const SizedBox(height: 14),
     Panel(

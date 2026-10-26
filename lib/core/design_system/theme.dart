@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const navy = Color(0xff08265b),
-    cobalt = Color(0xff006eff),
+    cobalt = Color(0xff0064ff),
     teal = Color(0xff00777d),
     muted = Color(0xff65758b);
 ThemeData physicsTheme() => ThemeData(
@@ -13,7 +13,7 @@ ThemeData physicsTheme() => ThemeData(
     onSurface: navy,
   ),
   scaffoldBackgroundColor: Colors.white,
-  fontFamily: 'sans-serif',
+  fontFamily: 'HomeManrope',
   textTheme: const TextTheme(
     headlineLarge: TextStyle(
       fontSize: 28,
