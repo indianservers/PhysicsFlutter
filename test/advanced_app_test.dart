@@ -1,3 +1,4 @@
+import 'ui_navigation.dart';
 import 'waves_app_test.dart' as controls;
 
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await tester.tap(find.text(tab).last);
+          await chooseSection(tester, tab);
           await tester.pumpAndSettle();
           final scroll = find.byType(Scrollable).first;
           for (int i = 0; i < 45; i++) {
@@ -49,7 +50,7 @@ void main() {
       tester.view.physicalSize = const Size(1280, 720);
       router.go('/lab/s07-e05');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       router.go('/');
       await tester.pumpAndSettle();
@@ -67,7 +68,7 @@ void main() {
       );
       router.go('/lab/s07-e00');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       Future<void> show(Finder target) => controls.show(tester, target);
 
@@ -95,7 +96,7 @@ void main() {
       await tester.enterText(find.byType(TextField).last, '3');
       await tester.tap(find.text('Apply'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Results').last);
+      await chooseSection(tester, 'Results');
       await tester.pumpAndSettle();
       await show(find.text('Reopen configuration'));
       await tester.tap(find.text('Reopen configuration').first);

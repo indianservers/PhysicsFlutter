@@ -1,3 +1,5 @@
+import 'ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -79,7 +81,7 @@ Future<void> show(WidgetTester tester, Finder target) async {
     await tester.pumpAndSettle();
   }
   if (absent() && find.byType(BottomSheet).evaluate().isEmpty) {
-    final more = find.byTooltip('More controls and guided investigation');
+    final more = find.byTooltip('Lab options');
     final mode = find.byTooltip('Practice mode and topic');
     final help = find.byTooltip('Tool notes and help');
     final opener = more.evaluate().isNotEmpty
@@ -90,6 +92,11 @@ Future<void> show(WidgetTester tester, Finder target) async {
     if (opener.evaluate().isNotEmpty) {
       await tester.tap(opener.first);
       await tester.pumpAndSettle();
+      if (opener == more &&
+          find.text('Controls & investigation').evaluate().isNotEmpty) {
+        await tester.tap(find.text('Controls & investigation'));
+        await tester.pumpAndSettle();
+      }
       await scan();
     }
   }
@@ -145,7 +152,7 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await tester.tap(find.text(tab).last);
+          await chooseSection(tester, tab);
           await tester.pumpAndSettle();
           final scroll = find.byType(Scrollable).first;
           for (int i = 0; i < 50; i++) {
@@ -159,7 +166,7 @@ void main() {
       tester.view.physicalSize = const Size(1280, 720);
       router.go('/lab/s09-e02');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       router.go('/');
       await tester.pumpAndSettle();
@@ -177,7 +184,7 @@ void main() {
     );
     router.go('/lab/s08-e00');
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Experiment').last);
+    await chooseSection(tester, 'Experiment');
     await tester.pumpAndSettle();
     await show(tester, find.byKey(const Key('edit-frequency')));
     await tester.tap(find.byKey(const Key('edit-frequency')));
@@ -205,7 +212,7 @@ void main() {
     await tester.tap(find.text('Apply'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Correct · reference'), findsOneWidget);
-    await tester.tap(find.text('Results').last);
+    await chooseSection(tester, 'Results');
     await tester.pumpAndSettle();
     await show(tester, find.text('Reopen configuration'));
     await tester.tap(find.text('Reopen configuration').first);
@@ -231,7 +238,7 @@ void main() {
       );
       router.go('/lab/s08-e04');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await show(tester, find.text('Device microphone input'));
       await tester.tap(find.text('Device microphone input'));

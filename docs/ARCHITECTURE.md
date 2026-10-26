@@ -75,3 +75,14 @@ Views use one bounded parameter list rather than a whole experiment page. Large 
 `workbench/launchers.dart` supplies Home and studio launchers; `lab_thumbnail.dart` renders actual entry-specific source models at documented defaults into a bounded 24-picture cache. These previews create no running simulations or notebook observations. Overview maps/catalog/path/question layouts retain their original source state and eligibility logic; Compare Phenomena adapts its single shared-clock model to the pane shell.
 
 Phase 9 additionally protects incompatible sessions with backups, validates restored overview fields, hardens free-text CSV cells, gates Measurement completion on current evidence, pauses Measurement under covered routes, clamps the auto-stop clock to its defined interval, adds graph semantics and updates branding/contrast. These changes do not substitute invented results for observations.
+
+
+## Instrument-first workspace revision (1.8.1+10)
+
+The shared shell and secondary readers use LabSectionMenu for existing Controls, Experiment, Learn, Formulas, Visualize and Results. The fixed SafeArea action strip keeps Reset/Record reachable; there is no permanent five-section NavigationBar. Controls retain their original callbacks and readers retain their source model instance.
+
+ApparatusTransform passively applies camera matrices. The shell installs the InteractiveViewer gesture overlay only in explicit camera-pan mode: a disabled viewer still competes for apparatus drags on this SDK. All eight compact scene adapters use passive transforms, preserving their original physical gesture mapping.
+
+MicrometerGeometry derives opposed faces, sleeve marks and moving thimble from the existing SI model. MicrometerPainter and MicrometerLensPainter paint the same geometry; the floating lens and precision dialog crop that scene. The viewport maps initial thimble hits and vertical travel to the existing pitch/quantization. The custom dock exposes opening, fine steps and signed zero without creating another scientific state.
+
+Native preservation fixtures are optional app-private sandbox JSON loaded only by integration tests. They are pushed through ADB stdin, never bundled or passed as compiler defines. Ordinary APKs target lib/main.dart. See MICROMETER_WORKSPACE_QA.md for current evidence and limitations.

@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
@@ -21,7 +23,7 @@ void main() {
       for (final id in ['s10-e02', 's10-e04', 's11-e01']) {
         router.go('/lab/$id');
         await t.pumpAndSettle();
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         await show(t, find.text('Restore documented defaults'));
         await t.tap(find.text('Restore documented defaults'));
@@ -142,7 +144,7 @@ void main() {
           'contourSegments': run.contours.length,
           'trailPoints': run.trail.length,
         };
-        await t.tap(find.text('Learn').last);
+        await chooseSection(t, 'Learn');
         await t.pumpAndSettle();
       }
       binding.reportData!['profileFile'] = 'phase5-profile.json';

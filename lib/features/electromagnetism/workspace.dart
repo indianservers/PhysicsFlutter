@@ -479,7 +479,7 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
-    if (ready && (section == 1 || section == 4)) {
+    if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
         exportRecorded: (trials) => exportTrials(context, trials),
@@ -566,38 +566,16 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
 
   Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
+      leading: LabBackButton(entry.id.split('-').first),
       title: Text(entry.title),
       actions: [
-        IconButton(
-          tooltip: 'Save session',
-          onPressed: save,
-          icon: const Icon(Icons.bookmark_add_outlined),
-        ),
-      ],
-    ),
-    bottomNavigationBar: NavigationBar(
-      selectedIndex: section,
-      onDestinationSelected: (s) {
-        pause();
-        setState(() => section = s);
-      },
-      destinations: const [
-        NavigationDestination(
-          icon: Icon(Icons.menu_book_outlined),
-          label: 'Learn',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.science_outlined),
-          label: 'Experiment',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.insights_outlined),
-          label: 'Visualize',
-        ),
-        NavigationDestination(icon: Icon(Icons.functions), label: 'Formulas'),
-        NavigationDestination(
-          icon: Icon(Icons.assignment_outlined),
-          label: 'Results',
+        LabSectionMenu(
+          section: section,
+          save: save,
+          select: (value) {
+            pause();
+            setState(() => section = value);
+          },
         ),
       ],
     ),
@@ -607,7 +585,6 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
           : PageBody(
               scrollId: '${entry.id}:$section',
               children: [
-                Eyebrow('${studios[entry.studioIndex].title} · Phase 5 of 9'),
                 const SizedBox(height: 12),
                 ...switch (section) {
                   0 => learn(),
@@ -622,7 +599,6 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
   );
   List<Widget> learn() => [
     relatedLabs(entry.id),
-    Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     Panel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -658,7 +634,7 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
       return LayoutBuilder(
         builder: (context, box) => Semantics(
           label: painter.accessibleSummary,
-          child: InteractiveViewer(
+          child: ApparatusTransform(
             transformationController: view,
             minScale: 1,
             maxScale: 4,

@@ -1,3 +1,5 @@
+import 'ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -100,10 +102,10 @@ void main() {
     expect(find.text('Vernier Caliper'), findsOneWidget);
     await tester.tap(find.text('Vernier Caliper'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Learn').last);
+    await chooseSection(tester, 'Learn');
     await tester.pumpAndSettle();
     expect(find.text('Learning objectives'), findsOneWidget);
-    await tester.tap(find.text('Experiment').last);
+    await chooseSection(tester, 'Experiment');
     await tester.pumpAndSettle();
     expect(find.byKey(const Key('workspace-camera')), findsOneWidget);
     final List<String> paths = [];
@@ -117,7 +119,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text(e.title), findsWidgets);
       if (!e.tool) {
-        await tester.tap(find.text('Formulas').last);
+        await chooseSection(tester, 'Formulas');
         await tester.pumpAndSettle();
       }
       paths.add(router.routeInformationProvider.value.uri.path);
@@ -155,7 +157,7 @@ void main() {
           'Results',
           'Learn',
         ]) {
-          await tester.tap(find.text(section).last);
+          await chooseSection(tester, section);
           await tester.pumpAndSettle();
         }
       }

@@ -26,6 +26,7 @@ for _ in range(6000):
   Path('screenshots/phase9-native-export.json').write_text(json.dumps({'nativeChooserObserved':observed,'qualification':'Explicit CSV export opened OS chooser; returned to the app without choosing any recipient.'},indent=2))
   subprocess.run(base+['shell','am','start','-W','-n',component],check=True);shared=True
  if 'All tests passed.' in text:break
+ if 'Oops; flutter has exited unexpectedly' in text:break
  if 'Some tests failed.' in text or 'Failure Details:' in text or 'Gradle task assembleDebug failed' in text or 'Gradle task assembleProfile failed' in text:break
  time.sleep(.2)
 else:raise TimeoutError('Native validation did not finish')

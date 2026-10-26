@@ -1,0 +1,32 @@
+{
+  "version": "1.8.1+10",
+  "unitWidgetTestsPassed": 295,
+  "nativeDestinationsCaptured": 102,
+  "physicalLabs": 96,
+  "studios": 17,
+  "dataPreservation": {
+    "originalTrialBodiesByteForBytePreserved": 384,
+    "currentTrials": 386,
+    "originalSessionStatesExactlyPreserved": 106,
+    "originalChallengeBodiesExactlyPreserved": 123,
+    "oldSessionNotesAndParametersPreserved": 106,
+    "originalPreferencesPreserved": 5,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+  },
+  "artifacts": {
+    "micrometer-workspaces-screenshots.zip": "80bcaef564fc892a8b5f8c91dd57ed4051076e1701c67e27cf1a7c8bbafb4878",
+    "physics-atelier-micrometer-debug.apk": "d65aab2498b6d271798ebad8366e4d468cc16ac3951690f50732535ea35d0f3e",
+    "physics-atelier-micrometer-release-dev-signed.apk": "cad0721fd31279b4c05c8708991ac587b57a8baa64dab91cf5fea9d96fdd7e5a"
+  },
+  "limitations": [
+    "Android emulator validation; physical Android and iOS pending",
+    "Development signing only",
+    "No new performance certification",
+    "Written reference attachment contained no screenshot; prior running-app capture used for before image"
+  ]
+}

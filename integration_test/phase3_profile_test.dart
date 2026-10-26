@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
@@ -19,7 +21,7 @@ void main() {
       for (final id in ['s06-e03', 's07-e04', 's07-e05']) {
         router.go('/lab/$id');
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         if (id == 's06-e03') {
           await show(tester, find.text('Circular reference'));
@@ -83,13 +85,13 @@ void main() {
               .where((f) => f.totalSpan.inMicroseconds > 16670)
               .length,
         };
-        await tester.tap(find.text('Learn').last);
+        await chooseSection(tester, 'Learn');
         await tester.pumpAndSettle();
       }
       // Final native check: support is outside the full allowed large-angle arc.
       router.go('/lab/s07-e01');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await top(tester);
       binding.reportData!['images'] = <String, String>{};

@@ -1,3 +1,5 @@
+import 'ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -150,11 +152,11 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await t.tap(find.text(section).last);
+          await chooseSection(t, section);
           await t.pumpAndSettle();
           await scrollEnds(t);
         }
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         for (int m = 0; m < astroModes[k].length; m++) {
           astroState(t).chooseMode(m);
@@ -205,7 +207,7 @@ void main() {
     (t) async {
       final store = await notebook();
       await astroBoot(t, store, 's16-e05');
-      await t.tap(find.text('Experiment').last);
+      await chooseSection(t, 'Experiment');
       await t.pumpAndSettle();
       await edit(t, 'noise', '.001');
       await edit(t, 'phase', '-.02');
@@ -239,11 +241,13 @@ void main() {
     (t) async {
       final store = await notebook();
       await astroBoot(t, store, 's16-e05');
-      await t.tap(find.text('Visualize').last);
+      await chooseSection(t, 'Visualize');
       await t.pumpAndSettle();
       final state = astroState(t), data = state.run.profile;
-      await show(t, find.byType(Slider));
-      t.widget<Slider>(find.byType(Slider)).onChanged!(80);
+      await show(t, find.byKey(const Key('astro-graph-cursor')));
+      t.widget<Slider>(find.byKey(const Key('astro-graph-cursor'))).onChanged!(
+        80,
+      );
       await t.pumpAndSettle();
       expect(
         state.parameters['phase'],
@@ -252,7 +256,7 @@ void main() {
       expect(state.run.state['flux'], closeTo(data[80]['flux']!, 1e-12));
       router.go('/lab/s16-e03');
       await t.pumpAndSettle();
-      await t.tap(find.text('Visualize').last);
+      await chooseSection(t, 'Visualize');
       await t.pumpAndSettle();
       final field = find.byType(DropdownButtonFormField<String>);
       await show(t, field);

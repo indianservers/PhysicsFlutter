@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/design_system/theme.dart';
 import '../../core/persistence/notebook.dart';
@@ -47,8 +48,94 @@ const paneNames = [
   'Full-screen Graph',
 ];
 
+/// Lab content stays contextual; it does not consume a permanent navigation bar.
+/// Applies an existing apparatus transform without claiming its drag gestures.
+/// The shared explicit camera mode supplies all pan/pinch recognition.
+class ApparatusTransform extends StatelessWidget {
+  final TransformationController transformationController;
+  final Widget child;
+  final double minScale, maxScale;
+  const ApparatusTransform({
+    super.key,
+    required this.transformationController,
+    required this.child,
+    this.minScale = 1,
+    this.maxScale = 5,
+  });
+  @override
+  Widget build(BuildContext context) => ValueListenableBuilder<Matrix4>(
+    valueListenable: transformationController,
+    builder: (context, matrix, _) => Transform(transform: matrix, child: child),
+  );
+}
+
+class LabBackButton extends StatelessWidget {
+  final String studioId;
+  final VoidCallback? onBack;
+  const LabBackButton(this.studioId, {super.key, this.onBack});
+  @override
+  Widget build(BuildContext context) => BackButton(
+    onPressed:
+        onBack ??
+        () {
+          if (context.canPop()) {
+            context.pop();
+          } else {
+            context.go('/studio/$studioId');
+          }
+        },
+  );
+}
+
+class LabSectionMenu extends StatelessWidget {
+  final int section;
+  final ValueChanged<int> select;
+  final VoidCallback? controls, save;
+  final bool showSections;
+  const LabSectionMenu({
+    super.key,
+    required this.section,
+    required this.select,
+    this.controls,
+    this.save,
+    this.showSections = true,
+  });
+  @override
+  Widget build(BuildContext context) => PopupMenuButton<int>(
+    tooltip: 'Lab options',
+    icon: const Icon(Icons.more_vert),
+    onSelected: (value) {
+      if (value == 5) {
+        controls?.call();
+      } else if (value == 6) {
+        save?.call();
+      } else {
+        select(value);
+      }
+    },
+    itemBuilder: (_) => [
+      if (controls != null)
+        const PopupMenuItem(value: 5, child: Text('Controls & investigation')),
+      if (showSections)
+        for (final pair in const [
+          (1, 'Experiment'),
+          (0, 'Learn'),
+          (3, 'Formulas'),
+          (2, 'Visualize'),
+          (4, 'Results'),
+        ])
+          PopupMenuItem(value: pair.$1, child: Text(pair.$2)),
+      if (save != null)
+        const PopupMenuItem(value: 6, child: Text('Save session')),
+    ],
+  );
+}
+
 class InstrumentShell extends StatefulWidget {
   final String id, title;
+  final Widget Function()? parameterDock;
+  final double? dockExtent;
+  final bool fitScene;
   final bool Function(Trial)? reopenTrial;
   final Future<void> Function(List<Trial>)? exportRecorded;
   final bool showLabSections;
@@ -97,6 +184,9 @@ class InstrumentShell extends StatefulWidget {
     required this.record,
     required this.selectSection,
     required this.section,
+    this.parameterDock,
+    this.dockExtent,
+    this.fitScene = true,
     this.reopenTrial,
     this.exportRecorded,
     this.step,
@@ -154,11 +244,18 @@ class _InstrumentShellState extends State<InstrumentShell> {
     } catch (_) {
       /* Invalid view preferences never change scientific state. */
     }
+    if (widget.section == 2) pane = WorkspacePane.graph;
   }
 
   @override
   void didUpdateWidget(covariant InstrumentShell oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.section != widget.section && widget.section == 2) {
+      pane = WorkspacePane.graph;
+    }
+    if (oldWidget.section == 2 && widget.section == 1) {
+      pane = WorkspacePane.scene;
+    }
     if (sheet != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
@@ -350,6 +447,22 @@ class _InstrumentShellState extends State<InstrumentShell> {
     if (index > 0) {
       available.insert(0, available.removeAt(index));
     }
+    if (widget.parameterDock != null) {
+      return ColoredBox(
+        color: Colors.white,
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          children: [
+            if (guideVisible)
+              SizedBox(
+                height: 100,
+                child: SingleChildScrollView(child: guideStrip()),
+              ),
+            widget.parameterDock!(),
+          ],
+        ),
+      );
+    }
     return DecoratedBox(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -418,43 +531,57 @@ class _InstrumentShellState extends State<InstrumentShell> {
     ),
   );
 
+  Widget cameraLayer(
+    TransformationController controller,
+    Widget child, {
+    Key? key,
+  }) => Stack(
+    key: key,
+    fit: StackFit.expand,
+    children: [
+      ValueListenableBuilder<Matrix4>(
+        valueListenable: controller,
+        builder: (context, matrix, _) => Transform(
+          transform: matrix,
+          child: IgnorePointer(ignoring: pan, child: child),
+        ),
+      ),
+      if (pan)
+        InteractiveViewer(
+          transformationController: controller,
+          minScale: .5,
+          maxScale: 5,
+          child: const ColoredBox(
+            color: Colors.transparent,
+            child: SizedBox.expand(),
+          ),
+        ),
+    ],
+  );
+
   Widget viewport() => ClipRect(
     child: ColoredBox(
       color: const Color(0xfff7faff),
-      child: InteractiveViewer(
+      child: cameraLayer(
+        camera,
+        widget.fitScene
+            ? Center(
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: SizedBox(width: 360, child: widget.scene()),
+                ),
+              )
+            : SizedBox.expand(child: widget.scene()),
         key: const Key('workspace-camera'),
-        transformationController: camera,
-        panEnabled: pan,
-        scaleEnabled: pan,
-        minScale: .5,
-        maxScale: 5,
-        child: IgnorePointer(
-          ignoring: pan,
-          child: Center(
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: SizedBox(width: 360, child: widget.scene()),
-            ),
-          ),
-        ),
       ),
     ),
   );
 
-  Widget graph() => InteractiveViewer(
-    transformationController: graphCamera,
-    panEnabled: pan,
-    scaleEnabled: pan,
-    minScale: .5,
-    maxScale: 5,
-    child: IgnorePointer(
-      ignoring: pan,
-      child: KeyedSubtree(
-        key: ValueKey(graphViewRevision),
-        child: graphContent(),
-      ),
-    ),
+  Widget graph() => cameraLayer(
+    graphCamera,
+    KeyedSubtree(key: ValueKey(graphViewRevision), child: graphContent()),
   );
+
   Widget graphContent() => ColoredBox(
     color: Colors.white,
     child: SingleChildScrollView(
@@ -788,6 +915,10 @@ class _InstrumentShellState extends State<InstrumentShell> {
       key: scaffold,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: LabBackButton(
+          widget.id.split('-').first,
+          onBack: full ? () => choose(WorkspacePane.scene) : null,
+        ),
         title: Text(
           widget.title,
           maxLines: 1,
@@ -800,50 +931,21 @@ class _InstrumentShellState extends State<InstrumentShell> {
             onPressed: () => widget.selectSection(0),
             icon: const Icon(Icons.help_outline),
           ),
-          IconButton(
-            tooltip: 'More controls and guided investigation',
-            onPressed: more,
-            icon: const Icon(Icons.tune),
-          ),
-          IconButton(
-            tooltip: 'Save session',
-            onPressed: widget.save,
-            icon: const Icon(Icons.bookmark_add_outlined),
+          LabSectionMenu(
+            showSections: widget.showLabSections,
+            section: widget.section,
+            controls: more,
+            save: widget.save,
+            select: (value) {
+              sheet?.close();
+              widget.selectSection(value);
+            },
           ),
         ],
       ),
-      bottomNavigationBar: full || !widget.showLabSections
+      bottomNavigationBar: widget.section == 4
           ? null
-          : NavigationBar(
-              height: 64,
-              selectedIndex: widget.section,
-              onDestinationSelected: (value) {
-                sheet?.close();
-                widget.selectSection(value);
-              },
-              destinations: const [
-                NavigationDestination(
-                  icon: Icon(Icons.menu_book_outlined),
-                  label: 'Learn',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.science_outlined),
-                  label: 'Experiment',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.insights_outlined),
-                  label: 'Visualize',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.functions),
-                  label: 'Formulas',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.assignment_outlined),
-                  label: 'Results',
-                ),
-              ],
-            ),
+          : SafeArea(top: false, child: actions()),
       body: SafeArea(
         child: widget.section == 4
             ? notebook()
@@ -927,10 +1029,10 @@ class _InstrumentShellState extends State<InstrumentShell> {
                     children: [
                       cameraBar,
                       SizedBox(
-                        height: math.min(
-                          70,
-                          38 * MediaQuery.textScalerOf(context).scale(1),
-                        ),
+                        height:
+                            ((widget.readings().length >= 3 ? 60.0 : 48.0) *
+                                    MediaQuery.textScalerOf(context).scale(1))
+                                .clamp(48, 104),
                         child: SingleChildScrollView(child: readingStrip()),
                       ),
                       if (RegExp(
@@ -950,12 +1052,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
                     ],
                   );
                   if (full) {
-                    return Column(
-                      children: [
-                        Expanded(child: content),
-                        actions(),
-                      ],
-                    );
+                    return content;
                   }
                   if (wide) {
                     return Row(
@@ -963,12 +1060,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
                         Expanded(child: content),
                         SizedBox(
                           width: math.min(310, b.maxWidth * .4),
-                          child: Column(
-                            children: [
-                              Expanded(child: dock()),
-                              actions(),
-                            ],
-                          ),
+                          child: Column(children: [Expanded(child: dock())]),
                         ),
                       ],
                     );
@@ -977,10 +1069,18 @@ class _InstrumentShellState extends State<InstrumentShell> {
                     children: [
                       Expanded(child: content),
                       SizedBox(
-                        height: math.min(190, b.maxHeight * .36),
+                        height: math.min(
+                          b.maxHeight * .44,
+                          (widget.dockExtent ??
+                                  (widget.controls().take(3).length * 56 +
+                                      (widget.selection == null ? 0 : 56))) *
+                              math.max(
+                                1,
+                                MediaQuery.textScalerOf(context).scale(1),
+                              ),
+                        ),
                         child: dock(),
                       ),
-                      actions(),
                     ],
                   );
                 },

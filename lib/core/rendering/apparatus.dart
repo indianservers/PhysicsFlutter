@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../physics/measurement.dart';
 import 'materials.dart';
+import 'micrometer.dart';
 import 'studio_vignette.dart';
 
 /// Model coordinates are SI. Canvas scale and InteractiveViewer affect only the view.
@@ -215,78 +216,10 @@ class ApparatusPainter extends ScientificScene {
         );
       }
     } else if (kind == 2) {
-      final r = ScaleReading.micrometer(a + zero);
-      final path = Path()
-        ..moveTo(130, 70)
-        ..cubicTo(15, 5, 0, 222, 117, 207)
-        ..lineTo(151, 181)
-        ..lineTo(130, 160)
-        ..cubicTo(48, 199, 51, 77, 117, 98)
-        ..close();
-      c.drawPath(
-        path,
-        Paint()
-          ..shader = const LinearGradient(
-            colors: [Color(0xff0b2033), Color(0xff365c72), Color(0xff112d40)],
-          ).createShader(const Rect.fromLTWH(0, 20, 150, 190)),
-      );
-      metal(c, const Rect.fromLTWH(69, 85, 30, 15));
-      final thimble = 160 + a * 4000;
-      final spindle = 99 + a * 4000;
-      metal(c, Rect.fromLTWH(spindle, 85, thimble - spindle + 1, 15));
-      c.drawRect(
-        Rect.fromLTWH(99, 66, (b * 4000).clamp(1, 40), 53),
-        Paint()..color = const Color(0xffb2784f),
-      );
-      metal(c, Rect.fromLTWH(151, 66, thimble - 151, 53));
-      line(c, const Offset(158, 92), Offset(thimble, 92));
-      for (int i = 0; i <= 50; i++) {
-        double x = 160 - zero * 4000 + i * 2;
-        if (x > thimble) {
-          break;
-        }
-        line(c, Offset(x, 92), Offset(x, i.isEven ? 77 : 105));
-        if (i % 10 == 0) {
-          label(c, '${i ~/ 2}', Offset(x - 2, 68), size: 8);
-        }
-      }
-      metal(c, Rect.fromLTWH(thimble, 60, 60, 67));
-      metal(c, Rect.fromLTWH(thimble + 60, 71, 30, 46));
-      for (int i = -5; i <= 5; i++) {
-        final d = (r.division + i + 50) % 50;
-        double y = 92 + i * 5;
-        line(
-          c,
-          Offset(thimble + 1, y),
-          Offset(thimble + (d % 5 == 0 ? 19 : 11), y),
-        );
-        if (d % 5 == 0) {
-          label(c, '$d', Offset(thimble + 23, y - 5), size: 9);
-        }
-      }
-      for (int i = 0; i < 12; i++) {
-        line(
-          c,
-          Offset(thimble + 62 + i * 2.2, 72),
-          Offset(thimble + 62 + i * 2.2, 116),
-          color: const Color(0xff64747f),
-        );
-      }
-      label(c, '0–25 mm', const Offset(77, 155), color: Colors.white);
-      label(
-        c,
-        'Pitch 0.5 mm · 50 divisions · LC 0.01 mm',
-        const Offset(31, 219),
-        size: 11,
-      );
-      if (guides) {
-        label(
-          c,
-          'Rotate / drag ↔',
-          const Offset(219, 32),
-          color: const Color(0xff235ce8),
-        );
-      }
+      MicrometerPainter(
+        MicrometerGeometry(a, b, zero),
+        labels: guides,
+      ).paint(c, const Size(360, 240));
     } else if (kind == 3) {
       c.drawOval(
         const Rect.fromLTWH(36, 160, 286, 57),
@@ -520,6 +453,12 @@ class MagnifiedScalePainter extends CustomPainter {
       apparatus.shouldRepaint(old.apparatus);
   @override
   void paint(Canvas c, Size size) {
+    if (apparatus.kind == 2) {
+      MicrometerLensPainter(
+        MicrometerGeometry(apparatus.a, apparatus.b, apparatus.zero),
+      ).paint(c, size);
+      return;
+    }
     final focus = switch (apparatus.kind) {
       0 => Offset(22 + apparatus.b * 3160, 133),
       1 => Offset(50 + apparatus.a * 5000 + 20, 115),

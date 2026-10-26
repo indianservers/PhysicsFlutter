@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -20,7 +22,7 @@ void main() {
     Future<void> open(String id) async {
       router.go('/lab/$id');
       await t.pumpAndSettle();
-      await t.tap(find.text('Experiment').last);
+      await chooseSection(t, 'Experiment');
       await t.pumpAndSettle();
       await show(t, find.text('Restore defaults'));
       await t.tap(find.text('Restore defaults'));
@@ -73,7 +75,7 @@ void main() {
     await edit(t, 'amplitude', '1');
     await seek(.125);
     expect(etScene(t).run.state['outputVoltage'], -4.8);
-    await t.tap(find.text('Visualize').last);
+    await chooseSection(t, 'Visualize');
     await t.pumpAndSettle();
     await shot('inverting-clipped-traces');
     await open('s12-e04');
@@ -84,7 +86,7 @@ void main() {
     await t.pumpAndSettle();
     await edit(t, 'inputA', '1');
     expect(etScene(t).run.state['logicOutput'], 1);
-    await t.tap(find.text('Visualize').last);
+    await chooseSection(t, 'Visualize');
     await t.pumpAndSettle();
     await show(t, find.byType(SwitchListTile));
     t.widget<SwitchListTile>(find.byType(SwitchListTile)).onChanged!(true);
@@ -135,7 +137,7 @@ void main() {
     await t.pumpAndSettle();
     router.go('/lab/s13-e03');
     await t.pumpAndSettle();
-    await t.tap(find.text('Experiment').last);
+    await chooseSection(t, 'Experiment');
     await t.pumpAndSettle();
     expect(workspace().processHistory.length, greaterThan(0));
     await shot('adiabatic-ledger');
@@ -157,7 +159,7 @@ void main() {
       await shot('carnot-stage-${phase.toInt()}');
     }
     expect(etScene(t).run.state['efficiency'], .5);
-    await t.tap(find.text('Visualize').last);
+    await chooseSection(t, 'Visualize');
     await t.pumpAndSettle();
     await shot('carnot-closed-pv');
     binding.reportData ??= {};

@@ -1,3 +1,4 @@
+import 'ui_navigation.dart';
 import 'waves_app_test.dart' as controls;
 
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ void main() {
           'Results',
           'Learn',
         ]) {
-          await tester.tap(find.text(tab).last);
+          await chooseSection(tester, tab);
           await tester.pumpAndSettle();
           final scroll = find.byType(Scrollable).first;
           for (int i = 0; i < 30; i++) {
@@ -51,7 +52,7 @@ void main() {
       tester.view.physicalSize = const Size(1280, 720);
       router.go('/lab/s04-e05');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       router.go('/');
       await tester.pumpAndSettle();
@@ -69,7 +70,7 @@ void main() {
       );
       router.go('/lab/s04-e01');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       Future<void> show(Finder target) => controls.show(tester, target);
 
@@ -99,13 +100,13 @@ void main() {
             .single['correct'],
         true,
       );
-      await tester.tap(find.text('Results').last);
+      await chooseSection(tester, 'Results');
       await tester.pumpAndSettle();
       await show(find.text('Reopen configuration'));
       await tester.tap(find.text('Reopen configuration'));
       await tester.pumpAndSettle();
       expect(find.text('Pause'), findsNothing);
-      await tester.tap(find.text('Results').last);
+      await chooseSection(tester, 'Results');
       await tester.pumpAndSettle();
       await show(find.text('Challenge history'));
       expect(find.text('Challenge history'), findsOneWidget);

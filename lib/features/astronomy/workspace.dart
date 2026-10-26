@@ -418,7 +418,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
-    if (ready && (section == 1 || section == 4)) {
+    if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
         exportRecorded: (trials) => exportTrials(context, trials),
@@ -465,7 +465,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
         store: store,
         changes: tick,
         scene: compactScene,
-        graph: () => Column(children: visualize()),
+        graph: () => Column(children: visualize().skip(1).toList()),
         controls: instrumentControls,
         readings: () => [
           InstrumentReading(
@@ -523,35 +523,16 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
 
   Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
+      leading: LabBackButton(entry.id.split('-').first),
       title: Text(entry.title),
       actions: [
-        IconButton(
-          onPressed: save,
-          tooltip: 'Save session',
-          icon: const Icon(Icons.bookmark_add_outlined),
-        ),
-      ],
-    ),
-    bottomNavigationBar: NavigationBar(
-      selectedIndex: section,
-      onDestinationSelected: (s) {
-        pause();
-        setState(() => section = s);
-      },
-      destinations: const [
-        NavigationDestination(
-          icon: Icon(Icons.menu_book_outlined),
-          label: 'Learn',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.science_outlined),
-          label: 'Experiment',
-        ),
-        NavigationDestination(icon: Icon(Icons.show_chart), label: 'Visualize'),
-        NavigationDestination(icon: Icon(Icons.functions), label: 'Formulas'),
-        NavigationDestination(
-          icon: Icon(Icons.summarize_outlined),
-          label: 'Results',
+        LabSectionMenu(
+          section: section,
+          save: save,
+          select: (value) {
+            pause();
+            setState(() => section = value);
+          },
         ),
       ],
     ),
@@ -560,9 +541,6 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
         : PageBody(
             scrollId: '${entry.id}:$section',
             children: [
-              const Eyebrow(
-                'Phase 8 of 9 · Offline astronomy reference models',
-              ),
               ...switch (section) {
                 0 => learn(),
                 1 => experiment(),
@@ -574,7 +552,6 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
           ),
   );
   List<Widget> learn() => [
-    Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     panel([
       Paragraph(
         'Objectives',
@@ -631,7 +608,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
         borderRadius: BorderRadius.circular(12),
         child: AspectRatio(
           aspectRatio: 4 / 3,
-          child: InteractiveViewer(
+          child: ApparatusTransform(
             transformationController: sceneView,
             minScale: .5,
             maxScale: 5,
@@ -1030,15 +1007,19 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
         runSpacing: 8,
         children: [
           for (int i = 0; i < keys.length; i++)
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.show_chart,
-                  color: LabPlot.colors[i % LabPlot.colors.length],
-                ),
-                Text('${fmLabel(keys[i])} ($unit)'),
-              ],
+            Text.rich(
+              TextSpan(
+                children: [
+                  WidgetSpan(
+                    child: Icon(
+                      Icons.show_chart,
+                      size: 18,
+                      color: LabPlot.colors[i % LabPlot.colors.length],
+                    ),
+                  ),
+                  TextSpan(text: ' ${fmLabel(keys[i])} ($unit)'),
+                ],
+              ),
             ),
         ],
       ),
@@ -1048,6 +1029,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
       ),
       if (data.isNotEmpty)
         Slider(
+          key: const Key('astro-graph-cursor'),
           value: cursor.toDouble(),
           min: 0,
           max: math.max(1, data.length - 1).toDouble(),

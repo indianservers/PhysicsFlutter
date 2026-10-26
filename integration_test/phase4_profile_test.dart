@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
@@ -20,7 +22,7 @@ void main() {
     for (final id in ['s08-e02', 's08-e04', 's09-e05']) {
       router.go('/lab/$id');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await show(tester, find.text('Restore documented defaults'));
       await tester.tap(find.text('Restore documented defaults'));
@@ -102,7 +104,7 @@ void main() {
             ? '90 actual detector-slider updates, same cached intensity curve'
             : 'Animated physical model, fixed clock and bounded cached sampling',
       };
-      await tester.tap(find.text('Learn').last);
+      await chooseSection(tester, 'Learn');
       await tester.pumpAndSettle();
     }
     binding.reportData!['profileFile'] = 'phase4-profile.json';

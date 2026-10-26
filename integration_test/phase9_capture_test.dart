@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -29,7 +31,7 @@ void main() {
         router.go('/lab/${e.id}');
         await t.pumpAndSettle();
         if (e.interactive) {
-          await t.tap(find.text('Experiment').last);
+          await chooseSection(t, 'Experiment');
           await t.pumpAndSettle();
         }
         await top(t);
@@ -51,12 +53,15 @@ void main() {
       await capture(t, binding, 'phase9-open-source-notices');
       Navigator.of(t.element(find.text('Licenses'))).pop();
       await t.pumpAndSettle();
-      router.go('/notebook');await t.pumpAndSettle();
+      router.go('/notebook');
+      await t.pumpAndSettle();
       await t.tap(find.byTooltip('Export all trials as CSV'));
       debugPrint('PHASE9_READY_FOR_SHARE');
-      await t.runAsync(()=>Future<void>.delayed(const Duration(seconds:8)));
-      await t.pumpAndSettle();expect(find.text('Your notebook'),findsOneWidget);
-      router.go('/');await t.pumpAndSettle();
+      await t.runAsync(() => Future<void>.delayed(const Duration(seconds: 8)));
+      await t.pumpAndSettle();
+      expect(find.text('Your notebook'), findsOneWidget);
+      router.go('/');
+      await t.pumpAndSettle();
     },
     timeout: const Timeout(Duration(minutes: 20)),
   );

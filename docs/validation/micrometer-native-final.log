@@ -1,0 +1,223 @@
+Running Gradle task 'assembleDebug'...                          
+Picked up JAVA_TOOL_OPTIONS: -Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/Sai%20Satish/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             17.6s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...           3.3s
+I/Choreographer(28373): Skipped 70 frames!  The application may be doing too much work on its main thread.
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7630445
+I/WindowExtensionsImpl(28373): Initializing Window Extensions, vendor API level=10, activity embedding enabled=true
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@7630445
+W/UiContextUtils(28373): Requested context is a non-UI Context. Creating a UI-Context with display: 0. Context: Context=android.app.Application@c68ce34, of which baseContext=android.app.ContextImpl@ea04dee
+D/VRI[MainActivity](28373): WindowInsets changed: 720x1280 statusBars:[0,48,0,0] navigationBars:[0,0,0,48] mandatorySystemGestures:[0,48,0,64] 
+D/FlutterRenderer(28373): Width is zero. 0,0
+I/Surface (28373): Creating surface for consumer unnamed-28373-0 with slotExpansion=1 for 64 slots
+I/Surface (28373): Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+D/FlutterJNI(28373): Sending viewport metrics to the engine.
+I/Surface (28373): Creating surface for consumer unnamed-28373-1 with slotExpansion=1 for 64 slots
+I/Surface (28373): Creating surface for consumer 90ecb08 SurfaceView[com.indianservers.physics_atelier/com.indianservers.physics_atelier.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+D/WindowLayoutComponentImpl(28373): Register WindowLayoutInfoListener on Context=com.indianservers.physics_atelier.MainActivity@e7b9487, of which baseContext=android.app.ContextImpl@872f223
+D/FlutterJNI(28373): Sending viewport metrics to the engine.
+I/physics_atelier(28373): Compiler allocated 5559KB to compile void android.view.ViewRootImpl.performTraversals(long)
+I/physics_atelier(28373): Background concurrent mark compact GC freed 3077KB AllocSpace bytes, 147(34MB) LOS objects, 49% free, 23MB/47MB, paused 348us,18.127ms total 329.343ms
+I/Choreographer(28373): Skipped 55 frames!  The application may be doing too much work on its main thread.
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:<port>/<redacted>/
+VMServiceFlutterDriver: Isolate found with number: 3742458247429651
+VMServiceFlutterDriver: Isolate 3742458247429651 is runnable.
+VMServiceFlutterDriver: Isolate is not paused. Assuming application is ready.
+I/Choreographer(28373): Skipped 55 frames!  The application may be doing too much work on its main thread.
+D/ProfileInstaller(28373): Installing profile for com.indianservers.physics_atelier
+VMServiceFlutterDriver: Connected to Flutter application.
+D/FlutterJNI(28373): Sending viewport metrics to the engine.
+D/InsetsController(28373): hide(ime())
+I/ImeTracker(28373): com.indianservers.physics_atelier:db4b569c: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/flutter (28373): Captured micrometer-after-home
+I/flutter (28373): Captured micrometer-after-default
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+I/flutter (28373): Captured micrometer-after-fullscreen-apparatus
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7630445
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@7630445
+I/flutter (28373): Captured micrometer-after-7-37-mm
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+I/flutter (28373): Captured micrometer-after-precision-scale
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7630445
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@7630445
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+I/ImeTracker(28373): com.indianservers.physics_atelier:e6367c24: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+I/HWUI    (28373): Using FreeType backend (prop=Auto)
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/InsetsController(28373): show(ime())
+D/InsetsController(28373): Setting requestedVisibleTypes to 511 (was 503)
+I/ImeTracker(28373): com.indianservers.physics_atelier:68555010: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(28373): show(ime())
+I/ImeTracker(28373): com.indianservers.physics_atelier:68555010: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/AssistStructure(28373): Flattened final assist data: 456 bytes, containing 1 windows, 3 views
+D/InputConnectionAdaptor(28373): The input method toggled cursor monitoring on
+I/ImeTracker(28373): com.indianservers.physics_atelier:c07b592e: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(28373): show(ime())
+I/ImeTracker(28373): com.indianservers.physics_atelier:c07b592e: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/ImeTracker(28373): com.indianservers.physics_atelier:017d4ec2: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(28373): hide(ime())
+D/InsetsController(28373): Setting requestedVisibleTypes to 503 (was 511)
+D/CompatChangeReporter(28373): Compat change id reported: 395521150; UID 10229; state: ENABLED
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): android.view.ImeBackAnimationController@634aba8
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: android.view.ImeBackAnimationController@634aba8
+W/RemoteInputConnectionImpl(28373): getSurroundingText on inactive InputConnection
+I/ImeTracker(28373): com.indianservers.physics_atelier:e6367c24: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7630445
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@7630445
+I/flutter (28373): Captured micrometer-after-contact-zero-correction
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7630445
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@7630445
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+I/flutter (28373): Captured micrometer-after-recorded-trial
+D/WindowOnBackDispatcher(28373): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7630445
+D/WindowOnBackDispatcher(28373): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@7630445
+I/flutter (28373): Captured micrometer-after-negative-zero
+I/flutter (28373): Captured micrometer-studio-s00
+I/flutter (28373): Captured micrometer-studio-s01
+I/flutter (28373): Captured micrometer-studio-s02
+I/flutter (28373): Captured micrometer-studio-s03
+I/flutter (28373): Captured micrometer-studio-s04
+I/flutter (28373): Captured micrometer-studio-s05
+I/flutter (28373): Captured micrometer-studio-s06
+I/flutter (28373): Captured micrometer-studio-s07
+I/flutter (28373): Captured micrometer-studio-s08
+I/flutter (28373): Captured micrometer-studio-s09
+I/flutter (28373): Captured micrometer-studio-s10
+I/flutter (28373): Captured micrometer-studio-s11
+I/flutter (28373): Captured micrometer-studio-s12
+I/flutter (28373): Captured micrometer-studio-s13
+I/flutter (28373): Captured micrometer-studio-s14
+I/flutter (28373): Captured micrometer-studio-s15
+I/flutter (28373): Captured micrometer-studio-s16
+I/flutter (28373): Captured micrometer-entry-s00-e00
+I/flutter (28373): Captured micrometer-entry-s00-e01
+I/flutter (28373): Captured micrometer-entry-s00-e02
+I/flutter (28373): Captured micrometer-entry-s00-e03
+I/flutter (28373): Captured micrometer-entry-s00-e04
+I/flutter (28373): Captured micrometer-entry-s00-e05
+I/flutter (28373): Captured micrometer-entry-s01-e00
+I/flutter (28373): Captured micrometer-entry-s01-e01
+I/flutter (28373): Captured micrometer-entry-s01-e02
+I/flutter (28373): Captured micrometer-entry-s01-e03
+I/flutter (28373): Captured micrometer-entry-s01-e04
+I/flutter (28373): Captured micrometer-entry-s01-e05
+I/flutter (28373): Captured micrometer-entry-s02-e00
+I/flutter (28373): Captured micrometer-entry-s02-e01
+I/flutter (28373): Captured micrometer-entry-s02-e02
+I/flutter (28373): Captured micrometer-entry-s02-e03
+I/flutter (28373): Captured micrometer-entry-s02-e04
+I/flutter (28373): Captured micrometer-entry-s02-e05
+I/flutter (28373): Captured micrometer-entry-s03-e00
+I/flutter (28373): Captured micrometer-entry-s03-e01
+I/flutter (28373): Captured micrometer-entry-s03-e02
+I/flutter (28373): Captured micrometer-entry-s03-e03
+I/flutter (28373): Captured micrometer-entry-s03-e04
+I/flutter (28373): Captured micrometer-entry-s03-e05
+I/flutter (28373): Captured micrometer-entry-s04-e00
+I/flutter (28373): Captured micrometer-entry-s04-e01
+I/flutter (28373): Captured micrometer-entry-s04-e02
+I/flutter (28373): Captured micrometer-entry-s04-e03
+I/flutter (28373): Captured micrometer-entry-s04-e04
+I/flutter (28373): Captured micrometer-entry-s04-e05
+I/flutter (28373): Captured micrometer-entry-s05-e00
+I/flutter (28373): Captured micrometer-entry-s05-e01
+I/flutter (28373): Captured micrometer-entry-s05-e02
+I/flutter (28373): Captured micrometer-entry-s05-e03
+I/flutter (28373): Captured micrometer-entry-s05-e04
+I/flutter (28373): Captured micrometer-entry-s05-e05
+I/flutter (28373): Captured micrometer-entry-s06-e00
+I/flutter (28373): Captured micrometer-entry-s06-e01
+I/flutter (28373): Captured micrometer-entry-s06-e02
+I/flutter (28373): Captured micrometer-entry-s06-e03
+I/flutter (28373): Captured micrometer-entry-s06-e04
+I/flutter (28373): Captured micrometer-entry-s06-e05
+I/flutter (28373): Captured micrometer-entry-s07-e00
+I/flutter (28373): Captured micrometer-entry-s07-e01
+I/flutter (28373): Captured micrometer-entry-s07-e02
+I/flutter (28373): Captured micrometer-entry-s07-e03
+I/flutter (28373): Captured micrometer-entry-s07-e04
+I/flutter (28373): Captured micrometer-entry-s07-e05
+I/flutter (28373): Captured micrometer-entry-s08-e00
+I/flutter (28373): Captured micrometer-entry-s08-e01
+I/flutter (28373): Captured micrometer-entry-s08-e02
+I/flutter (28373): Captured micrometer-entry-s08-e03
+I/flutter (28373): Captured micrometer-entry-s08-e04
+I/flutter (28373): Captured micrometer-entry-s08-e05
+I/flutter (28373): Captured micrometer-entry-s09-e00
+I/flutter (28373): Captured micrometer-entry-s09-e01
+I/flutter (28373): Captured micrometer-entry-s09-e02
+I/flutter (28373): Captured micrometer-entry-s09-e03
+I/flutter (28373): Captured micrometer-entry-s09-e04
+I/flutter (28373): Captured micrometer-entry-s09-e05
+I/flutter (28373): Captured micrometer-entry-s10-e00
+I/flutter (28373): Captured micrometer-entry-s10-e01
+I/flutter (28373): Captured micrometer-entry-s10-e02
+I/flutter (28373): Captured micrometer-entry-s10-e03
+I/flutter (28373): Captured micrometer-entry-s10-e04
+I/flutter (28373): Captured micrometer-entry-s10-e05
+I/flutter (28373): Captured micrometer-entry-s11-e00
+I/flutter (28373): Captured micrometer-entry-s11-e01
+I/flutter (28373): Captured micrometer-entry-s11-e02
+I/flutter (28373): Captured micrometer-entry-s11-e03
+I/flutter (28373): Captured micrometer-entry-s11-e04
+I/flutter (28373): Captured micrometer-entry-s11-e05
+I/flutter (28373): Captured micrometer-entry-s12-e00
+I/flutter (28373): Captured micrometer-entry-s12-e01
+I/flutter (28373): Captured micrometer-entry-s12-e02
+I/flutter (28373): Captured micrometer-entry-s12-e03
+I/flutter (28373): Captured micrometer-entry-s12-e04
+I/flutter (28373): Captured micrometer-entry-s12-e05
+I/flutter (28373): Captured micrometer-entry-s13-e00
+I/flutter (28373): Captured micrometer-entry-s13-e01
+I/flutter (28373): Captured micrometer-entry-s13-e02
+I/flutter (28373): Captured micrometer-entry-s13-e03
+I/flutter (28373): Captured micrometer-entry-s13-e04
+I/flutter (28373): Captured micrometer-entry-s13-e05
+I/flutter (28373): Captured micrometer-entry-s14-e00
+I/flutter (28373): Captured micrometer-entry-s14-e01
+I/flutter (28373): Captured micrometer-entry-s14-e02
+I/flutter (28373): Captured micrometer-entry-s14-e03
+I/flutter (28373): Captured micrometer-entry-s14-e04
+I/flutter (28373): Captured micrometer-entry-s14-e05
+I/flutter (28373): Captured micrometer-entry-s15-e00
+I/flutter (28373): Captured micrometer-entry-s15-e01
+I/flutter (28373): Captured micrometer-entry-s15-e02
+I/flutter (28373): Captured micrometer-entry-s15-e03
+I/flutter (28373): Captured micrometer-entry-s15-e04
+I/flutter (28373): Captured micrometer-entry-s15-e05
+I/flutter (28373): Captured micrometer-entry-s16-e00
+I/flutter (28373): Captured micrometer-entry-s16-e01
+I/flutter (28373): Captured micrometer-entry-s16-e02
+I/flutter (28373): Captured micrometer-entry-s16-e03
+I/flutter (28373): Captured micrometer-entry-s16-e04
+I/flutter (28373): Captured micrometer-entry-s16-e05
+I/flutter (28373): 02:34 +1: Restore original configurations and navigation preferences after explicit QA actions
+I/physics_atelier(28373): Background concurrent mark compact GC freed 3848KB AllocSpace bytes, 346(31MB) LOS objects, 48% free, 25MB/49MB, paused 186us,2.327ms total 168.599ms
+I/physics_atelier(28373): Background concurrent mark compact GC freed 224KB AllocSpace bytes, 47(12MB) LOS objects, 38% free, 37MB/61MB, paused 39us,11.046ms total 57.474ms
+I/flutter (28373): 02:37 +2: (tearDownAll)
+I/flutter (28373): Warning: integration_test plugin was not detected.
+I/flutter (28373): 
+I/flutter (28373): If you're running the tests with `flutter drive`, please make sure your tests
+I/flutter (28373): are in the `integration_test/` directory of your package and use
+I/flutter (28373): `flutter test $path_to_test` to run it instead.
+I/flutter (28373): 
+I/flutter (28373): If you're running the tests with Android instrumentation or XCTest, this means
+I/flutter (28373): that you are not capturing test results properly! See the following link for
+I/flutter (28373): how to set up the integration_test plugin:
+I/flutter (28373): 
+I/flutter (28373): https://docs.flutter.dev/testing/integration-tests
+I/flutter (28373): 
+I/flutter (28373): 02:37 +3: All tests passed!
+All tests passed.
+Leaving the application running.

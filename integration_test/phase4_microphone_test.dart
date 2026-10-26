@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -19,7 +21,7 @@ void main() {
       await tester.pumpAndSettle();
       router.go('/lab/s08-e04');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await show(tester, find.text('Restore documented defaults'));
       await tester.tap(find.text('Restore documented defaults'));
@@ -96,7 +98,7 @@ void main() {
         ScaffoldMessenger.of(tester.element(find.byType(Scaffold).last))
             .clearSnackBars();
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Results').last);
+        await chooseSection(tester, 'Results');
         await tester.pumpAndSettle();
         await show(tester, find.text('Reopen configuration'));
         await tester.tap(find.text('Reopen configuration').first);

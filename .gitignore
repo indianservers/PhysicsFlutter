@@ -60,3 +60,5 @@ app.*.map.json
 
 # Requested QA evidence; logs are sanitized before committing.
 !/docs/validation/*.log
+
+/deliverables/micrometer-workspaces-screenshots.zip

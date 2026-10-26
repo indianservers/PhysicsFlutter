@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:physics_atelier/main.dart' as app;
@@ -33,7 +35,7 @@ void main() {
     ]) {
       router.go('/lab/$id');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await capture(tester, binding, 'phase5-$stage-$id');
     }
@@ -41,7 +43,7 @@ void main() {
       for (final entry in allEntries.where((e) => e.electromagnetism)) {
         router.go('/lab/${entry.id}');
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         await show(tester, find.text('Restore documented defaults'));
         await tester.tap(find.text('Restore documented defaults'));
@@ -80,7 +82,7 @@ void main() {
       }
       router.go('/lab/s08-e04');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Visualize').last);
+      await chooseSection(tester, 'Visualize');
       await tester.pumpAndSettle();
       final quantity = find.byType(DropdownButtonFormField<String>);
       await show(tester, quantity);

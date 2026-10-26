@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:physics_atelier/main.dart' as app;
@@ -64,7 +66,7 @@ void main() {
       router.go('/lab/$id');
       await tester.pumpAndSettle();
       if (find.text('Experiment').evaluate().isNotEmpty) {
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
       }
       await capture(tester, binding, 'phase8-after-$id');
@@ -79,7 +81,7 @@ void main() {
     ]) {
       router.go('/lab/$id');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       for (int i = 0; i < 3; i++) {
         await top(tester);
@@ -89,7 +91,7 @@ void main() {
         await tester.pumpAndSettle();
       }
       await capture(tester, binding, 'phase8-$id');
-      await tester.tap(find.text('Visualize').last);
+      await chooseSection(tester, 'Visualize');
       await tester.pumpAndSettle();
       if (id == 's16-e03') {
         final field = find.byType(DropdownButtonFormField<String>);
@@ -107,7 +109,7 @@ void main() {
     }
     router.go('/lab/s16-e00');
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Experiment').last);
+    await chooseSection(tester, 'Experiment');
     await tester.pumpAndSettle();
     final solar = tester.state<AstronomyWorkspaceState>(
       find.byType(AstronomyWorkspace),
@@ -124,7 +126,7 @@ void main() {
     await capture(tester, binding, 'phase8-mode-artist-saturn');
     router.go('/lab/s16-e01');
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Experiment').last);
+    await chooseSection(tester, 'Experiment');
     await tester.pumpAndSettle();
     final star = tester.state<AstronomyWorkspaceState>(
       find.byType(AstronomyWorkspace),

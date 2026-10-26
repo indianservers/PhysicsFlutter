@@ -1,10 +1,10 @@
 """Make an ignored, local-only native test restoration define fixture from the exact baseline.
 Never commit the generated file. Ordinary lib/main.dart builds do not reference it.
 """
-import argparse,base64,json,sqlite3,tarfile,tempfile
+import argparse,base64,json,sqlite3,tarfile,tempfile,subprocess,os
 import xml.etree.ElementTree as ET
 from pathlib import Path
-parser=argparse.ArgumentParser();parser.add_argument('--resume',action='store_true');parser.add_argument('--baseline',default=r'C:\tmp\phase9-baseline-exact.tar');parser.add_argument('--output',default='integration_test/phase9_fixture.local.json');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--resume',action='store_true');parser.add_argument('--baseline',default=r'C:\tmp\phase9-baseline-exact.tar');parser.add_argument('--output',default='integration_test/phase9_fixture.local.json');parser.add_argument('--push',action='store_true');parser.add_argument('--device',default='emulator-5556');args=parser.parse_args()
 rows={};prefs={};source=Path(args.baseline)
 if source.exists():
  with tempfile.TemporaryDirectory(prefix='physics-phase9-fixture-') as directory:
@@ -27,4 +27,10 @@ Path(args.output).write_text(json.dumps({
  'PHASE9_ORIGINAL_PREFERENCES':encoded(prefs),
  'PHASE9_PRIOR_EVIDENCE':encoded(prior),
 },indent=2),encoding='utf-8')
-print('Local-only define fixture generated. Pass --dart-define-from-file='+args.output+' to native QA. Never use it for ordinary APK builds.')
+
+if args.push:
+ adb=Path(os.environ['LOCALAPPDATA'])/'Android/Sdk/platform-tools/adb.exe'
+ command="run-as com.indianservers.physics_atelier sh -c 'mkdir -p files; cat > files/physics_qa_fixture.json'"
+ subprocess.run([str(adb),'-s',args.device,'shell',command],input=Path(args.output).read_bytes(),check=True)
+ print('Private baseline transferred to the test app sandbox; no notebook values printed or compiled.')
+else:print('Local-only fixture generated. Use --push for Android native preservation QA; do not commit it.')

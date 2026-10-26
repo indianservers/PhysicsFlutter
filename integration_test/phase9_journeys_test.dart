@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -56,7 +58,7 @@ void main() {
       for (int k = 0; k < 6; k++) {
         router.go('/lab/s16-e0$k');
         await t.pumpAndSettle();
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         await show(t, find.text('Restore defaults'));
         await t.tap(find.text('Restore defaults'));
@@ -103,7 +105,7 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await t.tap(find.text(tab).last);
+          await chooseSection(t, tab);
           await t.pumpAndSettle();
           expect(t.takeException(), isNull);
         }
@@ -273,7 +275,10 @@ void main() {
         'defaultBackupPreserved': true,
       };
       binding.reportData!['csv'] = csvEncode(
-        store.trials.skip(original.length).where((t) => t.model == astroVersion).toList(),
+        store.trials
+            .skip(original.length)
+            .where((t) => t.model == astroVersion)
+            .toList(),
       );
       binding.reportData!['csvFile'] = 'phase9-journey-verified-results.csv';
       router.go('/');

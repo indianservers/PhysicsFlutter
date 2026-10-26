@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:physics_atelier/main.dart' as app;
@@ -23,7 +25,7 @@ void main() {
     )) {
       router.go('/lab/${entry.id}');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await capture(tester, binding, 'phase3-$stage-${entry.id}');
     }
@@ -31,7 +33,7 @@ void main() {
       for (final entry in allEntries.where((e) => e.advanced)) {
         router.go('/lab/${entry.id}');
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         await capture(tester, binding, 'phase3-final-${entry.id}');
       }

@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "lib/core/rendering/micrometer.dart",
+    "sha256": "47fb6597c082436829ef44c5766b3c033ec0beeba01a18bee782f66c09300e8c",
+    "source": "Original procedural application code; existing model/materials reused",
+    "reference": "Mitutoyo Quick Guide, micrometer standard-scale example; no image copied",
+    "license": "Existing project source terms; owner redistribution-license review remains necessary",
+    "usage": "State-driven apparatus, scale crop and compact workspace"
+  },
+  {
+    "filename": "lib/features/measurement/micrometer_viewport.dart",
+    "sha256": "8ff7bd3e31dec5e4a7fe830f182f2a86d3ca336e44cad4a98497cdcef6f6ad60",
+    "source": "Original procedural application code; existing model/materials reused",
+    "reference": "Mitutoyo Quick Guide, micrometer standard-scale example; no image copied",
+    "license": "Existing project source terms; owner redistribution-license review remains necessary",
+    "usage": "State-driven apparatus, scale crop and compact workspace"
+  },
+  {
+    "filename": "lib/features/workbench/workbench.dart",
+    "sha256": "4796a0fa82e68df639349811aa6915a44b7bec8934ec60390aeb43a39eb02626",
+    "source": "Original procedural application code; existing model/materials reused",
+    "reference": "Mitutoyo Quick Guide, micrometer standard-scale example; no image copied",
+    "license": "Existing project source terms; owner redistribution-license review remains necessary",
+    "usage": "State-driven apparatus, scale crop and compact workspace"
+  }
+]

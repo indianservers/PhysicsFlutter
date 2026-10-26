@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -38,7 +40,7 @@ void main() {
         await show(tester, find.text(entry.title));
         await tester.tap(find.text(entry.title).last);
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         final parameter = lesson.controls.first;
         await show(tester, find.byKey(Key('edit-${parameter.key}')));
@@ -125,17 +127,17 @@ void main() {
           find.textContaining('Correct · reference answer'),
           findsOneWidget,
         );
-        await tester.tap(find.text('Visualize').last);
+        await chooseSection(tester, 'Visualize');
         await tester.pumpAndSettle();
         await show(tester, find.byKey(const Key('cursor-advanced')));
         await tester.tap(find.byKey(const Key('cursor-advanced')));
         await tester.pumpAndSettle();
         await capture(tester, binding, 'phase3-graph-${entry.id}');
-        await tester.tap(find.text('Formulas').last);
+        await chooseSection(tester, 'Formulas');
         await tester.pumpAndSettle();
         await show(tester, find.text('Worked example'));
         expect(find.text('Worked example'), findsOneWidget);
-        await tester.tap(find.text('Results').last);
+        await chooseSection(tester, 'Results');
         await tester.pumpAndSettle();
         await show(tester, find.text('Reopen configuration'));
         await tester.tap(find.text('Reopen configuration').first);
@@ -148,7 +150,7 @@ void main() {
         await show(tester, find.text(entry.title));
         await tester.tap(find.text(entry.title).last);
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         expect(find.text('Pause'), findsNothing);
       }

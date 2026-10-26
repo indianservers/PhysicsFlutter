@@ -46,11 +46,11 @@ Final local artifacts and SHA-256/installed verification are listed in `screensh
 
 ## Optional private baseline for native QA
 
-Fresh checkout analysis and unit tests do not require private data. Native QA uses an optional local define file; without it, restoration maps are empty. To validate preservation against your own existing baseline, generate the ignored file and pass it explicitly:
+Fresh checkout analysis and tests require no private data. For preservation QA, generate an ignored local baseline file and transfer it to the already-installed debug app sandbox:
 
 ```powershell
-python tool/phase9_make_fixture.py --baseline C:\tmp\phase9-baseline-exact.tar
-flutter drive --driver=test_driver/integration_test.dart --target=integration_test/phase9_inventory_test.dart --dart-define-from-file=integration_test/phase9_fixture.local.json -d emulator-5556
+python tool/phase9_make_fixture.py --baseline C:\tmp\phase9-baseline-exact.tar --push --device emulator-5556
+flutter drive --driver=test_driver/integration_test.dart --target=integration_test/phase9_inventory_test.dart -d emulator-5556
 ```
 
-Use the same define flag for restoration, screenshot audit and profile targets when preserving that baseline. The checked-in `phase9_fixture.dart` contains only empty defaults and a decoder. Never pass the private define file to ordinary main-entrypoint builds. Earlier local Dart fixtures remain ignored; neither form of private baseline is committed.
+The public fixture loader reads this optional sandbox file only from integration targets. No notebook content belongs in compiler flags or application assets. Large `--dart-define-from-file` baselines exceed Windows Gradle batch command limits and can be echoed by Flutter crash diagnostics; do not use that transport. Remove `files/physics_qa_fixture.json` from this app sandbox after QA. Ordinary `lib/main.dart` builds never import the fixture loader. Both the local JSON file and earlier private Dart fixtures remain excluded from Git.

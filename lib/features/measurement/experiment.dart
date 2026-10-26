@@ -74,6 +74,7 @@ class Experiment extends ChangeNotifier {
     // A delayed UI timer must not extend the defined automatic finish event.
     return kind == 4 ? math.min(duration, time) : time;
   }
+
   double get duration => finishTime(distance, v0, acceleration);
   ScaleReading get reading => kind == 1
       ? ScaleReading.vernier(a + zero)

@@ -57,6 +57,7 @@ Future<void> main() => integrationDriver(
       'phase9Storage',
       'phase9Journeys',
       'phase9Restoration',
+      'micrometerAudit',
     ]) {
       if (data?[key] != null) {
         await File(

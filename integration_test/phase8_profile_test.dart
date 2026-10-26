@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
@@ -28,7 +30,7 @@ void main() {
       if (id.startsWith('s16')) {
         router.go('/lab/$id');
         await t.pumpAndSettle();
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         final state = t.state<AstronomyWorkspaceState>(
           find.byType(AstronomyWorkspace),

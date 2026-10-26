@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:physics_atelier/main.dart' as app;
@@ -45,7 +47,7 @@ void main() {
     ]) {
       router.go('/lab/$id');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await capture(tester, binding, 'phase7-$stage-$id');
     }
@@ -53,7 +55,7 @@ void main() {
       for (final entry in allEntries.where((e) => e.fluidModern)) {
         router.go('/lab/${entry.id}');
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         FocusManager.instance.primaryFocus?.unfocus();
         for (int i = 0; i < 3; i++) {
@@ -76,7 +78,7 @@ void main() {
       for (final id in ['s15-e00', 's15-e02', 's15-e05', 's14-e04']) {
         router.go('/lab/$id');
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Visualize').last);
+        await chooseSection(tester, 'Visualize');
         await tester.pumpAndSettle();
         await show(
           tester,

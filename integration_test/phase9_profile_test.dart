@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'dart:math' as math;
 import 'dart:io';
 
@@ -51,7 +53,7 @@ void main() {
       if (id.startsWith('s')) {
         router.go('/lab/$id');
         await t.pumpAndSettle();
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         final int studio = int.parse(id.substring(1, 3));
         final Type type = studio == 16

@@ -418,7 +418,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
-    if (ready && (section == 1 || section == 4)) {
+    if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
         exportRecorded: (trials) => exportTrials(context, trials),
@@ -505,38 +505,16 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
 
   Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
+      leading: LabBackButton(entry.id.split('-').first),
       title: Text(entry.title),
       actions: [
-        IconButton(
-          tooltip: 'Save session',
-          onPressed: save,
-          icon: const Icon(Icons.bookmark_add_outlined),
-        ),
-      ],
-    ),
-    bottomNavigationBar: NavigationBar(
-      selectedIndex: section,
-      onDestinationSelected: (value) {
-        pause();
-        setState(() => section = value);
-      },
-      destinations: const [
-        NavigationDestination(
-          icon: Icon(Icons.menu_book_outlined),
-          label: 'Learn',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.science_outlined),
-          label: 'Experiment',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.insights_outlined),
-          label: 'Visualize',
-        ),
-        NavigationDestination(icon: Icon(Icons.functions), label: 'Formulas'),
-        NavigationDestination(
-          icon: Icon(Icons.assignment_outlined),
-          label: 'Results',
+        LabSectionMenu(
+          section: section,
+          save: save,
+          select: (value) {
+            pause();
+            setState(() => section = value);
+          },
         ),
       ],
     ),
@@ -546,9 +524,6 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
           : PageBody(
               scrollId: '${entry.id}:$section',
               children: [
-                Eyebrow(
-                  '${studios[entry.studioIndex].title} · Interactive · Phase 2',
-                ),
                 const SizedBox(height: 12),
                 if (section == 0)
                   ...learn()
@@ -566,7 +541,6 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
   );
   List<Widget> learn() => [
     relatedLabs(entry.id),
-    Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     const SizedBox(height: 14),
     Panel(
       child: Column(
@@ -680,7 +654,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
       return LayoutBuilder(
         builder: (context, box) => Semantics(
           label: painter.accessibleSummary,
-          child: InteractiveViewer(
+          child: ApparatusTransform(
             transformationController: view,
             minScale: 1,
             maxScale: 4,

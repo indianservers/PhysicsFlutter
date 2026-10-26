@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:physics_atelier/main.dart' as app;
@@ -5,9 +7,6 @@ import 'package:physics_atelier/app/app.dart';
 import 'package:physics_atelier/content/catalog.dart';
 
 import 'phase1_test.dart' show capture;
-
-
-
 
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -40,12 +39,22 @@ void main() {
       's13-e00',
       's13-e01',
       's13-e05',
-      's00-e00', 's00-e01', 's00-e02', 's00-e03', 's00-e04', 's00-e05',
-      's16-e00', 's16-e01', 's16-e02', 's16-e03', 's16-e04', 's16-e05',
+      's00-e00',
+      's00-e01',
+      's00-e02',
+      's00-e03',
+      's00-e04',
+      's00-e05',
+      's16-e00',
+      's16-e01',
+      's16-e02',
+      's16-e03',
+      's16-e04',
+      's16-e05',
     ]) {
       router.go('/lab/$id');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await capture(tester, binding, 'phase8-$stage-$id');
     }

@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -24,7 +26,7 @@ void main() {
     Future<void> open(String id) async {
       router.go('/lab/$id');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       await show(tester, find.text('Restore documented defaults'));
       await tester.tap(find.text('Restore documented defaults'));

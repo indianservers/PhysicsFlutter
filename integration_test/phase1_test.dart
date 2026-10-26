@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'dart:convert';
 import 'dart:ui' as ui;
 
@@ -65,7 +67,7 @@ void main() {
         debugPrint('Testing Measurement lab $k');
         router.go('/lab/s01-e${k.toString().padLeft(2, '0')}');
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         await show(tester, find.text('Reset'));
         await tester.tap(find.text('Reset'));
@@ -99,14 +101,14 @@ void main() {
         await show(tester, find.byKey(const Key('record-trial')));
         await tester.tap(find.byKey(const Key('record-trial')));
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Results').last);
+        await chooseSection(tester, 'Results');
         await tester.pumpAndSettle();
         await show(tester, find.text('Export actual trials as CSV'));
         expect(find.text('Export actual trials as CSV'), findsOneWidget);
         await show(tester, find.text('Reopen configuration'));
         await tester.tap(find.text('Reopen configuration').first);
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Formulas').last);
+        await chooseSection(tester, 'Formulas');
         await tester.pumpAndSettle();
         await show(tester, find.text('Current substitution'));
         expect(find.text('Current substitution'), findsOneWidget);

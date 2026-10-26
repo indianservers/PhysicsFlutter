@@ -1,3 +1,5 @@
+import 'ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -63,16 +65,18 @@ void main() {
       expect(find.byType(InstrumentShell), findsOneWidget);
       await t.tap(find.byTooltip('Zoom in'));
       await t.pumpAndSettle();
-      final viewer = t.widget<InteractiveViewer>(
-        find.byKey(const Key('workspace-camera')),
+      Transform camera() => t.widget<Transform>(
+        find
+            .descendant(
+              of: find.byKey(const Key('workspace-camera')),
+              matching: find.byType(Transform),
+            )
+            .first,
       );
-      expect(
-        viewer.transformationController!.value.getMaxScaleOnAxis(),
-        greaterThan(1),
-      );
+      expect(camera().transform.getMaxScaleOnAxis(), greaterThan(1));
       await t.tap(find.byTooltip('Fit apparatus / reset view'));
       await t.pumpAndSettle();
-      expect(viewer.transformationController!.value.getMaxScaleOnAxis(), 1);
+      expect(camera().transform.getMaxScaleOnAxis(), 1);
       await t.tap(find.byTooltip('Workspace panes'));
       await t.pumpAndSettle();
       await t.tap(find.text('Scene + Graph').last);
@@ -86,10 +90,10 @@ void main() {
       await t.drag(find.byKey(const Key('pane-divider')), const Offset(0, 25));
       await t.pumpAndSettle();
       expect(t.takeException(), isNull);
-      await t.tap(find.text('Learn').last);
+      await chooseSection(t, 'Learn');
       await t.pumpAndSettle();
       expect(find.byType(InstrumentShell), findsNothing);
-      await t.tap(find.text('Experiment').last);
+      await chooseSection(t, 'Experiment');
       await t.pumpAndSettle();
       expect(find.byType(InstrumentShell), findsOneWidget);
       router.go('/');

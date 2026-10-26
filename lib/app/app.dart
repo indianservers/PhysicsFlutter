@@ -299,7 +299,7 @@ class SettingsScreen extends ConsumerWidget {
                 onTap: () => showLicensePage(
                   context: c,
                   applicationName: 'Physics Atelier',
-                  applicationVersion: '1.8.0+9',
+                  applicationVersion: '1.8.1+10',
                 ),
               ),
               const Panel(
@@ -310,8 +310,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 9 of 9 · Validation build',
-                  '96 interactive labs across sixteen studios and six Concept Overview tools. 102 stable destinations within documented model bounds. Platform, accessibility, performance and visual limitations are listed in the Phase 9 handover. Completion reflects learner activity, not page visits.',
+                  'Scientific workspaces',
+                  'Explore 96 labs and six concept tools. Experiments use documented models and assumptions. Trials and notes stay on this device; progress reflects completed investigations.',
                 ),
               ),
             ],

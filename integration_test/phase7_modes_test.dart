@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -28,7 +30,7 @@ void main() {
       Future<void> open(String id) async {
         router.go('/lab/$id');
         await t.pumpAndSettle();
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         await show(t, find.text('Restore defaults'));
         await t.tap(find.text('Restore defaults'));
@@ -57,7 +59,7 @@ void main() {
       }
 
       Future<void> histogram() async {
-        await t.tap(find.text('Visualize').last);
+        await chooseSection(t, 'Visualize');
         await t.pumpAndSettle();
         final field = find.byType(DropdownButtonFormField<String>);
         await show(t, field);
@@ -138,7 +140,7 @@ void main() {
       await t.pumpAndSettle();
       router.go('/lab/s15-e00');
       await t.pumpAndSettle();
-      await t.tap(find.text('Experiment').last);
+      await chooseSection(t, 'Experiment');
       await t.pumpAndSettle();
       expect(fmScene(t).run.histogram, histogramBefore);
       expect(fmScene(t).run.positions, positionsBefore);

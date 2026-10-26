@@ -1,4 +1,4 @@
-# Physics Atelier — compact experiment workspaces (1.8.0+9)
+# Physics Atelier — instrument-first workspaces (1.8.1+10)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -27,7 +27,11 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 
 The graphics are original procedural instrument drawings with material shading. Photorealistic apparatus and photographic thumbnails remain a visual quality gap relative to the targets. iOS compilation and device QA are pending. See the handover for precise limits; this is not a claim of store-release readiness.
 
-Current implementation, evidence and limitations: [handover](docs/WORKSPACE_HANDOVER.md), [QA](docs/PHASE9_QA.md), [102-entry verification](docs/WORKSPACE_MIGRATION.csv). Historical Phase 1–8 reports describe their corresponding earlier builds.
+Micrometer now has opposed measuring faces, a state-linked sleeve/thimble, a floating magnifier and precision controls. All physical labs use a contextual section menu instead of permanent five-item navigation.
+
+Current revision: [Micrometer QA](docs/MICROMETER_WORKSPACE_QA.md), [before/after and every studio](docs/MICROMETER_SCREENSHOTS.md), [102-entry checklist](docs/MICROMETER_MIGRATION.csv).
+
+Earlier implementation, evidence and limitations: [handover](docs/WORKSPACE_HANDOVER.md), [QA](docs/PHASE9_QA.md), [102-entry verification](docs/WORKSPACE_MIGRATION.csv). Historical Phase 1–8 reports describe their corresponding earlier builds.
 
 ## Setup and run
 
@@ -41,7 +45,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable output: `build/app/outputs/flutter-apk/app-debug.apk` (also copied to `deliverables/physics-atelier-phase8-debug.apk` for handoff), version 1.7.0+8.
+Installable version **1.8.1+10**: [debug APK](deliverables/physics-atelier-micrometer-debug.apk) and [release APK with development signing](deliverables/physics-atelier-micrometer-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing remains pending.
 
 Device integration and screenshot capture:
 

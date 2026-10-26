@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -30,7 +32,7 @@ void main() {
       Future<void> open(String id) async {
         router.go('/lab/$id');
         await t.pumpAndSettle();
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         state().defaults();
         await t.pumpAndSettle();

@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -20,13 +22,15 @@ import 'package:physics_atelier/features/fluid_modern/workspace.dart';
 import 'package:physics_atelier/features/astronomy/workspace.dart';
 
 import 'phase1_test.dart' show capture, top;
-import 'phase9_fixture.dart' show originalSessions, priorEvidence;
+import 'phase9_fixture.dart'
+    show originalSessions, priorEvidence, loadPrivateFixture;
 
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   testWidgets(
     'Phase9 all102 running destinations computed trials and saved state',
     (t) async {
+      await loadPrivateFixture();
       await app.main();
       await t.pumpAndSettle();
       final store = ProviderScope.containerOf(
@@ -73,7 +77,7 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await t.tap(find.text(tab).last);
+          await chooseSection(t, tab);
           await t.pumpAndSettle();
           // Build content below the fold as well as the initial screen.
           final scroll = find.byType(Scrollable).first;
@@ -83,7 +87,7 @@ void main() {
           expect(t.takeException(), isNull, reason: '${entry.id} $tab');
           sections.add(tab);
         }
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         await top(t);
         final Type type = entry.astronomy

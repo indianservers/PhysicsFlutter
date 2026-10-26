@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:physics_atelier/core/persistence/notebook.dart';
@@ -27,7 +29,7 @@ void main() {
     for (final e in allEntries.where((e) => e.electronicsThermal)) {
       router.go('/lab/${e.id}');
       await t.pumpAndSettle();
-      await t.tap(find.text('Experiment').last);
+      await chooseSection(t, 'Experiment');
       await t.pumpAndSettle();
       await show(t, find.text('Restore defaults'));
       await t.tap(find.text('Restore defaults'));
@@ -70,12 +72,12 @@ void main() {
       await t.pumpAndSettle();
       router.go('/lab/${e.id}');
       await t.pumpAndSettle();
-      await t.tap(find.text('Experiment').last);
+      await chooseSection(t, 'Experiment');
       await t.pumpAndSettle();
       await top(t);
       expect(etScene(t).run.state[etLessons[kind].metric], reading);
       for (final tab in ['Visualize', 'Formulas', 'Results', 'Learn']) {
-        await t.tap(find.text(tab).last);
+        await chooseSection(t, tab);
         await t.pumpAndSettle();
         expect(t.takeException(), isNull);
       }

@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -84,7 +86,7 @@ void main() {
       await show(tester, find.byKey(Key('search-result-${entry.id}')));
       await tester.tap(find.byKey(Key('search-result-${entry.id}')));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       final parameter = lesson.controls.first;
       await show(tester, find.byKey(Key('edit-${parameter.key}')));
@@ -168,17 +170,17 @@ void main() {
       await tester.tap(find.text('Apply'));
       await tester.pumpAndSettle();
       expect(find.textContaining('Correct · reference'), findsOneWidget);
-      await tester.tap(find.text('Visualize').last);
+      await chooseSection(tester, 'Visualize');
       await tester.pumpAndSettle();
       await show(tester, find.byKey(const Key('cursor-waves')));
       await tester.tap(find.byKey(const Key('cursor-waves')));
       await tester.pumpAndSettle();
       await capture(tester, binding, 'phase4-graph-${entry.id}');
-      await tester.tap(find.text('Formulas').last);
+      await chooseSection(tester, 'Formulas');
       await tester.pumpAndSettle();
       await show(tester, find.text('Worked example'));
       expect(find.text('Worked example'), findsOneWidget);
-      await tester.tap(find.text('Results').last);
+      await chooseSection(tester, 'Results');
       await tester.pumpAndSettle();
       await show(tester, find.text('Reopen configuration'));
       await tester.tap(find.text('Reopen configuration').first);
@@ -190,7 +192,7 @@ void main() {
       await show(tester, find.text(entry.title));
       await tester.tap(find.text(entry.title).last);
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Experiment').last);
+      await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();
       expect(find.text('Pause'), findsNothing);
     }

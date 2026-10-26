@@ -1,0 +1,722 @@
+{
+  "entries": {
+    "s00-e00": {
+      "route": "/lab/s00-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": false,
+      "screenshot": "micrometer-entry-s00-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s00-e01": {
+      "route": "/lab/s00-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": false,
+      "screenshot": "micrometer-entry-s00-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s00-e02": {
+      "route": "/lab/s00-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": false,
+      "screenshot": "micrometer-entry-s00-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s00-e03": {
+      "route": "/lab/s00-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": false,
+      "screenshot": "micrometer-entry-s00-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s00-e04": {
+      "route": "/lab/s00-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": false,
+      "screenshot": "micrometer-entry-s00-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s00-e05": {
+      "route": "/lab/s00-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": false,
+      "screenshot": "micrometer-entry-s00-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s01-e00": {
+      "route": "/lab/s01-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s01-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s01-e01": {
+      "route": "/lab/s01-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s01-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s01-e02": {
+      "route": "/lab/s01-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s01-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s01-e03": {
+      "route": "/lab/s01-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s01-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s01-e04": {
+      "route": "/lab/s01-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s01-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s01-e05": {
+      "route": "/lab/s01-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s01-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s02-e00": {
+      "route": "/lab/s02-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s02-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s02-e01": {
+      "route": "/lab/s02-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s02-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s02-e02": {
+      "route": "/lab/s02-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s02-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s02-e03": {
+      "route": "/lab/s02-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s02-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s02-e04": {
+      "route": "/lab/s02-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s02-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s02-e05": {
+      "route": "/lab/s02-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s02-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s03-e00": {
+      "route": "/lab/s03-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s03-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s03-e01": {
+      "route": "/lab/s03-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s03-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s03-e02": {
+      "route": "/lab/s03-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s03-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s03-e03": {
+      "route": "/lab/s03-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s03-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s03-e04": {
+      "route": "/lab/s03-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s03-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s03-e05": {
+      "route": "/lab/s03-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s03-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s04-e00": {
+      "route": "/lab/s04-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s04-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s04-e01": {
+      "route": "/lab/s04-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s04-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s04-e02": {
+      "route": "/lab/s04-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s04-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s04-e03": {
+      "route": "/lab/s04-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s04-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s04-e04": {
+      "route": "/lab/s04-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s04-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s04-e05": {
+      "route": "/lab/s04-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s04-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s05-e00": {
+      "route": "/lab/s05-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s05-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s05-e01": {
+      "route": "/lab/s05-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s05-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s05-e02": {
+      "route": "/lab/s05-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s05-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s05-e03": {
+      "route": "/lab/s05-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s05-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s05-e04": {
+      "route": "/lab/s05-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s05-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s05-e05": {
+      "route": "/lab/s05-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s05-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s06-e00": {
+      "route": "/lab/s06-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s06-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s06-e01": {
+      "route": "/lab/s06-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s06-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s06-e02": {
+      "route": "/lab/s06-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s06-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s06-e03": {
+      "route": "/lab/s06-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s06-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s06-e04": {
+      "route": "/lab/s06-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s06-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s06-e05": {
+      "route": "/lab/s06-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s06-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s07-e00": {
+      "route": "/lab/s07-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s07-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s07-e01": {
+      "route": "/lab/s07-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s07-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s07-e02": {
+      "route": "/lab/s07-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s07-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s07-e03": {
+      "route": "/lab/s07-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s07-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s07-e04": {
+      "route": "/lab/s07-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s07-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s07-e05": {
+      "route": "/lab/s07-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s07-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s08-e00": {
+      "route": "/lab/s08-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s08-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s08-e01": {
+      "route": "/lab/s08-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s08-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s08-e02": {
+      "route": "/lab/s08-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s08-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s08-e03": {
+      "route": "/lab/s08-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s08-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s08-e04": {
+      "route": "/lab/s08-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s08-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s08-e05": {
+      "route": "/lab/s08-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s08-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s09-e00": {
+      "route": "/lab/s09-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s09-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s09-e01": {
+      "route": "/lab/s09-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s09-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s09-e02": {
+      "route": "/lab/s09-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s09-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s09-e03": {
+      "route": "/lab/s09-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s09-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s09-e04": {
+      "route": "/lab/s09-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s09-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s09-e05": {
+      "route": "/lab/s09-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s09-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s10-e00": {
+      "route": "/lab/s10-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s10-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s10-e01": {
+      "route": "/lab/s10-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s10-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s10-e02": {
+      "route": "/lab/s10-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s10-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s10-e03": {
+      "route": "/lab/s10-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s10-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s10-e04": {
+      "route": "/lab/s10-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s10-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s10-e05": {
+      "route": "/lab/s10-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s10-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s11-e00": {
+      "route": "/lab/s11-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s11-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s11-e01": {
+      "route": "/lab/s11-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s11-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s11-e02": {
+      "route": "/lab/s11-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s11-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s11-e03": {
+      "route": "/lab/s11-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s11-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s11-e04": {
+      "route": "/lab/s11-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s11-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s11-e05": {
+      "route": "/lab/s11-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s11-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s12-e00": {
+      "route": "/lab/s12-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s12-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s12-e01": {
+      "route": "/lab/s12-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s12-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s12-e02": {
+      "route": "/lab/s12-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s12-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s12-e03": {
+      "route": "/lab/s12-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s12-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s12-e04": {
+      "route": "/lab/s12-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s12-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s12-e05": {
+      "route": "/lab/s12-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s12-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s13-e00": {
+      "route": "/lab/s13-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s13-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s13-e01": {
+      "route": "/lab/s13-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s13-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s13-e02": {
+      "route": "/lab/s13-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s13-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s13-e03": {
+      "route": "/lab/s13-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s13-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s13-e04": {
+      "route": "/lab/s13-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s13-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s13-e05": {
+      "route": "/lab/s13-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s13-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s14-e00": {
+      "route": "/lab/s14-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s14-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s14-e01": {
+      "route": "/lab/s14-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s14-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s14-e02": {
+      "route": "/lab/s14-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s14-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s14-e03": {
+      "route": "/lab/s14-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s14-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s14-e04": {
+      "route": "/lab/s14-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s14-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s14-e05": {
+      "route": "/lab/s14-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s14-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s15-e00": {
+      "route": "/lab/s15-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s15-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s15-e01": {
+      "route": "/lab/s15-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s15-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s15-e02": {
+      "route": "/lab/s15-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s15-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s15-e03": {
+      "route": "/lab/s15-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s15-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s15-e04": {
+      "route": "/lab/s15-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s15-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s15-e05": {
+      "route": "/lab/s15-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s15-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s16-e00": {
+      "route": "/lab/s16-e00",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s16-e00.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s16-e01": {
+      "route": "/lab/s16-e01",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s16-e01.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s16-e02": {
+      "route": "/lab/s16-e02",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s16-e02.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s16-e03": {
+      "route": "/lab/s16-e03",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s16-e03.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s16-e04": {
+      "route": "/lab/s16-e04",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s16-e04.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    },
+    "s16-e05": {
+      "route": "/lab/s16-e05",
+      "nativeRendered": true,
+      "noPermanentSectionBar": true,
+      "screenshot": "micrometer-entry-s16-e05.png",
+      "qualification": "Native render and visible action; full interaction/geometry checks in targeted Micrometer and existing family regressions"
+    }
+  },
+  "originalTrials": 385,
+  "trialsAfterExplicitRecord": 386,
+  "micrometerFineRecordReopenAndCsv": true,
+  "qualification": "Actual Android debug/software renderer; one explicitly recorded simulated QA observation. Original state restored in following test."
+}

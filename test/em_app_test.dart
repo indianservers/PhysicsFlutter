@@ -1,3 +1,5 @@
+import 'ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -39,7 +41,7 @@ Future<void> boot(WidgetTester t, LocalNotebook store, String id) async {
   );
   router.go('/lab/$id');
   await t.pumpAndSettle();
-  await t.tap(find.text('Experiment').last);
+  await chooseSection(t, 'Experiment');
   await t.pumpAndSettle();
 }
 
@@ -80,7 +82,7 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await t.tap(find.text(tab).last);
+          await chooseSection(t, tab);
           await t.pumpAndSettle();
           for (int i = 0; i < 90; i++) {
             final p = t
@@ -97,7 +99,7 @@ void main() {
       for (final id in ['s10-e01', 's10-e04', 's11-e01']) {
         router.go('/lab/$id');
         await t.pumpAndSettle();
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         expect(t.takeException(), null);
       }
@@ -135,7 +137,7 @@ void main() {
       ScaffoldMessenger.of(t.element(find.byType(Scaffold).last))
           .clearSnackBars();
       await t.pumpAndSettle();
-      await t.tap(find.text('Results').last);
+      await chooseSection(t, 'Results');
       await t.pumpAndSettle();
       await show(t, find.text('Reopen configuration'));
       await t.tap(find.text('Reopen configuration').first);

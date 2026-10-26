@@ -1,3 +1,5 @@
+import '../test/ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
@@ -19,7 +21,7 @@ void main() {
       for (final id in ['s02-e00', 's03-e05', 's04-e05']) {
         router.go('/lab/$id');
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Experiment').last);
+        await chooseSection(tester, 'Experiment');
         await tester.pumpAndSettle();
         await show(tester, find.text('Reset'));
         await tester.tap(find.text('Reset'));
@@ -78,7 +80,7 @@ void main() {
               .where((f) => f.totalSpan.inMicroseconds > 16670)
               .length,
         };
-        await tester.tap(find.text('Learn').last);
+        await chooseSection(tester, 'Learn');
         await tester.pumpAndSettle();
       }
       binding.reportData!['environment'] = 'Android 17 API37 x86_64 emulator, 720x1280@320dpi; profile mode; Skia/OpenGL; host RTX3050. Not a physical mid-range device.';

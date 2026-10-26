@@ -14,6 +14,7 @@ import '../../core/persistence/notebook.dart';
 import '../../core/physics/measurement.dart';
 import '../../core/rendering/apparatus.dart';
 import '../measurement/experiment.dart';
+import '../measurement/micrometer_viewport.dart';
 import '../dynamics/workspace.dart' show dynamicsRouteObserver;
 import '../measurement/lessons.dart';
 
@@ -209,7 +210,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
-    if (ready && (section == 1 || section == 4)) {
+    if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
         exportRecorded: (trials) => exportTrials(context, trials),
@@ -252,6 +253,9 @@ class _WorkspaceState extends ConsumerState<Workspace>
         store: store,
         changes: Listenable.merge([experiment, experiment.clockTick]),
         scene: compactScene,
+        fitScene: entry.index != 2,
+        parameterDock: entry.index == 2 ? micrometerDock : null,
+        dockExtent: entry.index == 2 ? 128 : null,
         graph: () => RecordedTrialGraph(
           store: store,
           labId: entry.id,
@@ -259,19 +263,38 @@ class _WorkspaceState extends ConsumerState<Workspace>
           unit: experiment.siUnit,
         ),
         controls: instrumentControls,
-        readings: () => [
-          InstrumentReading(
-            experiment.quantity,
-            experiment.result?.toStringAsPrecision(5) ?? 'Undefined',
-            experiment.siUnit,
-          ),
-          InstrumentReading(
-            'Resolution',
-            experiment.leastCount.toStringAsPrecision(3),
-            entry.index == 4 ? 's' : experiment.siUnit,
-          ),
-        ],
-        advanced: () => experimentView().skip(1).toList(),
+        readings: () => entry.index == 2
+            ? [
+                InstrumentReading(
+                  'Observed',
+                  (experiment.reading.observed * 1000).toStringAsFixed(2),
+                  'mm',
+                ),
+                InstrumentReading(
+                  'Zero',
+                  (experiment.zero * 1000).toStringAsPrecision(3),
+                  'mm',
+                ),
+                InstrumentReading(
+                  'Corrected',
+                  ((experiment.result ?? 0) * 1000).toStringAsFixed(2),
+                  'mm',
+                ),
+              ]
+            : [
+                InstrumentReading(
+                  experiment.quantity,
+                  experiment.result?.toStringAsPrecision(5) ?? 'Undefined',
+                  experiment.siUnit,
+                ),
+                InstrumentReading(
+                  'Resolution',
+                  experiment.leastCount.toStringAsPrecision(3),
+                  entry.index == 4 ? 's' : experiment.siUnit,
+                ),
+              ],
+        advanced: () =>
+            experimentView().skip(entry.index == 2 ? 3 : 1).toList(),
         results: results,
         notice: () => '',
         playing: () => experiment.running,
@@ -322,6 +345,82 @@ class _WorkspaceState extends ConsumerState<Workspace>
     }
     return legacyBuild(context);
   }
+
+  Widget micrometerDock() => Column(
+    children: [
+      Row(
+        children: [
+          Expanded(
+            child: Slider(
+              key: const Key('dock-control-a'),
+              value: experiment.a * 1000,
+              min: experiment.b * 1000,
+              max: 25,
+              label: '${(experiment.a * 1000).toStringAsFixed(2)} mm',
+              onChanged: (v) => experiment.setA(v / 1000),
+            ),
+          ),
+          SizedBox(
+            width: 104,
+            child: TextButton(
+              key: const Key('dock-edit-a'),
+              onPressed: () => numberDialog(
+                'Spindle opening (mm)',
+                experiment.a * 1000,
+                experiment.b * 1000,
+                25,
+                (v) => experiment.setA(v / 1000),
+              ),
+              child: Text('${(experiment.a * 1000).toStringAsFixed(2)} mm'),
+            ),
+          ),
+        ],
+      ),
+      Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        alignment: WrapAlignment.center,
+        children: [
+          IconButton(
+            tooltip: 'Close spindle by 0.01 mm',
+            onPressed: () => experiment.setA(experiment.a - .00001),
+            icon: const Icon(Icons.remove),
+          ),
+          const SizedBox(
+            width: 56,
+            child: Text(
+              '0.01 mm / div',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12),
+            ),
+          ),
+          IconButton(
+            tooltip: 'Open spindle by 0.01 mm',
+            onPressed: () => experiment.setA(experiment.a + .00001),
+            icon: const Icon(Icons.add),
+          ),
+          SizedBox(
+            width: 128,
+            child: TextButton(
+              key: const Key('dock-edit-zero'),
+              onPressed: () => numberDialog(
+                'Signed zero error (mm)',
+                experiment.zero * 1000,
+                -.1,
+                .1,
+                (v) {
+                  experiment.zero = v / 1000;
+                  experiment.changed();
+                },
+              ),
+              child: Text(
+                'Zero ${(experiment.zero >= 0 ? '+' : '')}${(experiment.zero * 1000).toStringAsPrecision(3)} mm',
+              ),
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
 
   List<InstrumentControl> instrumentControls() {
     final e = experiment;
@@ -374,16 +473,23 @@ class _WorkspaceState extends ConsumerState<Workspace>
         ),
       ],
       2 => [
-        control('a', 'Spindle', 'm', e.a, e.b, .025, e.setA),
-        control('b', 'Wire', 'm', e.b, .0001, .005, e.setB),
+        control(
+          'a',
+          'Fine opening',
+          'mm',
+          e.a * 1000,
+          e.b * 1000,
+          25,
+          (v) => e.setA(v / 1000),
+        ),
         control(
           'zero',
           'Zero error',
-          'm',
-          e.zero,
-          -.0001,
-          .0001,
-          (v) => value('zero', v),
+          'mm',
+          e.zero * 1000,
+          -.1,
+          .1,
+          (v) => value('zero', v / 1000),
         ),
       ],
       3 => [
@@ -439,45 +545,17 @@ class _WorkspaceState extends ConsumerState<Workspace>
       listenable: experiment,
       builder: (context, _) => Scaffold(
         appBar: AppBar(
+          leading: LabBackButton(entry.id.split('-').first),
           title: Text(entry.title),
           actions: [
-            if (entry.interactive)
-              IconButton(
-                tooltip: 'Save session',
-                onPressed: save,
-                icon: const Icon(Icons.bookmark_add_outlined),
-              ),
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(
-          selectedIndex: section,
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-          onDestinationSelected: (v) {
-            if (section == 1 && v != 1) {
-              experiment.pause();
-            }
-            setState(() => section = v);
-          },
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.menu_book_outlined),
-              label: 'Learn',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.science_outlined),
-              label: 'Experiment',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.insights_outlined),
-              label: 'Visualize',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.functions),
-              label: 'Formulas',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.assignment_outlined),
-              label: 'Results',
+            LabSectionMenu(
+              section: section,
+              save: save,
+              select: (value) {
+                experiment.pause();
+                store.saveSession(entry.id, experiment.toJson());
+                setState(() => section = value);
+              },
             ),
           ],
         ),
@@ -487,9 +565,6 @@ class _WorkspaceState extends ConsumerState<Workspace>
               : PageBody(
                   scrollId: '${entry.id}:$section',
                   children: [
-                    Eyebrow(
-                      '${studios[entry.studioIndex].title} / ${entry.availability}',
-                    ),
                     const SizedBox(height: 14),
                     if (section == 0)
                       ...learn()
@@ -510,7 +585,6 @@ class _WorkspaceState extends ConsumerState<Workspace>
 
   List<Widget> learn() => [
     relatedLabs(entry.id),
-    Text(entry.title, style: Theme.of(context).textTheme.headlineLarge),
     const SizedBox(height: 12),
     Text(entry.principle, style: const TextStyle(fontSize: 17, height: 1.6)),
     const SizedBox(height: 22),
@@ -645,92 +719,98 @@ class _WorkspaceState extends ConsumerState<Workspace>
     listenable: experiment.clockTick,
     builder: (_, _) => sceneFrame(enlarged: enlarged),
   );
-  Widget compactScene({bool enlarged = false}) => ListenableBuilder(
-    listenable: Listenable.merge([experiment, experiment.clockTick]),
-    builder: (context, _) {
-      final e = experiment;
-      final kind = entry.index;
-      final painter = ApparatusPainter(
-        kind,
-        a: kind == 5 ? (e.resolutionKnown ? e.resolution : 0) : e.a,
-        b: kind == 4 ? e.duration : e.b,
-        zero: e.zero,
-        time: store.reducedMotion
-            ? 0
-            : kind == 4
-            ? e.elapsed
-            : e.elapsed,
-        guides: e.guides,
-        samples: e.samples,
-        progress: store.reducedMotion ? 0 : e.travelled / e.distance,
-      );
+  Widget compactScene({bool enlarged = false}) => entry.index == 2
+      ? MicrometerViewport(experiment: experiment)
+      : ListenableBuilder(
+          listenable: Listenable.merge([experiment, experiment.clockTick]),
+          builder: (context, _) {
+            final e = experiment;
+            final kind = entry.index;
+            final painter = ApparatusPainter(
+              kind,
+              a: kind == 5 ? (e.resolutionKnown ? e.resolution : 0) : e.a,
+              b: kind == 4 ? e.duration : e.b,
+              zero: e.zero,
+              time: store.reducedMotion
+                  ? 0
+                  : kind == 4
+                  ? e.elapsed
+                  : e.elapsed,
+              guides: e.guides,
+              samples: e.samples,
+              progress: store.reducedMotion ? 0 : e.travelled / e.distance,
+            );
 
-      return LayoutBuilder(
-        builder: (c, box) => Semantics(
-          label:
-              '${entry.title}. ${painter.accessibleSummary}. ${summary()}. Pinch to zoom. Use precise controls below as an accessible alternative.',
-          child: InteractiveViewer(
-            transformationController: transform,
-            minScale: 1,
-            maxScale: 5,
-            child: GestureDetector(
-              onHorizontalDragStart: kind == 0
-                  ? (details) {
-                      final x = details.localPosition.dx / box.maxWidth * 360;
-                      final xa = 22 + e.a * 3160, xb = 22 + e.b * 3160;
-                      dragTarget = (x - xa).abs() < 18
-                          ? 0
-                          : (x - xb).abs() < 18
-                          ? 1
-                          : 2;
-                    }
-                  : null,
-              onHorizontalDragUpdate:
-                  kind == 0 || kind == 1 || kind == 2 || kind == 3
-                  ? (details) {
-                      final dx =
-                          details.delta.dx /
-                          box.maxWidth /
-                          transform.value.getMaxScaleOnAxis();
-                      if (kind == 0) {
-                        if (dragTarget == 0) {
-                          e.setA(e.a + dx * .1);
-                          return;
-                        }
-                        if (dragTarget == 1) {
-                          e.setB(e.b + dx * .1);
-                          return;
-                        }
-                        final length = e.b - e.a;
-                        final newA = (e.a + dx * .1).clamp(0.0, .1 - length);
-                        e.a = quantize(newA, .001);
-                        e.b = e.a + length;
-                        e.changed();
-                      } else {
-                        e.setA(
-                          e.a +
-                              dx *
-                                  (kind == 1
-                                      ? 0.05
-                                      : kind == 2
-                                      ? 0.005
-                                      : .006),
-                        );
-                      }
-                    }
-                  : null,
-              child: RepaintBoundary(
-                child: CustomPaint(
-                  size: Size(box.maxWidth, enlarged ? 340 : 210),
-                  painter: painter,
+            return LayoutBuilder(
+              builder: (c, box) => Semantics(
+                label:
+                    '${entry.title}. ${painter.accessibleSummary}. ${summary()}. Pinch to zoom. Use precise controls below as an accessible alternative.',
+                child: ApparatusTransform(
+                  transformationController: transform,
+                  minScale: 1,
+                  maxScale: 5,
+                  child: GestureDetector(
+                    onHorizontalDragStart: kind == 0
+                        ? (details) {
+                            final x =
+                                details.localPosition.dx / box.maxWidth * 360;
+                            final xa = 22 + e.a * 3160, xb = 22 + e.b * 3160;
+                            dragTarget = (x - xa).abs() < 18
+                                ? 0
+                                : (x - xb).abs() < 18
+                                ? 1
+                                : 2;
+                          }
+                        : null,
+                    onHorizontalDragUpdate:
+                        kind == 0 || kind == 1 || kind == 2 || kind == 3
+                        ? (details) {
+                            final dx =
+                                details.delta.dx /
+                                box.maxWidth /
+                                transform.value.getMaxScaleOnAxis();
+                            if (kind == 0) {
+                              if (dragTarget == 0) {
+                                e.setA(e.a + dx * .1);
+                                return;
+                              }
+                              if (dragTarget == 1) {
+                                e.setB(e.b + dx * .1);
+                                return;
+                              }
+                              final length = e.b - e.a;
+                              final newA = (e.a + dx * .1).clamp(
+                                0.0,
+                                .1 - length,
+                              );
+                              e.a = quantize(newA, .001);
+                              e.b = e.a + length;
+                              e.changed();
+                            } else {
+                              e.setA(
+                                e.a +
+                                    dx *
+                                        (kind == 1
+                                            ? 0.05
+                                            : kind == 2
+                                            ? 0.005
+                                            : .006),
+                              );
+                            }
+                          }
+                        : null,
+                    child: RepaintBoundary(
+                      child: CustomPaint(
+                        size: Size(box.maxWidth, enlarged ? 340 : 210),
+                        painter: painter,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
-      );
-    },
-  );
+            );
+          },
+        );
 
   Widget sceneFrame({bool enlarged = false}) {
     final e = experiment;

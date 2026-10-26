@@ -1,3 +1,5 @@
+import 'ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -35,7 +37,7 @@ Future<void> fmBoot(WidgetTester t, LocalNotebook store, String id) async {
   );
   router.go('/lab/$id');
   await t.pumpAndSettle();
-  await t.tap(find.text('Experiment').last);
+  await chooseSection(t, 'Experiment');
   await t.pumpAndSettle();
 }
 
@@ -71,7 +73,7 @@ void main() {
       );
       expect(store.trials.last.configuration['profileAxis']['unit'], 'm');
       expect(workspace.eligible, true);
-      await t.tap(find.text('Learn').last);
+      await chooseSection(t, 'Learn');
       await t.pumpAndSettle();
       await show(t, find.text('Complete investigation'));
       await t.tap(find.text('Complete investigation'));
@@ -108,7 +110,7 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await t.tap(find.text(tab).last);
+          await chooseSection(t, tab);
           await t.pumpAndSettle();
           for (int i = 0; i < 90; i++) {
             final p = t
@@ -120,7 +122,7 @@ void main() {
           }
           expect(t.takeException(), isNull, reason: '${e.id}:$tab');
         }
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         final k = (e.studioIndex - 14) * 6 + e.index;
         for (int m = 0; m < fmModes[k].length; m++) {
@@ -158,7 +160,7 @@ void main() {
       expect(store.trials.last.configuration['histogram'], counts);
       expect(store.trials.last.configuration['units']['wellWidth'], 'm');
       await edit(t, 'seed', '123');
-      await t.tap(find.text('Results').last);
+      await chooseSection(t, 'Results');
       await t.pumpAndSettle();
       await show(t, find.text('Reopen configuration'));
       await t.tap(find.text('Reopen configuration'));
@@ -189,7 +191,7 @@ void main() {
     );
     router.go('/lab/s14-e01');
     await t.pumpAndSettle();
-    await t.tap(find.text('Experiment').last);
+    await chooseSection(t, 'Experiment');
     await t.pumpAndSettle();
     await fmMode(t, 1);
     await edit(t, 'density', '600');
@@ -217,7 +219,7 @@ void main() {
       await t.pump();
       expect(workspace.ticker.isActive, false);
       expect(fmScene(t).motion, false);
-      await t.tap(find.text('Learn').last);
+      await chooseSection(t, 'Learn');
       await t.pumpAndSettle();
       expect(workspace.ticker.isActive, false);
       expect(store.completed, isEmpty);
@@ -233,7 +235,7 @@ void main() {
     await show(t, find.byKey(const Key('sample-batch')));
     await t.tap(find.byKey(const Key('sample-batch')));
     await t.pumpAndSettle();
-    await t.tap(find.text('Visualize').last);
+    await chooseSection(t, 'Visualize');
     await t.pumpAndSettle();
     final dynamic workspace = t.state(find.byType(FMWorkspace));
     for (final option in workspace.graphOptions as List<String>) {

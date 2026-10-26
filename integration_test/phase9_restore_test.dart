@@ -2,13 +2,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:physics_atelier/core/persistence/notebook.dart';
 
-import 'phase9_fixture.dart' show originalSessions, originalPreferences;
+import 'phase9_fixture.dart'
+    show originalSessions, originalPreferences, loadPrivateFixture;
 
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   testWidgets(
     'Restore original configurations and navigation preferences after explicit QA actions',
     (t) async {
+      await loadPrivateFixture();
       final store = LocalNotebook();
       await store.initialize();
       for (final entry in originalSessions.entries) {

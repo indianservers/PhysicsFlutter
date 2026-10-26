@@ -1,3 +1,5 @@
+import 'ui_navigation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -35,7 +37,7 @@ Future<void> etBoot(WidgetTester t, LocalNotebook store, String id) async {
   );
   router.go('/lab/$id');
   await t.pumpAndSettle();
-  await t.tap(find.text('Experiment').last);
+  await chooseSection(t, 'Experiment');
   await t.pumpAndSettle();
 }
 
@@ -63,7 +65,7 @@ void main() {
           'Formulas',
           'Results',
         ]) {
-          await t.tap(find.text(tab).last);
+          await chooseSection(t, tab);
           await t.pumpAndSettle();
           for (int i = 0; i < 70; i++) {
             final p = t
@@ -75,7 +77,7 @@ void main() {
           }
           expect(t.takeException(), isNull, reason: '${e.id}:$tab');
         }
-        await t.tap(find.text('Experiment').last);
+        await chooseSection(t, 'Experiment');
         await t.pumpAndSettle();
         for (
           int m = 0;
@@ -110,7 +112,7 @@ void main() {
     expect(store.trials.last.configuration['units']['sensorOutput'], 's');
     expect(store.trials.last.value, value);
     await edit(t, 'distance', '3');
-    await t.tap(find.text('Results').last);
+    await chooseSection(t, 'Results');
     await t.pumpAndSettle();
     await show(t, find.text('Reopen configuration'));
     await t.tap(find.text('Reopen configuration'));
@@ -133,7 +135,7 @@ void main() {
     );
     router.go('/lab/s13-e01');
     await t.pumpAndSettle();
-    await t.tap(find.text('Experiment').last);
+    await chooseSection(t, 'Experiment');
     await t.pumpAndSettle();
     await etMode(t, 1);
     await edit(t, 'conductivity', '.1');
