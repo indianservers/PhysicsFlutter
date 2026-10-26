@@ -5,9 +5,11 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 
 import '../../core/physics/measurement.dart';
+import '../../core/physics/spherometer.dart';
 
 class Experiment extends ChangeNotifier {
   final int kind;
+  SpherometerSetup? spherometer;
   double a = 0,
       b = 0,
       zero = 0,
@@ -38,6 +40,14 @@ class Experiment extends ChangeNotifier {
     acceleration,
     unit,
     samples,
+    if (kind == 3 && spherometer != null)
+      [
+        spherometer!.surface,
+        spherometer!.truthSagitta,
+        spherometer!.offset,
+        spherometer!.reference,
+        spherometer!.contactReading,
+      ],
   ]);
   String get observationSignature => jsonEncode([inputSignature, elapsed]);
   bool get predictionMatches => predictionSignature == observationSignature;
@@ -79,13 +89,15 @@ class Experiment extends ChangeNotifier {
   ScaleReading get reading => kind == 1
       ? ScaleReading.vernier(a + zero)
       : ScaleReading.micrometer(a + zero);
-  double get h => a - zero;
+  double get h => kind == 3 && spherometer != null
+      ? (spherometer!.measuredH ?? a - zero)
+      : a - zero;
   double get travelled =>
       math.min(distance, trackPosition(elapsed, v0, acceleration));
   double? get result => switch (kind) {
     0 => rulerLength(a, b),
     1 || 2 => corrected(reading.observed, zero),
-    3 => curvatureRadius(b, h),
+    3 => spherometer == null ? curvatureRadius(b, h) : spherometer!.radius(b),
     4 => elapsed > 0 ? travelled / elapsed : null,
     5 => samples.isEmpty ? null : Statistics(samples, resolution).mean,
     _ => null,
@@ -129,6 +141,9 @@ class Experiment extends ChangeNotifier {
       3 => quantize(x, .00001).clamp(-.003, .003),
       _ => x,
     };
+    if (kind == 3 && spherometer != null) {
+      a = math.max(a, spherometer!.contactStop);
+    }
     changed();
   }
 
@@ -177,6 +192,7 @@ class Experiment extends ChangeNotifier {
     pause();
     _elapsed = 0;
     zero = 0;
+    spherometer = kind == 3 ? SpherometerSetup() : null;
     reveal = false;
     step = 0;
     adjusted = false;
@@ -234,6 +250,7 @@ class Experiment extends ChangeNotifier {
     'step': step,
     'guides': guides,
     'reveal': reveal,
+    if (spherometer != null) 'spherometer': spherometer!.toJson(),
     'model': modelVersion,
   };
   bool restore(Map<String, dynamic> m) {
@@ -297,7 +314,17 @@ class Experiment extends ChangeNotifier {
           !['m', 'kg', 's'].contains(m['unit'])) {
         return false;
       }
+      final restoredSphere = kind == 3 && m['spherometer'] != null
+          ? SpherometerSetup.fromJson(
+              Map<String, dynamic>.from(m['spherometer']),
+            )
+          : null;
+      if (restoredSphere != null &&
+          numbers[0] < restoredSphere.contactStop - 1e-12) {
+        return false;
+      }
       pause();
+      spherometer = restoredSphere;
       a = numbers[0];
       b = numbers[1];
       zero = numbers[2];

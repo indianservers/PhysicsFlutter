@@ -1,0 +1,90 @@
+{
+  "version": "1.9.0+12",
+  "scientificModelAdded": "materials-optics-1.0",
+  "fullTestsPassed": 320,
+  "analysis": "No issues found",
+  "native": "Spherometer and six Measurement labs; three thermal modes; 40 optical entries; 12 guided presets; full-screen/graph panes; labeled image PNG bytes; original session restoration passed",
+  "inventory": {
+    "thermalRecords": 36,
+    "solidConductionPresets": 16,
+    "heatingPresets": 13,
+    "opticalMaterials": 8,
+    "opticalComponents": 40,
+    "componentsWithNativeEvidence": 40,
+    "guidedOpticalPresets": 12,
+    "measurementLabs": 6
+  },
+  "preservation": {
+    "originalTrialBodiesByteForBytePreserved": 386,
+    "currentTrials": 428,
+    "originalSessionStatesExactlyPreserved": 106,
+    "originalChallengeBodiesExactlyPreserved": 123,
+    "oldSessionNotesAndParametersPreserved": 106,
+    "originalPreferencesPreserved": 5,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+  },
+  "apkChecks": {
+    "device": "emulator-5556",
+    "version": "1.9.0+12",
+    "target": "lib/main.dart",
+    "artifacts": [
+      {
+        "mode": "release-development-signed",
+        "path": "deliverables/physics-atelier-libraries-release-dev-signed.apk",
+        "bytes": 71386417,
+        "sha256": "7e3a452cbfa2ef7476548e2343a3eeff354c8427b08ad19d1d318a0772cab9c6",
+        "installedBytesMatch": true,
+        "offlineProcessAlive": true,
+        "fatalExceptionObserved": false,
+        "launchWaitTimeoutRetried": false,
+        "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='12' versionName='1.9.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "permissions": [
+          "package: com.indianservers.physics_atelier",
+          "uses-permission: name='android.permission.RECORD_AUDIO'",
+          "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+        ],
+        "signing": "Existing local development/debug certificate; not production signing"
+      },
+      {
+        "mode": "debug",
+        "path": "deliverables/physics-atelier-libraries-debug.apk",
+        "bytes": 212556684,
+        "sha256": "df64ac3e85ecf8909734711e544e48876c9e15ff050124a9b347a83c0d8380a6",
+        "installedBytesMatch": true,
+        "offlineProcessAlive": true,
+        "fatalExceptionObserved": false,
+        "launchWaitTimeoutRetried": false,
+        "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='12' versionName='1.9.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "permissions": [
+          "package: com.indianservers.physics_atelier",
+          "uses-permission: name='android.permission.INTERNET'",
+          "uses-permission: name='android.permission.RECORD_AUDIO'",
+          "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+          "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+        ],
+        "signing": "Existing local development/debug certificate; not production signing"
+      }
+    ],
+    "priorAttempt": "An initial release launch-wait timed out; subsequent inspection showed the live Home screen and process with no AndroidRuntime fatal error. No cold-start performance claim.",
+    "qualification": "Ordinary main-entrypoint APKs installed with -r, bytes matched installed base APK and processes launched while Wi-Fi/mobile data disabled. No destructive reset, upload or publication. Not exhaustive offline/UI/device certification."
+  },
+  "screenshotCount": 74,
+  "artifacts": {
+    "materials-spherometer-screenshots.zip": "7c502db0e570ed994e6c428b80e0b72e1d9130130ba4cbe4a8eb665d7fea7ba0",
+    "physics-atelier-libraries-debug.apk": "df64ac3e85ecf8909734711e544e48876c9e15ff050124a9b347a83c0d8380a6",
+    "physics-atelier-libraries-release-dev-signed.apk": "7e3a452cbfa2ef7476548e2343a3eeff354c8427b08ad19d1d318a0772cab9c6"
+  },
+  "limitations": [
+    "36 named thermal records are not 36 fully qualified property datasets; 16 solid-conduction and 13 heating presets enabled.",
+    "Optical components are functional only within documented section/3D scopes, with ideal mirrors and prescribed illustrative splitter coating.",
+    "An initial emulator release launch wait timed out; later visible Home and repeated launch checks succeeded. No startup-performance claim.",
+    "Development signing; physical Android, iOS and human accessibility validation pending."
+  ],
+  "newScientificTestsPassed": 18
+}

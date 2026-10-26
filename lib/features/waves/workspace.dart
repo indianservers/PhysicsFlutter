@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
@@ -557,6 +558,18 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
+        toolbarActions: [
+          if (entry.studioIndex == 9 && entry.index <= 3)
+            IconButton(
+              tooltip: 'Optical component library',
+              icon: const Icon(Icons.category_outlined),
+              onPressed: () async {
+                pause();
+                await persist();
+                if (context.mounted) context.push('/lab/${entry.id}/bench');
+              },
+            ),
+        ],
         exportRecorded: (trials) => exportTrials(context, trials),
         reopenTrial: (trial) {
           pause();

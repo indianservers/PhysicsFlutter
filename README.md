@@ -1,4 +1,4 @@
-# Physics Atelier — instrument-first workspaces (1.8.2+11)
+# Physics Atelier — instrument-first workspaces (1.9.0+12)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -7,6 +7,10 @@ Repository: https://github.com/indianservers/PhysicsFlutter
 Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI` folder remains intact and is excluded from the app bundle and Git because its redistribution rights are unknown.
 
 ## Included
+
+- Spherometer with three fixed legs, contact-limited screw, plane-reference subtraction, signed measured curvature, Top/Section views and scale magnification.
+- Heat Transfer material bench: 36 named records, with 16 solid-conduction and 13 heating presets enabled where the required sourced properties exist; equal-condition comparison, heating and composite/contact resistance.
+- Shared optical bench from Reflection, Refraction, Lenses and Mirrors: 40 named component entries with explicit section/3D scopes, eight material presets, analytic boundary tracing and 12 guided investigations. Geometry, source and actual branch observations can be saved, reopened and exported.
 
 - 17 studio pages, six exact entries each, 102 stable destinations.
 - Search across studio names, entry names and principles; real Continue Learning and explicit activity completion.
@@ -29,7 +33,9 @@ The graphics are original procedural instrument drawings with material shading. 
 
 Micrometer now has opposed measuring faces, a state-linked sleeve/thimble, a floating magnifier and precision controls. All physical labs use a contextual section menu instead of permanent five-item navigation.
 
-Current copy cleanup: [learner-facing text audit](docs/LEARNER_COPY_AUDIT.md).
+Current feature upgrade: [materials and Spherometer QA](docs/MATERIALS_AND_SPHEROMETER_QA.md), [source/availability inventory](docs/MATERIAL_LIBRARY_INVENTORY.json), [running-app screenshots](docs/LIBRARY_SCREENSHOTS.md). Open Heat Transfer or one of the four optical labs and use the toolbar library icon.
+
+Earlier copy cleanup: [learner-facing text audit](docs/LEARNER_COPY_AUDIT.md).
 
 Micrometer workspace evidence: [Micrometer QA](docs/MICROMETER_WORKSPACE_QA.md), [before/after and every studio](docs/MICROMETER_SCREENSHOTS.md), [102-entry checklist](docs/MICROMETER_MIGRATION.csv).
 
@@ -47,7 +53,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable version **1.8.2+11**: [debug APK](deliverables/physics-atelier-clean-copy-debug.apk), with a SHA-256 sidecar. Production signing remains pending.
+Installable version **1.9.0+12**: [debug APK](deliverables/physics-atelier-libraries-debug.apk) and [release APK with development signing](deliverables/physics-atelier-libraries-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
 
 Device integration and screenshot capture:
 

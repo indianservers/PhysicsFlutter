@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -397,6 +398,18 @@ class _ETWorkspaceState extends ConsumerState<ETWorkspace>
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
+        toolbarActions: [
+          if (kind == 7)
+            IconButton(
+              tooltip: 'Thermal material library',
+              icon: const Icon(Icons.category_outlined),
+              onPressed: () async {
+                pause();
+                await persist();
+                if (context.mounted) context.push('/lab/${entry.id}/bench');
+              },
+            ),
+        ],
         exportRecorded: (trials) => exportTrials(context, trials),
         reopenTrial: (trial) {
           pause();

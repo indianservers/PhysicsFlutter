@@ -15,6 +15,8 @@ import '../../core/physics/measurement.dart';
 import '../../core/rendering/apparatus.dart';
 import '../measurement/experiment.dart';
 import '../measurement/micrometer_viewport.dart';
+import '../measurement/spherometer_viewport.dart';
+import '../../core/physics/spherometer.dart';
 import '../dynamics/workspace.dart' show dynamicsRouteObserver;
 import '../measurement/lessons.dart';
 
@@ -117,6 +119,45 @@ class _WorkspaceState extends ConsumerState<Workspace>
       return;
     }
     experiment.pause();
+    if (entry.index == 3 && experiment.spherometer != null) {
+      final s = experiment.spherometer!;
+      if (!s.atContact(experiment.a)) {
+        message('Lower the screw to contact before recording.');
+        return;
+      }
+      if (s.surface == 0) {
+        s.reference = experiment.a;
+        experiment.zero = experiment.a;
+      } else {
+        if (s.reference == null) {
+          message('Record a plane reference first.');
+          return;
+        }
+        s.contactReading = experiment.a;
+      }
+      experiment.changed();
+      await store.saveSession(entry.id, experiment.toJson());
+      if (s.surface == 0 || experiment.result == null) {
+        await store.addTrial(
+          Trial(
+            id: DateTime.now().microsecondsSinceEpoch.toString(),
+            labId: entry.id,
+            quantity: 'length',
+            unit: 'm',
+            value: experiment.a,
+            resolution: experiment.leastCount,
+            configuration: experiment.toJson(),
+            note: experiment.note,
+          ),
+        );
+        message(
+          s.surface == 0
+              ? 'Plane reference recorded.'
+              : 'Flat-surface contact recorded; radius is infinite.',
+        );
+        return;
+      }
+    }
     final value = experiment.result;
     if (value == null || !value.isFinite) {
       message(
@@ -136,7 +177,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
           unit: experiment.siUnit,
           value: value,
           resolution:
-              (entry.index == 4) ||
+              (entry.index == 3 || entry.index == 4) ||
                   (entry.index == 5 && !experiment.resolutionKnown)
               ? null
               : experiment.leastCount,
@@ -210,6 +251,19 @@ class _WorkspaceState extends ConsumerState<Workspace>
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
+    if (ready && entry.index == 3 && experiment.spherometer == null) {
+      // Legacy direct-reading sessions retain their measured estimate and note.
+      experiment.spherometer = SpherometerSetup()
+        ..surface = experiment.h >= 0 ? 1 : 2
+        ..truthSagitta = experiment.h.abs()
+        ..offset = experiment.zero
+        ..reference = experiment.zero
+        ..contactReading = experiment.a;
+      experiment.a = math.max(
+        experiment.a,
+        experiment.spherometer!.contactStop,
+      );
+    }
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
@@ -253,9 +307,17 @@ class _WorkspaceState extends ConsumerState<Workspace>
         store: store,
         changes: Listenable.merge([experiment, experiment.clockTick]),
         scene: compactScene,
-        fitScene: entry.index != 2,
-        parameterDock: entry.index == 2 ? micrometerDock : null,
-        dockExtent: entry.index == 2 ? 128 : null,
+        fitScene: entry.index != 2 && entry.index != 3,
+        parameterDock: entry.index == 2
+            ? micrometerDock
+            : entry.index == 3
+            ? spherometerDock
+            : null,
+        dockExtent: entry.index == 2
+            ? 128
+            : entry.index == 3
+            ? 154
+            : null,
         graph: () => RecordedTrialGraph(
           store: store,
           labId: entry.id,
@@ -263,7 +325,29 @@ class _WorkspaceState extends ConsumerState<Workspace>
           unit: experiment.siUnit,
         ),
         controls: instrumentControls,
-        readings: () => entry.index == 2
+        readings: () => entry.index == 3
+            ? [
+                InstrumentReading(
+                  'Current',
+                  (experiment.a * 1000).toStringAsFixed(2),
+                  'mm',
+                ),
+                InstrumentReading(
+                  'Reference',
+                  experiment.spherometer?.reference == null
+                      ? '—'
+                      : (experiment.spherometer!.reference! * 1000)
+                            .toStringAsFixed(2),
+                  'mm',
+                ),
+                InstrumentReading(
+                  'h / R',
+                  experiment.spherometer?.measuredH == null
+                      ? 'Measure'
+                      : '${(experiment.spherometer!.measuredH! * 1000).toStringAsFixed(2)} mm / ${experiment.result?.toStringAsPrecision(5) ?? '∞ (flat)'} m',
+                ),
+              ]
+            : entry.index == 2
             ? [
                 InstrumentReading(
                   'Observed',
@@ -293,14 +377,17 @@ class _WorkspaceState extends ConsumerState<Workspace>
                   entry.index == 4 ? 's' : experiment.siUnit,
                 ),
               ],
-        advanced: () =>
-            experimentView().skip(entry.index == 2 ? 3 : 1).toList(),
+        advanced: () => entry.index == 3
+            ? spherometerAdvanced()
+            : experimentView().skip(entry.index == 2 ? 3 : 1).toList(),
         results: results,
         notice: () => '',
         playing: () => experiment.running,
         dynamicModel: () => entry.index == 4,
-        canRecord: () =>
-            experiment.result != null && experiment.result!.isFinite,
+        recordLabel: entry.index == 3 ? 'Record contact' : 'Record Trial',
+        canRecord: () => entry.index == 3
+            ? experiment.spherometer!.atContact(experiment.a)
+            : experiment.result != null && experiment.result!.isFinite,
         play: experiment.start,
         pause: experiment.pause,
         reset: () {
@@ -344,6 +431,190 @@ class _WorkspaceState extends ConsumerState<Workspace>
       );
     }
     return legacyBuild(context);
+  }
+
+  Widget spherometerDock() {
+    final e = experiment, s = e.spherometer!;
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: DropdownButtonFormField<int>(
+                key: ValueKey('sphero-surface-${s.surface}'),
+                initialValue: s.surface,
+                isExpanded: true,
+                items: [
+                  for (int i = 0; i < 3; i++)
+                    DropdownMenuItem(
+                      value: i,
+                      child: Text(
+                        ['Plane reference', 'Convex glass', 'Concave glass'][i],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                ],
+                onChanged: (v) {
+                  if (v == null) return;
+                  s.surface = v;
+                  s.contactReading = null;
+                  s.revealed = false;
+                  e.a = math.max(e.a, s.contactStop + .0002);
+                  e.changed();
+                },
+              ),
+            ),
+            IconButton(
+              tooltip: 'Record plane reference',
+              onPressed: s.surface == 0 && s.atContact(e.a)
+                  ? () => record()
+                  : null,
+              icon: const Icon(Icons.adjust),
+            ),
+            IconButton(
+              tooltip: 'Lower by one division',
+              onPressed: () => e.setA(e.a - .00001),
+              icon: const Icon(Icons.remove),
+            ),
+            IconButton(
+              tooltip: 'Raise by one division',
+              onPressed: () => e.setA(e.a + .00001),
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Slider(
+                key: const Key('sphero-screw'),
+                value: e.a.clamp(-.003, .003) * 1000,
+                min: -3,
+                max: 3,
+                label: '${(e.a * 1000).toStringAsFixed(2)} mm',
+                onChanged: (v) => e.setA(v / 1000),
+              ),
+            ),
+            SizedBox(
+              width: 100,
+              child: TextButton(
+                key: const Key('sphero-numeric'),
+                onPressed: () => numberDialog(
+                  'Screw indication (mm)',
+                  e.a * 1000,
+                  -3,
+                  3,
+                  (v) => e.setA(v / 1000),
+                ),
+                child: Text('${(e.a * 1000).toStringAsFixed(2)} mm'),
+              ),
+            ),
+          ],
+        ),
+        Wrap(
+          alignment: WrapAlignment.spaceBetween,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            const Text(
+              'Pitch 0.50 mm · 50 div · LC 0.01 mm',
+              style: TextStyle(fontSize: 11),
+            ),
+            TextButton(
+              onPressed: s.measuredH == null
+                  ? null
+                  : () {
+                      s.revealed = true;
+                      e.changed();
+                      showDialog<void>(
+                        context: context,
+                        builder: (c) => AlertDialog(
+                          title: const Text('Check measurement'),
+                          content: Text(
+                            'Measured signed R: ${e.result?.toStringAsPrecision(6) ?? '∞ (flat)'} m\nsimulated R: ${curvatureRadius(e.b, s.target)?.toStringAsPrecision(6) ?? '∞ (flat)'} m\nReading difference h = ${(s.measuredH! * 1000).toStringAsFixed(2)} mm. Contact and subtraction are limited by the 0.01 mm scale.',
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(c),
+                              child: const Text('Close check'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+              child: const Text('Reveal / Check'),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  List<Widget> spherometerAdvanced() {
+    final e = experiment, s = e.spherometer!;
+    return [
+      const Text(
+        'Three outer contacts define z = 0. Convex centre is +h and +R; concave centre is −h and −R. Record plane reference before curved contact. Screw movement is quantized to 0.01 mm; contact stops at the first nonpenetrating division.',
+      ),
+      TextButton(
+        onPressed: () => numberDialog(
+          'Centre-to-leg radius r (mm)',
+          e.b * 1000,
+          10,
+          100,
+          (v) {
+            e.b = v / 1000;
+            s.contactReading = null;
+            e.changed();
+          },
+        ),
+        child: Text(
+          'Leg radius r: ${(e.b * 1000).toStringAsFixed(1)} mm · l = √3 r',
+        ),
+      ),
+      TextButton(
+        onPressed: () => numberDialog(
+          'Simulated sagitta magnitude (mm)',
+          s.truthSagitta * 1000,
+          0,
+          2,
+          (v) {
+            s.truthSagitta = v / 1000;
+            s.contactReading = null;
+            s.revealed = false;
+            e.setA(math.max(e.a, s.contactStop));
+          },
+        ),
+        child: const Text('Set hidden test-surface curvature'),
+      ),
+      TextButton(
+        onPressed: () => numberDialog(
+          'Instrument zero offset (mm)',
+          s.offset * 1000,
+          -.2,
+          .2,
+          (v) {
+            s.offset = v / 1000;
+            s.reference = null;
+            s.contactReading = null;
+            e.setA(math.max(e.a, s.contactStop));
+          },
+        ),
+        child: const Text('Instrument zero offset'),
+      ),
+      TextFormField(
+        initialValue: e.note,
+        maxLines: 3,
+        decoration: const InputDecoration(labelText: 'Investigation notes'),
+        onChanged: (v) {
+          e.note = v;
+          e.changed();
+        },
+      ),
+      const Text(
+        'R = (r²+h²)/(2h) = l²/(6h)+h/2. For h = 0 the surface is flat and no finite radius exists. The model assumes three equal rigid legs, a spherical surface and no tip deformation. Perspective rendering is schematic; the labeled section may exaggerate vertical curvature.',
+      ),
+    ];
   }
 
   Widget micrometerDock() => Column(
@@ -721,6 +992,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
   );
   Widget compactScene({bool enlarged = false}) => entry.index == 2
       ? MicrometerViewport(experiment: experiment)
+      : entry.index == 3
+      ? SpherometerViewport(experiment: experiment)
       : ListenableBuilder(
           listenable: Listenable.merge([experiment, experiment.clockTick]),
           builder: (context, _) {

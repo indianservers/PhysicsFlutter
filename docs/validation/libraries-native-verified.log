@@ -1,0 +1,188 @@
+Running Gradle task 'assembleDebug'...                          
+Picked up JAVA_TOOL_OPTIONS: -Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/Sai%20Satish/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             17.5s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...           4.1s
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:<port>/<redacted>/
+VMServiceFlutterDriver: Isolate found with number: 7613698003685239
+VMServiceFlutterDriver: Isolate 7613698003685239 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter (30734): 00:00 +0: Spherometer, six Measurement labs and shared material/optical benches on Android
+VMServiceFlutterDriver: Connected to Flutter application.
+D/InsetsController(30734): hide(ime())
+I/ImeTracker(30734): com.indianservers.physics_atelier:5fe1878b: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/physics_atelier(30734): Background concurrent mark compact GC freed 3349KB AllocSpace bytes, 145(20MB) LOS objects, 39% free, 37MB/61MB, paused 107us,5.549ms total 68.083ms
+D/ProfileInstaller(30734): Installing profile for com.indianservers.physics_atelier
+D/FlutterJNI(30734): Sending viewport metrics to the engine.
+I/flutter (30734): Captured spherometer-after-plane
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/ImeTracker(30734): com.indianservers.physics_atelier:74c46eef: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+I/HWUI    (30734): Using FreeType backend (prop=Auto)
+D/InsetsController(30734): show(ime())
+D/InsetsController(30734): Setting requestedVisibleTypes to 511 (was 503)
+I/ImeTracker(30734): com.indianservers.physics_atelier:0c8417c5: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(30734): show(ime())
+I/ImeTracker(30734): com.indianservers.physics_atelier:0c8417c5: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor(30734): The input method toggled cursor monitoring on
+I/AssistStructure(30734): Flattened final assist data: 456 bytes, containing 1 windows, 3 views
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.view.ImeBackAnimationController@2199b5d
+I/ImeTracker(30734): com.indianservers.physics_atelier:ea09fed9: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(30734): show(ime())
+I/ImeTracker(30734): com.indianservers.physics_atelier:ea09fed9: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+I/ImeTracker(30734): com.indianservers.physics_atelier:554af71e: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(30734): hide(ime())
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/InsetsController(30734): Setting requestedVisibleTypes to 503 (was 511)
+D/CompatChangeReporter(30734): Compat change id reported: 395521150; UID 10229; state: ENABLED
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/HWUI    (30734): Davey! duration=965ms; Flags=0, FrameTimelineVsyncId=15140144, IntendedVsync=60807075366084, Vsync=60807458699402, InputEventId=0, HandleInputStart=60807473321019, AnimationStart=60807473321688, PerformTraversalsStart=60807473322094, DrawStart=60807473366506, FrameDeadline=60807092032750, FrameStartTime=60807473115000, FrameInterval=16666666, WorkloadTarget=16666666, AnimationTime=60807458699402, AnimationCounter=-1, SyncQueued=60807473407104, SyncStart=60807474323713, IssueDrawCommandsStart=60807474361187, SwapBuffers=60807484110168, FrameCompleted=60808042124527, DequeueBufferDuration=192460548, QueueBufferDuration=15154789, GpuCompleted=60808042124527, SwapBuffersCompleted=60808021756240, DisplayPresentTime=636646, CommandSubmissionCompleted=60807484110168, 
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/ImeTracker(30734): com.indianservers.physics_atelier:d55b6dba: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(30734): show(ime())
+D/InsetsController(30734): Setting requestedVisibleTypes to 511 (was 503)
+I/ImeTracker(30734): com.indianservers.physics_atelier:ac26ef45: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(30734): show(ime())
+I/ImeTracker(30734): com.indianservers.physics_atelier:ac26ef45: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/InputConnectionAdaptor(30734): The input method toggled cursor monitoring on
+I/AssistStructure(30734): Flattened final assist data: 456 bytes, containing 1 windows, 3 views
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.view.ImeBackAnimationController@2199b5d
+I/ImeTracker(30734): com.indianservers.physics_atelier:3e7cf71a: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(30734): show(ime())
+I/ImeTracker(30734): com.indianservers.physics_atelier:3e7cf71a: onCancelled at PHASE_CLIENT_REPORT_REQUESTED_VISIBLE_TYPES
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.view.ImeBackAnimationController@2199b5d
+I/ImeTracker(30734): com.indianservers.physics_atelier:e8afda92: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false userId 0 displayId 0
+D/InsetsController(30734): hide(ime())
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/InsetsController(30734): Setting requestedVisibleTypes to 503 (was 511)
+I/ImeTracker(30734): com.indianservers.physics_atelier:d55b6dba: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+D/FlutterJNI(30734): Sending viewport metrics to the engine.
+W/InteractionJankMonitor(30734): Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.indianservers.physics_atelier
+D/FlutterJNI(30734): Sending viewport metrics to the engine.
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/FlutterJNI(30734): Sending viewport metrics to the engine.
+I/ImeTracker(30734): system_server:858bf23d: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+I/Choreographer(30734): Skipped 48 frames!  The application may be doing too much work on its main thread.
+D/FlutterJNI(30734): Sending viewport metrics to the engine.
+D/FlutterJNI(30734): Sending viewport metrics to the engine.
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b860af
+I/HWUI    (30734): Davey! duration=964ms; Flags=0, FrameTimelineVsyncId=15141804, IntendedVsync=60814708704658, Vsync=60815508704578, InputEventId=0, HandleInputStart=60815525399644, AnimationStart=60815525401183, PerformTraversalsStart=60815548235884, DrawStart=60815548280367, FrameDeadline=60815425365750, FrameStartTime=60815523657580, FrameInterval=16666665, WorkloadTarget=16666666, AnimationTime=60815508704578, AnimationCounter=-1, SyncQueued=60815553094984, SyncStart=60815553110994, IssueDrawCommandsStart=60815553132451, SwapBuffers=60815585372248, FrameCompleted=60815672739735, DequeueBufferDuration=3020, QueueBufferDuration=33171548, GpuCompleted=60815672739735, SwapBuffersCompleted=60815666982427, DisplayPresentTime=748104, CommandSubmissionCompleted=60815585372248, 
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b860af
+I/flutter (30734): Captured spherometer-after-perspective
+I/flutter (30734): Captured spherometer-after-top
+I/flutter (30734): Captured spherometer-after-section
+I/flutter (30734): Captured spherometer-after-perspective
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/flutter (30734): Captured spherometer-after-fullscreen
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/flutter (30734): Captured spherometer-after-scale
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/flutter (30734): Captured spherometer-after-check
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b860af
+I/flutter (30734): Captured spherometer-after-concave
+I/flutter (30734): Captured libraries-measurement-s01-e00
+I/flutter (30734): Captured libraries-measurement-s01-e01
+I/flutter (30734): Captured libraries-measurement-s01-e02
+I/flutter (30734): Captured libraries-measurement-s01-e03
+I/flutter (30734): Captured libraries-measurement-s01-e04
+I/flutter (30734): Captured libraries-measurement-s01-e05
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/flutter (30734): Captured libraries-thermal-0
+I/flutter (30734): Captured libraries-thermal-1
+I/flutter (30734): Captured libraries-thermal-2
+I/flutter (30734): Captured libraries-thermal-overlay
+I/flutter (30734): Captured libraries-thermal-profile-graph
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@d760ebe
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@d760ebe
+I/flutter (30734): Captured libraries-optic-slab
+I/flutter (30734): Captured libraries-optic-square
+I/flutter (30734): Captured libraries-optic-thick
+I/flutter (30734): Captured libraries-optic-window
+I/flutter (30734): Captured libraries-optic-semicircle
+I/flutter (30734): Captured libraries-optic-disk
+I/flutter (30734): Captured libraries-optic-quarter
+I/flutter (30734): Captured libraries-optic-semiellipse
+I/flutter (30734): Captured libraries-optic-equilateral
+I/flutter (30734): Captured libraries-optic-right45
+I/flutter (30734): Captured libraries-optic-right30
+I/flutter (30734): Captured libraries-optic-triangle
+I/flutter (30734): Captured libraries-optic-wedge
+I/flutter (30734): Captured libraries-optic-trapezoid
+I/flutter (30734): Captured libraries-optic-rhombic
+I/flutter (30734): Captured libraries-optic-penta
+I/flutter (30734): Captured libraries-optic-roof
+I/flutter (30734): Captured libraries-optic-porro
+I/flutter (30734): Captured libraries-optic-dove
+I/flutter (30734): Captured libraries-optic-corner
+I/flutter (30734): Captured libraries-optic-biconvex
+I/flutter (30734): Captured libraries-optic-asymconvex
+I/flutter (30734): Captured libraries-optic-planoconvex
+I/flutter (30734): Captured libraries-optic-meniscusplus
+I/flutter (30734): Captured libraries-optic-biconcave
+I/flutter (30734): Captured libraries-optic-asymconcave
+I/flutter (30734): Captured libraries-optic-planoconcave
+I/flutter (30734): Captured libraries-optic-meniscusminus
+I/flutter (30734): Captured libraries-optic-cylconvex
+I/flutter (30734): Captured libraries-optic-cylconcave
+I/flutter (30734): Captured libraries-optic-frontmirror
+I/flutter (30734): Captured libraries-optic-backmirror
+I/flutter (30734): Captured libraries-optic-concavemirror
+I/flutter (30734): Captured libraries-optic-convexmirror
+I/flutter (30734): Captured libraries-optic-parabolic
+I/flutter (30734): Captured libraries-optic-splitter
+I/flutter (30734): Captured libraries-optic-coatedright
+I/flutter (30734): Captured libraries-optic-coatedpenta
+I/flutter (30734): Captured libraries-optic-liquidprism
+I/flutter (30734): Captured libraries-optic-liquidcell
+I/flutter (30734): Captured libraries-investigation-0
+I/flutter (30734): Captured libraries-investigation-1
+I/flutter (30734): Captured libraries-investigation-2
+I/flutter (30734): Captured libraries-investigation-3
+I/flutter (30734): Captured libraries-investigation-4
+I/flutter (30734): Captured libraries-investigation-5
+I/flutter (30734): Captured libraries-investigation-6
+I/flutter (30734): Captured libraries-investigation-7
+I/flutter (30734): Captured libraries-investigation-8
+I/flutter (30734): Captured libraries-investigation-9
+I/flutter (30734): Captured libraries-investigation-10
+I/flutter (30734): Captured libraries-investigation-11
+D/WindowOnBackDispatcher(30734): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b860af
+D/WindowOnBackDispatcher(30734): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b860af
+I/flutter (30734): 01:42 +1: Restore original configurations and navigation preferences after explicit QA actions
+I/physics_atelier(30734): Background concurrent mark compact GC freed 4386KB AllocSpace bytes, 305(41MB) LOS objects, 43% free, 31MB/55MB, paused 351us,26.801ms total 98.776ms
+I/flutter (30734): 01:46 +2: (tearDownAll)
+I/flutter (30734): Warning: integration_test plugin was not detected.
+I/flutter (30734): 
+I/flutter (30734): If you're running the tests with `flutter drive`, please make sure your tests
+I/flutter (30734): are in the `integration_test/` directory of your package and use
+I/flutter (30734): `flutter test $path_to_test` to run it instead.
+I/flutter (30734): 
+I/flutter (30734): If you're running the tests with Android instrumentation or XCTest, this means
+I/flutter (30734): that you are not capturing test results properly! See the following link for
+I/flutter (30734): how to set up the integration_test plugin:
+I/flutter (30734): 
+I/flutter (30734): https://docs.flutter.dev/testing/integration-tests
+I/flutter (30734): 
+I/flutter (30734): 01:46 +3: All tests passed!
+All tests passed.
+Leaving the application running.

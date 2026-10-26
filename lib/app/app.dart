@@ -7,6 +7,8 @@ import 'package:share_plus/share_plus.dart';
 
 import '../content/catalog.dart';
 import '../features/workbench/launchers.dart';
+import '../features/material_bench/workspace.dart';
+import '../core/physics/thermal_library.dart' show materialBenchVersion;
 import '../content/learning.dart';
 import '../features/astronomy/workspace.dart';
 import '../features/overview/workspace.dart';
@@ -82,6 +84,11 @@ final router = GoRouter(
               key: ValueKey(s.pathParameters['id']),
               entry: entryById(s.pathParameters['id']!),
             ),
+    ),
+    GoRoute(
+      path: '/lab/:id/bench',
+      builder: (c, s) =>
+          MaterialBenchWorkspace(entry: entryById(s.pathParameters['id']!)),
     ),
     GoRoute(path: '/notebook', builder: (c, s) => const NotebookScreen()),
     GoRoute(path: '/settings', builder: (c, s) => const SettingsScreen()),
@@ -237,9 +244,15 @@ class NotebookScreen extends ConsumerWidget {
                       const SizedBox(height: 10),
                       OutlinedButton(
                         onPressed: () async {
-                          await store.saveSession(t.labId, t.configuration);
+                          final isBench = t.model == materialBenchVersion;
+                          await store.saveSession(
+                            isBench ? 'bench:${t.labId}' : t.labId,
+                            t.configuration,
+                          );
                           if (context.mounted) {
-                            context.push('/lab/${t.labId}');
+                            context.push(
+                              '/lab/${t.labId}${isBench ? '/bench' : ''}',
+                            );
                           }
                         },
                         child: const Text('Reopen this configuration'),
@@ -299,7 +312,7 @@ class SettingsScreen extends ConsumerWidget {
                 onTap: () => showLicensePage(
                   context: c,
                   applicationName: 'Physics Atelier',
-                  applicationVersion: '1.8.2+11',
+                  applicationVersion: '1.9.0+12',
                 ),
               ),
               const Panel(

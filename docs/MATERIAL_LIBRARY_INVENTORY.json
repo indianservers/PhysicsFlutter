@@ -1,0 +1,10 @@
+{
+  "thermalRecords": 36,
+  "solidConductionPresets": 16,
+  "heatingPresets": 13,
+  "opticalMaterials": 8,
+  "opticalComponents": 40,
+  "componentsWithNativeEvidence": 40,
+  "guidedOpticalPresets": 12,
+  "measurementLabs": 6
+}

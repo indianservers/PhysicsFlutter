@@ -23,6 +23,14 @@ void main() {
       } else {
         e.setA(e.a + (kind == 0 ? .001 : .0001));
       }
+      if (kind == 3) {
+        e.spherometer!
+          ..reference = 0
+          ..surface = 1;
+        e.setA(-.003);
+        e.spherometer!.contactReading = e.a;
+        e.changed();
+      }
       e.note = 'A reasoned measurement observation.';
       if (kind != 4) {
         e.checkPrediction(e.result!);

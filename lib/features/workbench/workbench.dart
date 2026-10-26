@@ -133,6 +133,7 @@ class LabSectionMenu extends StatelessWidget {
 
 class InstrumentShell extends StatefulWidget {
   final String id, title;
+  final List<Widget> toolbarActions;
   final Widget Function()? parameterDock;
   final double? dockExtent;
   final bool fitScene;
@@ -184,6 +185,7 @@ class InstrumentShell extends StatefulWidget {
     required this.record,
     required this.selectSection,
     required this.section,
+    this.toolbarActions = const [],
     this.parameterDock,
     this.dockExtent,
     this.fitScene = true,
@@ -774,7 +776,9 @@ class _InstrumentShellState extends State<InstrumentShell> {
                           SnackBar(
                             content: Text(
                               restored
-                                  ? 'Recorded configuration restored; model paused.'
+                                  ? (widget.dynamicModel()
+                                        ? 'Recorded configuration restored; model paused.'
+                                        : 'Recorded configuration restored.')
                                   : 'Incompatible configuration; active experiment preserved.',
                             ),
                           ),
@@ -926,6 +930,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
         ),
         actions: [
+          ...widget.toolbarActions,
           IconButton(
             tooltip: 'Learn / contextual help',
             onPressed: () => widget.selectSection(0),

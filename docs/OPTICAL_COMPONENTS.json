@@ -1,0 +1,722 @@
+[
+  {
+    "id": "slab",
+    "name": "Rectangular Glass Slab",
+    "class": "Refractive block",
+    "geometry": "slab",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-slab.png"
+  },
+  {
+    "id": "square",
+    "name": "Square Glass Block",
+    "class": "Refractive block",
+    "geometry": "square",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-square.png"
+  },
+  {
+    "id": "thick",
+    "name": "Thick Plane-Parallel Plate",
+    "class": "Refractive block",
+    "geometry": "thick",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-thick.png"
+  },
+  {
+    "id": "window",
+    "name": "Thin Optical Window",
+    "class": "Refractive block",
+    "geometry": "window",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-window.png"
+  },
+  {
+    "id": "semicircle",
+    "name": "Semicircular Glass Block",
+    "class": "Refractive block",
+    "geometry": "semicircle",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-semicircle.png"
+  },
+  {
+    "id": "disk",
+    "name": "Circular Glass Disk",
+    "class": "Refractive block",
+    "geometry": "disk",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-disk.png"
+  },
+  {
+    "id": "quarter",
+    "name": "Quarter-Circular Glass Block",
+    "class": "Refractive block",
+    "geometry": "quarter",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-quarter.png"
+  },
+  {
+    "id": "semiellipse",
+    "name": "Semi-Elliptical Glass Block",
+    "class": "Refractive block",
+    "geometry": "semiellipse",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 0.9999999999999999,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-semiellipse.png"
+  },
+  {
+    "id": "equilateral",
+    "name": "Equilateral Triangular Prism — 60°",
+    "class": "Prism",
+    "geometry": "equilateral",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0000000000000002,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-equilateral.png"
+  },
+  {
+    "id": "right45",
+    "name": "Right-Angle Isosceles Prism — 45°–45°–90°",
+    "class": "Prism",
+    "geometry": "right45",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-right45.png"
+  },
+  {
+    "id": "right30",
+    "name": "Right-Angle Scalene Prism — 30°–60°–90°",
+    "class": "Prism",
+    "geometry": "right30",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-right30.png"
+  },
+  {
+    "id": "triangle",
+    "name": "Custom Triangular Prism",
+    "class": "Prism",
+    "geometry": "triangle",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0000000000000002,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-triangle.png"
+  },
+  {
+    "id": "wedge",
+    "name": "Thin Wedge Prism",
+    "class": "Prism",
+    "geometry": "wedge",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-wedge.png"
+  },
+  {
+    "id": "trapezoid",
+    "name": "Trapezoidal Prism",
+    "class": "Prism",
+    "geometry": "trapezoid",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-trapezoid.png"
+  },
+  {
+    "id": "rhombic",
+    "name": "Rhombic Prism",
+    "class": "Prism",
+    "geometry": "rhombic",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 0.9999999999999999,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-rhombic.png"
+  },
+  {
+    "id": "penta",
+    "name": "Pentaprism",
+    "class": "Prism",
+    "geometry": "penta",
+    "functional": true,
+    "scope": "Uncoated five-face prism section; surface reflection/TIR depends on incidence. Use Coated Pentaprism for ideal reflecting faces.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Uncoated five-face prism section; surface reflection/TIR depends on incidence. Use Coated Pentaprism for ideal reflecting faces."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-penta.png"
+  },
+  {
+    "id": "roof",
+    "name": "Roof Prism",
+    "class": "Prism",
+    "geometry": "roof",
+    "functional": true,
+    "scope": "Valid extruded right-angle roof section with two orthogonal reflecting faces. Does not demonstrate full 3D image inversion.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Valid extruded right-angle roof section with two orthogonal reflecting faces. Does not demonstrate full 3D image inversion."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-roof.png"
+  },
+  {
+    "id": "porro",
+    "name": "Porro Prism",
+    "class": "Prism",
+    "geometry": "porro",
+    "functional": true,
+    "scope": "One right-angle Porro prism section. No Porro pair or image rotation is claimed.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "One right-angle Porro prism section. No Porro pair or image rotation is claimed."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-porro.png"
+  },
+  {
+    "id": "dove",
+    "name": "Dove Prism",
+    "class": "Prism",
+    "geometry": "dove",
+    "functional": true,
+    "scope": "Truncated-prism longitudinal section; refraction/TIR calculated. Does not model image rotation under axial rotation.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Truncated-prism longitudinal section; refraction/TIR calculated. Does not model image rotation under axial rotation."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-dove.png"
+  },
+  {
+    "id": "corner",
+    "name": "Corner-Cube Retroreflector",
+    "class": "Prism",
+    "geometry": "corner",
+    "functional": true,
+    "scope": "Actual 3D tetrahedral volume with three orthogonal ideal reflecting faces and refracting entrance. 3D direction vectors are reported; XY projection only.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Actual 3D tetrahedral volume with three orthogonal ideal reflecting faces and refracting entrance. 3D direction vectors are reported; XY projection only."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-corner.png"
+  },
+  {
+    "id": "biconvex",
+    "name": "Symmetric Biconvex Lens",
+    "class": "Lens",
+    "geometry": "biconvex",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-biconvex.png"
+  },
+  {
+    "id": "asymconvex",
+    "name": "Asymmetric Biconvex Lens",
+    "class": "Lens",
+    "geometry": "asymconvex",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-asymconvex.png"
+  },
+  {
+    "id": "planoconvex",
+    "name": "Plano-Convex Lens",
+    "class": "Lens",
+    "geometry": "planoconvex",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-planoconvex.png"
+  },
+  {
+    "id": "meniscusplus",
+    "name": "Positive Meniscus Lens",
+    "class": "Lens",
+    "geometry": "meniscusplus",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 0.9999999999999999,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-meniscusplus.png"
+  },
+  {
+    "id": "biconcave",
+    "name": "Symmetric Biconcave Lens",
+    "class": "Lens",
+    "geometry": "biconcave",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-biconcave.png"
+  },
+  {
+    "id": "asymconcave",
+    "name": "Asymmetric Biconcave Lens",
+    "class": "Lens",
+    "geometry": "asymconcave",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-asymconcave.png"
+  },
+  {
+    "id": "planoconcave",
+    "name": "Plano-Concave Lens",
+    "class": "Lens",
+    "geometry": "planoconcave",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-planoconcave.png"
+  },
+  {
+    "id": "meniscusminus",
+    "name": "Negative Meniscus Lens",
+    "class": "Lens",
+    "geometry": "meniscusminus",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 0.9999999999999999,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-meniscusminus.png"
+  },
+  {
+    "id": "cylconvex",
+    "name": "Cylindrical Plano-Convex Lens",
+    "class": "Lens",
+    "geometry": "cylconvex",
+    "functional": true,
+    "scope": "Powered XY meridional section of a cylindrical lens extruded along Z. No focusing along its unpowered axis.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Powered XY meridional section of a cylindrical lens extruded along Z. No focusing along its unpowered axis."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-cylconvex.png"
+  },
+  {
+    "id": "cylconcave",
+    "name": "Cylindrical Plano-Concave Lens",
+    "class": "Lens",
+    "geometry": "cylconcave",
+    "functional": true,
+    "scope": "Powered XY meridional section of a cylindrical lens extruded along Z. No focusing along its unpowered axis.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Powered XY meridional section of a cylindrical lens extruded along Z. No focusing along its unpowered axis."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-cylconcave.png"
+  },
+  {
+    "id": "frontmirror",
+    "name": "Plane Front-Surface Mirror",
+    "class": "Mirror",
+    "geometry": "frontmirror",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-frontmirror.png"
+  },
+  {
+    "id": "backmirror",
+    "name": "Plane Back-Surface Glass Mirror",
+    "class": "Mirror",
+    "geometry": "backmirror",
+    "functional": true,
+    "scope": "Fresnel front reflection and internal glass propagation to an ideal lossless rear mirror; ghost rays calculated.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Fresnel front reflection and internal glass propagation to an ideal lossless rear mirror; ghost rays calculated."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-backmirror.png"
+  },
+  {
+    "id": "concavemirror",
+    "name": "Concave Spherical Mirror",
+    "class": "Mirror",
+    "geometry": "concavemirror",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-concavemirror.png"
+  },
+  {
+    "id": "convexmirror",
+    "name": "Convex Spherical Mirror",
+    "class": "Mirror",
+    "geometry": "convexmirror",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-convexmirror.png"
+  },
+  {
+    "id": "parabolic",
+    "name": "Concave Parabolic Mirror",
+    "class": "Mirror",
+    "geometry": "parabolic",
+    "functional": true,
+    "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Functional in the labeled optical section; finite aperture, ideal surfaces, no image-rotation claim."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-parabolic.png"
+  },
+  {
+    "id": "splitter",
+    "name": "Partially Reflective Glass Plate / Beam Splitter",
+    "class": "Coated component",
+    "geometry": "splitter",
+    "functional": true,
+    "scope": "User-prescribed illustrative reflectance on the front face; lossless R+T=1. Remaining interfaces use unpolarized Fresnel. No commercial coating specification.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "User-prescribed illustrative reflectance on the front face; lossless R+T=1. Remaining interfaces use unpolarized Fresnel. No commercial coating specification."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-splitter.png"
+  },
+  {
+    "id": "coatedright",
+    "name": "Coated Right-Angle Prism",
+    "class": "Coated component",
+    "geometry": "coatedright",
+    "functional": true,
+    "scope": "Ideal 100% lossless reflector on the hypotenuse; uncoated entrance/exit use Fresnel. Educational coating assumption.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Ideal 100% lossless reflector on the hypotenuse; uncoated entrance/exit use Fresnel. Educational coating assumption."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-coatedright.png"
+  },
+  {
+    "id": "coatedpenta",
+    "name": "Coated Pentaprism",
+    "class": "Coated component",
+    "geometry": "coatedpenta",
+    "functional": true,
+    "scope": "Ideal reflectors on the two 45°-separated long reflecting faces; Fresnel entrance/exit. Educational coating assumption.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Ideal reflectors on the two 45°-separated long reflecting faces; Fresnel entrance/exit. Educational coating assumption."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-coatedpenta.png"
+  },
+  {
+    "id": "liquidprism",
+    "name": "Hollow Triangular Liquid Prism",
+    "class": "Liquid-containing element",
+    "geometry": "liquidprism",
+    "functional": true,
+    "scope": "Nested finite-thickness N-BK7 container and full liquid fill in a sealed triangular section. No meniscus/fluid dynamics.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Nested finite-thickness N-BK7 container and full liquid fill in a sealed triangular section. No meniscus/fluid dynamics."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-liquidprism.png"
+  },
+  {
+    "id": "liquidcell",
+    "name": "Rectangular Liquid Cell",
+    "class": "Liquid-containing element",
+    "geometry": "liquidcell",
+    "functional": true,
+    "scope": "Nested finite-thickness N-BK7 container and full liquid fill in a sealed rectangular section. No meniscus/fluid dynamics.",
+    "asset": "Original procedural geometry, same boundaries used for ray tracing",
+    "version": "optics-2026-10",
+    "nativeEvidence": {
+      "rendered": true,
+      "surfaceInteraction": true,
+      "powerAccounted": 1.0,
+      "scope": "Nested finite-thickness N-BK7 container and full liquid fill in a sealed rectangular section. No meniscus/fluid dynamics."
+    },
+    "scientificTests": "test/material_libraries_science_test.dart",
+    "screenshot": "screenshots/libraries-optic-liquidcell.png"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "filename": "lib/core/physics/thermal_library.dart",
+    "sha256": "18484c71dded0cac6bf3b9bddcb5e0d2820251246d83bb6825a54e551b41af45",
+    "source": "Original procedural geometry and material shading; no manufacturer image copied",
+    "physicsLink": "Thermal selected-record descriptor or analytic optical/spherical geometry",
+    "license": "Project source terms; repository redistribution license is not supplied by these numeric-source citations",
+    "externalAssetsAdded": false
+  },
+  {
+    "filename": "lib/core/physics/optical_library.dart",
+    "sha256": "9c8179ddd5dc48603f436269407541b8596cdd2ad72e356649db350cf59aa180",
+    "source": "Original procedural geometry and material shading; no manufacturer image copied",
+    "physicsLink": "Thermal selected-record descriptor or analytic optical/spherical geometry",
+    "license": "Project source terms; repository redistribution license is not supplied by these numeric-source citations",
+    "externalAssetsAdded": false
+  },
+  {
+    "filename": "lib/features/material_bench/scene.dart",
+    "sha256": "b7be0d97088b8927e32e78a4eb4e7e9bbc36744b866660d0bde4158858b34740",
+    "source": "Original procedural geometry and material shading; no manufacturer image copied",
+    "physicsLink": "Thermal selected-record descriptor or analytic optical/spherical geometry",
+    "license": "Project source terms; repository redistribution license is not supplied by these numeric-source citations",
+    "externalAssetsAdded": false
+  },
+  {
+    "filename": "lib/features/measurement/spherometer_viewport.dart",
+    "sha256": "8b17653663ab42d40c859163553781318b57e932430b2c79d3608ee700833a3f",
+    "source": "Original procedural geometry and material shading; no manufacturer image copied",
+    "physicsLink": "Thermal selected-record descriptor or analytic optical/spherical geometry",
+    "license": "Project source terms; repository redistribution license is not supplied by these numeric-source citations",
+    "externalAssetsAdded": false
+  }
+]

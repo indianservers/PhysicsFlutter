@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../physics/measurement.dart';
+import '../physics/thermal_library.dart' show materialBenchVersion;
 import '../../content/catalog.dart';
 import '../physics/dynamics.dart';
 import '../physics/advanced.dart';
@@ -93,6 +94,7 @@ class Trial {
         (resolution != null && (!resolution.isFinite || resolution < 0)) ||
         ![
           modelVersion,
+          materialBenchVersion,
           dynamicsVersion,
           advancedVersion,
           waveOpticsVersion,

@@ -1,0 +1,154 @@
+[
+  {
+    "id": "air",
+    "name": "Air · ideal n=1",
+    "n_reference": 1.0,
+    "reference_nm": 589.3,
+    "temperature_K": 293.15,
+    "min_nm": 400.0,
+    "max_nm": 700.0,
+    "model": "Constant monochromatic teaching approximation",
+    "B": null,
+    "C_um2": null,
+    "source": "https://emtoolbox.nist.gov/Wavelength/Documentation.asp",
+    "conditions": "Ideal surrounding medium, not a humidity/pressure air-index calculation.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  },
+  {
+    "id": "water",
+    "name": "Water · monochromatic",
+    "n_reference": 1.333,
+    "reference_nm": 589.3,
+    "temperature_K": 293.15,
+    "min_nm": 585.5,
+    "max_nm": 591.5,
+    "model": "Constant monochromatic teaching approximation",
+    "B": null,
+    "C_um2": null,
+    "source": "https://openstax.org/books/university-physics-volume-3/pages/1-3-refraction",
+    "conditions": "Liquid water reference at sodium D line. No dispersion or temperature interpolation.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  },
+  {
+    "id": "silica",
+    "name": "Fused Silica · Malitson",
+    "n_reference": 1.4585,
+    "reference_nm": 589.3,
+    "temperature_K": 293.15,
+    "min_nm": 400.0,
+    "max_nm": 700.0,
+    "model": "Sellmeier, wavelength in µm",
+    "B": [
+      0.6961663,
+      0.4079426,
+      0.8974794
+    ],
+    "C_um2": [
+      0.00467914825849,
+      0.01351206307396,
+      97.934002537921
+    ],
+    "source": "https://opg.optica.org/josa/abstract.cfm?uri=josa-55-10-1205",
+    "conditions": "Malitson 1965 fused-silica fit, 20 °C. Visible subset used.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  },
+  {
+    "id": "bk7",
+    "name": "SCHOTT N-BK7 crown",
+    "n_reference": 1.5168,
+    "reference_nm": 587.6,
+    "temperature_K": 293.15,
+    "min_nm": 400.0,
+    "max_nm": 700.0,
+    "model": "Sellmeier, wavelength in µm",
+    "B": [
+      1.03961212,
+      0.231792344,
+      1.01046945
+    ],
+    "C_um2": [
+      0.00600069867,
+      0.0200179144,
+      103.560653
+    ],
+    "source": "https://media.schott.com/api/public/content/41e799d0bf874807a0bb8e702fbb75b5?v=54856406",
+    "conditions": "SCHOTT Sellmeier coefficients; reference glass, not every borosilicate. Visible subset used.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  },
+  {
+    "id": "f2",
+    "name": "SCHOTT N-F2 flint",
+    "n_reference": 1.62005,
+    "reference_nm": 587.6,
+    "temperature_K": 293.15,
+    "min_nm": 400.0,
+    "max_nm": 700.0,
+    "model": "Sellmeier, wavelength in µm",
+    "B": [
+      1.39757037,
+      0.159201403,
+      1.2686543
+    ],
+    "C_um2": [
+      0.009959061,
+      0.0546931752,
+      119.248346
+    ],
+    "source": "https://media.schott.com/api/public/content/061f3156c83a44ed9220770b0f65a869?v=d69b35e0",
+    "conditions": "SCHOTT N-F2 Sellmeier coefficients. Visible subset used.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  },
+  {
+    "id": "pmma",
+    "name": "PMMA / Acrylic · monochromatic",
+    "n_reference": 1.49,
+    "reference_nm": 589.3,
+    "temperature_K": 293.15,
+    "min_nm": 585.5,
+    "max_nm": 591.5,
+    "model": "Constant monochromatic teaching approximation",
+    "B": null,
+    "C_um2": null,
+    "source": "https://www.edmundoptics.com/knowledge-center/application-notes/optics/understanding-optical-windows/",
+    "conditions": "Typical unfilled optical acrylic, sodium-D teaching value. Grade variation and dispersion not modeled.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  },
+  {
+    "id": "pc",
+    "name": "Polycarbonate · monochromatic",
+    "n_reference": 1.585,
+    "reference_nm": 589.3,
+    "temperature_K": 293.15,
+    "min_nm": 585.5,
+    "max_nm": 591.5,
+    "model": "Constant monochromatic teaching approximation",
+    "B": null,
+    "C_um2": null,
+    "source": "https://www.edmundoptics.com/knowledge-center/application-notes/optics/understanding-optical-windows/",
+    "conditions": "Typical optical polycarbonate; sodium-D teaching value. No dispersion fit.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  },
+  {
+    "id": "glycerol",
+    "name": "Glycerol · monochromatic",
+    "n_reference": 1.474,
+    "reference_nm": 589.3,
+    "temperature_K": 293.15,
+    "min_nm": 585.5,
+    "max_nm": 591.5,
+    "model": "Constant monochromatic teaching approximation",
+    "B": null,
+    "C_um2": null,
+    "source": "https://www.itwreagents.com/download_file/tds/131339/en/tds_131339_en.pdf",
+    "conditions": "ITW reagent glycerol n20/D; composition and water content matter.",
+    "absorption": "Unavailable; lossless bulk assumption",
+    "sourceVersion": "optics-2026-10"
+  }
+]
