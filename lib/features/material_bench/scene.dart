@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../core/physics/optical_library.dart';
+import '../../core/rendering/materials.dart';
 import '../../core/physics/thermal_library.dart';
 
 class OpticalBenchPainter extends CustomPainter {
@@ -310,6 +311,25 @@ class ThermalBenchPainter extends CustomPainter {
         c.drawPath(vein, paint..style = PaintingStyle.stroke);
       }
     }
+    final tile = {
+      'brushed': m.id == 'copper'
+          ? 2
+          : m.id == 'brass'
+          ? 3
+          : 1,
+      'polished': m.id == 'gold' ? 3 : 14,
+      'granular': 6,
+      'ceramic': 7,
+      'granite': 8,
+      'marble': 9,
+      'porous': 10,
+      'foam': 11,
+      'fibres': 12,
+      'wood-long': m.id.startsWith('oak') ? 5 : 4,
+      'wood-cross': m.id.startsWith('oak') ? 5 : 4,
+      'matte': 13,
+    }[m.texture];
+    if (tile != null) LabMaterials.texture(c, rect, tile, opacity: .65);
     if (['glass', 'liquid', 'gas'].contains(m.texture)) {
       c.drawPath(
         path,

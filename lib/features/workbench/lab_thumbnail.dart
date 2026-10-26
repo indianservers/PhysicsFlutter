@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 import '../../content/catalog.dart';
+import '../../core/rendering/reference_preview.dart';
 import '../../core/rendering/apparatus.dart';
 import '../../core/physics/dynamics.dart';
 import '../../core/physics/advanced.dart';
@@ -35,7 +36,10 @@ class LabThumbnail extends StatelessWidget {
   Widget build(BuildContext context) => Semantics(
     image: true,
     label: '${entry.title}, static apparatus reference preview',
-    child: RepaintBoundary(child: CustomPaint(painter: _Preview(entry))),
+    child: ReferencePreview(
+      entry,
+      fallback: RepaintBoundary(child: CustomPaint(painter: _Preview(entry))),
+    ),
   );
 }
 

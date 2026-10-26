@@ -1,10 +1,10 @@
-# Physics Atelier — instrument-first workspaces (1.9.0+12)
+# Physics Atelier — reference-style workspaces (1.10.0+13)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
 Repository: https://github.com/indianservers/PhysicsFlutter
 
-Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI` folder remains intact and is excluded from the app bundle and Git because its redistribution rights are unknown.
+Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI` folder remains intact and ignored. Runtime copies in `assets/reference_previews` provide static launcher thumbnails; their provenance remains user-supplied.
 
 ## Included
 
@@ -29,11 +29,13 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 - Six Astronomy & Astrophysics labs using `astronomy-8.0`: frozen J2000 Kepler orbits, sourced MIST stellar tracks, synthetic spectra, galaxy rotation with optional SPARC observations, flat FLRW distances, and exact uniform-star transit overlap.
 - Six Concept Overview tools: Physics Atlas, Relationship Map, eight Guided Paths, Experiment Launcher, five Compare Phenomena workspaces, and a validated 16-question Mastery Challenge bank covering six task types. One catalog supplies all 96 lab routes, favorites, saved configurations and real completion progress.
 
-The graphics are original procedural instrument drawings with material shading. Photorealistic apparatus and photographic thumbnails remain a visual quality gap relative to the targets. iOS compilation and device QA are pending. See the handover for precise limits; this is not a claim of store-release readiness.
+Live graphics remain procedural instrument drawings with generated material textures. Studio launchers now use cropped user-supplied reference previews. Live apparatus photography remains a visual quality gap relative to the targets; the application is not pixel-identical. iOS compilation and device QA are pending. See the handover for precise limits; this is not a claim of store-release readiness.
 
-Micrometer now has opposed measuring faces, a state-linked sleeve/thimble, a floating magnifier and precision controls. All physical labs use a contextual section menu instead of permanent five-item navigation.
+Micrometer now has opposed measuring faces, a state-linked sleeve/thimble, a floating magnifier and precision controls. All physical labs use the reference four-item Learn / Labs / Results / Profile footer, with camera tools and advanced investigation settings in the contextual menu.
 
-Current feature upgrade: [materials and Spherometer QA](docs/MATERIALS_AND_SPHEROMETER_QA.md), [source/availability inventory](docs/MATERIAL_LIBRARY_INVENTORY.json), [running-app screenshots](docs/LIBRARY_SCREENSHOTS.md). Open Heat Transfer or one of the four optical labs and use the toolbar library icon.
+Current UI audit: [Target UI audit](docs/TARGET_UI_AUDIT.md), [102-entry checklist](docs/TARGET_UI_SCREEN_AUDIT.csv), [asset provenance](docs/TARGET_UI_ASSETS.json).
+
+Earlier physics feature upgrade: [materials and Spherometer QA](docs/MATERIALS_AND_SPHEROMETER_QA.md), [source/availability inventory](docs/MATERIAL_LIBRARY_INVENTORY.json), [running-app screenshots](docs/LIBRARY_SCREENSHOTS.md). Open Heat Transfer or one of the four optical labs and use the toolbar library icon.
 
 Earlier copy cleanup: [learner-facing text audit](docs/LEARNER_COPY_AUDIT.md).
 
@@ -53,7 +55,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable version **1.9.0+12**: [debug APK](deliverables/physics-atelier-libraries-debug.apk) and [release APK with development signing](deliverables/physics-atelier-libraries-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
+Installable version **1.10.0+13**: [debug APK](deliverables/physics-atelier-target-ui-debug.apk) and [release APK with development signing](deliverables/physics-atelier-target-ui-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
 
 Device integration and screenshot capture:
 

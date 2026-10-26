@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../content/catalog.dart';
+import '../core/design_system/reference_style.dart';
 import '../features/workbench/launchers.dart';
 import '../features/material_bench/workspace.dart';
 import '../core/physics/thermal_library.dart' show materialBenchVersion;
@@ -91,6 +92,7 @@ final router = GoRouter(
           MaterialBenchWorkspace(entry: entryById(s.pathParameters['id']!)),
     ),
     GoRoute(path: '/notebook', builder: (c, s) => const NotebookScreen()),
+    GoRoute(path: '/profile', builder: (c, s) => const ProfileScreen()),
     GoRoute(path: '/settings', builder: (c, s) => const SettingsScreen()),
   ],
   errorBuilder: (c, s) => Scaffold(
@@ -204,6 +206,10 @@ class NotebookScreen extends ConsumerWidget {
             ),
           ],
         ),
+        bottomNavigationBar: const ReferenceNavigation(
+          selected: 2,
+          homeFirst: true,
+        ),
         body: SafeArea(
           child: PageBody(
             children: [
@@ -277,6 +283,10 @@ class SettingsScreen extends ConsumerWidget {
       listenable: store,
       builder: (c, _) => Scaffold(
         appBar: AppBar(title: const Text('Settings')),
+        bottomNavigationBar: const ReferenceNavigation(
+          selected: 3,
+          homeFirst: true,
+        ),
         body: SafeArea(
           child: PageBody(
             children: [
@@ -312,7 +322,7 @@ class SettingsScreen extends ConsumerWidget {
                 onTap: () => showLicensePage(
                   context: c,
                   applicationName: 'Physics Atelier',
-                  applicationVersion: '1.9.0+12',
+                  applicationVersion: '1.10.0+13',
                 ),
               ),
               const Panel(
@@ -356,4 +366,75 @@ Widget relatedLabs(String id) {
       ),
     ),
   );
+}
+
+class ProfileScreen extends ConsumerWidget {
+  const ProfileScreen({super.key});
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final store = ref.watch(notebookProvider);
+    return ListenableBuilder(
+      listenable: store,
+      builder: (c, _) => Scaffold(
+        appBar: AppBar(title: const Text('Profile')),
+        bottomNavigationBar: const ReferenceNavigation(
+          selected: 3,
+          homeFirst: true,
+        ),
+        body: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              const CircleAvatar(
+                radius: 36,
+                backgroundColor: Color(0xffeaf4ff),
+                child: Icon(Icons.person_outline, size: 40, color: cobalt),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Your learning',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
+              ),
+              const SizedBox(height: 20),
+              Panel(
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.check_circle_outline),
+                      title: const Text('Completed activities'),
+                      trailing: Text('${store.completed.length} / 102'),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.bar_chart_outlined),
+                      title: const Text('Recorded trials'),
+                      trailing: Text('${store.trials.length}'),
+                      onTap: () => context.push('/notebook'),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.bookmark_outline),
+                      title: const Text('Saved favorites'),
+                      trailing: Text('${store.favorites.length}'),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.tune),
+                title: const Text('Settings and accessibility'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => context.push('/settings'),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  'Progress, notes and experiments are stored on this device.',
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

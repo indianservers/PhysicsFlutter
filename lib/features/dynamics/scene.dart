@@ -908,7 +908,12 @@ class DynamicsGraph extends CustomPainter {
       high = low + 1;
     }
     final end = math.max(.01, samples.last['t']!);
-    final area = Rect.fromLTWH(48, 20, size.width - 65, size.height - 58);
+    final area = Rect.fromLTWH(
+      math.min(48, size.width * .2),
+      math.min(20, size.height * .15),
+      math.max(1, size.width - math.min(48, size.width * .2) - 17),
+      math.max(1, size.height - math.min(20, size.height * .15) - 32),
+    );
     Offset pt(Observation s) => Offset(
       area.left + s['t']! / end * area.width,
       area.bottom - ((s[channel] ?? 0) - low) / (high - low) * area.height,

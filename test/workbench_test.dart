@@ -63,7 +63,7 @@ void main() {
       router.go('/lab/s03-e03');
       await t.pumpAndSettle();
       expect(find.byType(InstrumentShell), findsOneWidget);
-      await t.tap(find.byTooltip('Zoom in'));
+      await tapViewportTool(t, 'Zoom in');
       await t.pumpAndSettle();
       Transform camera() => t.widget<Transform>(
         find
@@ -74,10 +74,10 @@ void main() {
             .first,
       );
       expect(camera().transform.getMaxScaleOnAxis(), greaterThan(1));
-      await t.tap(find.byTooltip('Fit apparatus / reset view'));
+      await tapViewportTool(t, 'Fit apparatus / reset view');
       await t.pumpAndSettle();
       expect(camera().transform.getMaxScaleOnAxis(), 1);
-      await t.tap(find.byTooltip('Workspace panes'));
+      await tapViewportTool(t, 'Workspace panes');
       await t.pumpAndSettle();
       await t.tap(find.text('Scene + Graph').last);
       await t.pumpAndSettle();
@@ -186,16 +186,16 @@ void main() {
         final signature = shell.controls().map((c) => c.value).toList();
         final readings = shell.readings().map((r) => r.value).toList();
         final changes = shell.changes;
-        await t.tap(find.byTooltip('Pan / zoom camera'));
+        await tapViewportTool(t, 'Pan / zoom camera');
         await t.pumpAndSettle();
-        await t.tap(find.byTooltip('Zoom in'));
+        await tapViewportTool(t, 'Zoom in');
         await t.pumpAndSettle();
         await t.drag(
           find.byKey(const Key('workspace-camera')),
           const Offset(30, 15),
         );
         await t.pumpAndSettle();
-        await t.tap(find.byTooltip('Fit apparatus / reset view'));
+        await tapViewportTool(t, 'Fit apparatus / reset view');
         await t.pumpAndSettle();
         final after = t.widget<InstrumentShell>(find.byType(InstrumentShell));
         expect(
@@ -284,7 +284,7 @@ void main() {
       router.go('/lab/s01-e01');
       await t.pumpAndSettle();
       Future<void> guide() async {
-        await t.tap(find.byTooltip('Workspace panes'));
+        await tapViewportTool(t, 'Workspace panes');
         await t.pumpAndSettle();
         await t.tap(find.text('Guided investigation'));
         await t.pumpAndSettle();

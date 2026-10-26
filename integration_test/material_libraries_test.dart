@@ -1,3 +1,4 @@
+import '../test/ui_navigation.dart';
 import 'dart:convert';
 import 'dart:math' as math;
 
@@ -86,7 +87,7 @@ void main() {
       expect(e.result, greaterThan(0));
       await capture(t, binding, 'spherometer-after-perspective');
       final before = jsonEncode(e.toJson());
-      await t.tap(find.byTooltip('Pan / zoom camera'));
+      await tapViewportTool(t, 'Pan / zoom camera');
       await t.pumpAndSettle();
       await t.drag(
         find.byKey(const Key('workspace-camera')),
@@ -94,8 +95,8 @@ void main() {
       );
       await t.pumpAndSettle();
       expect(jsonEncode(e.toJson()), before);
-      await t.tap(find.byTooltip('Fit apparatus / reset view'));
-      await t.tap(find.byTooltip('Manipulate apparatus'));
+      await tapViewportTool(t, 'Fit apparatus / reset view');
+      await tapViewportTool(t, 'Manipulate apparatus');
       await t.pumpAndSettle();
       for (final view in ['Top', 'Section', 'Perspective']) {
         await t.tap(find.text(view));
@@ -103,7 +104,7 @@ void main() {
         await capture(t, binding, 'spherometer-after-${view.toLowerCase()}');
       }
       final savedReading = e.a;
-      await t.tap(find.byTooltip('Workspace panes'));
+      await tapViewportTool(t, 'Workspace panes');
       await t.pumpAndSettle();
       await t.tap(find.text('Full-screen Scene').last);
       await t.pumpAndSettle();
@@ -175,7 +176,7 @@ void main() {
       bench.changed();
       await t.pumpAndSettle();
       await capture(t, binding, 'libraries-thermal-overlay');
-      await t.tap(find.byTooltip('Workspace panes'));
+      await tapViewportTool(t, 'Workspace panes');
       await t.pumpAndSettle();
       await t.tap(find.text('Scene + Graph').last);
       await t.pumpAndSettle();

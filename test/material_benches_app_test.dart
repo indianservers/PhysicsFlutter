@@ -1,3 +1,4 @@
+import 'ui_navigation.dart';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -100,7 +101,7 @@ void main() {
       final recorded = store.trials.last;
       expect(recorded.quantity, 'radius');
       final before = e.toJson();
-      await t.tap(find.byTooltip('Pan / zoom camera'));
+      await tapViewportTool(t, 'Pan / zoom camera');
       await t.pumpAndSettle();
       await t.drag(
         find.byKey(const Key('workspace-camera')),
@@ -108,8 +109,8 @@ void main() {
       );
       await t.pumpAndSettle();
       expect(e.toJson(), before);
-      await t.tap(find.byTooltip('Fit apparatus / reset view'));
-      await t.tap(find.byTooltip('Manipulate apparatus'));
+      await tapViewportTool(t, 'Fit apparatus / reset view');
+      await tapViewportTool(t, 'Manipulate apparatus');
       await t.pumpAndSettle();
       await t.tap(find.text('Reveal / Check'));
       await t.pumpAndSettle();
@@ -279,7 +280,7 @@ void main() {
         greaterThan(0),
       );
       final physical = jsonEncode(state.configuration());
-      await t.tap(find.byTooltip('Pan / zoom camera'));
+      await tapViewportTool(t, 'Pan / zoom camera');
       await t.pumpAndSettle();
       await t.drag(
         find.byKey(const Key('workspace-camera')),

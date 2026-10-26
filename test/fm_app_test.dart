@@ -186,7 +186,7 @@ void main() {
     expect(fmScene(t).run.invalid, contains('Re'));
     await show(t, find.byKey(const Key('record-trial')));
     expect(
-      t.widget<FilledButton>(find.byKey(const Key('record-trial'))).onPressed,
+      t.widget<IconButton>(find.byKey(const Key('record-trial'))).onPressed,
       isNull,
     );
     router.go('/lab/s14-e01');

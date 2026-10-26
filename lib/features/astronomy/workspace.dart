@@ -12,6 +12,7 @@ import '../../app/app.dart';
 import '../workbench/workbench.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
+import '../../core/design_system/reference_style.dart';
 import '../../core/rendering/materials.dart';
 import '../../core/persistence/notebook.dart';
 import '../../core/physics/astronomy_run.dart';
@@ -421,6 +422,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
+        referenceChart: referencePlot,
         exportRecorded: (trials) => exportTrials(context, trials),
         reopenTrial: (trial) {
           pause();
@@ -524,7 +526,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
   Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
       leading: LabBackButton(entry.id.split('-').first),
-      title: Text(entry.title),
+      title: ReferenceLabHeading(entry.id, entry.title),
       actions: [
         LabSectionMenu(
           section: section,
@@ -535,6 +537,25 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
           },
         ),
       ],
+    ),
+    bottomNavigationBar: ReferenceNavigation(
+      selected: section == 4
+          ? 2
+          : section == 0 || section == 3
+          ? 0
+          : 1,
+      onFirst: () {
+        pause();
+        setState(() => section = 0);
+      },
+      onLabs: () {
+        pause();
+        setState(() => section = 1);
+      },
+      onResults: () {
+        pause();
+        setState(() => section = 4);
+      },
     ),
     body: !ready
         ? const Center(child: CircularProgressIndicator())
@@ -902,6 +923,64 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
     4 => ['Distance measures', 'Lookback time', 'Scale factor'],
     _ => ['Transit flux'],
   };
+  CustomPainter referencePlot() {
+    List<AstroState> data = run.profile;
+    var keys = <String>[], unit = '';
+    bool scatter = false;
+    switch (kind) {
+      case 0:
+        keys = [graph == 'Speed' ? 'speed' : 'distance'];
+        unit = graph == 'Speed' ? 'm/s' : 'm';
+      case 1:
+        keys = ['logLuminosity'];
+        unit = 'log10(L/L☉)';
+      case 2:
+        keys = ['continuum', 'syntheticFlux', 'restReference'];
+        unit = 'normalized flux';
+      case 3:
+        if (graph == 'SPARC observed NGC2403') {
+          data = [
+            for (final r in ngc2403)
+              {
+                't': r[0] * kpc,
+                'observed': r[1] * 1000,
+                'uncertainty': r[2] * 1000,
+              },
+          ];
+          keys = ['observed'];
+          scatter = true;
+        } else {
+          keys = ['speed', 'bulgeSpeed', 'diskSpeed', 'haloSpeed'];
+        }
+        unit = 'm/s';
+      case 4:
+        keys = graph == 'Lookback time'
+            ? ['lookback']
+            : graph == 'Scale factor'
+            ? ['scaleFactor']
+            : ['comovingDistance', 'luminosityDistance', 'angularDistance'];
+        unit = graph == 'Lookback time'
+            ? 's'
+            : graph == 'Scale factor'
+            ? '1'
+            : 'm';
+      case 5:
+        keys = ['flux', if (parameters['noise']! > 0) 'syntheticFlux'];
+        unit = 'relative flux';
+    }
+    return LabPlot(
+      data,
+      keys,
+      axes[kind],
+      unit,
+      cursor,
+      scatter: scatter,
+      errorKeys: kind == 3 && scatter
+          ? const {'observed': 'uncertainty'}
+          : const {},
+    );
+  }
+
   List<Widget> visualize() {
     List<AstroState> data = run.profile;
     var keys = <String>[], unit = '';

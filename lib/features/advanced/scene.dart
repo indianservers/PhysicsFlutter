@@ -832,7 +832,12 @@ class LabPlot extends CustomPainter {
         : 0.0;
     final xmin = xrange.min - halfBin,
         xmax = xrange.max + halfBin,
-        area = Rect.fromLTWH(65, 20, size.width - 82, size.height - 58);
+        area = Rect.fromLTWH(
+          math.min(65, size.width * .2),
+          math.min(20, size.height * .15),
+          math.max(1, size.width - math.min(65, size.width * .2) - 17),
+          math.max(1, size.height - math.min(20, size.height * .15) - 32),
+        );
     Offset point(LabState s, String key) => Offset(
       area.left + (s['t']! - xmin) / (xmax - xmin) * area.width,
       area.bottom - ((s[key] ?? 0) - lo) / (hi - lo) * area.height,

@@ -177,7 +177,7 @@ void main() {
       pause();
       await t.pumpAndSettle();
       final fixedTicks = ticks();
-      await t.tap(find.byTooltip('Workspace panes'));
+      await tapViewportTool(t, 'Workspace panes');
       await t.pumpAndSettle();
       await t.tap(find.text('Scene + Graph').last);
       await t.pumpAndSettle();

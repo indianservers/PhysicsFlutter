@@ -117,7 +117,7 @@ void main() {
     for (final e in allEntries) {
       router.go('/lab/${e.id}');
       await tester.pumpAndSettle();
-      expect(find.text(e.title), findsWidgets);
+      expect(find.textContaining(e.title), findsWidgets);
       if (!e.tool) {
         await chooseSection(tester, 'Formulas');
         await tester.pumpAndSettle();

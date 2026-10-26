@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const navy = Color(0xff122b4e),
-    cobalt = Color(0xff245ce7),
+const navy = Color(0xff08265b),
+    cobalt = Color(0xff006eff),
     teal = Color(0xff00777d),
     muted = Color(0xff65758b);
 ThemeData physicsTheme() => ThemeData(
@@ -12,17 +12,17 @@ ThemeData physicsTheme() => ThemeData(
     surface: Colors.white,
     onSurface: navy,
   ),
-  scaffoldBackgroundColor: const Color(0xfffbfcfe),
+  scaffoldBackgroundColor: Colors.white,
   fontFamily: 'sans-serif',
   textTheme: const TextTheme(
     headlineLarge: TextStyle(
-      fontSize: 34,
+      fontSize: 28,
       fontWeight: FontWeight.w800,
-      letterSpacing: -1.2,
+      letterSpacing: -.5,
       color: navy,
     ),
     headlineMedium: TextStyle(
-      fontSize: 26,
+      fontSize: 23,
       fontWeight: FontWeight.w800,
       letterSpacing: -.7,
       color: navy,
@@ -44,7 +44,34 @@ ThemeData physicsTheme() => ThemeData(
     surfaceTintColor: Colors.transparent,
     scrolledUnderElevation: 0,
     foregroundColor: navy,
-    centerTitle: false,
+    centerTitle: true,
+    toolbarHeight: 56,
+    titleTextStyle: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w800,
+      color: navy,
+    ),
+  ),
+  sliderTheme: const SliderThemeData(
+    activeTrackColor: cobalt,
+    inactiveTrackColor: Color(0xffd3ddeb),
+    thumbColor: cobalt,
+    trackHeight: 3,
+    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 8),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      foregroundColor: navy,
+      side: const BorderSide(color: Color(0xffcbdced)),
+      minimumSize: const Size(48, 48),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: cobalt,
+      minimumSize: const Size(48, 48),
+    ),
   ),
   navigationBarTheme: const NavigationBarThemeData(
     backgroundColor: Colors.white,
@@ -55,7 +82,7 @@ ThemeData physicsTheme() => ThemeData(
     color: Colors.white,
     elevation: 0,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(12),
       side: const BorderSide(color: Color(0xffe3e9f1)),
     ),
   ),
@@ -66,7 +93,7 @@ ThemeData physicsTheme() => ThemeData(
       borderRadius: BorderRadius.circular(12),
       borderSide: const BorderSide(color: Color(0xffdbe3ee)),
     ),
-    contentPadding: const EdgeInsets.all(16),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
   ),
   filledButtonTheme: FilledButtonThemeData(
     style: FilledButton.styleFrom(

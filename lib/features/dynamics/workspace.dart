@@ -11,6 +11,7 @@ import '../../app/app.dart';
 import '../workbench/workbench.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
+import '../../core/design_system/reference_style.dart';
 import '../../core/persistence/notebook.dart';
 import '../../core/physics/dynamics.dart';
 import '../lab_workspace/workspace.dart' show NumericInputDialog;
@@ -415,12 +416,22 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
         (v) => update(p.key, v),
       ),
   ];
+  CustomPainter referencePlot() => DynamicsGraph(
+    graphSamples,
+    channel,
+    units(channel),
+    cursor,
+    tangent: kind == 6 && channel == 'x',
+    stepPlot: kind == 8 && channel == 'ax',
+    signedArea: kind == 7 && channel == 'vx',
+  );
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
         key: ValueKey('instrument-${entry.id}'),
+        referenceChart: referencePlot,
         exportRecorded: (trials) => exportTrials(context, trials),
         reopenTrial: (trial) {
           pause();
@@ -506,7 +517,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
   Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
       leading: LabBackButton(entry.id.split('-').first),
-      title: Text(entry.title),
+      title: ReferenceLabHeading(entry.id, entry.title),
       actions: [
         LabSectionMenu(
           section: section,
@@ -517,6 +528,28 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
           },
         ),
       ],
+    ),
+    bottomNavigationBar: ReferenceNavigation(
+      selected: section == 4
+          ? 2
+          : section == 0 || section == 3
+          ? 0
+          : 1,
+      firstIcon: [0, 10, 11, 13].contains(entry.studioIndex)
+          ? Icons.home_outlined
+          : Icons.menu_book_outlined,
+      onFirst: () {
+        pause();
+        setState(() => section = 0);
+      },
+      onLabs: () {
+        pause();
+        setState(() => section = 1);
+      },
+      onResults: () {
+        pause();
+        setState(() => section = 4);
+      },
     ),
     body: SafeArea(
       child: !ready

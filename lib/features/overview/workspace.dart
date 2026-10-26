@@ -9,6 +9,7 @@ import '../workbench/lab_thumbnail.dart';
 import '../../content/catalog.dart';
 import '../../content/learning.dart';
 import '../../core/design_system/theme.dart';
+import '../../core/design_system/reference_style.dart';
 import '../../core/persistence/notebook.dart';
 import '../../core/rendering/apparatus.dart';
 import '../../core/physics/advanced.dart' show freeOscillator;
@@ -446,7 +447,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
                 ),
         ),
         SizedBox(
-          height: 96,
+          height: MediaQuery.sizeOf(context).height < 420 ? 44 : 96,
           child: SingleChildScrollView(
             child: ListTile(
               dense: true,
@@ -499,15 +500,20 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: LinearProgressIndicator(value: path.progress(store.completed)),
         ),
-        ListTile(
-          title: Text(next?.title ?? 'Required path complete'),
-          subtitle: Text(
-            '${path.requiredActivities.where((e) => store.completed.contains(e.id)).length}/${path.requiredActivities.length} required activities',
-          ),
-          trailing: IconButton(
-            tooltip: 'Launch current step',
-            onPressed: next == null ? null : () => launch(next.id),
-            icon: const Icon(Icons.play_arrow),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height < 420 ? 48 : 110,
+          child: SingleChildScrollView(
+            child: ListTile(
+              title: Text(next?.title ?? 'Required path complete'),
+              subtitle: Text(
+                '${path.requiredActivities.where((e) => store.completed.contains(e.id)).length}/${path.requiredActivities.length} required activities',
+              ),
+              trailing: IconButton(
+                tooltip: 'Launch current step',
+                onPressed: next == null ? null : () => launch(next.id),
+                icon: const Icon(Icons.play_arrow),
+              ),
+            ),
           ),
         ),
         Expanded(
@@ -649,7 +655,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
       appBar: AppBar(
         title: Text(
           entry.title,
-          style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
+          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
         ),
         actions: [
           IconButton(
@@ -664,16 +670,32 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
           ),
         ],
       ),
+      bottomNavigationBar: ReferenceNavigation(
+        firstIcon: Icons.home_outlined,
+        selected: entry.index < 3 ? 0 : 1,
+        onFirst: toolDetails,
+        onLabs: () => context.go('/studio/s00'),
+        onResults: () => context.push('/notebook'),
+      ),
       body: SafeArea(
         child: !ready
             ? const Center(child: CircularProgressIndicator())
-            : switch (entry.index) {
-                0 => mapWorkspace(true),
-                1 => mapWorkspace(false),
-                2 => pathWorkspace(),
-                3 => launcherWorkspace(),
-                _ => masteryWorkspace(),
-              },
+            : LayoutBuilder(
+                builder: (context, bounds) {
+                  final content = switch (entry.index) {
+                    0 => mapWorkspace(true),
+                    1 => mapWorkspace(false),
+                    2 => pathWorkspace(),
+                    3 => launcherWorkspace(),
+                    _ => masteryWorkspace(),
+                  };
+                  return bounds.maxHeight < 420
+                      ? SingleChildScrollView(
+                          child: SizedBox(height: 460, child: content),
+                        )
+                      : content;
+                },
+              ),
       ),
     ),
   );

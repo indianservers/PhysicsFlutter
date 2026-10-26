@@ -1,0 +1,45 @@
+{
+  "device": "emulator-5556",
+  "version": "1.10.0+13",
+  "target": "lib/main.dart",
+  "artifacts": [
+    {
+      "mode": "release-development-signed",
+      "path": "deliverables/physics-atelier-target-ui-release-dev-signed.apk",
+      "bytes": 106153334,
+      "sha256": "f08737ce8681ed51de295c08957675f4fe6ad425bf337d57541ea951734291f5",
+      "installedBytesMatch": true,
+      "offlineProcessAlive": true,
+      "fatalExceptionObserved": false,
+      "launchWaitTimeoutRetried": false,
+      "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='13' versionName='1.10.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "permissions": [
+        "package: com.indianservers.physics_atelier",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "signing": "Existing local development/debug certificate; not production signing"
+    },
+    {
+      "mode": "debug",
+      "path": "deliverables/physics-atelier-target-ui-debug.apk",
+      "bytes": 247087128,
+      "sha256": "6d9e8d370f6b337fb8864e88d9d29df3cb6f892e0e65c94b17beaaf5ef1738cf",
+      "installedBytesMatch": true,
+      "offlineProcessAlive": true,
+      "fatalExceptionObserved": false,
+      "launchWaitTimeoutRetried": false,
+      "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='13' versionName='1.10.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "permissions": [
+        "package: com.indianservers.physics_atelier",
+        "uses-permission: name='android.permission.INTERNET'",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "signing": "Existing local development/debug certificate; not production signing"
+    }
+  ],
+  "qualification": "Ordinary main-entrypoint APKs installed with -r, bytes matched installed base APK and processes launched while Wi-Fi/mobile data disabled. No destructive reset, upload or publication. Not exhaustive offline/UI/device certification."
+}

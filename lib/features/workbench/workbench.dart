@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/design_system/theme.dart';
+import '../../core/design_system/reference_style.dart';
+import '../../content/catalog.dart';
 import '../../core/persistence/notebook.dart';
 import '../lab_workspace/workspace.dart' show NumericInputDialog;
 import '../advanced/scene.dart' show LabPlot;
@@ -48,7 +50,7 @@ const paneNames = [
   'Full-screen Graph',
 ];
 
-/// Lab content stays contextual; it does not consume a permanent navigation bar.
+/// Reuses the apparatus transform while contextual tools supply camera gestures.
 /// Applies an existing apparatus transform without claiming its drag gestures.
 /// The shared explicit camera mode supplies all pan/pinch recognition.
 class ApparatusTransform extends StatelessWidget {
@@ -74,7 +76,9 @@ class LabBackButton extends StatelessWidget {
   final VoidCallback? onBack;
   const LabBackButton(this.studioId, {super.key, this.onBack});
   @override
-  Widget build(BuildContext context) => BackButton(
+  Widget build(BuildContext context) => IconButton(
+    tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+    icon: const Icon(Icons.chevron_left),
     onPressed:
         onBack ??
         () {
@@ -90,7 +94,7 @@ class LabBackButton extends StatelessWidget {
 class LabSectionMenu extends StatelessWidget {
   final int section;
   final ValueChanged<int> select;
-  final VoidCallback? controls, save;
+  final VoidCallback? controls, save, camera;
   final bool showSections;
   const LabSectionMenu({
     super.key,
@@ -98,6 +102,7 @@ class LabSectionMenu extends StatelessWidget {
     required this.select,
     this.controls,
     this.save,
+    this.camera,
     this.showSections = true,
   });
   @override
@@ -105,7 +110,9 @@ class LabSectionMenu extends StatelessWidget {
     tooltip: 'Lab options',
     icon: const Icon(Icons.more_vert),
     onSelected: (value) {
-      if (value == 5) {
+      if (value == 7) {
+        camera?.call();
+      } else if (value == 5) {
         controls?.call();
       } else if (value == 6) {
         save?.call();
@@ -114,6 +121,8 @@ class LabSectionMenu extends StatelessWidget {
       }
     },
     itemBuilder: (_) => [
+      if (camera != null)
+        const PopupMenuItem(value: 7, child: Text('Camera tools')),
       if (controls != null)
         const PopupMenuItem(value: 5, child: Text('Controls & investigation')),
       if (showSections)
@@ -133,6 +142,7 @@ class LabSectionMenu extends StatelessWidget {
 
 class InstrumentShell extends StatefulWidget {
   final String id, title;
+  final CustomPainter Function()? referenceChart;
   final List<Widget> toolbarActions;
   final Widget Function()? parameterDock;
   final double? dockExtent;
@@ -185,6 +195,7 @@ class InstrumentShell extends StatefulWidget {
     required this.record,
     required this.selectSection,
     required this.section,
+    this.referenceChart,
     this.toolbarActions = const [],
     this.parameterDock,
     this.dockExtent,
@@ -219,6 +230,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
   WorkspacePane pane = WorkspacePane.scene;
   double split = .6;
   bool pan = false;
+  bool cameraExpanded = false;
   bool guideVisible = false;
   int currentGuideStep = 0;
   PersistentBottomSheetController? sheet;
@@ -304,7 +316,10 @@ class _InstrumentShellState extends State<InstrumentShell> {
   }
 
   void choose(WorkspacePane next) {
-    setState(() => pane = next);
+    setState(() {
+      pane = next;
+      cameraExpanded = false;
+    });
     persist();
   }
 
@@ -393,45 +408,78 @@ class _InstrumentShellState extends State<InstrumentShell> {
     child: parameterRow(c),
   );
   Widget parameterRow(InstrumentControl c) => Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-    child: Row(
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          width: 88,
-          child: Text(c.label, style: const TextStyle(fontSize: 13)),
+        Text(
+          '${c.label}${c.unit.isEmpty ? '' : ' (${c.unit})'}',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
         ),
-        Expanded(
-          child: Slider(
-            key: ValueKey('dock-control-${c.keyName}'),
-            min: c.min,
-            max: c.max,
-            value: c.value.clamp(c.min, c.max),
-            label: '${c.value.toStringAsPrecision(4)} ${c.unit}',
-            onChanged: c.max > c.min ? c.change : null,
-          ),
-        ),
-        SizedBox(
-          width: 104,
-          child: TextButton(
-            key: ValueKey('dock-edit-${c.keyName}'),
-            onPressed: () async {
-              widget.pause();
-              await showDialog<void>(
-                context: context,
-                builder: (_) => NumericInputDialog(
-                  label: '${c.label} (${c.unit})',
-                  initial: c.value,
-                  min: c.min,
-                  max: c.max,
-                  onApply: c.change,
-                ),
-              );
-            },
-            child: Text(
-              '${c.value.toStringAsPrecision(4)}\n${c.unit}',
-              textAlign: TextAlign.center,
+        Row(
+          children: [
+            IconButton(
+              tooltip: 'Decrease ${c.label}',
+              onPressed: c.max > c.min
+                  ? () => c.change(
+                      (c.value - (c.max - c.min) / 100).clamp(c.min, c.max),
+                    )
+                  : null,
+              icon: const Icon(Icons.chevron_left, size: 19),
             ),
-          ),
+            Expanded(
+              child: Slider(
+                key: ValueKey('dock-control-${c.keyName}'),
+                min: c.min,
+                max: c.max,
+                value: c.value.clamp(c.min, c.max),
+                label: '${c.value.toStringAsPrecision(4)} ${c.unit}',
+                onChanged: c.max > c.min ? c.change : null,
+              ),
+            ),
+            IconButton(
+              tooltip: 'Increase ${c.label}',
+              onPressed: c.max > c.min
+                  ? () => c.change(
+                      (c.value + (c.max - c.min) / 100).clamp(c.min, c.max),
+                    )
+                  : null,
+              icon: const Icon(Icons.chevron_right, size: 19),
+            ),
+            SizedBox(
+              width: 76,
+              child: OutlinedButton(
+                key: ValueKey('dock-edit-${c.keyName}'),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                ),
+                onPressed: () async {
+                  widget.pause();
+                  await showDialog<void>(
+                    context: context,
+                    builder: (_) => NumericInputDialog(
+                      label: '${c.label} (${c.unit})',
+                      initial: c.value,
+                      min: c.min,
+                      max: c.max,
+                      onApply: c.change,
+                    ),
+                  );
+                },
+                child: Text(
+                  c.value.toStringAsPrecision(4),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     ),
@@ -484,7 +532,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
               height: 100,
               child: SingleChildScrollView(child: guideStrip()),
             ),
-          ...available.take(3).map(parameter),
+          ...available.take(2).map(parameter),
           if (available.isEmpty)
             ListTile(
               dense: true,
@@ -504,30 +552,61 @@ class _InstrumentShellState extends State<InstrumentShell> {
   Widget readingsContent() => InkWell(
     onTap: () => widget.selectSection(3),
     child: Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-      color: const Color(0xfff0f5fd),
-      child: Wrap(
-        spacing: 22,
-        runSpacing: 4,
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: const Color(0xffedf6ff),
+        borderRadius: BorderRadius.circular(9),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          for (final r in widget.readings().take(3))
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text:
-                        '${r.label.replaceAllMapped(RegExp(r"([a-z])([A-Z])"), (m) => "${m[1]} ${m[2]}")}  ',
-                    style: const TextStyle(color: muted),
-                  ),
-                  TextSpan(
-                    text: '${r.value} ${r.unit}',
-                    style: const TextStyle(fontWeight: FontWeight.w700),
-                  ),
-                ],
+          for (final item in widget.readings().take(3).indexed) ...[
+            if (item.$1 > 0)
+              Container(
+                width: 1,
+                height: 38,
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                color: const Color(0xffc8dced),
               ),
-              style: const TextStyle(fontSize: 13),
+            Expanded(
+              flex: item.$1 == 0 ? 13 : 10,
+              child: Tooltip(
+                message: '${item.$2.label}: ${item.$2.value} ${item.$2.unit}',
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.$2.label.replaceAllMapped(
+                        RegExp(r'([a-z])([A-Z])'),
+                        (m) => '${m[1]} ${m[2]}',
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        height: 1.2,
+                        color: navy,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      '${item.$2.value}${item.$2.unit.isEmpty ? '' : ' ${item.$2.unit}'}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: item.$1 == 0 ? 18 : 13,
+                        height: 1.2,
+                        fontWeight: FontWeight.w800,
+                        color: navy,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
+          ],
         ],
       ),
     ),
@@ -656,53 +735,140 @@ class _InstrumentShellState extends State<InstrumentShell> {
     },
   );
 
+  bool get referenceHintVisible =>
+      MediaQuery.sizeOf(context).height >= 600 &&
+      MediaQuery.textScalerOf(context).scale(1) < 1.5;
+  Widget referenceHint() {
+    final entries = allEntries.where((e) => e.id == widget.id);
+    if (entries.isEmpty) return const SizedBox.shrink();
+    return Container(
+      margin: const EdgeInsets.fromLTRB(10, 3, 10, 2),
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+      decoration: BoxDecoration(
+        color: const Color(0xffedf6ff),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.lightbulb_outline,
+            color: Color(0xffefa600),
+            size: 21,
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: InkWell(
+              onTap: () => widget.selectSection(0),
+              child: Text(
+                entries.first.principle,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 10, height: 1.25, color: navy),
+              ),
+            ),
+          ),
+          if (widget.dynamicModel())
+            IconButton(
+              key: const Key('record-trial'),
+              tooltip: widget.recordLabel,
+              onPressed: widget.canRecord() ? widget.record : null,
+              icon: const Icon(Icons.add_circle_outline, size: 20),
+              constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
+              padding: EdgeInsets.zero,
+            ),
+        ],
+      ),
+    );
+  }
+
   Widget actions() => ListenableBuilder(
     listenable: widget.changes,
     builder: (context, _) => actionContent(),
   );
-  Widget actionContent() => ColoredBox(
-    color: Colors.white,
-    child: SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          const SizedBox(width: 8),
-          if (widget.dynamicModel()) ...[
-            FilledButton.icon(
-              key: const Key('play'),
-              onPressed: widget.playing() ? widget.pause : widget.play,
-              icon: Icon(widget.playing() ? Icons.pause : Icons.play_arrow),
-              label: Text(widget.playing() ? 'Pause' : 'Run'),
+  Widget actionContent() => Padding(
+    padding: const EdgeInsets.fromLTRB(10, 5, 10, 6),
+    child: LayoutBuilder(
+      builder: (context, b) {
+        final large = MediaQuery.textScalerOf(context).scale(1) > 1.4;
+        return Row(
+          children: [
+            Expanded(
+              child: widget.dynamicModel()
+                  ? FilledButton.icon(
+                      key: const Key('play'),
+                      onPressed: widget.playing() ? widget.pause : widget.play,
+                      icon: Icon(
+                        widget.playing() ? Icons.pause : Icons.play_arrow,
+                        size: 20,
+                      ),
+                      label: Text(
+                        widget.playing() ? 'Pause' : 'Run Experiment',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    )
+                  : FilledButton.icon(
+                      key: const Key('record-trial'),
+                      onPressed: widget.canRecord() ? widget.record : null,
+                      icon: const Icon(Icons.add, size: 20),
+                      label: Text(
+                        widget.recordLabel,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
             ),
-            if (widget.step != null)
-              IconButton(
-                tooltip: 'Step',
-                onPressed: widget.step,
-                icon: const Icon(Icons.skip_next),
+            const SizedBox(width: 7),
+            Tooltip(
+              message: 'Reset',
+              child: OutlinedButton(
+                onPressed: widget.reset,
+                style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: large ? 10 : 14),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.restart_alt, size: 20),
+                    if (!large) ...[
+                      const SizedBox(width: 5),
+                      const Text(
+                        'Reset',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
               ),
-          ],
-          IconButton(
-            tooltip: 'Reset',
-            onPressed: widget.reset,
-            icon: const Icon(Icons.restart_alt),
-          ),
-          FilledButton.tonalIcon(
-            key: const Key('record-trial'),
-            onPressed: widget.canRecord() ? widget.record : null,
-            icon: const Icon(Icons.add),
-            label: Text(widget.recordLabel),
-          ),
-          IconButton(
-            tooltip: 'Inspect graph',
-            onPressed: () => choose(
-              pane == WorkspacePane.sceneGraph
-                  ? WorkspacePane.scene
-                  : WorkspacePane.sceneGraph,
             ),
-            icon: const Icon(Icons.insights_outlined),
-          ),
-        ],
-      ),
+            if (widget.dynamicModel() && !referenceHintVisible) ...[
+              const SizedBox(width: 7),
+              Tooltip(
+                message: widget.recordLabel,
+                child: FilledButton.tonal(
+                  key: const Key('record-trial'),
+                  onPressed: widget.canRecord() ? widget.record : null,
+                  style: FilledButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                  ),
+                  child: const Icon(Icons.add, size: 20),
+                ),
+              ),
+            ],
+          ],
+        );
+      },
     ),
   );
 
@@ -923,12 +1089,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
           widget.id.split('-').first,
           onBack: full ? () => choose(WorkspacePane.scene) : null,
         ),
-        title: Text(
-          widget.title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-        ),
+        title: ReferenceLabHeading(widget.id, widget.title),
         actions: [
           ...widget.toolbarActions,
           IconButton(
@@ -940,6 +1101,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
             showSections: widget.showLabSections,
             section: widget.section,
             controls: more,
+            camera: () => setState(() => cameraExpanded = !cameraExpanded),
             save: widget.save,
             select: (value) {
               sheet?.close();
@@ -948,9 +1110,37 @@ class _InstrumentShellState extends State<InstrumentShell> {
           ),
         ],
       ),
-      bottomNavigationBar: widget.section == 4
+      bottomNavigationBar: full
           ? null
-          : SafeArea(top: false, child: actions()),
+          : Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (widget.section != 4 && referenceHintVisible)
+                  ListenableBuilder(
+                    listenable: widget.changes,
+                    builder: (context, _) => referenceHint(),
+                  ),
+                if (widget.section != 4) actions(),
+                ReferenceNavigation(
+                  selected: widget.section == 4
+                      ? 2
+                      : widget.section == 0 || widget.section == 3
+                      ? 0
+                      : 1,
+                  firstIcon:
+                      allEntries.any(
+                        (e) =>
+                            e.id == widget.id &&
+                            [0, 10, 11, 13].contains(e.studioIndex),
+                      )
+                      ? Icons.home_outlined
+                      : Icons.menu_book_outlined,
+                  onFirst: () => widget.selectSection(0),
+                  onLabs: () => widget.selectSection(1),
+                  onResults: () => widget.selectSection(4),
+                ),
+              ],
+            ),
       body: SafeArea(
         child: widget.section == 4
             ? notebook()
@@ -1001,7 +1191,22 @@ class _InstrumentShellState extends State<InstrumentShell> {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        IconButton(
+                          tooltip: 'Inspect graph',
+                          onPressed: () => choose(
+                            pane == WorkspacePane.sceneGraph
+                                ? WorkspacePane.scene
+                                : WorkspacePane.sceneGraph,
+                          ),
+                          icon: const Icon(Icons.insights_outlined),
+                        ),
+                        if (widget.step != null)
+                          IconButton(
+                            tooltip: 'Step',
+                            onPressed: widget.step,
+                            icon: const Icon(Icons.skip_next),
+                          ),
+                        const SizedBox(width: 4),
                         IconButton(
                           tooltip: pan
                               ? 'Manipulate apparatus'
@@ -1030,14 +1235,35 @@ class _InstrumentShellState extends State<InstrumentShell> {
                       ],
                     ),
                   );
+                  final readingHeight = math
+                      .min(
+                        (64.0 * MediaQuery.textScalerOf(context).scale(1))
+                            .clamp(56, 112),
+                        math.max(24, b.maxHeight * .24),
+                      )
+                      .toDouble();
+                  Widget visual() => Column(
+                    children: [
+                      if (cameraExpanded)
+                        Row(
+                          children: [
+                            Expanded(child: cameraBar),
+                            IconButton(
+                              tooltip: 'Close camera tools',
+                              onPressed: () =>
+                                  setState(() => cameraExpanded = false),
+                              icon: const Icon(Icons.close, size: 20),
+                            ),
+                          ],
+                        ),
+                      Expanded(child: panes()),
+                    ],
+                  );
                   final content = Column(
                     children: [
-                      cameraBar,
+                      Expanded(child: visual()),
                       SizedBox(
-                        height:
-                            ((widget.readings().length >= 3 ? 60.0 : 48.0) *
-                                    MediaQuery.textScalerOf(context).scale(1))
-                                .clamp(48, 104),
+                        height: readingHeight,
                         child: SingleChildScrollView(child: readingStrip()),
                       ),
                       if (RegExp(
@@ -1050,10 +1276,9 @@ class _InstrumentShellState extends State<InstrumentShell> {
                             widget.notice(),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(fontSize: 12),
+                            style: const TextStyle(fontSize: 11),
                           ),
                         ),
-                      Expanded(child: panes()),
                     ],
                   );
                   if (full) {
@@ -1070,22 +1295,93 @@ class _InstrumentShellState extends State<InstrumentShell> {
                       ],
                     );
                   }
+                  final dockHeight = math.min(
+                    b.maxHeight * .43,
+                    (widget.dockExtent ??
+                            (widget.controls().take(2).length * 76 +
+                                (widget.selection == null ? 0 : 52))) *
+                        math.max(1, MediaQuery.textScalerOf(context).scale(1)),
+                  );
+                  final hasPlot =
+                      widget.referenceChart != null &&
+                      pane == WorkspacePane.scene &&
+                      b.maxHeight > 350 &&
+                      MediaQuery.textScalerOf(context).scale(1) < 1.5;
+                  if (hasPlot) {
+                    return SingleChildScrollView(
+                      key: const Key('reference-instrument-scroll'),
+                      child: SizedBox(
+                        height: math.max(
+                          b.maxHeight,
+                          520.0 + (widget.selection == null ? 0 : 52),
+                        ),
+                        child: Column(
+                          children: [
+                            Expanded(flex: 65, child: visual()),
+                            SizedBox(
+                              height: readingHeight,
+                              child: SingleChildScrollView(
+                                child: readingStrip(),
+                              ),
+                            ),
+                            SizedBox(
+                              height:
+                                  (widget.dockExtent ??
+                                      (widget.controls().take(2).length * 76.0 +
+                                          (widget.selection == null
+                                              ? 0
+                                              : 52))) *
+                                  math.max(
+                                    1,
+                                    MediaQuery.textScalerOf(context).scale(1),
+                                  ),
+                              child: dock(),
+                            ),
+                            Expanded(
+                              flex: 35,
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                  12,
+                                  2,
+                                  12,
+                                  5,
+                                ),
+                                child: InkWell(
+                                  onTap: () => choose(WorkspacePane.graph),
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: const Color(0xffdce7f1),
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(3),
+                                      child: ListenableBuilder(
+                                        listenable: widget.changes,
+                                        builder: (c, _) => CustomPaint(
+                                          key: const Key(
+                                            'reference-compact-chart',
+                                          ),
+                                          size: Size.infinite,
+                                          painter: widget.referenceChart!(),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }
                   return Column(
                     children: [
                       Expanded(child: content),
-                      SizedBox(
-                        height: math.min(
-                          b.maxHeight * .44,
-                          (widget.dockExtent ??
-                                  (widget.controls().take(3).length * 56 +
-                                      (widget.selection == null ? 0 : 56))) *
-                              math.max(
-                                1,
-                                MediaQuery.textScalerOf(context).scale(1),
-                              ),
-                        ),
-                        child: dock(),
-                      ),
+                      SizedBox(height: dockHeight, child: dock()),
                     ],
                   );
                 },

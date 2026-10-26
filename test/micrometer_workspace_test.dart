@@ -85,9 +85,9 @@ void main() {
         const Offset(-45, -35),
       );
       await t.pumpAndSettle();
-      await t.tap(find.byTooltip('Zoom in'));
+      await tapViewportTool(t, 'Zoom in');
       await t.pumpAndSettle();
-      await t.tap(find.byTooltip('Fit apparatus / reset view'));
+      await tapViewportTool(t, 'Fit apparatus / reset view');
       await t.pumpAndSettle();
       expect(e.toJson(), before);
       await t.tap(find.byTooltip('Full-screen precision reading'));
@@ -184,12 +184,12 @@ void main() {
       await t.pumpAndSettle();
       expect(e.a, greaterThan(before));
       final changed = e.a;
-      await t.tap(find.byTooltip('Pan / zoom camera'));
+      await tapViewportTool(t, 'Pan / zoom camera');
       await t.pumpAndSettle();
       await t.dragFrom(start, const Offset(25, 50));
       await t.pumpAndSettle();
       expect(e.a, changed);
-      await t.tap(find.byTooltip('Manipulate apparatus'));
+      await tapViewportTool(t, 'Manipulate apparatus');
       await t.pumpAndSettle();
       await t.drag(
         find.byKey(const Key('micrometer-lens')),

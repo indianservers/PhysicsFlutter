@@ -10,6 +10,7 @@ import '../../app/app.dart';
 import '../workbench/workbench.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
+import '../../core/design_system/reference_style.dart';
 import '../../core/persistence/notebook.dart';
 import '../../core/physics/measurement.dart';
 import '../../core/rendering/apparatus.dart';
@@ -30,6 +31,7 @@ class Workspace extends ConsumerStatefulWidget {
 class _WorkspaceState extends ConsumerState<Workspace>
     with WidgetsBindingObserver, RouteAware {
   late final Experiment experiment;
+  late final Listenable experimentChanges;
   int section = 1;
   bool ready = false, recording = false;
   int dragTarget = 2;
@@ -42,6 +44,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
     store = ref.read(notebookProvider);
     WidgetsBinding.instance.addObserver(this);
     experiment = Experiment(entry.index);
+    experimentChanges = Listenable.merge([experiment, experiment.clockTick]);
     _load();
   }
 
@@ -305,7 +308,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
         title: entry.title,
         highlightControl: highlightControl,
         store: store,
-        changes: Listenable.merge([experiment, experiment.clockTick]),
+        changes: experimentChanges,
         scene: compactScene,
         fitScene: entry.index != 2 && entry.index != 3,
         parameterDock: entry.index == 2
@@ -817,7 +820,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
       builder: (context, _) => Scaffold(
         appBar: AppBar(
           leading: LabBackButton(entry.id.split('-').first),
-          title: Text(entry.title),
+          title: ReferenceLabHeading(entry.id, entry.title),
           actions: [
             LabSectionMenu(
               section: section,
@@ -829,6 +832,28 @@ class _WorkspaceState extends ConsumerState<Workspace>
               },
             ),
           ],
+        ),
+        bottomNavigationBar: ReferenceNavigation(
+          selected: section == 4
+              ? 2
+              : section == 0 || section == 3
+              ? 0
+              : 1,
+          firstIcon: [0, 10, 11, 13].contains(entry.studioIndex)
+              ? Icons.home_outlined
+              : Icons.menu_book_outlined,
+          onFirst: () {
+            experiment.pause();
+            setState(() => section = 0);
+          },
+          onLabs: () {
+            experiment.pause();
+            setState(() => section = 1);
+          },
+          onResults: () {
+            experiment.pause();
+            setState(() => section = 4);
+          },
         ),
         body: SafeArea(
           child: !ready

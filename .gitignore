@@ -47,7 +47,7 @@ app.*.map.json
 # Widget Preview related
 .widget_preview/
 
-# User-supplied visual references are preserved locally, not bundled/distributed.
+# Original source collages stay local; selected runtime preview copies live in assets/.
 /Target UI/
 /mockup-contact-sheet.jpg
 /deliverables/*.apk
@@ -64,3 +64,5 @@ app.*.map.json
 /deliverables/micrometer-workspaces-screenshots.zip
 
 /deliverables/materials-spherometer-screenshots.zip
+
+/deliverables/target-ui-screenshots.zip

@@ -1,0 +1,149 @@
+{
+  "mode": "Built-in image_gen; user-supplied reference previews",
+  "textureAtlas": {
+    "path": "assets/textures/laboratory-material-atlas-v1.png",
+    "sha256": "8ac9cc30c4c6e747d46569f4f242dc511bceada9e249eb5dd85c67e78adf6205",
+    "origin": "Generated with the built-in image_gen tool for this task",
+    "use": "Diffuse material texture only; geometry, numerical labels, contact, rays and readings remain code-driven",
+    "tiles": [
+      "aluminium",
+      "stainless steel",
+      "copper",
+      "brass",
+      "pine",
+      "oak",
+      "cast iron",
+      "ivory ceramic",
+      "granite",
+      "marble",
+      "cork",
+      "expanded polystyrene",
+      "mineral wool",
+      "silicone",
+      "silver",
+      "blue-black paint"
+    ],
+    "finalPrompt": "docs/TARGET_UI_TEXTURE_PROMPT.txt"
+  },
+  "referencePreviews": [
+    {
+      "path": "assets/reference_previews/01_Concept_Overview.png",
+      "sha256": "9e2af857f352f6aadd947a3b87d97e44154f1af8cef73543be1c4c9f0571239f",
+      "source": "User-supplied Target UI/01_Concept_Overview.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/02_Measurement.png",
+      "sha256": "0df62f4f7f1e25386e184029aea84707eb06944560007ef2a51c85bfba32af2b",
+      "source": "User-supplied Target UI/02_Measurement.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/03_Mechanics.png",
+      "sha256": "1f72239bfe45177567fc894c649e8c40f58db3b80eb16aae5eb08c70bd8c20fb",
+      "source": "User-supplied Target UI/03_Mechanics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/04_Motion_and_Kinematics.png",
+      "sha256": "0936ddfc57c453c6b39a2c27ceac7839163a6539d41b188c10fd6ca7b58573af",
+      "source": "User-supplied Target UI/04_Motion_and_Kinematics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/05_Force_and_Newtons_Laws.png",
+      "sha256": "98d9ccede67c26c447ec10da3f21d2cdfd7ae28cee4b4e430dd34987fb6c6c23",
+      "source": "User-supplied Target UI/05_Force_and_Newtons_Laws.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/06_Work_Energy_and_Power.png",
+      "sha256": "65121da07d128c60d3eaa6fbb48b76f2833748320f1a1c75c04a5c26b7ccacf6",
+      "source": "User-supplied Target UI/06_Work_Energy_and_Power.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/07_Gravitation.png",
+      "sha256": "6f1cf6922151b7cdf7f6433231e05c9008c408b61fc935350e70a9129c5624e1",
+      "source": "User-supplied Target UI/07_Gravitation.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/08_Oscillations.png",
+      "sha256": "33c18074b987b1ce5736e768daf9baa234623971a68923a4d2c9ba492bc3f2ad",
+      "source": "User-supplied Target UI/08_Oscillations.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/09_Waves_and_Sound.png",
+      "sha256": "aea6ed2d1e2f027c34dcb0405196b7f34165a104d7bccf4470f10446e021f0e6",
+      "source": "User-supplied Target UI/09_Waves_and_Sound.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/10_Optics.png",
+      "sha256": "ffedf329396012e1d607a7ea7dad0e135d3f07726efa6a045a6e854a06f0603a",
+      "source": "User-supplied Target UI/10_Optics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/11_Electricity.png",
+      "sha256": "95fd47b077a970b3e4724b1993cb34022762761d77d10a2058130a421b61ab47",
+      "source": "User-supplied Target UI/11_Electricity.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/12_Magnetism.png",
+      "sha256": "42b05a0d9cd79c4b59de49a1b71c3cd95db55718a999610285adf894f362ddfe",
+      "source": "User-supplied Target UI/12_Magnetism.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/13_Electronics.png",
+      "sha256": "e0edf83879263b33113b262d267d09592b4edaaaab2575edceb4891cc5b6d02e",
+      "source": "User-supplied Target UI/13_Electronics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/14_Thermodynamics.png",
+      "sha256": "2acedd4ae28c4f6b6f6deff4ff565cd6412f5bed2684144ce44d1f493501818b",
+      "source": "User-supplied Target UI/14_Thermodynamics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/15_Fluid_Mechanics.png",
+      "sha256": "8d4bc6b25fd96791d47595811f4776fcf12ebcf485e976deec48b2eeff2939fb",
+      "source": "User-supplied Target UI/15_Fluid_Mechanics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/16_Modern_Physics.png",
+      "sha256": "14e40344f4079d72c7c277b5eceb81d3e8e32d3e0a70907483bf57dab2aa1f77",
+      "source": "User-supplied Target UI/16_Modern_Physics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    },
+    {
+      "path": "assets/reference_previews/17_Astronomy_and_Astrophysics.png",
+      "sha256": "d7d1e84c54660d6d140a447b6e12cb02836d99f422e8c50b0894141a73bc856c",
+      "source": "User-supplied Target UI/17_Astronomy_and_Astrophysics.png",
+      "use": "Static cropped launcher thumbnail only; never substituted for live model output",
+      "ownership": "User-supplied reference artwork; no claim of original ownership or independent redistribution license"
+    }
+  ]
+}

@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../app/app.dart' show notebookProvider;
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
-import '../../core/rendering/apparatus.dart' show StudioIllustration;
+import '../../core/design_system/reference_style.dart';
 import 'lab_thumbnail.dart';
 
 class CompactHome extends ConsumerStatefulWidget {
@@ -27,7 +27,7 @@ class _CompactHomeState extends ConsumerState<CompactHome> {
         appBar: AppBar(
           title: const Text(
             'Physics Atelier',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+            style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800),
           ),
           actions: [
             IconButton(
@@ -41,6 +41,10 @@ class _CompactHomeState extends ConsumerState<CompactHome> {
               icon: const Icon(Icons.tune),
             ),
           ],
+        ),
+        bottomNavigationBar: const ReferenceNavigation(
+          selected: 0,
+          homeFirst: true,
         ),
         body: SafeArea(
           child: CustomScrollView(
@@ -116,9 +120,7 @@ class _CompactHomeState extends ConsumerState<CompactHome> {
                                   Expanded(
                                     child: SizedBox(
                                       width: double.infinity,
-                                      child: CustomPaint(
-                                        painter: StudioIllustration(i),
-                                      ),
+                                      child: LabThumbnail(studio.entries.first),
                                     ),
                                   ),
                                   Padding(
@@ -217,7 +219,7 @@ class CompactStudio extends ConsumerWidget {
         appBar: AppBar(
           title: Text(
             studio.title,
-            style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800),
           ),
           actions: [
             IconButton(
@@ -236,6 +238,11 @@ class CompactStudio extends ConsumerWidget {
               ),
             ),
           ],
+        ),
+        bottomNavigationBar: ReferenceNavigation(
+          selected: 1,
+          homeFirst: true,
+          onLabs: () => context.go('/studio/${studio.id}'),
         ),
         body: SafeArea(
           child: LayoutBuilder(

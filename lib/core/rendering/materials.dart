@@ -3,9 +3,48 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// Deterministic apparatus materials. No motion or numerical state lives here.
 class LabMaterials {
+  static ui.Image? _atlas;
+  static Future<void> initialize() async {
+    if (_atlas != null) return;
+    final data = await rootBundle.load(
+      'assets/textures/laboratory-material-atlas-v1.png',
+    );
+    final codec = await ui.instantiateImageCodec(
+      data.buffer.asUint8List(),
+      targetWidth: 1024,
+    );
+    try {
+      _atlas = (await codec.getNextFrame()).image;
+    } finally {
+      codec.dispose();
+    }
+  }
+
+  static void texture(Canvas c, Rect r, int tile, {double opacity = .55}) {
+    final atlas = _atlas;
+    if (atlas == null || r.isEmpty || !r.isFinite) return;
+    final side = atlas.width / 4;
+    final src = Rect.fromLTWH(
+      (tile % 4) * side,
+      (tile ~/ 4) * side,
+      side,
+      side,
+    ).deflate(2);
+    c.drawImageRect(
+      atlas,
+      src,
+      r,
+      Paint()
+        ..filterQuality = FilterQuality.medium
+        ..blendMode = BlendMode.softLight
+        ..color = Colors.white.withValues(alpha: opacity),
+    );
+  }
+
   // A unit mesh survives camera/position changes; at most twelve texture resources (eight planets plus shared apparatus).
   static final _sphereMeshes =
       <ui.Image, ({ui.Vertices vertices, Paint paint})>{};
@@ -126,6 +165,7 @@ class LabMaterials {
           ..strokeWidth = .45,
       );
     }
+    texture(c, r, brass ? 3 : 1);
     c.restore();
     c.drawRRect(
       RRect.fromRectAndRadius(r.deflate(.4), const Radius.circular(3)),
@@ -172,6 +212,7 @@ class LabMaterials {
           ..strokeWidth = .55,
       );
     }
+    texture(c, r, 4, opacity: .7);
     c.restore();
   }
 
