@@ -647,8 +647,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
       return [
         const Panel(
           child: Paragraph(
-            'Interactive experiment · Later phase',
-            'This destination currently provides learning content and formulas. Its physical experiment is scheduled for a later phase; no simulated observations or results are supplied.',
+            'Explore this topic',
+            'Explore the explanations and formulas for this topic.',
           ),
         ),
         if (entry.tool) ...toolContent(),
@@ -839,9 +839,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
               child: Row(
                 children: [
-                  const Expanded(
-                    child: Eyebrow('Virtual apparatus · SI model'),
-                  ),
+                  const Expanded(child: Eyebrow('Measurement apparatus')),
                   IconButton(
                     tooltip: 'Reset zoom and pan',
                     onPressed: () => transform.value = Matrix4.identity(),
@@ -1386,8 +1384,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
       : [
           const Panel(
             child: Paragraph(
-              'Visualization · Later phase',
-              'Interactive visualization for this topic is scheduled for a later phase. The studio illustration is conceptual and does not represent computed data.',
+              'Concept illustration',
+              'The studio illustration shows the concept rather than measured or calculated data.',
             ),
           ),
         ];
@@ -1438,7 +1436,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
           ],
           const Paragraph(
             'References',
-            'NCERT Physics Laboratory Manual, Class XI, experiments 1–3 (calipers, screw gauge and spherometer). OpenStax University Physics, Volumes 1–3 (introductory theory). NIST Technical Note 1297 (uncertainty). Full source URLs and model assumptions are in docs/SCIENTIFIC_MODELS.md.',
+            'NCERT Physics Laboratory Manual, Class XI, experiments 1–3 (calipers, screw gauge and spherometer). OpenStax University Physics, Volumes 1–3 (introductory theory). NIST Technical Note 1297 (uncertainty).',
           ),
         ],
       ),
@@ -1524,13 +1522,13 @@ class _WorkspaceState extends ConsumerState<Workspace>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Paragraph('Introductory ${entry.title}', switch (entry.index) {
+          Paragraph(entry.title, switch (entry.index) {
             0 => 'Browse every studio by its scientific domain.',
-            1 => 'Measurement → Motion → Force → Energy. These relationships are a learning guide; an interactive graph is planned for a later phase.',
+            1 => 'Measurement → Motion → Force → Energy. Explore how these ideas connect.',
             2 => 'Recommended path: Measurement → Mechanics → Motion & Kinematics → Force & Newton’s Laws → Work/Energy/Power → Gravitation → Oscillations → Waves & Sound → Optics → Electricity → Magnetism → Electronics → Thermodynamics → Fluid Mechanics → Modern Physics. Complete each six-lab sequence in order.',
-            3 => 'Discover all 90 currently interactive labs below. Later studios retain introductory learning content.',
+            3 => 'Explore 96 experiments across 16 physics studios.',
             4 => 'Compare precision: ruler 1 mm; caliper 0.1 mm; micrometer 0.01 mm. A smaller division does not remove systematic error.',
-            _ => 'Introductory challenge: A ruler reading starts at 12 mm and ends at 66 mm. What is the length? Advanced assessment is planned for a later phase.',
+            _ => 'A ruler reading starts at 12 mm and ends at 66 mm. What is the length?',
           }),
           if (entry.index == 5)
             OutlinedButton(
@@ -1915,8 +1913,8 @@ class _PropagationState extends State<PropagationCalculator> {
 String theoryFor(Entry e) =>
     '${e.principle} This introductory model isolates the relationship expressed in the formula. Define a system, choose a reference and identify the variables before applying it. ${assumptions[e.studioIndex]} Compare the predicted trend with limiting cases: a vanishing input, a doubled input, and the stated valid regime. The equation is a model under these assumptions, rather than a universal description of every physical situation.';
 const assumptions = [
-  'These are introductory navigation and learning aids; advanced mapping, comparison and assessment tools are planned for later phases.',
-  'Idealized instruments use SI model coordinates and exact defined dimensions. Readout resolution is distinct from accuracy.',
+  'Explore relationships, compare phenomena and check your understanding with guided challenges.',
+  'Idealized instruments use SI units and defined dimensions. Readout resolution is distinct from accuracy.',
   'Use an inertial frame, ideal rigid bodies and massless ropes where specified. A free-body diagram includes forces acting on the selected body only.',
   'Use classical kinematics in an inertial frame. Constant-acceleration formulas require constant acceleration; projectile models neglect air drag.',
   'Newtonian mechanics applies to constant-mass bodies at nonrelativistic speeds in inertial frames. Contact forces depend on the physical constraints.',

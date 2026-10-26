@@ -695,7 +695,6 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
           : PageBody(
               scrollId: entry.id,
               children: [
-                const Eyebrow('Phase 8 · Shared inventory and real activity'),
                 ...switch (entry.index) {
                   0 => atlas(),
                   1 => relationships(),

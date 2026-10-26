@@ -239,7 +239,7 @@ final astroLessons = [
 ];
 
 const astroSources = [
-  'JPL approximate planetary elements, Table1 frozen at J2000: ssd.jpl.nasa.gov/planets/approx_pos.html. Surface graphics courtesy NASA/JPL-Caltech and USGS; Don Davis / David Seal. Selected map type is labeled; some outer-planet maps are artist impressions. JPL Image Use Policy permits credited use; no endorsement. Full credits in PHASE8_ASSETS_AND_AUDIT.md.',
+  'JPL approximate planetary elements, Table1 frozen at J2000: ssd.jpl.nasa.gov/planets/approx_pos.html. Surface graphics courtesy NASA/JPL-Caltech and USGS; Don Davis / David Seal. Selected map type is labeled; some outer-planet maps are artist impressions. JPL Image Use Policy permits credited use; no endorsement.',
   'MIST1.2 nonrotating solar-metallicity EEP data: mist.science; Choi et al.2016 and Dotter2016. Actual source tracks1,3,15 M☉, no mass interpolation. The star rendering is an original schematic visualization of those tabulated values, not an observation.',
   'Planck Bλ, IAU/CODATA constants and the earlier hydrogen vacuum Rydberg model. Gaussian Balmer depths are illustrative; instrumental convolution uses a locally smooth continuum approximation. No observed star spectrum is bundled.',
   'Hernquist1990 spherical bulge; Miyamoto & Nagai1975 disk; logarithmic halo. SPARC: Lelli, McGaugh & Schombert2016; NGC2403 source file preserved with3.16Mpc distance and velocity errors. Transport mirror: Zenodo16284118, not a new observation. Galaxy morphology is an original labeled illustration, not a photometric fit.',

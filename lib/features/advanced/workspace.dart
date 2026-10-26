@@ -72,8 +72,7 @@ class _AdvancedState extends ConsumerState<AdvancedWorkspace>
   Entry get entry => widget.entry;
   bool get playing => ticker.isActive;
   double get result => run.state[lesson.metric] ?? 0;
-  String number(num? x) =>
-      x == null ? 'Not yet available' : x.toStringAsPrecision(6);
+  String number(num? x) => x == null ? 'No reading' : x.toStringAsPrecision(6);
   @override
   void initState() {
     super.initState();
@@ -1409,7 +1408,7 @@ class _AdvancedState extends ConsumerState<AdvancedWorkspace>
           ),
           const Paragraph(
             'References',
-            'OpenStax University Physics Vol. 1, chapters 7–8, 13, 15; NIST gravitational constant; JPL astrodynamic parameters. See docs/PHASE3_SCIENCE.md for per-model equations, reference links, methods and error tests.',
+            'OpenStax University Physics Vol. 1, chapters 7–8, 13, 15; NIST gravitational constant; JPL astrodynamic parameters.',
           ),
         ],
       ),

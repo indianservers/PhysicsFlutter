@@ -1,0 +1,11 @@
+{
+  "version": "1.8.2+11",
+  "device": "emulator-5556",
+  "installedWithDataPreservingUpgrade": true,
+  "installedBytesMatch": true,
+  "processAlive": true,
+  "fatalExceptionObserved": false,
+  "sha256": "960c32ef82ac92ea6d1d009011462c91100d2dfc97099f4be88d5e9f0bb5f606",
+  "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='11' versionName='1.8.2' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+  "qualification": "Ordinary debug APK launch smoke check. Existing data not cleared; no fresh complete device workflow audit."
+}

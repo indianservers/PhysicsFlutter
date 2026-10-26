@@ -540,7 +540,6 @@ class CompareWorkspaceState extends ConsumerState<CompareWorkspace>
         : PageBody(
             scrollId: 'overview:comparison',
             children: [
-              const Eyebrow('Phase 8 · Five bounded comparisons'),
               DropdownButtonFormField<int>(
                 key: ValueKey(pair),
                 initialValue: pair,

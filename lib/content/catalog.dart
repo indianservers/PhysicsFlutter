@@ -21,24 +21,10 @@ class Entry {
   bool get dynamics => studioIndex >= 2 && studioIndex <= 4;
   bool get tool => studioIndex == 0;
   String get availability => interactive
-      ? 'Interactive · Phase ${astronomy
-            ? 8
-            : fluidModern
-            ? 7
-            : electronicsThermal
-            ? 6
-            : electromagnetism
-            ? 5
-            : wavesOptics
-            ? 4
-            : advanced
-            ? 3
-            : dynamics
-            ? 2
-            : 1}'
+      ? 'Experiment'
       : tool
-      ? 'Interactive learning tool · Phase 8'
-      : 'Learn now · Lab in a later phase';
+      ? 'Learning tool'
+      : 'Learn and explore';
 }
 
 class Studio {

@@ -1,4 +1,4 @@
-# Physics Atelier — instrument-first workspaces (1.8.1+10)
+# Physics Atelier — instrument-first workspaces (1.8.2+11)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -29,7 +29,9 @@ The graphics are original procedural instrument drawings with material shading. 
 
 Micrometer now has opposed measuring faces, a state-linked sleeve/thimble, a floating magnifier and precision controls. All physical labs use a contextual section menu instead of permanent five-item navigation.
 
-Current revision: [Micrometer QA](docs/MICROMETER_WORKSPACE_QA.md), [before/after and every studio](docs/MICROMETER_SCREENSHOTS.md), [102-entry checklist](docs/MICROMETER_MIGRATION.csv).
+Current copy cleanup: [learner-facing text audit](docs/LEARNER_COPY_AUDIT.md).
+
+Micrometer workspace evidence: [Micrometer QA](docs/MICROMETER_WORKSPACE_QA.md), [before/after and every studio](docs/MICROMETER_SCREENSHOTS.md), [102-entry checklist](docs/MICROMETER_MIGRATION.csv).
 
 Earlier implementation, evidence and limitations: [handover](docs/WORKSPACE_HANDOVER.md), [QA](docs/PHASE9_QA.md), [102-entry verification](docs/WORKSPACE_MIGRATION.csv). Historical Phase 1–8 reports describe their corresponding earlier builds.
 
@@ -45,7 +47,7 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable version **1.8.1+10**: [debug APK](deliverables/physics-atelier-micrometer-debug.apk) and [release APK with development signing](deliverables/physics-atelier-micrometer-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing remains pending.
+Installable version **1.8.2+11**: [debug APK](deliverables/physics-atelier-clean-copy-debug.apk), with a SHA-256 sidecar. Production signing remains pending.
 
 Device integration and screenshot capture:
 

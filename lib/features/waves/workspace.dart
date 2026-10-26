@@ -70,7 +70,7 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
   bool get playing => ticker.isActive;
   double? get result => run.state[lesson.metric];
   String number(num? n) =>
-      n == null ? 'Not defined / not yet available' : n.toStringAsPrecision(6);
+      n == null ? 'No defined reading' : n.toStringAsPrecision(6);
   @override
   void initState() {
     super.initState();
@@ -1538,7 +1538,7 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
           ),
           const Paragraph(
             'Primary references',
-            'OpenStax University Physics Volume 1 chapters 16–17 and Volume 3 chapters 1–4; documented Hann/coherent-gain FFT; official Flutter/record streaming documentation. See docs/PHASE4_SCIENCE.md for per-lab primary links and validation.',
+            'OpenStax University Physics Volume 1, chapters 16–17, and Volume 3, chapters 1–4. Frequency analysis uses a Hann window with coherent-gain correction.',
           ),
         ],
       ),

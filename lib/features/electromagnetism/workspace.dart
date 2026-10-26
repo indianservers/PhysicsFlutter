@@ -1507,7 +1507,7 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
           ),
           const Paragraph(
             'Constants and primary references',
-            'CODATA 2022: ε₀=8.8541878188e−12 F/m, μ₀=1.25663706127e−6 H/m, exact e=1.602176634e−19 C. OpenStax University Physics II chapters 5–13; Boris magnetic rotation and Neumann finite-loop flux. See docs/PHASE5_SCIENCE.md for source links and tolerances.',
+            'CODATA 2022: ε₀=8.8541878188e−12 F/m, μ₀=1.25663706127e−6 H/m, exact e=1.602176634e−19 C. OpenStax University Physics II chapters 5–13; Boris magnetic rotation and Neumann finite-loop flux.',
           ),
         ],
       ),

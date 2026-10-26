@@ -1261,7 +1261,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
           Paragraph('Assumptions & limits', lesson.limits),
           const Paragraph(
             'Numerical method',
-            'Analytic constant-acceleration segments and exact impact/zero-speed event handling. The shared clock advances 1/120 s steps independently of display frames. All graph samples are computed states. See docs/PHASE2_SCIENCE.md for topology, conventions, references and tests.',
+            'Analytic constant-acceleration segments and exact impact/zero-speed event handling. The shared clock advances 1/120 s steps independently of display frames. All graph samples are computed states.',
           ),
         ],
       ),
