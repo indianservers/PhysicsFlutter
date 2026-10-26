@@ -1,0 +1,150 @@
+{
+  "s10-e01": {
+    "frameCount": 90,
+    "parameterManipulations": 90,
+    "startTicks": 0,
+    "endTicks": 0,
+    "medianBuildMs": 3.791,
+    "p95BuildMs": 24.026,
+    "medianRasterMs": 51.687,
+    "p95RasterMs": 105.109,
+    "p95TotalMs": 180.595,
+    "framesOver16_67Ms": 90,
+    "activity": "90 actual parameter updates with calculated model refresh",
+    "cameraAndDivider": {
+      "operations": 40,
+      "unchangedScienceTicks": 0,
+      "frameCount": 41,
+      "medianRasterMs": 45.133,
+      "p95RasterMs": 89.7
+    }
+  },
+  "s08-e04": {
+    "frameCount": 90,
+    "parameterManipulations": 0,
+    "startTicks": 1,
+    "endTicks": 653,
+    "medianBuildMs": 2.142,
+    "p95BuildMs": 17.384,
+    "medianRasterMs": 39.664,
+    "p95RasterMs": 84.341,
+    "p95TotalMs": 140.726,
+    "framesOver16_67Ms": 90,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced",
+    "cameraAndDivider": {
+      "operations": 40,
+      "unchangedScienceTicks": 653,
+      "frameCount": 41,
+      "medianRasterMs": 24.952,
+      "p95RasterMs": 74.155
+    }
+  },
+  "s16-e00": {
+    "frameCount": 90,
+    "parameterManipulations": 0,
+    "startTicks": 8,
+    "endTicks": 651,
+    "medianBuildMs": 2.468,
+    "p95BuildMs": 14.092,
+    "medianRasterMs": 40.996,
+    "p95RasterMs": 87.269,
+    "p95TotalMs": 141.175,
+    "framesOver16_67Ms": 89,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced",
+    "cameraAndDivider": {
+      "operations": 40,
+      "unchangedScienceTicks": 651,
+      "frameCount": 41,
+      "medianRasterMs": 35.059,
+      "p95RasterMs": 89.032
+    }
+  },
+  "s16-e01": {
+    "frameCount": 90,
+    "parameterManipulations": 0,
+    "startTicks": 1,
+    "endTicks": 653,
+    "medianBuildMs": 2.49,
+    "p95BuildMs": 22.079,
+    "medianRasterMs": 39.301,
+    "p95RasterMs": 69.415,
+    "p95TotalMs": 127.19,
+    "framesOver16_67Ms": 87,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced",
+    "cameraAndDivider": {
+      "operations": 40,
+      "unchangedScienceTicks": 653,
+      "frameCount": 42,
+      "medianRasterMs": 32.892,
+      "p95RasterMs": 109.981
+    }
+  },
+  "s16-e05": {
+    "frameCount": 90,
+    "parameterManipulations": 0,
+    "startTicks": 2,
+    "endTicks": 649,
+    "medianBuildMs": 2.156,
+    "p95BuildMs": 15.657,
+    "medianRasterMs": 20.945,
+    "p95RasterMs": 61.28,
+    "p95TotalMs": 92.934,
+    "framesOver16_67Ms": 85,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced",
+    "cameraAndDivider": {
+      "operations": 40,
+      "unchangedScienceTicks": 649,
+      "frameCount": 41,
+      "medianRasterMs": 23.085,
+      "p95RasterMs": 61.138
+    }
+  },
+  "comparison0": {
+    "frameCount": 90,
+    "parameterManipulations": 0,
+    "startTicks": 6,
+    "endTicks": 698,
+    "medianBuildMs": 3.246,
+    "p95BuildMs": 25.333,
+    "medianRasterMs": 20.669,
+    "p95RasterMs": 71.307,
+    "p95TotalMs": 128.744,
+    "framesOver16_67Ms": 87,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced",
+    "cameraAndDivider": {
+      "operations": 40,
+      "unchangedScienceTicks": 698,
+      "frameCount": 42,
+      "medianRasterMs": 24.265,
+      "p95RasterMs": 83.859
+    }
+  },
+  "comparison4": {
+    "frameCount": 90,
+    "parameterManipulations": 0,
+    "startTicks": 3,
+    "endTicks": 641,
+    "medianBuildMs": 3.247,
+    "p95BuildMs": 19.607,
+    "medianRasterMs": 33.909,
+    "p95RasterMs": 63.62,
+    "p95TotalMs": 112.346,
+    "framesOver16_67Ms": 87,
+    "activity": "90 requested active playback frames; actual model coordinate/ticks advanced",
+    "cameraAndDivider": {
+      "operations": 40,
+      "unchangedScienceTicks": 641,
+      "frameCount": 41,
+      "medianRasterMs": 41.389,
+      "p95RasterMs": 81.466
+    }
+  },
+  "profileFile": "workspace-after-default-profile.json",
+  "environment": "Dedicated emulator-5556, Physics_Phase3, Android17 API37 x86_64 16KB,720x1280@320dpi,2 cores/2048MB; profile DEFAULT Android renderer host RTX3050; actual backend is recorded in engine startup log. Not physical-device performance.",
+  "phase9Restoration": {
+    "originalSessionsRestored": 104,
+    "originalPreferencesRestored": 4,
+    "trialsAfterExplicitValidation": 384,
+    "recoveryMessage": null
+  }
+}

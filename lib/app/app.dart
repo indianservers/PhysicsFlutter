@@ -6,13 +6,13 @@ import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../content/catalog.dart';
+import '../features/workbench/launchers.dart';
 import '../content/learning.dart';
 import '../features/astronomy/workspace.dart';
 import '../features/overview/workspace.dart';
 import '../features/overview/compare_workspace.dart';
 import '../core/design_system/theme.dart';
 import '../core/persistence/notebook.dart';
-import '../core/rendering/apparatus.dart';
 import '../features/lab_workspace/workspace.dart';
 import '../features/dynamics/workspace.dart';
 import '../features/advanced/workspace.dart';
@@ -131,369 +131,18 @@ class PageBody extends StatelessWidget {
   );
 }
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   @override
-  ConsumerState<HomeScreen> createState() => _HomeState();
-}
-
-class _HomeState extends ConsumerState<HomeScreen> {
-  String query = '';
-  @override
-  Widget build(BuildContext context) {
-    final store = ref.watch(notebookProvider);
-    return ListenableBuilder(
-      listenable: store,
-      builder: (c, _) => Scaffold(
-        appBar: AppBar(
-          title: const Row(
-            children: [
-              Icon(Icons.science_outlined, color: cobalt),
-              SizedBox(width: 9),
-              Expanded(
-                child: Text(
-                  'PHYSICS ATELIER',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 1.5,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              tooltip: 'Notebook',
-              onPressed: () => context.push('/notebook'),
-              icon: const Icon(Icons.auto_stories_outlined),
-            ),
-            IconButton(
-              tooltip: 'Settings',
-              onPressed: () => context.push('/settings'),
-              icon: const Icon(Icons.tune),
-            ),
-          ],
-        ),
-        body: SafeArea(
-          child: PageBody(
-            children: [
-              const SizedBox(height: 16),
-              const Eyebrow('A laboratory for curious minds'),
-              const SizedBox(height: 12),
-              Text(
-                'Understand the world.\nOne experiment at a time.',
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              const SizedBox(height: 12),
-              const Text(
-                'Explore the ideas. Handle the instruments.\nBuild an intuition for physics.',
-                style: TextStyle(color: muted, height: 1.6),
-              ),
-              const SizedBox(height: 24),
-              TextField(
-                key: const Key('search'),
-                onChanged: (v) => setState(() => query = v),
-                decoration: const InputDecoration(
-                  hintText: 'Search 17 studios & 102 entries',
-                  prefixIcon: Icon(Icons.search),
-                ),
-              ),
-              const SizedBox(height: 22),
-              if (query.isNotEmpty) ...[
-                Text(
-                  'Search results',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 12),
-                for (final s in studios.where(
-                  (s) => s.title.toLowerCase().contains(query.toLowerCase()),
-                ))
-                  Panel(
-                    child: ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(s.title),
-                      subtitle: const Text('Studio · 6 entries'),
-                      trailing: const Icon(Icons.arrow_forward),
-                      onTap: () => context.push('/studio/${s.id}'),
-                    ),
-                  ),
-                for (final e in allEntries.where(
-                  (e) =>
-                      e.title.toLowerCase().contains(query.toLowerCase()) ||
-                      e.principle.toLowerCase().contains(query.toLowerCase()),
-                ))
-                  Panel(
-                    child: ListTile(
-                      key: Key('search-result-${e.id}'),
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(e.title),
-                      subtitle: Text(
-                        '${studios[e.studioIndex].title}\n${e.availability}',
-                      ),
-                      isThreeLine: true,
-                      onTap: () => context.push('/lab/${e.id}'),
-                    ),
-                  ),
-                if (!allEntries.any(
-                      (e) =>
-                          e.title.toLowerCase().contains(query.toLowerCase()) ||
-                          e.principle.toLowerCase().contains(
-                            query.toLowerCase(),
-                          ),
-                    ) &&
-                    !studios.any(
-                      (s) =>
-                          s.title.toLowerCase().contains(query.toLowerCase()),
-                    ))
-                  const Panel(
-                    child: Text(
-                      'No matches. Try “Measurement”, “energy” or “orbits”.',
-                    ),
-                  ),
-              ] else ...[
-                Panel(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Eyebrow('Your learning journey'),
-                      const SizedBox(height: 10),
-                      Text(
-                        store.lastLab == null
-                            ? 'Your first discovery starts here'
-                            : 'Continue learning',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        store.lastLab == null
-                            ? 'No activity yet. Begin with Measurement and learn to read a scale.'
-                            : '${entryById(store.lastLab!).title} · ${studios[entryById(store.lastLab!).studioIndex].title}',
-                        style: const TextStyle(color: muted),
-                      ),
-                      const SizedBox(height: 16),
-                      FilledButton.icon(
-                        onPressed: () => context.push(
-                          store.lastLab == null
-                              ? '/studio/s01'
-                              : '/lab/${store.lastLab}',
-                        ),
-                        icon: const Icon(Icons.arrow_forward, size: 18),
-                        label: Text(
-                          store.lastLab == null
-                              ? 'Explore Measurement'
-                              : 'Resume activity',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  alignment: WrapAlignment.spaceBetween,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 14,
-                  children: [
-                    Text(
-                      'Explore the studios',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    Text(
-                      '${store.completed.length}/102 activities completed',
-                      style: const TextStyle(color: muted, fontSize: 12),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                const Text(
-                  '17 studios · 96 labs · 6 learning tools',
-                  style: TextStyle(color: muted),
-                ),
-                const SizedBox(height: 18),
-                LayoutBuilder(
-                  builder: (context, box) {
-                    final columns = box.maxWidth > 800
-                        ? 3
-                        : box.maxWidth > 560
-                        ? 2
-                        : 1;
-                    return Wrap(
-                      spacing: 16,
-                      runSpacing: 16,
-                      children: [
-                        for (int i = 0; i < studios.length; i++)
-                          SizedBox(
-                            width:
-                                (box.maxWidth - 16 * (columns - 1)) / columns,
-                            child: StudioCard(index: i, store: store),
-                          ),
-                      ],
-                    );
-                  },
-                ),
-              ],
-              const SizedBox(height: 24),
-              const Center(
-                child: Text(
-                  'DESIGNED FOR DISCOVERY · WORKS OFFLINE',
-                  style: TextStyle(
-                    fontSize: 10,
-                    letterSpacing: 1.5,
-                    color: muted,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class StudioCard extends StatelessWidget {
-  final int index;
-  final LocalNotebook store;
-  const StudioCard({super.key, required this.index, required this.store});
-  @override
-  Widget build(BuildContext context) {
-    final s = studios[index];
-    final count = s.entries.where((e) => store.completed.contains(e.id)).length;
-    return Card(
-      margin: EdgeInsets.zero,
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () => context.push('/studio/${s.id}'),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Semantics(
-              label: '${s.title} scientific illustration, simplified model',
-              image: true,
-              child: SizedBox(
-                height: 145,
-                width: double.infinity,
-                child: CustomPaint(painter: StudioIllustration(index)),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(18),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${(index + 1).toString().padLeft(2, '0')}  /  ${index == 0 ? '6 TOOLS' : '6 LABS'}',
-                    style: const TextStyle(
-                      color: muted,
-                      fontSize: 10,
-                      letterSpacing: 1.4,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(s.title, style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: 10),
-                  Text(
-                    s.entries.every((e) => e.interactive)
-                        ? '● Six interactive labs'
-                        : index == 0
-                        ? 'Six interactive learning tools'
-                        : 'Learning content available',
-                    style: TextStyle(
-                      color: s.entries.every((e) => e.interactive)
-                          ? teal
-                          : muted,
-                      fontSize: 12,
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  LinearProgressIndicator(
-                    value: count / 6,
-                    minHeight: 3,
-                    borderRadius: BorderRadius.circular(5),
-                    backgroundColor: const Color(0xffedf1f7),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    '$count of 6 completed',
-                    style: const TextStyle(color: muted, fontSize: 11),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context, WidgetRef ref) => const CompactHome();
 }
 
 class StudioScreen extends ConsumerWidget {
   final Studio studio;
   const StudioScreen({super.key, required this.studio});
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final index = studios.indexOf(studio), store = ref.watch(notebookProvider);
-    return Scaffold(
-      appBar: AppBar(title: Text(studio.title)),
-      body: SafeArea(
-        child: PageBody(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(22),
-              child: SizedBox(
-                height: 190,
-                child: CustomPaint(painter: StudioIllustration(index)),
-              ),
-            ),
-            const SizedBox(height: 24),
-            Eyebrow(
-              'Studio ${(index + 1).toString().padLeft(2, '0')} · Recommended order',
-            ),
-            const SizedBox(height: 10),
-            Text(
-              studio.title,
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const SizedBox(height: 10),
-            Text(
-              index == 1
-                  ? 'Precision begins with observation. Learn six essential measurement techniques with instruments you can manipulate.'
-                  : 'Explore ${studio.title.toLowerCase()} through six connected ideas. Read the theory and formulas in order, or follow your curiosity.',
-            ),
-            const SizedBox(height: 20),
-            for (final e in studio.entries)
-              Panel(
-                child: ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: CircleAvatar(
-                    backgroundColor: const Color(0xffedf3ff),
-                    child: Text(
-                      '${e.index + 1}',
-                      style: const TextStyle(color: cobalt),
-                    ),
-                  ),
-                  title: Text(
-                    e.title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 7),
-                    child: Text(
-                      '${e.principle}\n${e.availability}${store.completed.contains(e.id) ? ' · Completed' : ''}',
-                    ),
-                  ),
-                  trailing: const Icon(Icons.chevron_right, color: cobalt),
-                  onTap: () => context.push('/lab/${e.id}'),
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context, WidgetRef ref) =>
+      CompactStudio(studio: studio);
 }
 
 Future<void> exportTrials(BuildContext context, List<Trial> trials) async {
@@ -644,6 +293,15 @@ class SettingsScreen extends ConsumerWidget {
                   ],
                 ),
               ),
+              ListTile(
+                leading: const Icon(Icons.description_outlined),
+                title: const Text('Open-source licenses'),
+                onTap: () => showLicensePage(
+                  context: c,
+                  applicationName: 'Physics Atelier',
+                  applicationVersion: '1.8.0+9',
+                ),
+              ),
               const Panel(
                 child: Paragraph(
                   'Private by design',
@@ -652,8 +310,8 @@ class SettingsScreen extends ConsumerWidget {
               ),
               const Panel(
                 child: Paragraph(
-                  'Phase 8 of 9 · Astronomy & Connected Learning',
-                  '96 interactive labs across sixteen studios and six Concept Overview tools. All102 stable destinations are implemented within documented bounds; Phase9 comprehensive validation and release work remains. Completion reflects learner activity, not page visits.',
+                  'Phase 9 of 9 · Validation build',
+                  '96 interactive labs across sixteen studios and six Concept Overview tools. 102 stable destinations within documented model bounds. Platform, accessibility, performance and visual limitations are listed in the Phase 9 handover. Completion reflects learner activity, not page visits.',
                 ),
               ),
             ],

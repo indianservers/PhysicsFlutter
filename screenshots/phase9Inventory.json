@@ -1,0 +1,1861 @@
+{
+  "entries": {
+    "s00-e00": {
+      "route": "/lab/s00-e00",
+      "rendered": true,
+      "qualification": "Tool interactions covered by phase8 native and phase9 focused regression; route screenshot is not completion proof"
+    },
+    "s00-e01": {
+      "route": "/lab/s00-e01",
+      "rendered": true,
+      "qualification": "Tool interactions covered by phase8 native and phase9 focused regression; route screenshot is not completion proof"
+    },
+    "s00-e02": {
+      "route": "/lab/s00-e02",
+      "rendered": true,
+      "qualification": "Tool interactions covered by phase8 native and phase9 focused regression; route screenshot is not completion proof"
+    },
+    "s00-e03": {
+      "route": "/lab/s00-e03",
+      "rendered": true,
+      "qualification": "Tool interactions covered by phase8 native and phase9 focused regression; route screenshot is not completion proof"
+    },
+    "s00-e04": {
+      "route": "/lab/s00-e04",
+      "rendered": true,
+      "qualification": "Tool interactions covered by phase8 native and phase9 focused regression; route screenshot is not completion proof"
+    },
+    "s00-e05": {
+      "route": "/lab/s00-e05",
+      "rendered": true,
+      "qualification": "Tool interactions covered by phase8 native and phase9 focused regression; route screenshot is not completion proof"
+    },
+    "s01-e00": {
+      "route": "/lab/s01-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "measurement-1.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.053000000000000005,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s01-e00.png"
+    },
+    "s01-e01": {
+      "route": "/lab/s01-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "measurement-1.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.023700000000000002,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s01-e01.png"
+    },
+    "s01-e02": {
+      "route": "/lab/s01-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "measurement-1.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.0005300000000000001,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s01-e02.png"
+    },
+    "s01-e03": {
+      "route": "/lab/s01-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "measurement-1.0",
+      "quantity": "radius",
+      "unit": "m",
+      "value": 2.778002777777778,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s01-e03.png"
+    },
+    "s01-e04": {
+      "route": "/lab/s01-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "measurement-1.0",
+      "quantity": "speed",
+      "unit": "m/s",
+      "value": 0.31830695000000003,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s01-e04.png"
+    },
+    "s01-e05": {
+      "route": "/lab/s01-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "measurement-1.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.022000000000000002,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s01-e05.png"
+    },
+    "s02-e00": {
+      "route": "/lab/s02-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "acceleration",
+      "unit": "m/s²",
+      "value": 4.372723305277526,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s02-e00.png"
+    },
+    "s02-e01": {
+      "route": "/lab/s02-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "acceleration",
+      "unit": "m/s²",
+      "value": 2.780122993494333,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s02-e01.png"
+    },
+    "s02-e02": {
+      "route": "/lab/s02-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "acceleration",
+      "unit": "m/s²",
+      "value": 2.626065875475419,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s02-e02.png"
+    },
+    "s02-e03": {
+      "route": "/lab/s02-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "torque",
+      "unit": "N·m",
+      "value": 1.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s02-e03.png"
+    },
+    "s02-e04": {
+      "route": "/lab/s02-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.12939657954178768,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s02-e04.png"
+    },
+    "s02-e05": {
+      "route": "/lab/s02-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "momentum",
+      "unit": "kg·m/s",
+      "value": 4.396,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s02-e05.png"
+    },
+    "s03-e00": {
+      "route": "/lab/s03-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "velocity",
+      "unit": "m/s",
+      "value": 1.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s03-e00.png"
+    },
+    "s03-e01": {
+      "route": "/lab/s03-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s03-e01.png"
+    },
+    "s03-e02": {
+      "route": "/lab/s03-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "velocity",
+      "unit": "m/s",
+      "value": 0.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s03-e02.png"
+    },
+    "s03-e03": {
+      "route": "/lab/s03-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 16.803836757330213,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s03-e03.png"
+    },
+    "s03-e04": {
+      "route": "/lab/s03-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "velocity",
+      "unit": "m/s",
+      "value": 3.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s03-e04.png"
+    },
+    "s03-e05": {
+      "route": "/lab/s03-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": 8.792,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s03-e05.png"
+    },
+    "s04-e00": {
+      "route": "/lab/s04-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "velocity",
+      "unit": "m/s",
+      "value": 0.45495905368516837,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s04-e00.png"
+    },
+    "s04-e01": {
+      "route": "/lab/s04-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "acceleration",
+      "unit": "m/s²",
+      "value": 2.72975432211101,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s04-e01.png"
+    },
+    "s04-e02": {
+      "route": "/lab/s04-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "acceleration",
+      "unit": "m/s²",
+      "value": -2.72975432211101,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s04-e02.png"
+    },
+    "s04-e03": {
+      "route": "/lab/s04-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": -5.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s04-e03.png"
+    },
+    "s04-e04": {
+      "route": "/lab/s04-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": 19.0550167,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s04-e04.png"
+    },
+    "s04-e05": {
+      "route": "/lab/s04-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "dynamics-2.0",
+      "quantity": "acceleration",
+      "unit": "m/s²",
+      "value": 1.8198362147406735,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s04-e05.png"
+    },
+    "s05-e00": {
+      "route": "/lab/s05-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 0.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s05-e00.png"
+    },
+    "s05-e01": {
+      "route": "/lab/s05-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 4.806,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s05-e01.png"
+    },
+    "s05-e02": {
+      "route": "/lab/s05-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 41.8940088,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s05-e02.png"
+    },
+    "s05-e03": {
+      "route": "/lab/s05-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 10.4735022,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s05-e03.png"
+    },
+    "s05-e04": {
+      "route": "/lab/s05-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "power",
+      "unit": "W",
+      "value": 51.47510584999999,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s05-e04.png"
+    },
+    "s05-e05": {
+      "route": "/lab/s05-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "efficiency",
+      "unit": "",
+      "value": 0.8,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s05-e05.png"
+    },
+    "s06-e00": {
+      "route": "/lab/s06-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": 1.8908297889167835e+21,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s06-e00.png"
+    },
+    "s06-e01": {
+      "route": "/lab/s06-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "acceleration",
+      "unit": "m/s²",
+      "value": 2.575360649573391,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s06-e01.png"
+    },
+    "s06-e02": {
+      "route": "/lab/s06-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "specificEnergy",
+      "unit": "J/kg",
+      "value": -32815245.39686415,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s06-e02.png"
+    },
+    "s06-e03": {
+      "route": "/lab/s06-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "specificEnergy",
+      "unit": "J/kg",
+      "value": -16861217.6062057,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s06-e03.png"
+    },
+    "s06-e04": {
+      "route": "/lab/s06-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "speed",
+      "unit": "m/s",
+      "value": 10458.687839441453,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s06-e04.png"
+    },
+    "s06-e05": {
+      "route": "/lab/s06-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "time",
+      "unit": "s",
+      "value": 39529.80158322858,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s06-e05.png"
+    },
+    "s07-e00": {
+      "route": "/lab/s07-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "time",
+      "unit": "s",
+      "value": 1.4519461078403313,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s07-e00.png"
+    },
+    "s07-e01": {
+      "route": "/lab/s07-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "time",
+      "unit": "s",
+      "value": 7.030626990861779,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s07-e01.png"
+    },
+    "s07-e02": {
+      "route": "/lab/s07-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 0.22499999999999998,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s07-e02.png"
+    },
+    "s07-e03": {
+      "route": "/lab/s07-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "damping",
+      "unit": "kg/s",
+      "value": 9.243376006633074,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s07-e03.png"
+    },
+    "s07-e04": {
+      "route": "/lab/s07-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "angularFrequency",
+      "unit": "rad/s",
+      "value": 4.327423224079155,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s07-e04.png"
+    },
+    "s07-e05": {
+      "route": "/lab/s07-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "energy-gravity-oscillation-3.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 0.24749999999999997,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s07-e05.png"
+    },
+    "s08-e00": {
+      "route": "/lab/s08-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "speed",
+      "unit": "m/s",
+      "value": 0.8,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s08-e00.png"
+    },
+    "s08-e01": {
+      "route": "/lab/s08-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 2.422324561851138e-8,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s08-e01.png"
+    },
+    "s08-e02": {
+      "route": "/lab/s08-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "relativeIntensity",
+      "unit": "",
+      "value": 1.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s08-e02.png"
+    },
+    "s08-e03": {
+      "route": "/lab/s08-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "frequency",
+      "unit": "Hz",
+      "value": 73.89162561576356,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s08-e03.png"
+    },
+    "s08-e04": {
+      "route": "/lab/s08-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "frequency",
+      "unit": "Hz",
+      "value": 456.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s08-e04.png"
+    },
+    "s08-e05": {
+      "route": "/lab/s08-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "frequency",
+      "unit": "Hz",
+      "value": 678.7330316742082,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s08-e05.png"
+    },
+    "s09-e00": {
+      "route": "/lab/s09-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "angle",
+      "unit": "°",
+      "value": 31.450000000000003,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s09-e00.png"
+    },
+    "s09-e01": {
+      "route": "/lab/s09-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "angle",
+      "unit": "°",
+      "value": 60.85,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s09-e01.png"
+    },
+    "s09-e02": {
+      "route": "/lab/s09-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "vergence",
+      "unit": "m⁻¹",
+      "value": -26.806722689075627,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s09-e02.png"
+    },
+    "s09-e03": {
+      "route": "/lab/s09-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "vergence",
+      "unit": "m⁻¹",
+      "value": -18.500986193293887,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s09-e03.png"
+    },
+    "s09-e04": {
+      "route": "/lab/s09-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.0033335,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s09-e04.png"
+    },
+    "s09-e05": {
+      "route": "/lab/s09-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "waves-optics-4.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.013074279350449162,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s09-e05.png"
+    },
+    "s10-e00": {
+      "route": "/lab/s10-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": 0.9436929375479333,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s10-e00.png"
+    },
+    "s10-e01": {
+      "route": "/lab/s10-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "electricField",
+      "unit": "N/C",
+      "value": 2177.715475647864,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s10-e01.png"
+    },
+    "s10-e02": {
+      "route": "/lab/s10-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "voltage",
+      "unit": "V",
+      "value": -190.30425183217406,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s10-e02.png"
+    },
+    "s10-e03": {
+      "route": "/lab/s10-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "current",
+      "unit": "A",
+      "value": 0.41600000000000004,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s10-e03.png"
+    },
+    "s10-e04": {
+      "route": "/lab/s10-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "current",
+      "unit": "A",
+      "value": 0.20333333333333334,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s10-e04.png"
+    },
+    "s10-e05": {
+      "route": "/lab/s10-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "capacitance",
+      "unit": "F",
+      "value": 4.5864692901384e-11,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s10-e05.png"
+    },
+    "s11-e00": {
+      "route": "/lab/s11-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "magneticField",
+      "unit": "T",
+      "value": 0.0000027028014185904756,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s11-e00.png"
+    },
+    "s11-e01": {
+      "route": "/lab/s11-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": 3.3323532679999996e-16,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s11-e01.png"
+    },
+    "s11-e02": {
+      "route": "/lab/s11-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "magneticField",
+      "unit": "T",
+      "value": 0.000004807401699983919,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s11-e02.png"
+    },
+    "s11-e03": {
+      "route": "/lab/s11-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "magneticField",
+      "unit": "T",
+      "value": 0.01123061045493323,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s11-e03.png"
+    },
+    "s11-e04": {
+      "route": "/lab/s11-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "voltage",
+      "unit": "V",
+      "value": -0.00006572231465466221,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s11-e04.png"
+    },
+    "s11-e05": {
+      "route": "/lab/s11-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electromagnetism-5.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": 1.0423050440997892,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s11-e05.png"
+    },
+    "s12-e00": {
+      "route": "/lab/s12-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "conductivity",
+      "unit": "S/m",
+      "value": 2.2185698207208318,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s12-e00.png"
+    },
+    "s12-e01": {
+      "route": "/lab/s12-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "current",
+      "unit": "A",
+      "value": -1e-12,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s12-e01.png"
+    },
+    "s12-e02": {
+      "route": "/lab/s12-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "current",
+      "unit": "A",
+      "value": 0.004982618771726535,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s12-e02.png"
+    },
+    "s12-e03": {
+      "route": "/lab/s12-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "gain",
+      "unit": "",
+      "value": 6.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s12-e03.png"
+    },
+    "s12-e04": {
+      "route": "/lab/s12-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "logicState",
+      "unit": "",
+      "value": 0.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s12-e04.png"
+    },
+    "s12-e05": {
+      "route": "/lab/s12-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "time",
+      "unit": "s",
+      "value": 0.005823772639916137,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s12-e05.png"
+    },
+    "s13-e00": {
+      "route": "/lab/s13-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "temperature",
+      "unit": "K",
+      "value": 293.15,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s13-e00.png"
+    },
+    "s13-e01": {
+      "route": "/lab/s13-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "power",
+      "unit": "W",
+      "value": 11.18965891937729,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s13-e01.png"
+    },
+    "s13-e02": {
+      "route": "/lab/s13-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "pressure",
+      "unit": "Pa",
+      "value": 101669.24889477782,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s13-e02.png"
+    },
+    "s13-e03": {
+      "route": "/lab/s13-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 0.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s13-e03.png"
+    },
+    "s13-e04": {
+      "route": "/lab/s13-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "entropy",
+      "unit": "J/K",
+      "value": 2.664535259100375e-13,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s13-e04.png"
+    },
+    "s13-e05": {
+      "route": "/lab/s13-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "electronics-thermal-6.0",
+      "quantity": "efficiency",
+      "unit": "",
+      "value": 0.5,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s13-e05.png"
+    },
+    "s14-e00": {
+      "route": "/lab/s14-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "pressure",
+      "unit": "Pa",
+      "value": 4290.530960000004,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s14-e00.png"
+    },
+    "s14-e01": {
+      "route": "/lab/s14-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 0.033730158730158735,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s14-e01.png"
+    },
+    "s14-e02": {
+      "route": "/lab/s14-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "force",
+      "unit": "N",
+      "value": 5.693819443199999,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s14-e02.png"
+    },
+    "s14-e03": {
+      "route": "/lab/s14-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "speed",
+      "unit": "m/s",
+      "value": 0.09947183943243461,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s14-e03.png"
+    },
+    "s14-e04": {
+      "route": "/lab/s14-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "pressure",
+      "unit": "Pa",
+      "value": 101820.42734826675,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s14-e04.png"
+    },
+    "s14-e05": {
+      "route": "/lab/s14-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "speed",
+      "unit": "m/s",
+      "value": 0.000848570241720833,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s14-e05.png"
+    },
+    "s15-e00": {
+      "route": "/lab/s15-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 5.26312276894167e-19,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s15-e00.png"
+    },
+    "s15-e01": {
+      "route": "/lab/s15-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "current",
+      "unit": "A",
+      "value": 0.0,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s15-e01.png"
+    },
+    "s15-e02": {
+      "route": "/lab/s15-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 1.2144021871858915e-10,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s15-e02.png"
+    },
+    "s15-e03": {
+      "route": "/lab/s15-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 4.862737824690704e-7,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s15-e03.png"
+    },
+    "s15-e04": {
+      "route": "/lab/s15-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "energy",
+      "unit": "J",
+      "value": 1.230494854650687e-12,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s15-e04.png"
+    },
+    "s15-e05": {
+      "route": "/lab/s15-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "fluid-modern-7.0",
+      "quantity": "activity",
+      "unit": "Bq",
+      "value": 0.7236227573383998,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s15-e05.png"
+    },
+    "s16-e00": {
+      "route": "/lab/s16-e00",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "astronomy-8.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 48989243643.671295,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s16-e00.png"
+    },
+    "s16-e01": {
+      "route": "/lab/s16-e01",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "astronomy-8.0",
+      "quantity": "power",
+      "unit": "W",
+      "value": 4.286943744755174e+26,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s16-e01.png"
+    },
+    "s16-e02": {
+      "route": "/lab/s16-e02",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "astronomy-8.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 4.863613611868072e-7,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s16-e02.png"
+    },
+    "s16-e03": {
+      "route": "/lab/s16-e03",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "astronomy-8.0",
+      "quantity": "speed",
+      "unit": "m/s",
+      "value": 175440.76102639863,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s16-e03.png"
+    },
+    "s16-e04": {
+      "route": "/lab/s16-e04",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "astronomy-8.0",
+      "quantity": "length",
+      "unit": "m",
+      "value": 2.3902522857161673e+26,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s16-e04.png"
+    },
+    "s16-e05": {
+      "route": "/lab/s16-e05",
+      "sections": [
+        "Learn",
+        "Experiment",
+        "Visualize",
+        "Formulas",
+        "Results"
+      ],
+      "parameterChanged": true,
+      "finiteCalculatedTrial": true,
+      "trialModel": "astronomy-8.0",
+      "quantity": "relativeIntensity",
+      "unit": "",
+      "value": 0.010000000000000002,
+      "saveReopen": true,
+      "csvEncoded": true,
+      "screenshot": "phase9-entry-s16-e05.png"
+    }
+  },
+  "originalTrials": 286,
+  "currentTrials": 384,
+  "qualification": "Automated control/model callbacks, native computed persistence and rendered sections; not independent human visual/science certification"
+}

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
+import '../workbench/lab_thumbnail.dart';
 import '../../content/catalog.dart';
 import '../../content/learning.dart';
 import '../../core/design_system/theme.dart';
@@ -59,7 +60,57 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
   }
 
   Future<void> load() async {
-    final data = await store.readSession(entry.id);
+    var data = await store.readSession(entry.id);
+    if (data != null) {
+      final validStrings = [
+        'query',
+        'apparatus',
+        'stage',
+        'focus',
+        'path',
+        'question',
+        'notes',
+      ].every((k) => data![k] == null || data[k] is String);
+      final validLists = ['opened', 'inspected'].every(
+        (k) =>
+            data![k] == null ||
+            data[k] is List && (data[k] as List).every((v) => v is String),
+      );
+      final validNumbers = ['studio', 'topic'].every(
+        (k) => data![k] == null || data[k] is num && (data[k] as num).isFinite,
+      );
+      final validFilters =
+          (data['studio'] == null ||
+              data['studio'] == -1 ||
+              data['studio'] is num &&
+                  (data['studio'] as num) >= 1 &&
+                  (data['studio'] as num) <= 16) &&
+          (data['apparatus'] == null ||
+              data['apparatus'] == '' ||
+              labInventory.map(apparatusFor).contains(data['apparatus'])) &&
+          (data['stage'] == null ||
+              [
+                '',
+                'Foundation',
+                'Intermediate',
+                'Advanced',
+              ].contains(data['stage'])) &&
+          (data['focus'] == null ||
+              data['focus'] == '' ||
+              conceptEdges
+                  .expand((e) => [e.from, e.to])
+                  .contains(data['focus']));
+      if (data['model'] != learningVersion ||
+          !validFilters ||
+          !validStrings ||
+          !validLists ||
+          !validNumbers) {
+        await store.retainRejectedSession(entry.id, data);
+        data = null;
+        notice =
+            'Incompatible tool configuration backed up. Defaults are shown.';
+      }
+    }
     if (data != null) {
       if (data['model'] == learningVersion) {
         query = data['query'] as String? ?? '';
@@ -67,10 +118,10 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
         apparatus = data['apparatus'] as String? ?? '';
         stage = data['stage'] as String? ?? '';
         focus = data['focus'] as String? ?? '';
-        pathId = learningPaths.any((p) => p.id == data['path'])
+        pathId = learningPaths.any((p) => p.id == data!['path'])
             ? data['path']
             : 'measurement';
-        questionId = masteryQuestions.any((q) => q.id == data['question'])
+        questionId = masteryQuestions.any((q) => q.id == data!['question'])
             ? data['question']
             : masteryQuestions.first.id;
         notes.text = data['notes'] as String? ?? '';
@@ -257,8 +308,376 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
       children: children,
     ),
   );
+  bool mapNeedsFit = true;
+  void toolDetails([List<Widget>? widgets]) {
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (ctx) => SafeArea(
+        child: SizedBox(
+          height: MediaQuery.sizeOf(ctx).height * .72,
+          child: ListView(
+            padding: EdgeInsets.fromLTRB(
+              16,
+              4,
+              16,
+              16 + MediaQuery.viewInsetsOf(ctx).bottom,
+            ),
+            children: [
+              ...?widgets,
+              if (widgets == null) ...[
+                Text(completionRule),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: notes,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                    labelText: 'Tool / investigation notes',
+                  ),
+                  onChanged: (_) => setState(() {}),
+                ),
+                FilledButton(
+                  onPressed: save,
+                  child: const Text('Save tool configuration'),
+                ),
+                FilledButton(
+                  onPressed: eligible
+                      ? () async {
+                          await store.complete(entry.id);
+                          if (mounted) setState(() {});
+                        }
+                      : null,
+                  child: const Text('Complete tool activity'),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void mapZoom(double factor) {
+    final scale = mapView.value.getMaxScaleOnAxis(),
+        next = (scale * factor).clamp(.25, 4);
+    mapView.value = mapView.value.clone()
+      ..scaleByDouble(next / scale, next / scale, 1, 1);
+  }
+
+  Widget mapWorkspace(bool atlasTool) {
+    final items = atlasTool ? atlas() : relationships();
+    final mapBoxes = items.whereType<SizedBox>().toList();
+    final Widget? content = mapBoxes.isEmpty
+        ? null
+        : (mapBoxes.first.child! as InteractiveViewer).child;
+    final filtered = filterLabs(query: query, studio: studio);
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(12, 6, 12, 0),
+          child: search(),
+        ),
+        Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            IconButton(
+              tooltip: 'Filters and selection',
+              onPressed: () => toolDetails(
+                atlasTool
+                    ? [studioFilter()]
+                    : items
+                          .whereType<DropdownButtonFormField<String>>()
+                          .toList(),
+              ),
+              icon: const Icon(Icons.filter_list),
+            ),
+            TextButton.icon(
+              onPressed: () => setState(() => listView = !listView),
+              icon: Icon(listView ? Icons.public : Icons.list),
+              label: Text(listView ? 'Map' : 'List'),
+            ),
+
+            IconButton(
+              tooltip: 'Zoom out',
+              onPressed: () => mapZoom(1 / 1.25),
+              icon: const Icon(Icons.remove),
+            ),
+            IconButton(
+              tooltip: 'Zoom in',
+              onPressed: () => mapZoom(1.25),
+              icon: const Icon(Icons.add),
+            ),
+            IconButton(
+              tooltip: 'Fit map',
+              onPressed: () => setState(() => mapNeedsFit = true),
+              icon: const Icon(Icons.fit_screen),
+            ),
+          ],
+        ),
+        Expanded(
+          child: listView
+              ? ListView(
+                  padding: const EdgeInsets.all(12),
+                  children: atlasTool
+                      ? filtered.map(labTile).toList()
+                      : items.whereType<Panel>().toList(),
+                )
+              : LayoutBuilder(
+                  builder: (context, b) {
+                    if (mapNeedsFit) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        if (!mounted) return;
+                        final scale = (b.maxWidth / (atlasTool ? 850 : 800))
+                            .clamp(.25, 1.0);
+                        mapView.value = Matrix4.identity()
+                          ..scaleByDouble(scale, scale, 1, 1);
+                        mapNeedsFit = false;
+                      });
+                    }
+                    return InteractiveViewer(
+                      transformationController: mapView,
+                      constrained: false,
+                      minScale: .25,
+                      maxScale: 4,
+                      child: content!,
+                    );
+                  },
+                ),
+        ),
+        SizedBox(
+          height: 96,
+          child: SingleChildScrollView(
+            child: ListTile(
+              dense: true,
+              title: Text(
+                atlasTool
+                    ? (studio > 0 ? studios[studio].title : 'Select a studio')
+                    : (focus.isEmpty ? 'Select a concept' : focus),
+              ),
+              subtitle: Text(
+                atlasTool
+                    ? '${filtered.length} matching labs'
+                    : 'Explained links and source investigations',
+              ),
+              trailing: TextButton(
+                onPressed: () => toolDetails(
+                  atlasTool
+                      ? filtered.map(labTile).toList()
+                      : items.whereType<Panel>().toList(),
+                ),
+                child: const Text('Explore'),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget pathWorkspace() {
+    final path = learningPaths.firstWhere((p) => p.id == pathId),
+        next = path.resume(store.completed);
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(12),
+          child: DropdownButtonFormField<String>(
+            key: ValueKey(pathId),
+            initialValue: pathId,
+            isExpanded: true,
+            items: [
+              for (final p in learningPaths)
+                DropdownMenuItem(value: p.id, child: Text(p.title)),
+            ],
+            onChanged: (v) {
+              if (v != null) setState(() => pathId = v);
+            },
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: LinearProgressIndicator(value: path.progress(store.completed)),
+        ),
+        ListTile(
+          title: Text(next?.title ?? 'Required path complete'),
+          subtitle: Text(
+            '${path.requiredActivities.where((e) => store.completed.contains(e.id)).length}/${path.requiredActivities.length} required activities',
+          ),
+          trailing: IconButton(
+            tooltip: 'Launch current step',
+            onPressed: next == null ? null : () => launch(next.id),
+            icon: const Icon(Icons.play_arrow),
+          ),
+        ),
+        Expanded(
+          child: ListView(
+            children: [
+              for (int i = 0; i < path.activities.length; i++)
+                ListTile(
+                  leading: CircleAvatar(child: Text('${i + 1}')),
+                  title: Text(path.activities[i].title),
+                  subtitle: Text(
+                    '${path.required(path.activities[i]) ? 'Required' : 'Optional'} · ${store.completed.contains(path.activities[i].id) ? 'Complete' : 'Not complete'}',
+                  ),
+                  onTap: () => launch(path.activities[i].id),
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget launcherWorkspace() {
+    final matches = filterLabs(
+      query: query,
+      studio: studio,
+      apparatus: apparatus,
+      stage: stage,
+      onlyIds: onlyFavorites ? store.favorites : null,
+    );
+    return Column(
+      children: [
+        Padding(padding: const EdgeInsets.all(12), child: search()),
+        Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            TextButton.icon(
+              onPressed: () => toolDetails(
+                launcher()
+                    .where(
+                      (w) => w is DropdownButtonFormField || w is FilterChip,
+                    )
+                    .toList(),
+              ),
+              icon: const Icon(Icons.filter_list),
+              label: const Text('Filters'),
+            ),
+            TextButton.icon(
+              onPressed: () =>
+                  toolDetails(launcher().whereType<ExpansionTile>().toList()),
+              icon: const Icon(Icons.history),
+              label: const Text('Recent / saved'),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: Text('${matches.length} labs'),
+            ),
+          ],
+        ),
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            children: matches.map(labTile).toList(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget masteryWorkspace() {
+    final widgets = mastery()
+        .where(
+          (w) =>
+              w is! Paragraph &&
+              w is! DropdownButtonFormField<String> &&
+              w is! DropdownButtonFormField<int>,
+        )
+        .toList();
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Text(
+                  '${question.type} · ${studios[question.studio].title}',
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
+            IconButton(
+              tooltip: 'Practice mode and topic',
+              icon: const Icon(Icons.filter_list),
+              onPressed: () => toolDetails(
+                mastery()
+                    .where(
+                      (w) =>
+                          w is DropdownButtonFormField<String> ||
+                          w is DropdownButtonFormField<int>,
+                    )
+                    .toList(),
+              ),
+            ),
+            IconButton(
+              tooltip: 'Choose challenge',
+              icon: const Icon(Icons.playlist_play),
+              onPressed: () => toolDetails([
+                for (final q in questions)
+                  ListTile(
+                    title: Text(entryById(q.lab).title),
+                    subtitle: Text(q.type),
+                    onTap: () {
+                      setState(() {
+                        questionId = q.id;
+                        answer.clear();
+                        feedback = '';
+                      });
+                      Navigator.pop(context);
+                    },
+                  ),
+              ]),
+            ),
+          ],
+        ),
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            children: widgets,
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) => ListenableBuilder(
+    listenable: store,
+    builder: (context, _) => Scaffold(
+      appBar: AppBar(
+        title: Text(
+          entry.title,
+          style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
+        ),
+        actions: [
+          IconButton(
+            tooltip: 'Tool notes and help',
+            onPressed: () => toolDetails(),
+            icon: const Icon(Icons.help_outline),
+          ),
+          IconButton(
+            tooltip: 'Save tool configuration',
+            onPressed: save,
+            icon: const Icon(Icons.bookmark_add_outlined),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: !ready
+            ? const Center(child: CircularProgressIndicator())
+            : switch (entry.index) {
+                0 => mapWorkspace(true),
+                1 => mapWorkspace(false),
+                2 => pathWorkspace(),
+                3 => launcherWorkspace(),
+                _ => masteryWorkspace(),
+              },
+      ),
+    ),
+  );
+  Widget legacyBuild(BuildContext context) => ListenableBuilder(
     listenable: store,
     builder: (c, _) => Scaffold(
       appBar: AppBar(
@@ -355,11 +774,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-            leading: SizedBox(
-              width: 58,
-              height: 48,
-              child: CustomPaint(painter: StudioIllustration(e.studioIndex)),
-            ),
+            leading: SizedBox(width: 58, height: 48, child: LabThumbnail(e)),
             title: Text(e.title),
             subtitle: Text(
               '${studios[e.studioIndex].title} · ${stageFor(e)}\n${e.principle}\n${store.completed.contains(e.id) ? 'Activity complete' : 'Not completed'} · ${e.availability}',
@@ -870,7 +1285,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
         },
       ),
       Text(
-        '${q.id} · ${q.type}',
+        '${entryById(q.lab).title} · ${q.type}',
         style: Theme.of(context).textTheme.titleLarge,
       ),
       Text('Prerequisite tags: ${q.prerequisites.join(', ')}'),
@@ -884,21 +1299,24 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
           ),
         ),
       if (q.type == 'Graph interpretation')
-        SizedBox(
-          height: 240,
-          child: CustomPaint(
-            painter: LabPlot(
-              [
-                for (int i = 0; i <= 120; i++)
-                  {
-                    't': i / 120 * math.pi,
-                    'x': freeOscillator(1, 4, 0, .1, 0, i / 120 * math.pi).x,
-                  },
-              ],
-              const ['x'],
-              'Physical time (s)',
-              'm',
-              60,
+        Semantics(
+          label: 'Displacement versus physical time. A 0.1 meter undamped oscillator starts at positive maximum, crosses zero at pi over four seconds, and reaches negative maximum at pi over two seconds.',
+          child: SizedBox(
+            height: 240,
+            child: CustomPaint(
+              painter: LabPlot(
+                [
+                  for (int i = 0; i <= 120; i++)
+                    {
+                      't': i / 120 * math.pi,
+                      'x': freeOscillator(1, 4, 0, .1, 0, i / 120 * math.pi).x,
+                    },
+                ],
+                const ['x'],
+                'Physical time (s)',
+                'm',
+                60,
+              ),
             ),
           ),
         ),

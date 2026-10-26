@@ -1,4 +1,4 @@
-# Physics Atelier — Phase 8 of 9
+# Physics Atelier — compact experiment workspaces (1.8.0+9)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -10,7 +10,9 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 
 - 17 studio pages, six exact entries each, 102 stable destinations.
 - Search across studio names, entry names and principles; real Continue Learning and explicit activity completion.
-- Shared Learn, Experiment, Visualize, Formulas and Results workspace.
+- All 96 physical labs open directly into a compact apparatus workspace, with bounded primary controls, live readings, meaningful actions and contextual Learn/Formulas/Results. Scene, graph, split data and fullscreen views share the original scientific state.
+- Compact Home and 17 studio launchers use distinct model-derived apparatus previews. All six overview tools have purpose-specific working layouts.
+- Local pane preferences, camera/interaction modes, resizable splits and selected-trial details, recorded comparison, CSV export and safe configuration reopening.
 - Six interactive Measurement instruments: ruler, external vernier caliper, micrometer, spherometer, simulated balance/track/stopwatch, and uncertainty analysis.
 - Eighteen additional interactive Mechanics, Motion & Kinematics, and Force & Newton’s Laws labs, with deterministic simulation, graphs, challenges and saved trials.
 - Eighteen Work/Energy/Power, Gravitation and Oscillations labs; shared material upgrades and distinct studio previews. New calculations use model `energy-gravity-oscillation-3.0`; earlier saved models remain supported.
@@ -24,6 +26,8 @@ Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI`
 - Six Concept Overview tools: Physics Atlas, Relationship Map, eight Guided Paths, Experiment Launcher, five Compare Phenomena workspaces, and a validated 16-question Mastery Challenge bank covering six task types. One catalog supplies all 96 lab routes, favorites, saved configurations and real completion progress.
 
 The graphics are original procedural instrument drawings with material shading. Photorealistic apparatus and photographic thumbnails remain a visual quality gap relative to the targets. iOS compilation and device QA are pending. See the handover for precise limits; this is not a claim of store-release readiness.
+
+Current implementation, evidence and limitations: [handover](docs/WORKSPACE_HANDOVER.md), [QA](docs/PHASE9_QA.md), [102-entry verification](docs/WORKSPACE_MIGRATION.csv). Historical Phase 1–8 reports describe their corresponding earlier builds.
 
 ## Setup and run
 
@@ -69,7 +73,7 @@ $env:JAVA_TOOL_OPTIONS='-Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true'
 - [iOS verification checklist](docs/IOS_VERIFICATION.md)
 - [Phase 1 handover](docs/HANDOVER.md)
 
-Current phase: [Phase 8 handover](docs/PHASE8_HANDOVER.md), [science](docs/PHASE8_SCIENCE.md), [lab specifications](docs/PHASE8_LAB_SPECIFICATIONS.md), [tool specifications](docs/PHASE8_TOOLS.md), [asset audit](docs/PHASE8_ASSETS_AND_AUDIT.md), and [validation](docs/PHASE8_VALIDATION.md). Earlier reports are historical. Sixteen subject studios contain 96 interactive lab workspaces within their documented model bounds, alongside six functional overview tools. This inventory is not a blanket claim of release completion; the handover lists evidence-based Phase 9 gaps. No login/network is required after installation. Optional microphone input remains contextual; no raw audio is saved or uploaded.
+Current handoff: [compact workspaces](docs/WORKSPACE_HANDOVER.md), [290-test/native QA](docs/PHASE9_QA.md), [102-entry checklist](docs/WORKSPACE_MIGRATION.csv), [scientific register](docs/PHASE9_MODEL_REGISTER.json) and [before/after screenshots](docs/WORKSPACE_SCREENSHOTS.md). Phase 1–8 reports remain historical. Sixteen subject studios contain 96 interactive lab workspaces within their documented model bounds, alongside six functional overview tools. This inventory is not a blanket claim of release completion; the handover lists evidence-based Phase 9 gaps. No login/network is required after installation. Optional microphone input remains contextual; no raw audio is saved or uploaded.
 
 ## Nine-phase roadmap
 
@@ -80,7 +84,7 @@ Current phase: [Phase 8 handover](docs/PHASE8_HANDOVER.md), [science](docs/PHASE
 5. Electricity and Magnetism.
 6. Electronics and Thermodynamics.
 7. Fluid Mechanics and Modern Physics.
-8. Astronomy/Astrophysics and cross-studio Concept Overview tools (current).
-9. Full scientific, visual, accessibility, performance and release validation.
+8. Astronomy/Astrophysics and cross-studio Concept Overview tools.
+9. Full scientific, visual, accessibility, performance and release validation, plus the compact interaction redesign (current development handoff; release blockers documented).
 
 Phase 8 native targets: `phase8_test.dart`, `phase8_boundaries_test.dart`, `phase8_audit_test.dart` (also runs the isolated SQLite migration fixture), and `phase8_profile_test.dart`. Use a dedicated device/emulator and retain the notebook. This host uses `emulator-5556`, AVD Physics_Phase3, separately from the shared emulator. See the validation report for the real OS lifecycle companion `tool/phase8_device_watch.py`, profile commands, and automation limitations. Earlier integration targets remain available.

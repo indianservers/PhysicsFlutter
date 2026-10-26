@@ -1,0 +1,28 @@
+{
+  "actualV2toV3Upgrade": true,
+  "additionalNativeFixtures": {
+    "schema1": {
+      "freshOrUpgrade": true,
+      "validStressTrials": 501,
+      "historyReadMs": 171.766,
+      "transactionRollback": true,
+      "malformedTrialRetained": true,
+      "malformedSessionBackedUp": true
+    },
+    "schema3": {
+      "freshOrUpgrade": true,
+      "validStressTrials": 500,
+      "historyReadMs": 135.631,
+      "transactionRollback": true,
+      "malformedTrialRetained": true,
+      "malformedSessionBackedUp": true
+    }
+  },
+  "comparisonAndMasteryRoundTrip": true,
+  "documentedDefaultsBackupRetained": true,
+  "oldTrialBodyUnchanged": true,
+  "oldSessionNoteAndParametersRetained": true,
+  "newAstronomySITrialRoundTrip": true,
+  "mainDatabaseOriginalTrials": 286,
+  "mainDatabaseRecoveryMessage": null
+}

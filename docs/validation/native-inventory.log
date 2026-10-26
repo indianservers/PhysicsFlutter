@@ -1,0 +1,265 @@
+Running Gradle task 'assembleDebug'...                          
+Picked up JAVA_TOOL_OPTIONS: -Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/Sai%20Satish/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             20.1s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        2,739ms
+I/Choreographer(23747): Skipped 163 frames!  The application may be doing too much work on its main thread.
+D/WindowOnBackDispatcher(23747): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b458cb
+D/WindowOnBackDispatcher(23747): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b458cb
+I/WindowExtensionsImpl(23747): Initializing Window Extensions, vendor API level=10, activity embedding enabled=true
+W/UiContextUtils(23747): Requested context is a non-UI Context. Creating a UI-Context with display: 0. Context: Context=android.app.Application@c68ce34, of which baseContext=android.app.ContextImpl@f19391c
+D/VRI[MainActivity](23747): WindowInsets changed: 720x1280 statusBars:[0,48,0,0] navigationBars:[0,0,0,48] mandatorySystemGestures:[0,48,0,64] 
+D/FlutterRenderer(23747): Width is zero. 0,0
+I/Surface (23747): Creating surface for consumer unnamed-23747-0 with slotExpansion=1 for 64 slots
+I/Surface (23747): Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+D/FlutterJNI(23747): Sending viewport metrics to the engine.
+I/Surface (23747): Creating surface for consumer unnamed-23747-1 with slotExpansion=1 for 64 slots
+I/Surface (23747): Creating surface for consumer c202cc6 SurfaceView[com.indianservers.physics_atelier/com.indianservers.physics_atelier.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+I/physics_atelier(23747): Compiler allocated 5567KB to compile void android.view.ViewRootImpl.performTraversals(long)
+D/WindowLayoutComponentImpl(23747): Register WindowLayoutInfoListener on Context=com.indianservers.physics_atelier.MainActivity@75337dd, of which baseContext=android.app.ContextImpl@5320e9e
+D/FlutterJNI(23747): Sending viewport metrics to the engine.
+I/physics_atelier(23747): Background concurrent mark compact GC freed 2917KB AllocSpace bytes, 110(12MB) LOS objects, 48% free, 25MB/49MB, paused 415us,22.153ms total 60.468ms
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:<port>/<redacted>/
+VMServiceFlutterDriver: Isolate found with number: 3926805915508723
+VMServiceFlutterDriver: Isolate 3926805915508723 is runnable.
+VMServiceFlutterDriver: Isolate is not paused. Assuming application is ready.
+I/Choreographer(23747): Skipped 49 frames!  The application may be doing too much work on its main thread.
+VMServiceFlutterDriver: Connected to Flutter application.
+D/FlutterJNI(23747): Sending viewport metrics to the engine.
+D/InsetsController(23747): hide(ime())
+I/ImeTracker(23747): com.indianservers.physics_atelier:09071a14: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/flutter (23747): Captured phase9-home
+I/flutter (23747): Captured phase9-studio-s00
+I/flutter (23747): Captured phase9-studio-s01
+I/flutter (23747): Captured phase9-studio-s02
+I/flutter (23747): Captured phase9-studio-s03
+D/ProfileInstaller(23747): Installing profile for com.indianservers.physics_atelier
+I/flutter (23747): Captured phase9-studio-s04
+I/flutter (23747): Captured phase9-studio-s05
+I/flutter (23747): Captured phase9-studio-s06
+I/flutter (23747): Captured phase9-studio-s07
+I/flutter (23747): Captured phase9-studio-s08
+I/flutter (23747): Captured phase9-studio-s09
+I/flutter (23747): Captured phase9-studio-s10
+I/flutter (23747): Captured phase9-studio-s11
+I/flutter (23747): Captured phase9-studio-s12
+I/flutter (23747): Captured phase9-studio-s13
+I/flutter (23747): Captured phase9-studio-s14
+I/flutter (23747): Captured phase9-studio-s15
+I/flutter (23747): Captured phase9-studio-s16
+I/flutter (23747): PHASE9_ENTRY s00-e00 Physics Atlas
+I/flutter (23747): Captured phase9-entry-s00-e00
+I/flutter (23747): PHASE9_ENTRY s00-e01 Relationship Map
+I/flutter (23747): Captured phase9-entry-s00-e01
+I/flutter (23747): PHASE9_ENTRY s00-e02 Guided Path
+I/flutter (23747): Captured phase9-entry-s00-e02
+I/flutter (23747): PHASE9_ENTRY s00-e03 Experiment Launcher
+I/flutter (23747): Captured phase9-entry-s00-e03
+I/flutter (23747): PHASE9_ENTRY s00-e04 Compare Phenomena
+I/flutter (23747): Captured phase9-entry-s00-e04
+I/flutter (23747): PHASE9_ENTRY s00-e05 Mastery Challenge
+I/flutter (23747): Captured phase9-entry-s00-e05
+I/flutter (23747): PHASE9_ENTRY s01-e00 Meter Scale
+I/flutter (23747): Captured phase9-entry-s01-e00
+I/flutter (23747): PHASE9_ENTRY s01-e01 Vernier Caliper
+I/flutter (23747): Captured phase9-entry-s01-e01
+I/flutter (23747): PHASE9_ENTRY s01-e02 Micrometer
+I/flutter (23747): Captured phase9-entry-s01-e02
+I/flutter (23747): PHASE9_ENTRY s01-e03 Spherometer
+I/flutter (23747): Captured phase9-entry-s01-e03
+I/flutter (23747): PHASE9_ENTRY s01-e04 Mass & Time
+I/flutter (23747): Captured phase9-entry-s01-e04
+I/flutter (23747): PHASE9_ENTRY s01-e05 Uncertainty
+I/flutter (23747): Captured phase9-entry-s01-e05
+I/flutter (23747): PHASE9_ENTRY s02-e00 Free Body Diagrams
+I/flutter (23747): Captured phase9-entry-s02-e00
+I/flutter (23747): PHASE9_ENTRY s02-e01 Inclined Plane
+I/flutter (23747): Captured phase9-entry-s02-e01
+I/flutter (23747): PHASE9_ENTRY s02-e02 Pulley Systems
+I/flutter (23747): Captured phase9-entry-s02-e02
+I/flutter (23747): PHASE9_ENTRY s02-e03 Torque Levers
+I/flutter (23747): Captured phase9-entry-s02-e03
+I/flutter (23747): PHASE9_ENTRY s02-e04 Equilibrium & Centre of Mass
+I/flutter (23747): Captured phase9-entry-s02-e04
+I/flutter (23747): PHASE9_ENTRY s02-e05 Momentum & Collisions
+I/flutter (23747): Captured phase9-entry-s02-e05
+I/flutter (23747): PHASE9_ENTRY s03-e00 Position–Time
+I/flutter (23747): Captured phase9-entry-s03-e00
+I/flutter (23747): PHASE9_ENTRY s03-e01 Velocity–Time
+I/flutter (23747): Captured phase9-entry-s03-e01
+I/flutter (23747): PHASE9_ENTRY s03-e02 Acceleration–Time
+I/flutter (23747): Captured phase9-entry-s03-e02
+I/flutter (23747): PHASE9_ENTRY s03-e03 Projectile Motion
+I/flutter (23747): Captured phase9-entry-s03-e03
+I/flutter (23747): PHASE9_ENTRY s03-e04 Relative Motion
+I/flutter (23747): Captured phase9-entry-s03-e04
+I/flutter (23747): PHASE9_ENTRY s03-e05 Circular Motion
+I/flutter (23747): Captured phase9-entry-s03-e05
+I/flutter (23747): PHASE9_ENTRY s04-e00 First Law / Inertia
+I/flutter (23747): Captured phase9-entry-s04-e00
+I/flutter (23747): PHASE9_ENTRY s04-e01 Second Law / F = ma
+I/flutter (23747): Captured phase9-entry-s04-e01
+I/flutter (23747): PHASE9_ENTRY s04-e02 Third Law / Action–Reaction Pairs
+I/flutter (23747): Captured phase9-entry-s04-e02
+I/flutter (23747): PHASE9_ENTRY s04-e03 Friction
+I/flutter (23747): Captured phase9-entry-s04-e03
+I/flutter (23747): PHASE9_ENTRY s04-e04 Tension & Normal Force
+I/flutter (23747): Captured phase9-entry-s04-e04
+I/flutter (23747): PHASE9_ENTRY s04-e05 Multi-Force Challenge
+I/flutter (23747): Captured phase9-entry-s04-e05
+I/physics_atelier(23747): Background young concurrent mark compact GC freed 16MB AllocSpace bytes, 130(8320KB) LOS objects, 49% free, 24MB/48MB, paused 66us,5.141ms total 22.770ms
+I/flutter (23747): PHASE9_ENTRY s05-e00 Work
+I/flutter (23747): Captured phase9-entry-s05-e00
+I/flutter (23747): PHASE9_ENTRY s05-e01 Kinetic Energy
+I/flutter (23747): Captured phase9-entry-s05-e01
+I/flutter (23747): PHASE9_ENTRY s05-e02 Potential Energy
+I/flutter (23747): Captured phase9-entry-s05-e02
+I/flutter (23747): PHASE9_ENTRY s05-e03 Energy Conservation
+I/flutter (23747): Captured phase9-entry-s05-e03
+I/flutter (23747): PHASE9_ENTRY s05-e04 Power
+I/flutter (23747): Captured phase9-entry-s05-e04
+I/flutter (23747): PHASE9_ENTRY s05-e05 Efficiency
+I/flutter (23747): Captured phase9-entry-s05-e05
+I/flutter (23747): PHASE9_ENTRY s06-e00 Universal Gravitation
+I/flutter (23747): Captured phase9-entry-s06-e00
+I/flutter (23747): PHASE9_ENTRY s06-e01 Gravitational Field
+I/flutter (23747): Captured phase9-entry-s06-e01
+I/flutter (23747): PHASE9_ENTRY s06-e02 Gravitational Potential
+I/flutter (23747): Captured phase9-entry-s06-e02
+I/flutter (23747): PHASE9_ENTRY s06-e03 Orbits
+I/flutter (23747): Captured phase9-entry-s06-e03
+I/flutter (23747): PHASE9_ENTRY s06-e04 Escape Velocity
+I/flutter (23747): Captured phase9-entry-s06-e04
+I/flutter (23747): PHASE9_ENTRY s06-e05 Kepler’s Laws
+I/flutter (23747): Captured phase9-entry-s06-e05
+I/flutter (23747): PHASE9_ENTRY s07-e00 Spring SHM
+I/flutter (23747): Captured phase9-entry-s07-e00
+I/flutter (23747): PHASE9_ENTRY s07-e01 Pendulum
+I/flutter (23747): Captured phase9-entry-s07-e01
+I/flutter (23747): PHASE9_ENTRY s07-e02 Energy Exchange
+I/flutter (23747): Captured phase9-entry-s07-e02
+I/flutter (23747): PHASE9_ENTRY s07-e03 Damping
+I/flutter (23747): Captured phase9-entry-s07-e03
+I/flutter (23747): PHASE9_ENTRY s07-e04 Resonance
+I/flutter (23747): Captured phase9-entry-s07-e04
+I/flutter (23747): PHASE9_ENTRY s07-e05 Coupled Oscillators
+I/flutter (23747): Captured phase9-entry-s07-e05
+I/flutter (23747): PHASE9_ENTRY s08-e00 Wave Properties
+I/flutter (23747): Captured phase9-entry-s08-e00
+I/flutter (23747): PHASE9_ENTRY s08-e01 Superposition
+I/flutter (23747): Captured phase9-entry-s08-e01
+I/flutter (23747): PHASE9_ENTRY s08-e02 Interference
+I/flutter (23747): Captured phase9-entry-s08-e02
+I/flutter (23747): PHASE9_ENTRY s08-e03 Standing Waves
+I/flutter (23747): Captured phase9-entry-s08-e03
+I/flutter (23747): PHASE9_ENTRY s08-e04 Sound Spectrum
+I/flutter (23747): Captured phase9-entry-s08-e04
+I/flutter (23747): PHASE9_ENTRY s08-e05 Doppler Effect
+I/flutter (23747): Captured phase9-entry-s08-e05
+I/flutter (23747): PHASE9_ENTRY s09-e00 Reflection
+I/flutter (23747): Captured phase9-entry-s09-e00
+I/flutter (23747): PHASE9_ENTRY s09-e01 Refraction
+I/flutter (23747): Captured phase9-entry-s09-e01
+I/flutter (23747): PHASE9_ENTRY s09-e02 Lenses
+I/physics_atelier(23747): Background young concurrent mark compact GC freed 16MB AllocSpace bytes, 130(8032KB) LOS objects, 48% free, 25MB/48MB, paused 111us,51.756ms total 117.603ms
+I/flutter (23747): Captured phase9-entry-s09-e02
+I/flutter (23747): PHASE9_ENTRY s09-e03 Mirrors
+I/flutter (23747): Captured phase9-entry-s09-e03
+I/flutter (23747): PHASE9_ENTRY s09-e04 Interference
+I/flutter (23747): Captured phase9-entry-s09-e04
+I/flutter (23747): PHASE9_ENTRY s09-e05 Diffraction
+I/flutter (23747): Captured phase9-entry-s09-e05
+I/flutter (23747): PHASE9_ENTRY s10-e00 Coulomb Force
+I/flutter (23747): Captured phase9-entry-s10-e00
+I/flutter (23747): PHASE9_ENTRY s10-e01 Electric Field
+I/flutter (23747): Captured phase9-entry-s10-e01
+I/flutter (23747): PHASE9_ENTRY s10-e02 Electric Potential
+I/flutter (23747): Captured phase9-entry-s10-e02
+I/flutter (23747): PHASE9_ENTRY s10-e03 Current
+I/flutter (23747): Captured phase9-entry-s10-e03
+I/flutter (23747): PHASE9_ENTRY s10-e04 Circuits
+I/flutter (23747): Captured phase9-entry-s10-e04
+I/flutter (23747): PHASE9_ENTRY s10-e05 Capacitors
+I/flutter (23747): Captured phase9-entry-s10-e05
+I/flutter (23747): PHASE9_ENTRY s11-e00 Field Lines
+I/flutter (23747): Captured phase9-entry-s11-e00
+I/flutter (23747): PHASE9_ENTRY s11-e01 Lorentz Force
+I/flutter (23747): Captured phase9-entry-s11-e01
+I/flutter (23747): PHASE9_ENTRY s11-e02 Current-Carrying Wire
+I/flutter (23747): Captured phase9-entry-s11-e02
+I/flutter (23747): PHASE9_ENTRY s11-e03 Solenoids
+I/flutter (23747): Captured phase9-entry-s11-e03
+I/flutter (23747): PHASE9_ENTRY s11-e04 Induction
+I/flutter (23747): Captured phase9-entry-s11-e04
+I/flutter (23747): PHASE9_ENTRY s11-e05 Electromagnets
+I/flutter (23747): Captured phase9-entry-s11-e05
+I/flutter (23747): PHASE9_ENTRY s12-e00 Semiconductors
+I/flutter (23747): Captured phase9-entry-s12-e00
+I/flutter (23747): PHASE9_ENTRY s12-e01 Diodes
+I/flutter (23747): Captured phase9-entry-s12-e01
+I/flutter (23747): PHASE9_ENTRY s12-e02 Transistors
+I/flutter (23747): Captured phase9-entry-s12-e02
+I/flutter (23747): PHASE9_ENTRY s12-e03 Amplifiers
+I/flutter (23747): Captured phase9-entry-s12-e03
+I/flutter (23747): PHASE9_ENTRY s12-e04 Logic Gates
+I/flutter (23747): Captured phase9-entry-s12-e04
+I/flutter (23747): PHASE9_ENTRY s12-e05 Sensors
+I/flutter (23747): Captured phase9-entry-s12-e05
+I/flutter (23747): PHASE9_ENTRY s13-e00 Temperature
+I/flutter (23747): Captured phase9-entry-s13-e00
+I/flutter (23747): PHASE9_ENTRY s13-e01 Heat Transfer
+I/flutter (23747): Captured phase9-entry-s13-e01
+I/flutter (23747): PHASE9_ENTRY s13-e02 Gas Laws
+I/flutter (23747): Captured phase9-entry-s13-e02
+I/physics_atelier(23747): Background young concurrent mark compact GC freed 16MB AllocSpace bytes, 134(7936KB) LOS objects, 48% free, 25MB/48MB, paused 36us,57.270ms total 117.723ms
+I/flutter (23747): PHASE9_ENTRY s13-e03 First Law
+I/flutter (23747): Captured phase9-entry-s13-e03
+I/flutter (23747): PHASE9_ENTRY s13-e04 Entropy
+I/flutter (23747): Captured phase9-entry-s13-e04
+I/flutter (23747): PHASE9_ENTRY s13-e05 Heat Engines
+I/flutter (23747): Captured phase9-entry-s13-e05
+I/flutter (23747): PHASE9_ENTRY s14-e00 Density & Pressure
+I/flutter (23747): Captured phase9-entry-s14-e00
+I/flutter (23747): PHASE9_ENTRY s14-e01 Hydrostatics
+I/flutter (23747): Captured phase9-entry-s14-e01
+I/flutter (23747): PHASE9_ENTRY s14-e02 Buoyancy
+I/flutter (23747): Captured phase9-entry-s14-e02
+I/flutter (23747): PHASE9_ENTRY s14-e03 Continuity
+I/flutter (23747): Captured phase9-entry-s14-e03
+I/flutter (23747): PHASE9_ENTRY s14-e04 Bernoulli
+I/flutter (23747): Captured phase9-entry-s14-e04
+I/flutter (23747): PHASE9_ENTRY s14-e05 Viscosity
+I/flutter (23747): Captured phase9-entry-s14-e05
+I/flutter (23747): PHASE9_ENTRY s15-e00 Quantum Ideas
+I/flutter (23747): Captured phase9-entry-s15-e00
+I/flutter (23747): PHASE9_ENTRY s15-e01 Photoelectric Effect
+I/flutter (23747): Captured phase9-entry-s15-e01
+I/flutter (23747): PHASE9_ENTRY s15-e02 Matter Waves
+I/flutter (23747): Captured phase9-entry-s15-e02
+I/flutter (23747): PHASE9_ENTRY s15-e03 Atomic Spectra
+I/flutter (23747): Captured phase9-entry-s15-e03
+I/flutter (23747): PHASE9_ENTRY s15-e04 Nuclear Structure
+I/flutter (23747): Captured phase9-entry-s15-e04
+I/flutter (23747): PHASE9_ENTRY s15-e05 Radioactivity
+I/flutter (23747): Captured phase9-entry-s15-e05
+I/flutter (23747): PHASE9_ENTRY s16-e00 Solar System Orbits
+I/flutter (23747): Captured phase9-entry-s16-e00
+I/flutter (23747): PHASE9_ENTRY s16-e01 Stellar Life
+I/flutter (23747): Captured phase9-entry-s16-e01
+I/flutter (23747): PHASE9_ENTRY s16-e02 Spectroscopy
+I/flutter (23747): Captured phase9-entry-s16-e02
+I/flutter (23747): PHASE9_ENTRY s16-e03 Galaxies
+I/flutter (23747): Captured phase9-entry-s16-e03
+I/flutter (23747): PHASE9_ENTRY s16-e04 Cosmology
+I/flutter (23747): Captured phase9-entry-s16-e04
+I/flutter (23747): PHASE9_ENTRY s16-e05 Exoplanets
+I/flutter (23747): Captured phase9-entry-s16-e05
+I/flutter (23747): 14:26 +1: (tearDownAll)
+I/flutter (23747): 14:27 +2: All tests passed!
+All tests passed.
+Leaving the application running.

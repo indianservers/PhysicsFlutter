@@ -185,6 +185,7 @@ void main() {
       addTearDown(t.platformDispatcher.clearTextScaleFactorTestValue);
       await astroBoot(t, store, 's00-e00');
       for (int i = 0; i < 6; i++) {
+        debugPrint('TOOL_CHECK $i');
         router.go('/lab/s00-e0$i');
         await t.pumpAndSettle();
         await scrollEnds(t);

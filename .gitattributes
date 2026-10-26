@@ -1,2 +1,6 @@
 # Preserve the original observational source's tabular header verbatim.
 docs/phase8-NGC2403-source.dat -text -whitespace
+
+# Preserve vendored license text and actual command output verbatim.
+docs/PHASE9_THIRD_PARTY_NOTICES.txt -whitespace
+docs/validation/*.log -whitespace

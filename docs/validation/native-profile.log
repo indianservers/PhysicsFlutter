@@ -1,0 +1,79 @@
+Running Gradle task 'assembleProfile'...                        
+Picked up JAVA_TOOL_OPTIONS: -Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/Sai%20Satish/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleProfile'...                           48.7s
+√ Built build\app\outputs\flutter-apk\app-profile.apk (54.3MB)
+Installing build\app\outputs\flutter-apk\app-profile.apk...      2,017ms
+I/Choreographer(26370): Skipped 85 frames!  The application may be doing too much work on its main thread.
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+I/WindowExtensionsImpl(26370): Initializing Window Extensions, vendor API level=10, activity embedding enabled=true
+W/UiContextUtils(26370): Requested context is a non-UI Context. Creating a UI-Context with display: 0. Context: Context=android.app.Application@c68ce34, of which baseContext=android.app.ContextImpl@95d193e
+D/VRI[MainActivity](26370): WindowInsets changed: 720x1280 statusBars:[0,48,0,0] navigationBars:[0,0,0,48] mandatorySystemGestures:[0,48,0,64] 
+I/Surface (26370): Creating surface for consumer unnamed-26370-0 with slotExpansion=1 for 64 slots
+I/Surface (26370): Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+I/Surface (26370): Creating surface for consumer unnamed-26370-1 with slotExpansion=1 for 64 slots
+I/Surface (26370): Creating surface for consumer c88bbd8 SurfaceView[com.indianservers.physics_atelier/com.indianservers.physics_atelier.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+I/physics_atelier(26370): Compiler allocated 5559KB to compile void android.view.ViewRootImpl.performTraversals(long)
+I/flutter (26370): 00:00 +0: Compact workspace default Android renderer and camera profile
+I/Choreographer(26370): Skipped 118 frames!  The application may be doing too much work on its main thread.
+D/WindowLayoutComponentImpl(26370): Register WindowLayoutInfoListener on Context=com.indianservers.physics_atelier.MainActivity@61b9797, of which baseContext=android.app.ContextImpl@ea04dee
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:<port>/<redacted>/
+VMServiceFlutterDriver: Isolate found with number: 7584420272761199
+D/InsetsController(26370): hide(ime())
+I/ImeTracker(26370): com.indianservers.physics_atelier:d0a62334: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+VMServiceFlutterDriver: Isolate 7584420272761199 is runnable.
+VMServiceFlutterDriver: Isolate is not paused. Assuming application is ready.
+VMServiceFlutterDriver: Connected to Flutter application.
+D/ProfileInstaller(26370): Installing profile for com.indianservers.physics_atelier
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+I/physics_atelier(26370): Background young concurrent mark compact GC freed 2308KB AllocSpace bytes, 10(640KB) LOS objects, 49% free, 2932KB/5864KB, paused 31us,38.186ms total 42.491ms
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: io.flutter.embedding.android.FlutterActivity$1@a5fce27
+D/WindowOnBackDispatcher(26370): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+D/WindowOnBackDispatcher(26370): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@e2fcfea
+I/flutter (26370): 01:51 +1: Restore original configurations and navigation preferences after explicit QA actions
+I/physics_atelier(26370): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 3(224KB) LOS objects, 38% free, 37MB/61MB, paused 2.971ms,5.492ms total 19.089ms
+I/flutter (26370): 01:54 +2: (tearDownAll)
+All tests passed.
+I/flutter (26370): Warning: integration_test plugin was not detected.
+I/flutter (26370): 
+I/flutter (26370): If you're running the tests with `flutter drive`, please make sure your tests
+I/flutter (26370): are in the `integration_test/` directory of your package and use
+I/flutter (26370): `flutter test $path_to_test` to run it instead.
+I/flutter (26370): 
+I/flutter (26370): If you're running the tests with Android instrumentation or XCTest, this means
+I/flutter (26370): that you are not capturing test results properly! See the following link for
+I/flutter (26370): how to set up the integration_test plugin:
+I/flutter (26370): 
+I/flutter (26370): https://docs.flutter.dev/testing/integration-tests
+I/flutter (26370): 
+I/flutter (26370): 01:54 +3: All tests passed!
+Leaving the application running.

@@ -1,3 +1,5 @@
+import 'waves_app_test.dart' as controls;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -67,18 +69,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Experiment').last);
       await tester.pumpAndSettle();
-      Future<void> show(Finder target) async {
-        final scroll = find.byType(Scrollable).first;
-        tester.state<ScrollableState>(scroll).position.jumpTo(0);
-        await tester.pumpAndSettle();
-        for (int i = 0; i < 50 && target.evaluate().isEmpty; i++) {
-          final pos = tester.state<ScrollableState>(scroll).position;
-          pos.jumpTo((pos.pixels + 250).clamp(0, pos.maxScrollExtent));
-          await tester.pumpAndSettle();
-        }
-        await tester.ensureVisible(target.first);
-        await tester.pumpAndSettle();
-      }
+      Future<void> show(Finder target) => controls.show(tester, target);
 
       await show(find.byKey(const Key('edit-m')));
       await tester.tap(find.byKey(const Key('edit-m')));

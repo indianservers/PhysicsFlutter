@@ -53,6 +53,10 @@ Future<void> main() => integrationDriver(
       'phase8Validation',
       'phase8Storage',
       'phase8Boundaries',
+      'phase9Inventory',
+      'phase9Storage',
+      'phase9Journeys',
+      'phase9Restoration',
     ]) {
       if (data?[key] != null) {
         await File(

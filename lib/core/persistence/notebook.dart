@@ -241,6 +241,7 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
   @override
   Future<Map<String, dynamic>?> readSession(String id) async {
     if (_defaultRequests.remove(id)) return null;
+    String? retainedBody;
     try {
       final rows = _db == null
           ? null
@@ -250,6 +251,7 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
           : rows!.isEmpty
           ? null
           : rows.first['body'] as String;
+      retainedBody = body;
       if (body == null) {
         return null;
       }
@@ -259,9 +261,26 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
       }
       return Map<String, dynamic>.from(m['state']);
     } catch (_) {
-      recoveryMessage = 'A saved configuration could not be restored. Defaults are available.';
+      if (retainedBody != null) {
+        await retainRejectedSession(id, {'unreadableRaw': retainedBody});
+      }
+      recoveryMessage = 'A saved configuration could not be restored. Its original body is retained in a backup; defaults are available.';
       return null;
     }
+  }
+
+  final _retainedRejected = <String>{};
+  Future<void> retainRejectedSession(
+    String id,
+    Map<String, dynamic> state,
+  ) async {
+    if (!_retainedRejected.add(id)) return;
+    await saveSession('backup:$id:${DateTime.now().microsecondsSinceEpoch}', {
+      'backupFor': id,
+      'reason': 'Rejected configuration retained before defaults',
+      'original': state,
+    });
+    recoveryMessage = 'An incompatible saved configuration was backed up before showing defaults. Original trials are retained.';
   }
 
   Future<void> visit(String id) async {
@@ -360,7 +379,16 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
 }
 
 String csvEncode(List<Trial> trials) {
-  String cell(Object? x) => '"${(x?.toString() ?? '').replaceAll('"', '""')}"';
+  String cell(Object? x) {
+    var text = x?.toString() ?? '';
+    // Quoting alone does not stop spreadsheet formula execution. Keep numeric
+    // scientific values numeric; protect free-text cells without altering storage.
+    if (x is String && RegExp(r'^[\s]*[=+\-@]').hasMatch(text)) {
+      text = "'$text";
+    }
+    return '"${text.replaceAll('"', '""')}"';
+  }
+
   return [
     'id,lab_id,created_utc,quantity,value_SI,unit_SI,resolution_SI,notes,model,configuration_json',
     ...trials.map(

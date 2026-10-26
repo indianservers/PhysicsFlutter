@@ -7,12 +7,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
+import '../workbench/workbench.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/persistence/notebook.dart';
 import '../../core/physics/measurement.dart';
 import '../../core/rendering/apparatus.dart';
 import '../measurement/experiment.dart';
+import '../dynamics/workspace.dart' show dynamicsRouteObserver;
 import '../measurement/lessons.dart';
 
 class Workspace extends ConsumerStatefulWidget {
@@ -23,9 +25,9 @@ class Workspace extends ConsumerStatefulWidget {
 }
 
 class _WorkspaceState extends ConsumerState<Workspace>
-    with WidgetsBindingObserver {
+    with WidgetsBindingObserver, RouteAware {
   late final Experiment experiment;
-  int section = 0;
+  int section = 1;
   bool ready = false, recording = false;
   int dragTarget = 2;
   final transform = TransformationController();
@@ -43,13 +45,32 @@ class _WorkspaceState extends ConsumerState<Workspace>
   Future<void> _load() async {
     final m = await store.readSession(entry.id);
     if (m != null && entry.interactive) {
-      experiment.restore(m);
+      if (!experiment.restore(m)) {
+        await store.retainRejectedSession(entry.id, m);
+      }
     }
     await store.visit(entry.id);
     if (mounted) {
       setState(() => ready = true);
     }
   }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final route = ModalRoute.of(context);
+    if (route != null) dynamicsRouteObserver.subscribe(this, route);
+  }
+
+  @override
+  void didPushNext() => experiment.pause();
+
+  bool get completionReady =>
+      experiment.step == 3 &&
+      experiment.evidenceReady &&
+      store.trials.any(
+        (t) => t.labId == entry.id && experiment.matchesTrial(t.configuration),
+      );
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -63,6 +84,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
 
   @override
   void dispose() {
+    dynamicsRouteObserver.unsubscribe(this);
     WidgetsBinding.instance.removeObserver(this);
     if (entry.interactive) {
       experiment.pause();
@@ -184,8 +206,235 @@ class _WorkspaceState extends ConsumerState<Workspace>
     }
   }
 
+  String? highlightControl;
   @override
   Widget build(BuildContext context) {
+    if (ready && (section == 1 || section == 4)) {
+      return InstrumentShell(
+        key: ValueKey('instrument-${entry.id}'),
+        exportRecorded: (trials) => exportTrials(context, trials),
+        reopenTrial: (trial) {
+          experiment.pause();
+          final before = experiment.toJson();
+          final ok = experiment.restore(trial.configuration);
+          if (!ok) experiment.restore(before);
+          experiment.changed();
+          return ok;
+        },
+
+        guidedStep: () => experiment.step,
+        changeGuidedStep: (v) {
+          experiment.step = v;
+          experiment.changed();
+          store.saveSession(entry.id, experiment.toJson());
+        },
+        guideInstructions: () => [
+          procedures[entry.index].split('\n').first,
+          'Adjust the apparatus and inspect its current reading.',
+          'Record the current configuration.',
+          'Check prediction, add explanatory notes, then finish the investigation.',
+        ],
+        canAdvanceGuide: (step) => step == 0
+            ? experiment.adjusted
+            : step == 1
+            ? (entry.index != 4 || experiment.elapsed > 0)
+            : step == 2
+            ? store.trials.any(
+                (t) =>
+                    t.labId == entry.id &&
+                    experiment.matchesTrial(t.configuration),
+              )
+            : true,
+
+        id: entry.id,
+        title: entry.title,
+        highlightControl: highlightControl,
+        store: store,
+        changes: Listenable.merge([experiment, experiment.clockTick]),
+        scene: compactScene,
+        graph: () => RecordedTrialGraph(
+          store: store,
+          labId: entry.id,
+          quantity: experiment.quantity,
+          unit: experiment.siUnit,
+        ),
+        controls: instrumentControls,
+        readings: () => [
+          InstrumentReading(
+            experiment.quantity,
+            experiment.result?.toStringAsPrecision(5) ?? 'Undefined',
+            experiment.siUnit,
+          ),
+          InstrumentReading(
+            'Resolution',
+            experiment.leastCount.toStringAsPrecision(3),
+            entry.index == 4 ? 's' : experiment.siUnit,
+          ),
+        ],
+        advanced: () => experimentView().skip(1).toList(),
+        results: results,
+        notice: () => '',
+        playing: () => experiment.running,
+        dynamicModel: () => entry.index == 4,
+        canRecord: () =>
+            experiment.result != null && experiment.result!.isFinite,
+        play: experiment.start,
+        pause: experiment.pause,
+        reset: () {
+          final note = experiment.note;
+          experiment.reset();
+          experiment.note = note;
+          experiment.changed();
+        },
+        save: save,
+        record: record,
+        step: null,
+        selection: entry.index == 5
+            ? () => Wrap(
+                children: [
+                  Text(
+                    '${experiment.samples.length} readings · ${experiment.unit}',
+                  ),
+                  FilledButton.icon(
+                    onPressed: () => numberDialog(
+                      'Add reading (${experiment.unit})',
+                      0,
+                      -1e9,
+                      1e9,
+                      (v) {
+                        experiment.samples = [...experiment.samples, v];
+                        experiment.changed();
+                      },
+                    ),
+                    icon: const Icon(Icons.add),
+                    label: const Text('Add reading'),
+                  ),
+                ],
+              )
+            : null,
+        resetOriginalView: () => transform.value = Matrix4.identity(),
+        section: section,
+        selectSection: (value) {
+          experiment.pause();
+          setState(() => section = value);
+        },
+      );
+    }
+    return legacyBuild(context);
+  }
+
+  List<InstrumentControl> instrumentControls() {
+    final e = experiment;
+    InstrumentControl control(
+      String key,
+      String label,
+      String unit,
+      double value,
+      double lo,
+      double hi,
+      void Function(double) apply,
+    ) => InstrumentControl(key, label, unit, value, lo, hi, apply);
+    void value(String key, double x) {
+      e.pause();
+      switch (key) {
+        case 'zero':
+          e.zero = x;
+        case 'distance':
+          e.distance = x;
+          e.resetTimer();
+        case 'v0':
+          e.v0 = x;
+          e.resetTimer();
+        case 'acceleration':
+          e.acceleration = x;
+          e.resetTimer();
+        case 'r':
+          e.b = x;
+        case 'resolution':
+          e.resolution = x;
+      }
+      e.changed();
+    }
+
+    return switch (entry.index) {
+      0 => [
+        control('a', 'Endpoint A', 'm', e.a, 0, e.b - .001, e.setA),
+        control('b', 'Endpoint B', 'm', e.b, e.a + .001, .1, e.setB),
+      ],
+      1 => [
+        control('a', 'Jaw opening', 'm', e.a, 0, .05, e.setA),
+        control(
+          'zero',
+          'Zero error',
+          'm',
+          e.zero,
+          -.001,
+          .001,
+          (v) => value('zero', v),
+        ),
+      ],
+      2 => [
+        control('a', 'Spindle', 'm', e.a, e.b, .025, e.setA),
+        control('b', 'Wire', 'm', e.b, .0001, .005, e.setB),
+        control(
+          'zero',
+          'Zero error',
+          'm',
+          e.zero,
+          -.0001,
+          .0001,
+          (v) => value('zero', v),
+        ),
+      ],
+      3 => [
+        control('a', 'Screw', 'm', e.a, -.003, .003, e.setA),
+        control('r', 'Leg radius', 'm', e.b, .01, .1, (v) => value('r', v)),
+        control(
+          'zero',
+          'Plane zero',
+          'm',
+          e.zero,
+          -.003,
+          .003,
+          (v) => value('zero', v),
+        ),
+      ],
+      4 => [
+        control(
+          'distance',
+          'Track',
+          'm',
+          e.distance,
+          .1,
+          2,
+          (v) => value('distance', v),
+        ),
+        control('v0', 'Start speed', 'm/s', e.v0, .1, 2, (v) => value('v0', v)),
+        control(
+          'acceleration',
+          'Acceleration',
+          'm/s²',
+          e.acceleration,
+          0,
+          2,
+          (v) => value('acceleration', v),
+        ),
+      ],
+      _ => [
+        control(
+          'resolution',
+          'Resolution',
+          e.unit,
+          e.resolution,
+          .00001,
+          .01,
+          (v) => value('resolution', v),
+        ),
+      ],
+    };
+  }
+
+  Widget legacyBuild(BuildContext context) {
     return ListenableBuilder(
       listenable: experiment,
       builder: (context, _) => Scaffold(
@@ -302,8 +551,10 @@ class _WorkspaceState extends ConsumerState<Workspace>
     if (entry.tool) ...toolContent(),
     OutlinedButton.icon(
       onPressed: () async {
-        if (entry.interactive && experiment.step < 3) {
-          message('Complete all four guided steps in Experiment first.');
+        if (!completionReady) {
+          message(
+            'Complete the guided steps, change a scientific input, check a prediction, record the matching state and add explanatory notes (12 characters).',
+          );
           return;
         }
         await store.complete(entry.id);
@@ -394,6 +645,93 @@ class _WorkspaceState extends ConsumerState<Workspace>
     listenable: experiment.clockTick,
     builder: (_, _) => sceneFrame(enlarged: enlarged),
   );
+  Widget compactScene({bool enlarged = false}) => ListenableBuilder(
+    listenable: Listenable.merge([experiment, experiment.clockTick]),
+    builder: (context, _) {
+      final e = experiment;
+      final kind = entry.index;
+      final painter = ApparatusPainter(
+        kind,
+        a: kind == 5 ? (e.resolutionKnown ? e.resolution : 0) : e.a,
+        b: kind == 4 ? e.duration : e.b,
+        zero: e.zero,
+        time: store.reducedMotion
+            ? 0
+            : kind == 4
+            ? e.elapsed
+            : e.elapsed,
+        guides: e.guides,
+        samples: e.samples,
+        progress: store.reducedMotion ? 0 : e.travelled / e.distance,
+      );
+
+      return LayoutBuilder(
+        builder: (c, box) => Semantics(
+          label:
+              '${entry.title}. ${painter.accessibleSummary}. ${summary()}. Pinch to zoom. Use precise controls below as an accessible alternative.',
+          child: InteractiveViewer(
+            transformationController: transform,
+            minScale: 1,
+            maxScale: 5,
+            child: GestureDetector(
+              onHorizontalDragStart: kind == 0
+                  ? (details) {
+                      final x = details.localPosition.dx / box.maxWidth * 360;
+                      final xa = 22 + e.a * 3160, xb = 22 + e.b * 3160;
+                      dragTarget = (x - xa).abs() < 18
+                          ? 0
+                          : (x - xb).abs() < 18
+                          ? 1
+                          : 2;
+                    }
+                  : null,
+              onHorizontalDragUpdate:
+                  kind == 0 || kind == 1 || kind == 2 || kind == 3
+                  ? (details) {
+                      final dx =
+                          details.delta.dx /
+                          box.maxWidth /
+                          transform.value.getMaxScaleOnAxis();
+                      if (kind == 0) {
+                        if (dragTarget == 0) {
+                          e.setA(e.a + dx * .1);
+                          return;
+                        }
+                        if (dragTarget == 1) {
+                          e.setB(e.b + dx * .1);
+                          return;
+                        }
+                        final length = e.b - e.a;
+                        final newA = (e.a + dx * .1).clamp(0.0, .1 - length);
+                        e.a = quantize(newA, .001);
+                        e.b = e.a + length;
+                        e.changed();
+                      } else {
+                        e.setA(
+                          e.a +
+                              dx *
+                                  (kind == 1
+                                      ? 0.05
+                                      : kind == 2
+                                      ? 0.005
+                                      : .006),
+                        );
+                      }
+                    }
+                  : null,
+              child: RepaintBoundary(
+                child: CustomPaint(
+                  size: Size(box.maxWidth, enlarged ? 340 : 210),
+                  painter: painter,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+
   Widget sceneFrame({bool enlarged = false}) {
     final e = experiment;
     final kind = entry.index;
@@ -870,7 +1208,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
           [
             'Inspect the scale and units. Review the procedure in Learn.',
             'Adjust the apparatus using drag or a precise numeric input.',
-            'Read the instrument. Use the reading challenge before checking.',
+            'Predict the current result using Check prediction before recording.',
             'Record a trial, then mark the learning activity complete.',
           ][experiment.step],
         ),
@@ -891,37 +1229,49 @@ class _WorkspaceState extends ConsumerState<Workspace>
                 if (experiment.step < 3) {
                   experiment.step++;
                   experiment.changed();
-                } else if (store.trials.any((t) => t.labId == entry.id)) {
+                } else if (completionReady) {
                   await store.complete(entry.id);
                   message('Guided activity complete.');
                 } else {
-                  message('Record a trial to finish the guided activity.');
+                  message(
+                    'Change an input, check a prediction, record that state and explain your observation in notes (12 characters).',
+                  );
                 }
               },
               child: Text(
                 experiment.step == 3 ? 'Finish guided activity' : 'Next step',
               ),
             ),
-            if (entry.index < 3)
-              OutlinedButton(
-                onPressed: challenge,
-                child: const Text('Reading challenge'),
-              ),
+            OutlinedButton(
+              onPressed: challenge,
+              child: const Text('Check prediction'),
+            ),
           ],
         ),
       ],
     ),
   );
   Future<void> challenge() async {
-    await numberDialog('Your corrected reading (mm)', 0, -10, 100, (v) {
-      final correct = experiment.result!;
-      final matches = (v / 1000 - correct).abs() <= experiment.leastCount / 2;
-      message(
-        matches
-            ? 'Correct within half a scale division. ${summary()}'
-            : 'Try again: ${entry.index == 0 ? 'subtract B − A' : 'add main and fractional scales, then subtract signed zero error'}. Your answer was $v mm.',
-      );
-    });
+    experiment.pause();
+    if (experiment.result == null) {
+      message('Run the timer or add readings before predicting this result.');
+      return;
+    }
+    final millimetres = entry.index < 4;
+    await numberDialog(
+      'Your predicted result (${millimetres ? 'mm' : experiment.siUnit})',
+      0,
+      -1e9,
+      1e9,
+      (v) {
+        experiment.checkPrediction(millimetres ? v / 1000 : v);
+        message(
+          experiment.predictionMatches
+              ? 'Correct within the model tolerance. Record this state and explain your observation.'
+              : 'Try again. Use the formula and current SI inputs; check the units and signed zero correction.',
+        );
+      },
+    );
   }
 
   List<Widget> visualization() => entry.interactive
@@ -962,6 +1312,25 @@ class _WorkspaceState extends ConsumerState<Workspace>
           ),
         ];
   List<Widget> formulas() => [
+    Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        for (final c in instrumentControls())
+          ActionChip(
+            label: Text(
+              '${c.label} · ${c.value.toStringAsPrecision(4)} ${c.unit}',
+            ),
+            onPressed: () {
+              experiment.pause();
+              setState(() {
+                highlightControl = c.keyName;
+                section = 1;
+              });
+            },
+          ),
+      ],
+    ),
     Panel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

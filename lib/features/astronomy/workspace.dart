@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
@@ -8,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 
 import '../../app/app.dart';
+import '../workbench/workbench.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/rendering/materials.dart';
@@ -37,7 +39,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
   late AstronomyRun run;
   late Map<String, double> parameters;
   late Ticker ticker;
-  int mode = 0, section = 0, cursor = 0;
+  int mode = 0, section = 1, cursor = 0;
   bool incompatible = false;
   Map<String, dynamic>? retainedSession;
   bool ready = false, changed = false, overlays = true;
@@ -51,6 +53,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
   final attempts = <Map<String, dynamic>>[], textures = <int, ui.Image>{};
   Entry get entry => widget.entry;
   double? get result => run.invalid.isEmpty ? run.state[lesson.metric] : null;
+  int guided = 0;
   @override
   void initState() {
     super.initState();
@@ -211,6 +214,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
     },
     'ticks': run.ticks,
     'notes': notes.text,
+    'guided': guided,
     'changed': changed,
     'attempts': List.of(attempts),
     'graph': graph,
@@ -250,6 +254,7 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
       parameters = p;
       run = next;
       notes.text = data['notes'] as String? ?? '';
+      guided = data['guided'] is int ? (data['guided'] as int).clamp(0, 3) : 0;
       changed = data['changed'] == true;
       attempts
         ..clear()
@@ -398,8 +403,125 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
       children: children,
     ),
   );
+  List<InstrumentControl> instrumentControls() => [
+    for (final p in lesson.controls)
+      InstrumentControl(
+        p.key,
+        p.label,
+        p.unit,
+        parameters[p.key]!,
+        p.min,
+        p.max,
+        (v) => update(p.key, v),
+      ),
+  ];
+  String? highlightControl;
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    if (ready && (section == 1 || section == 4)) {
+      return InstrumentShell(
+        key: ValueKey('instrument-${entry.id}'),
+        exportRecorded: (trials) => exportTrials(context, trials),
+        reopenTrial: (trial) {
+          pause();
+          final before = Map<String, dynamic>.from(
+            jsonDecode(jsonEncode(configuration())),
+          );
+          final ok = restore(trial.configuration);
+          if (!ok) restore(before);
+          tick.value++;
+          setState(() {});
+          return ok;
+        },
+
+        guidedStep: () => guided,
+        changeGuidedStep: (v) {
+          setState(() => guided = v);
+          persist();
+        },
+        guideInstructions: () => [
+          lesson.procedure.split('. ').first,
+          'Run or step the model, or inspect a static probe.',
+          'Record ${lesson.metric} for this configuration.',
+          'Check the numerical prediction and add explanatory notes.',
+        ],
+        canAdvanceGuide: (step) => step == 0
+            ? changed
+            : step == 1
+            ? (!(run.dynamicLab) || run.time > 0)
+            : step == 2
+            ? store.trials.any(
+                (t) =>
+                    t.labId == entry.id &&
+                    t.configuration['ticks'] == run.ticks &&
+                    jsonEncode(t.configuration['parameters']) ==
+                        jsonEncode(parameters),
+              )
+            : true,
+
+        id: entry.id,
+        title: entry.title,
+        highlightControl: highlightControl,
+        store: store,
+        changes: tick,
+        scene: compactScene,
+        graph: () => Column(children: visualize()),
+        controls: instrumentControls,
+        readings: () => [
+          InstrumentReading(
+            lesson.metric,
+            result?.toStringAsPrecision(5) ?? 'Undefined',
+            lesson.unit,
+          ),
+          InstrumentReading('Playback', run.time.toStringAsPrecision(4), 's'),
+        ],
+        advanced: () => experiment().skip(1).toList(),
+        results: results,
+        notice: () => run.invalid.isNotEmpty ? run.invalid : '',
+        playing: () => ticker.isActive,
+        dynamicModel: () => run.dynamicLab,
+        canRecord: () => result != null && result!.isFinite,
+        play: play,
+        pause: pause,
+        reset: reset,
+        save: save,
+        record: record,
+        step: () {
+          pause();
+          run.step();
+          run.refresh();
+          tick.value++;
+        },
+        selection: () => DropdownButtonFormField<int>(
+          key: ValueKey('dock-mode-$kind-$mode'),
+          initialValue: mode,
+          isExpanded: true,
+          items: [
+            for (int i = 0; i < astroModes[kind].length; i++)
+              DropdownMenuItem(
+                value: i,
+                child: Text(
+                  astroModes[kind][i],
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+          ],
+          onChanged: (v) {
+            if (v != null) chooseMode(v);
+          },
+        ),
+        resetOriginalView: () => sceneView.value = Matrix4.identity(),
+        section: section,
+        selectSection: (value) {
+          pause();
+          setState(() => section = value);
+        },
+      );
+    }
+    return legacyBuild(context);
+  }
+
+  Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Text(entry.title),
       actions: [
@@ -502,6 +624,34 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
         'Requires a scientific input change, correct prediction, matching recorded trial and explanatory notes.',
       ),
   ]);
+  Widget compactScene() => ListenableBuilder(
+    listenable: tick,
+    builder: (context, _) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: AspectRatio(
+          aspectRatio: 4 / 3,
+          child: InteractiveViewer(
+            transformationController: sceneView,
+            minScale: .5,
+            maxScale: 5,
+            child: RepaintBoundary(
+              child: CustomPaint(
+                painter: AstronomyPainter(
+                  run,
+                  textures: textures,
+                  overlays: overlays,
+                  motion: !store.reducedMotion,
+                ),
+                isComplex: true,
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+
   Widget apparatus() => ListenableBuilder(
     listenable: tick,
     builder: (c, _) => panel([
@@ -942,6 +1092,25 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
   }
 
   List<Widget> formulas() => [
+    Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        for (final c in instrumentControls())
+          ActionChip(
+            label: Text(
+              '${c.label} · ${c.value.toStringAsPrecision(4)} ${c.unit}',
+            ),
+            onPressed: () {
+              pause();
+              setState(() {
+                highlightControl = c.keyName;
+                section = 1;
+              });
+            },
+          ),
+      ],
+    ),
     panel([
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,

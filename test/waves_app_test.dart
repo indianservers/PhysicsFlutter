@@ -10,13 +10,88 @@ import 'package:physics_atelier/features/waves/microphone.dart';
 import 'app_test.dart' show notebook;
 
 Future<void> show(WidgetTester tester, Finder target) async {
-  final scroll = find.byType(Scrollable).first;
-  tester.state<ScrollableState>(scroll).position.jumpTo(0);
-  await tester.pumpAndSettle();
-  for (int i = 0; i < 65 && target.evaluate().isEmpty; i++) {
+  bool absent() {
+    try {
+      return target.evaluate().isEmpty;
+    } on StateError {
+      return true;
+    }
+  }
+
+  Finder verticalScroll() {
+    final sheet = find.byType(BottomSheet);
+    final all = sheet.evaluate().isEmpty
+        ? find.byType(Scrollable)
+        : find.descendant(of: sheet, matching: find.byType(Scrollable));
+    return all
+            .evaluate()
+            .where(
+              (e) =>
+                  tester
+                      .state<ScrollableState>(find.byWidget(e.widget))
+                      .position
+                      .axis ==
+                  Axis.vertical,
+            )
+            .isEmpty
+        ? all.first
+        : find.byWidget(
+            all
+                .evaluate()
+                .firstWhere(
+                  (e) =>
+                      tester
+                          .state<ScrollableState>(find.byWidget(e.widget))
+                          .position
+                          .axis ==
+                      Axis.vertical,
+                )
+                .widget,
+          );
+  }
+
+  Future<void> scan() async {
+    if (find.byType(Scrollable).evaluate().isEmpty) return;
+    final scroll = verticalScroll();
     final p = tester.state<ScrollableState>(scroll).position;
-    p.jumpTo((p.pixels + 250).clamp(0, p.maxScrollExtent));
+    p.jumpTo(0);
     await tester.pumpAndSettle();
+    for (int i = 0; i < 65 && absent() && p.pixels < p.maxScrollExtent; i++) {
+      p.jumpTo((p.pixels + 250).clamp(0, p.maxScrollExtent));
+      await tester.pumpAndSettle();
+    }
+  }
+
+  final existingSheet = find.byType(BottomSheet);
+  if (!absent() &&
+      existingSheet.evaluate().isNotEmpty &&
+      find.descendant(of: existingSheet, matching: target).evaluate().isEmpty &&
+      find.byTooltip('Close controls').evaluate().isNotEmpty) {
+    await tester.tap(find.byTooltip('Close controls'));
+    await tester.pumpAndSettle();
+  }
+  await scan();
+  if (absent() &&
+      target.describeMatch(Plurality.one).contains('Reopen configuration') &&
+      find.byIcon(Icons.chevron_right).evaluate().isNotEmpty &&
+      find.textContaining('recorded trials').evaluate().isNotEmpty) {
+    await tester.tap(find.byIcon(Icons.chevron_right).first);
+    await tester.pumpAndSettle();
+  }
+  if (absent() && find.byType(BottomSheet).evaluate().isEmpty) {
+    final more = find.byTooltip('More controls and guided investigation');
+    final mode = find.byTooltip('Practice mode and topic');
+    final help = find.byTooltip('Tool notes and help');
+    final opener = more.evaluate().isNotEmpty
+        ? more
+        : mode.evaluate().isNotEmpty
+        ? mode
+        : help;
+    if (opener.evaluate().isNotEmpty) {
+      await tester.tap(opener.first);
+      await tester.pumpAndSettle();
+      await scan();
+    }
   }
   await tester.ensureVisible(target.first);
   await tester.pumpAndSettle();

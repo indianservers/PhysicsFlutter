@@ -1,0 +1,9 @@
+{
+  "device": "emulator-5556",
+  "service": "com.google.android.marvin.talkback/.TalkBackService",
+  "enabledSettingObserved": true,
+  "serviceListedInAccessibilityState": true,
+  "continuedIntoOriginalLab": true,
+  "applicationSemanticNodes": 46,
+  "qualification": "Actual Android TalkBack service enabled and service state/native semantic exposure inspected; a screen-reader swipe was delivered. No spoken-output transcription or independent blind-user usability certification. Original accessibility settings restored in finally."
+}

@@ -127,7 +127,7 @@ class AstronomyPainter extends CustomPainter {
       [
         'Educational J2000 model',
         'MIST reference visualization',
-        'Synthetic spectrum apparatus',
+        'Synthetic spectrum · false-color strip',
         'Illustrative galaxy mass model',
         'FLRW schematic grid',
         'Synthetic uniform-disk transit',
@@ -341,7 +341,7 @@ class AstronomyPainter extends CustomPainter {
       const Offset(20, 25),
       size: 12,
     );
-    text(c, 'Normalized Bλ + illustrative line template', const Offset(20, 45));
+    text(c, 'Normalized Bλ + synthetic line template', const Offset(20, 45));
     text(
       c,
       'Vacuum Balmer wavelengths • not observed Vega',

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
@@ -22,6 +23,44 @@ class Experiment extends ChangeNotifier {
   bool reveal = false, guides = true;
   bool resolutionKnown = true;
   int step = 0;
+  bool adjusted = false;
+  String? predictionSignature;
+  String _initialInputs = '';
+  String get inputSignature => jsonEncode([
+    kind,
+    a,
+    b,
+    zero,
+    resolution,
+    resolutionKnown,
+    distance,
+    v0,
+    acceleration,
+    unit,
+    samples,
+  ]);
+  String get observationSignature => jsonEncode([inputSignature, elapsed]);
+  bool get predictionMatches => predictionSignature == observationSignature;
+  void checkPrediction(double answer) {
+    final expected = result;
+    final tolerance = kind == 4
+        ? .005
+        : kind == 5
+        ? math.max(1e-9, expected == null ? 0 : expected.abs() * .005)
+        : leastCount / 2;
+    predictionSignature =
+        expected != null &&
+            answer.isFinite &&
+            (answer - expected).abs() <= tolerance
+        ? observationSignature
+        : null;
+    changed();
+  }
+
+  bool matchesTrial(Map<String, dynamic> state) =>
+      state['observationSignature'] == observationSignature;
+  bool get evidenceReady =>
+      adjusted && predictionMatches && note.trim().length >= 12;
   final Stopwatch _clock = Stopwatch();
   Timer? _timer;
   final clockTick = ValueNotifier<double>(0);
@@ -30,7 +69,11 @@ class Experiment extends ChangeNotifier {
     reset();
   }
   bool get running => _clock.isRunning;
-  double get elapsed => _elapsed + _clock.elapsedMicroseconds / 1e6;
+  double get elapsed {
+    final time = _elapsed + _clock.elapsedMicroseconds / 1e6;
+    // A delayed UI timer must not extend the defined automatic finish event.
+    return kind == 4 ? math.min(duration, time) : time;
+  }
   double get duration => finishTime(distance, v0, acceleration);
   ScaleReading get reading => kind == 1
       ? ScaleReading.vernier(a + zero)
@@ -71,6 +114,9 @@ class Experiment extends ChangeNotifier {
     _ => resolution,
   };
   void changed() {
+    if (_initialInputs.isNotEmpty && inputSignature != _initialInputs) {
+      adjusted = true;
+    }
     notifyListeners();
   }
 
@@ -132,6 +178,9 @@ class Experiment extends ChangeNotifier {
     zero = 0;
     reveal = false;
     step = 0;
+    adjusted = false;
+    predictionSignature = null;
+    _initialInputs = '';
     samples = [];
     propagationInputs = ['', '', '', ''];
     propagationOp = '+';
@@ -157,11 +206,15 @@ class Experiment extends ChangeNotifier {
       3 => .05,
       _ => .05,
     };
+    _initialInputs = inputSignature;
     changed();
   }
 
   Map<String, dynamic> toJson() => {
     'kind': kind,
+    'adjusted': adjusted,
+    'predictionSignature': predictionSignature,
+    'observationSignature': observationSignature,
     'a': a,
     'b': b,
     'zero': zero,
@@ -268,6 +321,10 @@ class Experiment extends ChangeNotifier {
       unit = m['unit'];
       note = m['note'] ?? '';
       step = (m['step'] as int).clamp(0, 3);
+      adjusted = m['adjusted'] == true;
+      predictionSignature = m['predictionSignature'] is String
+          ? m['predictionSignature']
+          : null;
       guides = m['guides'] ?? true;
       reveal = m['reveal'] ?? false;
       changed();

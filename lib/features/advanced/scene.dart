@@ -1,5 +1,8 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/semantics.dart';
+
 import '../../core/physics/plot_range.dart';
 
 import 'dart:ui' as ui;
@@ -735,6 +738,9 @@ class LabPlot extends CustomPainter {
   final String xLabel, unit;
   final int cursor;
   final bool scatter;
+
+  /// Opt-in immutable content token; mutable/history callers keep repainting.
+  final Object? contentRevision;
   final Set<String> histogramKeys;
   final Map<String, String> errorKeys;
   const LabPlot(
@@ -744,6 +750,7 @@ class LabPlot extends CustomPainter {
     this.unit,
     this.cursor, {
     this.scatter = false,
+    this.contentRevision,
     this.histogramKeys = const {},
     this.errorKeys = const {},
   });
@@ -754,7 +761,48 @@ class LabPlot extends CustomPainter {
     Color(0xff67788d),
   ];
   @override
-  bool shouldRepaint(covariant LabPlot old) => true;
+  bool shouldRepaint(covariant LabPlot old) =>
+      contentRevision == null ||
+      old.contentRevision != contentRevision ||
+      old.cursor != cursor ||
+      old.xLabel != xLabel ||
+      old.unit != unit ||
+      old.scatter != scatter ||
+      !listEquals(old.keys, keys) ||
+      !setEquals(old.histogramKeys, histogramKeys) ||
+      !mapEquals(old.errorKeys, errorKeys);
+  @override
+  SemanticsBuilderCallback get semanticsBuilder => (Size size) {
+    if (data.isEmpty) return <CustomPainterSemantics>[];
+    final descriptions = <String>[];
+    for (final key in keys) {
+      final values = data
+          .map((row) => row[key])
+          .whereType<double>()
+          .where((v) => v.isFinite)
+          .toList();
+      if (values.isEmpty) continue;
+      final minimum = values.reduce(math.min),
+          maximum = values.reduce(math.max);
+      final current = data[cursor.clamp(0, data.length - 1)][key];
+      descriptions.add(
+        '$key ranges ${minimum.toStringAsPrecision(4)} to ${maximum.toStringAsPrecision(4)} $unit; cursor ${current?.toStringAsPrecision(4) ?? 'unavailable'} $unit',
+      );
+    }
+    return [
+      CustomPainterSemantics(
+        rect: Offset.zero & size,
+        properties: SemanticsProperties(
+          label:
+              'Data graph. Horizontal axis $xLabel. ${data.length} samples. ${descriptions.join('. ')}',
+          textDirection: TextDirection.ltr,
+        ),
+      ),
+    ];
+  };
+  @override
+  bool shouldRebuildSemantics(covariant LabPlot oldDelegate) =>
+      shouldRepaint(oldDelegate);
   @override
   void paint(Canvas c, Size size) {
     if (data.isEmpty) return;
@@ -766,7 +814,11 @@ class LabPlot extends CustomPainter {
     for (final row in data) {
       for (final entry in errorKeys.entries) {
         final y = row[entry.key], err = row[entry.value];
-        if (y != null && err != null && y.isFinite && err.isFinite && err >= 0) {
+        if (y != null &&
+            err != null &&
+            y.isFinite &&
+            err.isFinite &&
+            err >= 0) {
           values.addAll([y - err, y + err]);
         }
       }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:async';
 import 'dart:math' as math;
 
@@ -8,6 +9,7 @@ import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app.dart';
+import '../workbench/workbench.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/persistence/notebook.dart';
@@ -47,7 +49,7 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
       graphView = TransformationController();
   final notes = TextEditingController();
   Duration previous = Duration.zero;
-  int section = 0, mode = 0, cursor = 0, guided = 0;
+  int section = 1, mode = 0, cursor = 0, guided = 0;
   bool ready = false,
       labels = true,
       overlays = true,
@@ -138,7 +140,10 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
 
   Future<void> load() async {
     final data = await store.readSession(entry.id);
-    if (data != null && !restore(data)) notice = 'Saved configuration is incompatible. Original records remain preserved.';
+    if (data != null && !restore(data)) {
+      await store.retainRejectedSession(entry.id, data);
+      notice = 'Saved configuration is incompatible. Original records remain preserved.';
+    }
     await store.visit(entry.id);
     if (mounted) setState(() => ready = true);
   }
@@ -534,8 +539,107 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     super.dispose();
   }
 
+  List<InstrumentControl> instrumentControls() => [
+    for (final p in lesson.controls.where(visible))
+      InstrumentControl(
+        p.key,
+        p.label,
+        p.unit,
+        parameters[p.key]!,
+        p.min,
+        p.max,
+        (v) => updateMany(<String, double>{p.key: v}),
+      ),
+  ];
+  String? highlightControl;
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    if (ready && (section == 1 || section == 4)) {
+      return InstrumentShell(
+        key: ValueKey('instrument-${entry.id}'),
+        exportRecorded: (trials) => exportTrials(context, trials),
+        reopenTrial: (trial) {
+          pause();
+          final before = Map<String, dynamic>.from(
+            jsonDecode(jsonEncode(configuration())),
+          );
+          final ok = restore(trial.configuration);
+          if (!ok) restore(before);
+          tick.value++;
+          setState(() {});
+          return ok;
+        },
+
+        guidedStep: () => guided,
+        changeGuidedStep: (v) {
+          setState(() => guided = v);
+          persist();
+        },
+        guideInstructions: () => [
+          lesson.procedure.split('. ').first,
+          'Run or step the model, or inspect a static probe.',
+          'Record ${lesson.metric} for this configuration.',
+          'Check the numerical prediction and add explanatory notes.',
+        ],
+        canAdvanceGuide: (step) => step == 0
+            ? changed
+            : step == 1
+            ? (!(!run.staticLab && !micMode) || run.time > 0)
+            : step == 2
+            ? store.trials.any(
+                (t) =>
+                    t.labId == entry.id &&
+                    t.configuration['ticks'] == run.ticks &&
+                    jsonEncode(t.configuration['parameters']) ==
+                        jsonEncode(parameters),
+              )
+            : true,
+
+        id: entry.id,
+        title: entry.title,
+        highlightControl: highlightControl,
+        store: store,
+        changes: tick,
+        scene: compactScene,
+        graph: graph,
+        controls: instrumentControls,
+        readings: () => [
+          InstrumentReading(
+            lesson.metric,
+            result?.toStringAsPrecision(5) ?? 'Undefined',
+            lesson.unit,
+          ),
+          InstrumentReading('Model t', run.time.toStringAsPrecision(4), 's'),
+        ],
+        advanced: () => experiment().skip(1).toList(),
+        results: results,
+        notice: () => notice,
+        playing: () => ticker.isActive,
+        dynamicModel: () => !run.staticLab && !micMode,
+        canRecord: () => result != null && result!.isFinite,
+        play: play,
+        pause: pause,
+        reset: reset,
+        save: save,
+        record: record,
+        step: () {
+          pause();
+          run.step();
+          tick.value++;
+        },
+        selection: null,
+        resetOriginalView: () => view.value = Matrix4.identity(),
+        section: section,
+        selectSection: (value) {
+          pause();
+          setState(() => section = value);
+        },
+      );
+    }
+    return legacyBuild(context);
+  }
+
+  Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Text(entry.title),
       actions: [
@@ -645,6 +749,46 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
       !((kind == 8 || kind == 9) &&
           p.key == 'screen' &&
           (run.state['imageType'] ?? 0) <= 0);
+  Widget compactScene() => ListenableBuilder(
+    listenable: tick,
+    builder: (context, _) {
+      final painter = WavePainter(
+        run,
+        labels: labels,
+        overlays: overlays,
+        comparison: comparison,
+        intensity: intensity,
+        microphone: micMode,
+      );
+
+      return LayoutBuilder(
+        builder: (context, box) => Semantics(
+          label: painter.accessibleSummary,
+          child: InteractiveViewer(
+            transformationController: view,
+            minScale: 1,
+            maxScale: 4,
+            child: GestureDetector(
+              onHorizontalDragUpdate: micMode
+                  ? null
+                  : (event) => updateMany(
+                      painter.interaction(
+                        event.localPosition / (box.maxWidth / 360),
+                      ),
+                    ),
+              child: RepaintBoundary(
+                child: CustomPaint(
+                  size: Size(box.maxWidth, box.maxWidth * .75),
+                  painter: painter,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+
   Widget scene() => ListenableBuilder(
     listenable: tick,
     builder: (context, _) {
@@ -673,6 +817,19 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
                     icon: const Icon(Icons.fit_screen),
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '${lesson.metric}: ${number(result)} ${lesson.unit}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: navy,
+                  ),
+                ),
               ),
             ),
             LayoutBuilder(
@@ -1366,6 +1523,25 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     ),
   );
   List<Widget> formulas() => [
+    Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        for (final c in instrumentControls())
+          ActionChip(
+            label: Text(
+              '${c.label} · ${c.value.toStringAsPrecision(4)} ${c.unit}',
+            ),
+            onPressed: () {
+              pause();
+              setState(() {
+                highlightControl = c.keyName;
+                section = 1;
+              });
+            },
+          ),
+      ],
+    ),
     Panel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

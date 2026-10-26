@@ -1,0 +1,58 @@
+{
+  "qualification": "Windows host warmed Dart JIT,7 repetitions, model construction plus120 fixed steps. Not mobile frame or solver-only timings; static models may do preparation only.",
+  "electricFieldPreparation": {
+    "medianMs": 2.018,
+    "maxMs": 2.807,
+    "repetitions": 7
+  },
+  "circuitMNAPreparation": {
+    "medianMs": 2.957,
+    "maxMs": 4.092,
+    "repetitions": 7
+  },
+  "coupledOscillator": {
+    "medianMs": 0.825,
+    "maxMs": 2.046,
+    "repetitions": 7
+  },
+  "waveInterferenceGrid": {
+    "medianMs": 20.454,
+    "maxMs": 54.682,
+    "repetitions": 7
+  },
+  "generatedFFT": {
+    "medianMs": 3.393,
+    "maxMs": 4.592,
+    "repetitions": 7
+  },
+  "diffractionProfile": {
+    "medianMs": 0.327,
+    "maxMs": 0.415,
+    "repetitions": 7
+  },
+  "thermalConductionProfile": {
+    "medianMs": 0.097,
+    "maxMs": 0.125,
+    "repetitions": 7
+  },
+  "liquidBernoulli": {
+    "medianMs": 0.772,
+    "maxMs": 0.987,
+    "repetitions": 7
+  },
+  "matterWaveDistribution": {
+    "medianMs": 0.614,
+    "maxMs": 1.577,
+    "repetitions": 7
+  },
+  "radioactiveDecay": {
+    "medianMs": 0.813,
+    "maxMs": 2.343,
+    "repetitions": 7
+  },
+  "orbitPropagation": {
+    "medianMs": 1.555,
+    "maxMs": 2.499,
+    "repetitions": 7
+  }
+}

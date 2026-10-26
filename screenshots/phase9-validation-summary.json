@@ -1,0 +1,77 @@
+{
+  "version": "1.8.0+9",
+  "originalHead": "d766f06",
+  "entries": 102,
+  "physicalLabs": 96,
+  "overviewTools": 6,
+  "studios": 17,
+  "unitWidgetTestsPassed": 290,
+  "analysis": "No issues found",
+  "nativeAll102Inventory": "passed",
+  "finalAll102Capture": "passed",
+  "defaultRendererProfile": "7 cases; 90 activity frames +40 camera/divider operations each; unchanged paused science ticks",
+  "originalDataPreservation": {
+    "originalTrialBodiesByteForBytePreserved": 142,
+    "currentTrials": 384,
+    "originalSessionStatesExactlyPreserved": 104,
+    "originalChallengeBodiesExactlyPreserved": 109,
+    "oldSessionNotesAndParametersPreserved": 104,
+    "originalPreferencesPreserved": 4,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+  },
+  "artifacts": [
+    {
+      "mode": "release-development-signed",
+      "path": "deliverables/physics-atelier-phase9-release-dev-signed.apk",
+      "bytes": 70485165,
+      "sha256": "3de6f5c064200aac2eb354be41f14074b2a395fead913c3b1fd16f76a0d268c8",
+      "installedBytesMatch": true,
+      "offlineProcessAlive": true,
+      "fatalExceptionObserved": false,
+      "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='9' versionName='1.8.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "permissions": [
+        "package: com.indianservers.physics_atelier",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "signing": "Existing local development/debug certificate; not production signing"
+    },
+    {
+      "mode": "debug",
+      "path": "deliverables/physics-atelier-phase9-debug.apk",
+      "bytes": 212089264,
+      "sha256": "22c88fcf3f72ed14bd5ebe70892d491c6a1b53e0c9d6c0a0d8e50cce7ab23a4d",
+      "installedBytesMatch": true,
+      "offlineProcessAlive": true,
+      "fatalExceptionObserved": false,
+      "packageBadging": "package: name='com.indianservers.physics_atelier' versionCode='9' versionName='1.8.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "permissions": [
+        "package: com.indianservers.physics_atelier",
+        "uses-permission: name='android.permission.INTERNET'",
+        "uses-permission: name='android.permission.RECORD_AUDIO'",
+        "permission: com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+        "uses-permission: name='com.indianservers.physics_atelier.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'"
+      ],
+      "signing": "Existing local development/debug certificate; not production signing"
+    }
+  ],
+  "screenshotPack": {
+    "path": "deliverables/phase9-screenshots.zip",
+    "namedImages": 248,
+    "sha256": "0a2c52177938b0644704c87b3e836d744764ffb3c67b8b59b0dbf5ea6fa0d250"
+  },
+  "releaseCandidate": false,
+  "blockers": [
+    "Premium photographic asset fidelity incomplete",
+    "Emulator raster times exceed frame budget; physical-device profile pending",
+    "Full human accessibility and iOS validation pending",
+    "Owner production signing and redistribution-license review required"
+  ],
+  "remotePushPerformed": false
+}

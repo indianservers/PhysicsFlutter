@@ -1,0 +1,163 @@
+Running Gradle task 'assembleDebug'...                          
+Picked up JAVA_TOOL_OPTIONS: -Djava.io.tmpdir=C:\tmp -Djava.net.preferIPv4Stack=true
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/C:/Users/Sai%20Satish/.gradle/wrapper/dists/gradle-9.3.1-all/9ot9r568e8zfvvd4mn8rbu1j0/gradle-9.3.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Running Gradle task 'assembleDebug'...                             15.7s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...        2,603ms
+I/Choreographer(24547): Skipped 177 frames!  The application may be doing too much work on its main thread.
+D/WindowOnBackDispatcher(24547): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@9b458cb
+D/WindowOnBackDispatcher(24547): setOnBackInvokedCallbackInfo: android.app.Activity$$ExternalSyntheticLambda0@9b458cb
+I/WindowExtensionsImpl(24547): Initializing Window Extensions, vendor API level=10, activity embedding enabled=true
+W/UiContextUtils(24547): Requested context is a non-UI Context. Creating a UI-Context with display: 0. Context: Context=android.app.Application@c68ce34, of which baseContext=android.app.ContextImpl@613e28f
+D/VRI[MainActivity](24547): WindowInsets changed: 720x1280 statusBars:[0,48,0,0] navigationBars:[0,0,0,48] mandatorySystemGestures:[0,48,0,64] 
+D/FlutterRenderer(24547): Width is zero. 0,0
+I/physics_atelier(24547): Compiler allocated 5562KB to compile void android.view.ViewRootImpl.performTraversals(long)
+I/Surface (24547): Creating surface for consumer unnamed-24547-0 with slotExpansion=1 for 64 slots
+I/Surface (24547): Creating surface for consumer VRI[MainActivity]#0(BLAST Consumer)0 with slotExpansion=1 for 64 slots
+D/FlutterJNI(24547): Sending viewport metrics to the engine.
+I/Surface (24547): Creating surface for consumer unnamed-24547-1 with slotExpansion=1 for 64 slots
+I/Surface (24547): Creating surface for consumer d5912a1 SurfaceView[com.indianservers.physics_atelier/com.indianservers.physics_atelier.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+D/WindowLayoutComponentImpl(24547): Register WindowLayoutInfoListener on Context=com.indianservers.physics_atelier.MainActivity@9498fb4, of which baseContext=android.app.ContextImpl@2f88d7f
+D/FlutterJNI(24547): Sending viewport metrics to the engine.
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:<port>/<redacted>/
+VMServiceFlutterDriver: Isolate found with number: 3438157416962571
+VMServiceFlutterDriver: Isolate 3438157416962571 is runnable.
+VMServiceFlutterDriver: Isolate is not paused. Assuming application is ready.
+VMServiceFlutterDriver: Connected to Flutter application.
+I/Choreographer(24547): Skipped 51 frames!  The application may be doing too much work on its main thread.
+D/FlutterJNI(24547): Sending viewport metrics to the engine.
+D/InsetsController(24547): hide(ime())
+I/ImeTracker(24547): com.indianservers.physics_atelier:1e17ecb5: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/flutter (24547): Captured workspace-after-home
+I/flutter (24547): Captured workspace-after-studio-s00
+I/flutter (24547): Captured workspace-after-studio-s01
+D/ProfileInstaller(24547): Installing profile for com.indianservers.physics_atelier
+I/flutter (24547): Captured workspace-after-studio-s02
+I/flutter (24547): Captured workspace-after-studio-s03
+I/flutter (24547): Captured workspace-after-studio-s04
+I/flutter (24547): Captured workspace-after-studio-s05
+I/flutter (24547): Captured workspace-after-studio-s06
+I/flutter (24547): Captured workspace-after-studio-s07
+I/flutter (24547): Captured workspace-after-studio-s08
+I/flutter (24547): Captured workspace-after-studio-s09
+I/flutter (24547): Captured workspace-after-studio-s10
+I/flutter (24547): Captured workspace-after-studio-s11
+I/flutter (24547): Captured workspace-after-studio-s12
+I/flutter (24547): Captured workspace-after-studio-s13
+I/flutter (24547): Captured workspace-after-studio-s14
+I/flutter (24547): Captured workspace-after-studio-s15
+I/flutter (24547): Captured workspace-after-studio-s16
+I/flutter (24547): Captured workspace-after-entry-s00-e00
+I/flutter (24547): Captured workspace-after-entry-s00-e01
+I/flutter (24547): Captured workspace-after-entry-s00-e02
+I/flutter (24547): Captured workspace-after-entry-s00-e03
+I/flutter (24547): Captured workspace-after-entry-s00-e04
+I/flutter (24547): Captured workspace-after-entry-s00-e05
+I/flutter (24547): Captured workspace-after-entry-s01-e00
+I/flutter (24547): Captured workspace-after-entry-s01-e01
+I/flutter (24547): Captured workspace-after-entry-s01-e02
+I/flutter (24547): Captured workspace-after-entry-s01-e03
+I/flutter (24547): Captured workspace-after-entry-s01-e04
+I/flutter (24547): Captured workspace-after-entry-s01-e05
+I/flutter (24547): Captured workspace-after-entry-s02-e00
+I/flutter (24547): Captured workspace-after-entry-s02-e01
+I/flutter (24547): Captured workspace-after-entry-s02-e02
+I/flutter (24547): Captured workspace-after-entry-s02-e03
+I/flutter (24547): Captured workspace-after-entry-s02-e04
+I/flutter (24547): Captured workspace-after-entry-s02-e05
+I/flutter (24547): Captured workspace-after-entry-s03-e00
+I/flutter (24547): Captured workspace-after-entry-s03-e01
+I/flutter (24547): Captured workspace-after-entry-s03-e02
+I/flutter (24547): Captured workspace-after-entry-s03-e03
+I/flutter (24547): Captured workspace-after-entry-s03-e04
+I/flutter (24547): Captured workspace-after-entry-s03-e05
+I/flutter (24547): Captured workspace-after-entry-s04-e00
+I/flutter (24547): Captured workspace-after-entry-s04-e01
+I/flutter (24547): Captured workspace-after-entry-s04-e02
+I/flutter (24547): Captured workspace-after-entry-s04-e03
+I/flutter (24547): Captured workspace-after-entry-s04-e04
+I/flutter (24547): Captured workspace-after-entry-s04-e05
+I/flutter (24547): Captured workspace-after-entry-s05-e00
+I/flutter (24547): Captured workspace-after-entry-s05-e01
+I/flutter (24547): Captured workspace-after-entry-s05-e02
+I/flutter (24547): Captured workspace-after-entry-s05-e03
+I/flutter (24547): Captured workspace-after-entry-s05-e04
+I/flutter (24547): Captured workspace-after-entry-s05-e05
+I/flutter (24547): Captured workspace-after-entry-s06-e00
+I/flutter (24547): Captured workspace-after-entry-s06-e01
+I/flutter (24547): Captured workspace-after-entry-s06-e02
+I/flutter (24547): Captured workspace-after-entry-s06-e03
+I/flutter (24547): Captured workspace-after-entry-s06-e04
+I/flutter (24547): Captured workspace-after-entry-s06-e05
+I/flutter (24547): Captured workspace-after-entry-s07-e00
+I/flutter (24547): Captured workspace-after-entry-s07-e01
+I/flutter (24547): Captured workspace-after-entry-s07-e02
+I/flutter (24547): Captured workspace-after-entry-s07-e03
+I/flutter (24547): Captured workspace-after-entry-s07-e04
+I/flutter (24547): Captured workspace-after-entry-s07-e05
+I/flutter (24547): Captured workspace-after-entry-s08-e00
+I/flutter (24547): Captured workspace-after-entry-s08-e01
+I/flutter (24547): Captured workspace-after-entry-s08-e02
+I/flutter (24547): Captured workspace-after-entry-s08-e03
+I/flutter (24547): Captured workspace-after-entry-s08-e04
+I/flutter (24547): Captured workspace-after-entry-s08-e05
+I/flutter (24547): Captured workspace-after-entry-s09-e00
+I/flutter (24547): Captured workspace-after-entry-s09-e01
+I/flutter (24547): Captured workspace-after-entry-s09-e02
+I/flutter (24547): Captured workspace-after-entry-s09-e03
+I/flutter (24547): Captured workspace-after-entry-s09-e04
+I/flutter (24547): Captured workspace-after-entry-s09-e05
+I/flutter (24547): Captured workspace-after-entry-s10-e00
+I/flutter (24547): Captured workspace-after-entry-s10-e01
+I/flutter (24547): Captured workspace-after-entry-s10-e02
+I/flutter (24547): Captured workspace-after-entry-s10-e03
+I/physics_atelier(24547): Background concurrent mark compact GC freed 873KB AllocSpace bytes, 32(2048KB) LOS objects, 49% free, 2964KB/5928KB, paused 165us,2.022ms total 127.632ms
+I/flutter (24547): Captured workspace-after-entry-s10-e04
+I/flutter (24547): Captured workspace-after-entry-s10-e05
+I/flutter (24547): Captured workspace-after-entry-s11-e00
+I/flutter (24547): Captured workspace-after-entry-s11-e01
+I/flutter (24547): Captured workspace-after-entry-s11-e02
+I/flutter (24547): Captured workspace-after-entry-s11-e03
+I/flutter (24547): Captured workspace-after-entry-s11-e04
+I/flutter (24547): Captured workspace-after-entry-s11-e05
+I/flutter (24547): Captured workspace-after-entry-s12-e00
+I/flutter (24547): Captured workspace-after-entry-s12-e01
+I/flutter (24547): Captured workspace-after-entry-s12-e02
+I/flutter (24547): Captured workspace-after-entry-s12-e03
+I/flutter (24547): Captured workspace-after-entry-s12-e04
+I/flutter (24547): Captured workspace-after-entry-s12-e05
+I/flutter (24547): Captured workspace-after-entry-s13-e00
+I/flutter (24547): Captured workspace-after-entry-s13-e01
+I/flutter (24547): Captured workspace-after-entry-s13-e02
+I/flutter (24547): Captured workspace-after-entry-s13-e03
+I/flutter (24547): Captured workspace-after-entry-s13-e04
+I/flutter (24547): Captured workspace-after-entry-s13-e05
+I/flutter (24547): Captured workspace-after-entry-s14-e00
+I/flutter (24547): Captured workspace-after-entry-s14-e01
+I/flutter (24547): Captured workspace-after-entry-s14-e02
+I/flutter (24547): Captured workspace-after-entry-s14-e03
+I/flutter (24547): Captured workspace-after-entry-s14-e04
+I/flutter (24547): Captured workspace-after-entry-s14-e05
+I/flutter (24547): Captured workspace-after-entry-s15-e00
+I/flutter (24547): Captured workspace-after-entry-s15-e01
+I/flutter (24547): Captured workspace-after-entry-s15-e02
+I/flutter (24547): Captured workspace-after-entry-s15-e03
+I/flutter (24547): Captured workspace-after-entry-s15-e04
+I/flutter (24547): Captured workspace-after-entry-s15-e05
+I/physics_atelier(24547): Background concurrent mark compact GC freed 939KB AllocSpace bytes, 32(2048KB) LOS objects, 49% free, 3060KB/6120KB, paused 42us,8.900ms total 22.290ms
+I/flutter (24547): Captured workspace-after-entry-s16-e00
+I/flutter (24547): Captured workspace-after-entry-s16-e01
+I/flutter (24547): Captured workspace-after-entry-s16-e02
+I/flutter (24547): Captured workspace-after-entry-s16-e03
+I/flutter (24547): Captured workspace-after-entry-s16-e04
+I/flutter (24547): Captured workspace-after-entry-s16-e05
+I/flutter (24547): PHASE9_READY_FOR_SHARE
+I/flutter (24547): 02:13 +1: Restore original configurations and navigation preferences after explicit QA actions
+I/flutter (24547): 02:16 +2: (tearDownAll)
+I/flutter (24547): 02:16 +3: All tests passed!
+All tests passed.
+Leaving the application running.

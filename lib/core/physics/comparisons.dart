@@ -19,8 +19,8 @@ const comparisonNames = [
 const comparisonLabs = [
   ['s07-e00', 's07-e01'],
   ['s10-e01', 's06-e01'],
-  ['s08-e02', 's09-e05'],
-  ['s10-e03', 's13-e00'],
+  ['s08-e02', 's09-e04'],
+  ['s10-e05', 's13-e00'],
   ['s03-e00', 's15-e02'],
 ];
 const comparisonConventions = [

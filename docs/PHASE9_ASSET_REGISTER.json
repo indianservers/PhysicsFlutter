@@ -1,0 +1,522 @@
+[
+  {
+    "filename": "assets/textures/earth-illustrative.png",
+    "bytes": 3355765,
+    "sha256": "c37545f6588ec1ea0768e8a534f51c7570c4956162cc22fc7c0b9795d6a14099",
+    "source": "Generated project Earth artwork, see PHASE3_ASSETS_AND_AUDIT.md",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "assets/textures/phase8-earth.jpg",
+    "bytes": 52421,
+    "sha256": "91c60c90dc7700cae4ebaf77739789095158a7ea07f693233a4f09f59b106432",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/ear0xuu2.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "Caltech/JPL/USGS; source page identifies topographic land/ocean coloring, underlying source unknown",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Processed topographic illustration, not a current Earth photograph"
+  },
+  {
+    "filename": "assets/textures/phase8-jupiter.jpg",
+    "bytes": 31340,
+    "sha256": "2724092ee2a18b4a6c4e638bc5cdd196194570a096f9b455c0235fa10e019e09",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/jup0vss1.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "JPL/Caltech; David Seal; Voyager, heavily processed",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Representative processed spacecraft mosaic"
+  },
+  {
+    "filename": "assets/textures/phase8-mars.jpg",
+    "bytes": 30193,
+    "sha256": "5b2b6d5a06c68c58e3155c3b6bf314f3845ec7908997f0ee69a64206df65b6e6",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/mar0kuu2.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "Caltech/JPL/USGS; Viking, processed at USGS",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Processed spacecraft mosaic"
+  },
+  {
+    "filename": "assets/textures/phase8-mercury.jpg",
+    "bytes": 25319,
+    "sha256": "63944340fccd0f1bd038932cfa33c1d7054253e9c613d8240e1dacb3a3fba808",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/mer0muu2.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "Caltech/JPL/USGS; Mariner10, processed at USGS; partial longitude coverage",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Processed spacecraft mosaic, incomplete coverage"
+  },
+  {
+    "filename": "assets/textures/phase8-neptune.jpg",
+    "bytes": 27599,
+    "sha256": "f800c69381c0abad77b8f1c1d5f4edcff626bb1c6209d226ff5df0ab6e9b0074",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/nep0fds1.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "JPL/Caltech; Don Davis; fictional clouds",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Artist impression, not observational surface data"
+  },
+  {
+    "filename": "assets/textures/phase8-saturn.jpg",
+    "bytes": 24243,
+    "sha256": "47ddc95588088b4ba3887f8cf4e82a50b9a80d0aa35cbccfc4e110bbbc9195fd",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/sat0fds1.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "JPL/Caltech; Don Davis; fictional storms",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Artist impression, not observational surface data"
+  },
+  {
+    "filename": "assets/textures/phase8-uranus.jpg",
+    "bytes": 2678,
+    "sha256": "ab23121e134d55658610895134ba6d52e4ab3083b5d80862a7cd838eecd514c6",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/ura0fss1.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "JPL/Caltech; David Seal; fictional solid blue",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Artist impression / representative solid-color atmosphere"
+  },
+  {
+    "filename": "assets/textures/phase8-venus.jpg",
+    "bytes": 41179,
+    "sha256": "3cfcb8b9c659c096ea2d3f80aae5f9667f62b5a3a9d5f3acd47234ab083416f5",
+    "source": "https://space.jpl.nasa.gov/tmaps/pix/ven0aaa2.jpg",
+    "license": "JPL Image Use Policy: https://www.jpl.nasa.gov/jpl-image-use-policy/ ; use with credits; no NASA/JPL endorsement or logos.",
+    "attribution": "JPL/Caltech; Magellan radar mosaic; missing regions filled",
+    "modifications": "Resampled to at most512x256, JPEG quality88. Mapped onto an educational sphere; directional shadow added. No scientific surface analysis.",
+    "usage": "Radar composite / false-color surface visualization, not visible-light clouds"
+  },
+  {
+    "filename": "android/app/src/main/res/drawable/launch_background.xml",
+    "bytes": 446,
+    "sha256": "2df60e2cfbee873ce2858088cf003e6b93498f2f568476da437610467ea1a9d7",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/drawable/physics_icon.xml",
+    "bytes": 534,
+    "sha256": "01818cf499a31edfba5458c8913335268e39c179f3c07b115874b803c6c0c618",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/drawable-v21/launch_background.xml",
+    "bytes": 450,
+    "sha256": "dca312ec77de83e43ef70a825c299b51451247286c29167d62f19165750b8793",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "bytes": 204,
+    "sha256": "1a34d5ad30f720aad52e023b39bd3284918602370cb66490e11071062624bcd7",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+    "bytes": 1810,
+    "sha256": "c1a09a1bbde0b7f3fde07592f1e3e56a0b2f9025c69f4cdf17f2d0bc7f9b8dd8",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+    "bytes": 1169,
+    "sha256": "db18007d0c0e73b39b3dde839ce7d7430e6264709ac3ab5a82c4d4ffb80b9f87",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+    "bytes": 2304,
+    "sha256": "3102f7594f82e4d7aae6a43e894c4451b102291162f0959767798fa8ccdcdfe5",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+    "bytes": 3208,
+    "sha256": "7842b8ebcc21eaa3b3a9fac0455d74668604173b16a000a8920b777f932c62a2",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+    "bytes": 3944,
+    "sha256": "75c830e7c8ddb94a8d17b52eacef9879285d88cf03d0e441c1b7ecb75615268a",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/values/launcher_colors.xml",
+    "bytes": 72,
+    "sha256": "35f4051a405218fc143d59324e1daa8f235e521ba210f24b5ba7403ebc929cea",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/values/styles.xml",
+    "bytes": 1014,
+    "sha256": "cca15a99b59380a548bf6a890f7ca5380ee509b1f9bbb2f5f9ec3589fa25c2f7",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/values-night/styles.xml",
+    "bytes": 1013,
+    "sha256": "ea763597dc1a84c8034251caee98d7753e0fbf57340ffc94677427de4b537516",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "android/app/src/main/res/values-v31/styles.xml",
+    "bytes": 334,
+    "sha256": "532be4fe87034c4dd235dcbd9b3020cdf88b67fe0baf6005e86d3a9f5640bd59",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json",
+    "bytes": 2641,
+    "sha256": "5f8b941b774bde4496d73347c1f79cbdd786bb76fbdab9ed1f3f0cb78a0fb0d3",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png",
+    "bytes": 27051,
+    "sha256": "7526de9db026d3daae98ff6203dd05e536abd5a1215b2923a006b47dd5825047",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png",
+    "bytes": 563,
+    "sha256": "f59c573b052998c1a2ff7b010793fc7e04cd8ad6eda4138e69940aa42600dce8",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png",
+    "bytes": 993,
+    "sha256": "b9868e37eb54ca239b15356b05e5b283071da58824b0f332916616fa6524a1f8",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png",
+    "bytes": 1482,
+    "sha256": "f23f2bcbd113ed135a1422b809c08bb0e31b3d612bb04a33ef720328b3c35461",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png",
+    "bytes": 747,
+    "sha256": "75d9fc26cc293676d4f77b1adeaf7b482508983dc71b5bcbe755170464c4e989",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png",
+    "bytes": 1411,
+    "sha256": "adba6910ceee3329a99500260bd46b17e2d008f8b84945e52dacd465820bacbd",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png",
+    "bytes": 2128,
+    "sha256": "d247d56283929b42b260c18c304b9722f9ee7f0cc0b5caaf5e9d44a165ab4933",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png",
+    "bytes": 993,
+    "sha256": "b9868e37eb54ca239b15356b05e5b283071da58824b0f332916616fa6524a1f8",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png",
+    "bytes": 1951,
+    "sha256": "360a7d5a2f669850cc67905543f99f757d04b2ad954d6d2b5ccf588460f06c92",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png",
+    "bytes": 2882,
+    "sha256": "cf9ba8874c84453293957579c3fd0b2fcb618ce52539ae6f1861365090ac5ca1",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png",
+    "bytes": 2882,
+    "sha256": "cf9ba8874c84453293957579c3fd0b2fcb618ce52539ae6f1861365090ac5ca1",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png",
+    "bytes": 4035,
+    "sha256": "9b41a10d0f37ae22f8fa77d952c4aaaa299ab14f5e40bf27a4f7658404b7cbdb",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png",
+    "bytes": 1877,
+    "sha256": "952ace7f9e3375034e71a1ee2fe7c1f01e368f3a168ba93635debd62b4c7fcf8",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png",
+    "bytes": 3504,
+    "sha256": "55c596c0936146ded2fbedf83fcd99ae3fda9767ec31aadf83f3b360142f404e",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png",
+    "bytes": 3626,
+    "sha256": "aeb9a24177d31972ee6b630f380ca34415d020d36d0467b38073b7d5df5dbb35",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json",
+    "bytes": 414,
+    "sha256": "fbd112a9f3b541a1d811f71ac8e4fe68b6176687d973a5f4d99b7aa4a722e94e",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png",
+    "bytes": 68,
+    "sha256": "93ae7d494fad0fb30cbf3ae746a39c4bc7a0f8bbf87fbb587a3f3c01f3c5ce20",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png",
+    "bytes": 68,
+    "sha256": "93ae7d494fad0fb30cbf3ae746a39c4bc7a0f8bbf87fbb587a3f3c01f3c5ce20",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png",
+    "bytes": 68,
+    "sha256": "93ae7d494fad0fb30cbf3ae746a39c4bc7a0f8bbf87fbb587a3f3c01f3c5ce20",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md",
+    "bytes": 340,
+    "sha256": "853ac958e2416fe2540f6f61165283a3618b71a7ba5f85f65ac41c2158dfcd21",
+    "source": "Project vector/bitmap platform resources; scaffold ancestry where unchanged",
+    "license": "Project original graphics / generation service terms for Earth; Flutter scaffold terms for inherited platform resources",
+    "attribution": "No external photographic attribution; see historical asset reports",
+    "modifications": "Phase9 Android icons derived from existing project flask vector; other resources retained",
+    "usage": "UI/platform graphics; not scientific reference data"
+  },
+  {
+    "filename": "lib/features/advanced/scene.dart",
+    "source": "Original project code-native scientific illustration",
+    "license": "Project source terms; no third-party bitmap claim",
+    "attribution": "Original project artwork",
+    "modifications": "State-linked apparatus; shared material shadow refinement; explicit schematic labels",
+    "usage": "Experiment scene, not an observed photograph",
+    "bytes": 30092,
+    "sha256": "4948803f387d48db3f7cc64ab162415066abfa2db890e6588b8f4308f44beaf3"
+  },
+  {
+    "filename": "lib/features/astronomy/scene.dart",
+    "source": "Original project code-native scientific illustration",
+    "license": "Project source terms; no third-party bitmap claim",
+    "attribution": "Original project artwork",
+    "modifications": "State-linked apparatus; shared material shadow refinement; explicit schematic labels",
+    "usage": "Experiment scene, not an observed photograph",
+    "bytes": 14676,
+    "sha256": "41d77f06619137a0705e3e481868375fbce766686b4275acd66b7b0247fcc3de"
+  },
+  {
+    "filename": "lib/features/dynamics/scene.dart",
+    "source": "Original project code-native scientific illustration",
+    "license": "Project source terms; no third-party bitmap claim",
+    "attribution": "Original project artwork",
+    "modifications": "State-linked apparatus; shared material shadow refinement; explicit schematic labels",
+    "usage": "Experiment scene, not an observed photograph",
+    "bytes": 30099,
+    "sha256": "9e19eec5b9fdbb1897fb9b133da89427860b5da85d4255890676f5d8f9e6cc68"
+  },
+  {
+    "filename": "lib/features/electromagnetism/scene.dart",
+    "source": "Original project code-native scientific illustration",
+    "license": "Project source terms; no third-party bitmap claim",
+    "attribution": "Original project artwork",
+    "modifications": "State-linked apparatus; shared material shadow refinement; explicit schematic labels",
+    "usage": "Experiment scene, not an observed photograph",
+    "bytes": 37530,
+    "sha256": "cb162e6e8884656a8e26c37755c35265e882d0d3f7412be25096ae82dec5a255"
+  },
+  {
+    "filename": "lib/features/electronics_thermal/scene.dart",
+    "source": "Original project code-native scientific illustration",
+    "license": "Project source terms; no third-party bitmap claim",
+    "attribution": "Original project artwork",
+    "modifications": "State-linked apparatus; shared material shadow refinement; explicit schematic labels",
+    "usage": "Experiment scene, not an observed photograph",
+    "bytes": 20724,
+    "sha256": "f7e359d83327cce2b2c5ca292e4fd8f6c79ce1919e7d4496453e42126dbd2eb2"
+  },
+  {
+    "filename": "lib/features/fluid_modern/scene.dart",
+    "source": "Original project code-native scientific illustration",
+    "license": "Project source terms; no third-party bitmap claim",
+    "attribution": "Original project artwork",
+    "modifications": "State-linked apparatus; shared material shadow refinement; explicit schematic labels",
+    "usage": "Experiment scene, not an observed photograph",
+    "bytes": 31202,
+    "sha256": "9ce7e8da866ab4825b86723ade4c9dbe916d82b0e929676131a351560f45035f"
+  },
+  {
+    "filename": "lib/features/waves/scene.dart",
+    "source": "Original project code-native scientific illustration",
+    "license": "Project source terms; no third-party bitmap claim",
+    "attribution": "Original project artwork",
+    "modifications": "State-linked apparatus; shared material shadow refinement; explicit schematic labels",
+    "usage": "Experiment scene, not an observed photograph",
+    "bytes": 27912,
+    "sha256": "b734bb305ce8c530b872e1a08d48dd9ebf24ffba1e49bd0c062cae848b4cf08d"
+  },
+  {
+    "filename": "lib/features/workbench/lab_thumbnail.dart",
+    "source": "Original code-native, existing source-model-derived previews",
+    "license": "Project source terms; no new third-party bitmap license claimed",
+    "attribution": "Project apparatus and existing credited datasets/textures",
+    "modifications": "Distinct static per-entry launch previews; bounded picture cache; no recorded observations",
+    "usage": "Home/studio/catalog previews",
+    "bytes": 5388,
+    "sha256": "830a0081e867bf77c5a4fcafc3d5d67dcf5b4b58a25dab0b129a21f8f853dc96"
+  },
+  {
+    "filename": "lib/features/workbench/launchers.dart",
+    "source": "Original code-native, existing source-model-derived previews",
+    "license": "Project source terms; no new third-party bitmap license claimed",
+    "attribution": "Project apparatus and existing credited datasets/textures",
+    "modifications": "Distinct static per-entry launch previews; bounded picture cache; no recorded observations",
+    "usage": "Home/studio/catalog previews",
+    "bytes": 13242,
+    "sha256": "87319e562ec3300822e057e58b54eff6c02fc679172f17b727f32c426a3b6393"
+  }
+]

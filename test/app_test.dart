@@ -100,10 +100,12 @@ void main() {
     expect(find.text('Vernier Caliper'), findsOneWidget);
     await tester.tap(find.text('Vernier Caliper'));
     await tester.pumpAndSettle();
+    await tester.tap(find.text('Learn').last);
+    await tester.pumpAndSettle();
     expect(find.text('Learning objectives'), findsOneWidget);
     await tester.tap(find.text('Experiment').last);
     await tester.pumpAndSettle();
-    expect(find.text('Current reading'.toUpperCase()), findsOneWidget);
+    expect(find.byKey(const Key('workspace-camera')), findsOneWidget);
     final List<String> paths = [];
     for (final s in studios) {
       router.go('/studio/${s.id}');

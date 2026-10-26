@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const navy = Color(0xff122b4e),
     cobalt = Color(0xff245ce7),
-    teal = Color(0xff008e95),
+    teal = Color(0xff00777d),
     muted = Color(0xff65758b);
 ThemeData physicsTheme() => ThemeData(
   useMaterial3: true,

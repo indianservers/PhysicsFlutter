@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:async';
 import 'dart:math' as math;
 
@@ -8,6 +9,7 @@ import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app.dart';
+import '../workbench/workbench.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/persistence/notebook.dart';
@@ -40,7 +42,7 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
       notes = TextEditingController(),
       view = TransformationController(),
       graphView = TransformationController();
-  int section = 0, mode = 0, cursor = 0, guided = 0;
+  int section = 1, mode = 0, cursor = 0, guided = 0;
   bool ready = false,
       labels = true,
       overlays = true,
@@ -111,7 +113,10 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
 
   Future<void> load() async {
     final saved = await store.readSession(entry.id);
-    if (saved != null && !restore(saved)) notice = 'Incompatible session: original records retained, documented defaults shown.';
+    if (saved != null && !restore(saved)) {
+      await store.retainRejectedSession(entry.id, saved);
+      notice = 'Incompatible session: original records retained, documented defaults shown.';
+    }
     await store.visit(entry.id);
     if (mounted) setState(() => ready = true);
   }
@@ -440,8 +445,126 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
     super.dispose();
   }
 
+  CircuitPart? get instrumentPart =>
+      circuit.parts.where((p) => p.id == selected).firstOrNull ??
+      circuit.parts.firstOrNull;
+  List<InstrumentControl> instrumentControls() => [
+    for (final p in visibleControls)
+      InstrumentControl(
+        p.key,
+        p.label,
+        p.unit,
+        parameters[p.key]!,
+        p.min,
+        p.max,
+        (v) => updateMany(<String, double>{p.key: v}),
+      ),
+    if (kind == 4 &&
+        instrumentPart != null &&
+        ['source', 'resistor', 'lamp'].contains(instrumentPart!.type))
+      InstrumentControl(
+        'component',
+        instrumentPart!.id,
+        instrumentPart!.type == 'source' ? 'V' : 'Ω',
+        instrumentPart!.value,
+        instrumentPart!.type == 'source' ? -24 : .1,
+        instrumentPart!.type == 'source' ? 24 : 10000,
+        (v) {
+          pause();
+          instrumentPart!.value = v;
+          restart();
+        },
+      ),
+  ];
+  String? highlightControl;
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    if (ready && (section == 1 || section == 4)) {
+      return InstrumentShell(
+        key: ValueKey('instrument-${entry.id}'),
+        exportRecorded: (trials) => exportTrials(context, trials),
+        reopenTrial: (trial) {
+          pause();
+          final before = Map<String, dynamic>.from(
+            jsonDecode(jsonEncode(configuration())),
+          );
+          final ok = restore(trial.configuration);
+          if (!ok) restore(before);
+          tick.value++;
+          setState(() {});
+          return ok;
+        },
+
+        guidedStep: () => guided,
+        changeGuidedStep: (v) {
+          setState(() => guided = v);
+          persist();
+        },
+        guideInstructions: () => [
+          lesson.procedure.split('. ').first,
+          'Run or step the model, or inspect a static probe.',
+          'Record ${lesson.metric} for this configuration.',
+          'Check the numerical prediction and add explanatory notes.',
+        ],
+        canAdvanceGuide: (step) => step == 0
+            ? changed
+            : step == 1
+            ? (!(run.dynamicLab) || run.time > 0)
+            : step == 2
+            ? store.trials.any(
+                (t) =>
+                    t.labId == entry.id &&
+                    t.configuration['ticks'] == run.ticks &&
+                    jsonEncode(t.configuration['parameters']) ==
+                        jsonEncode(parameters),
+              )
+            : true,
+
+        id: entry.id,
+        title: entry.title,
+        highlightControl: highlightControl,
+        store: store,
+        changes: tick,
+        scene: compactScene,
+        graph: graph,
+        controls: instrumentControls,
+        readings: () => [
+          InstrumentReading(
+            lesson.metric,
+            result?.toStringAsPrecision(5) ?? 'Undefined',
+            lesson.unit,
+          ),
+          InstrumentReading('Model t', run.time.toStringAsPrecision(4), 's'),
+        ],
+        advanced: () => experiment().skip(1).toList(),
+        results: results,
+        notice: () => notice,
+        playing: () => ticker.isActive,
+        dynamicModel: () => run.dynamicLab,
+        canRecord: () => result != null && result!.isFinite,
+        play: play,
+        pause: pause,
+        reset: resetTime,
+        save: save,
+        record: record,
+        step: () {
+          pause();
+          run.step();
+          tick.value++;
+        },
+        selection: null,
+        resetOriginalView: () => view.value = Matrix4.identity(),
+        section: section,
+        selectSection: (value) {
+          pause();
+          setState(() => section = value);
+        },
+      );
+    }
+    return legacyBuild(context);
+  }
+
+  Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Text(entry.title),
       actions: [
@@ -518,6 +641,112 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
     ),
     investigation(),
   ];
+  Widget compactScene() => ListenableBuilder(
+    listenable: tick,
+    builder: (context, _) {
+      final painter = EMPainter(
+        run,
+        labels: labels,
+        overlays: overlays,
+        fieldLines: fieldLines,
+        electrons: electrons,
+        azimuth: azimuth,
+        elevation: elevation,
+        selected: selected,
+      );
+
+      return LayoutBuilder(
+        builder: (context, box) => Semantics(
+          label: painter.accessibleSummary,
+          child: InteractiveViewer(
+            transformationController: view,
+            minScale: 1,
+            maxScale: 4,
+            child: GestureDetector(
+              onTapUp: kind == 4
+                  ? (e) {
+                      final point = e.localPosition / (box.maxWidth / 360);
+                      if (circuit.parts.isNotEmpty) {
+                        final parts = List<CircuitPart>.of(circuit.parts)
+                          ..sort(
+                            (a, b) =>
+                                ((painter.terminal(a, true) +
+                                                painter.terminal(a, false)) /
+                                            2 -
+                                        point)
+                                    .distance
+                                    .compareTo(
+                                      ((painter.terminal(b, true) +
+                                                      painter.terminal(
+                                                        b,
+                                                        false,
+                                                      )) /
+                                                  2 -
+                                              point)
+                                          .distance,
+                                    ),
+                          );
+                        setState(() => selected = parts.first.id);
+                        tick.value++;
+                      }
+                    }
+                  : null,
+              onPanUpdate: (e) {
+                final point = e.localPosition / (box.maxWidth / 360);
+                if (kind == 4) {
+                  final p = circuit.parts
+                      .where((p) => p.id == selected)
+                      .firstOrNull;
+                  if (p != null) {
+                    p.x = ((point.dx - 28) / 304).clamp(.08, .92);
+                    p.y = ((point.dy - 52) / 165).clamp(.08, .92);
+                    syncLayout(p);
+                    changed = true;
+                    tick.value++;
+                  }
+                } else if (kind == 7) {
+                  setState(
+                    () => azimuth = (azimuth + e.delta.dx * .01).clamp(
+                      -math.pi,
+                      math.pi,
+                    ),
+                  );
+                  tick.value++;
+                } else if ([1, 2, 6, 8].contains(kind)) {
+                  final w = painter.inverse(point);
+                  updateMany({'probeX': w.x, 'probeY': w.y});
+                } else if (kind == 0) {
+                  updateMany({
+                    'distance':
+                        (point.dx - 180).abs() * 2 / painter.coulombScale,
+                  });
+                } else if (kind == 9) {
+                  updateMany({
+                    'probe': (point.dx - 180) / painter.solenoidScale,
+                  });
+                } else if (kind == 10) {
+                  updateMany({'initialZ': (145 - point.dy) / 260});
+                } else if (kind == 5 && mode < 2) {
+                  updateMany({
+                    'gap': ((point.dx - 203).abs() * 2 - 12) / 12000,
+                  });
+                } else if (kind == 11) {
+                  updateMany({'gap': (point.dy - 197 - 8) / 1200});
+                }
+              },
+              child: RepaintBoundary(
+                child: CustomPaint(
+                  size: Size(box.maxWidth, box.maxWidth * 280 / 360),
+                  painter: painter,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+
   Widget scene() => ListenableBuilder(
     listenable: tick,
     builder: (context, _) {
@@ -548,6 +777,19 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
                     icon: const Icon(Icons.fit_screen),
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '${lesson.metric}: ${emNumber(result)} ${lesson.unit}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: navy,
+                  ),
+                ),
               ),
             ),
             LayoutBuilder(
@@ -1250,6 +1492,25 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
     ),
   );
   List<Widget> formulas() => [
+    Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        for (final c in instrumentControls())
+          ActionChip(
+            label: Text(
+              '${c.label} · ${c.value.toStringAsPrecision(4)} ${c.unit}',
+            ),
+            onPressed: () {
+              pause();
+              setState(() {
+                highlightControl = c.keyName;
+                section = 1;
+              });
+            },
+          ),
+      ],
+    ),
     Panel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

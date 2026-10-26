@@ -1,0 +1,14 @@
+{
+  "originalTrialBodiesByteForBytePreserved": 142,
+  "currentTrials": 384,
+  "originalSessionStatesExactlyPreserved": 104,
+  "originalChallengeBodiesExactlyPreserved": 109,
+  "oldSessionNotesAndParametersPreserved": 104,
+  "originalPreferencesPreserved": 4,
+  "baselineHasExplicitCompletionPreference": false,
+  "originalSchema": 3,
+  "currentSchema": 3,
+  "integrity": "ok",
+  "device": "emulator-5556",
+  "qualification": "Exact SQLite JSON text comparison after final APK installation; original backup remains local and is not committed."
+}

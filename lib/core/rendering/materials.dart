@@ -78,8 +78,10 @@ class LabMaterials {
   static void shadow(Canvas c, Rect r) => c.drawOval(
     r,
     Paint()
-      ..color = Colors.black.withValues(alpha: .16)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+      ..shader = const RadialGradient(
+        colors: [Color(0x29000000), Color(0x16000000), Colors.transparent],
+        stops: [0, .55, 1],
+      ).createShader(r),
   );
   static void metal(Canvas c, Rect r, {bool brass = false}) {
     final colors = brass

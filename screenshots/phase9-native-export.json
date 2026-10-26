@@ -1,0 +1,9 @@
+{
+  "nativeChooserObserved": true,
+  "ordinaryDebugApk": true,
+  "backReturnedToNotebook": true,
+  "resumedActivities": [
+    "topResumedActivity=ActivityRecord{253093114 u0 com.indianservers.physics_atelier/.MainActivity t45}"
+  ],
+  "qualification": "Ordinary lib/main.dart APK: explicit CSV action, OS chooser observed, one native Back, no recipient selected. Does not certify delivery to an external app."
+}

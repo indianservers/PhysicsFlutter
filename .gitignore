@@ -51,3 +51,12 @@ app.*.map.json
 /Target UI/
 /mockup-contact-sheet.jpg
 /deliverables/*.apk
+
+# Local-only restoration fixtures may contain notebook data; generate for native QA.
+/integration_test/phase9_local_restore.dart
+/deliverables/phase9-screenshots.zip
+
+/integration_test/phase9_fixture.local.json
+
+# Requested QA evidence; logs are sanitized before committing.
+!/docs/validation/*.log

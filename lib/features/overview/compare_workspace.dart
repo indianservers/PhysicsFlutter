@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
+import '../../content/catalog.dart' show entryById;
+import '../workbench/workbench.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/persistence/notebook.dart';
 import '../../core/physics/comparisons.dart';
@@ -56,7 +58,8 @@ class CompareWorkspaceState extends ConsumerState<CompareWorkspace>
   Future<void> load() async {
     final data = await store.readSession('s00-e04');
     if (data != null && !restore(data)) {
-      notice = 'Older comparison state retained; current defaults shown.';
+      await store.retainRejectedSession('s00-e04', data);
+      notice = 'Older comparison state backed up; current defaults shown.';
     }
     await store.visit('s00-e04');
     if (mounted) setState(() => ready = true);
@@ -243,26 +246,285 @@ class CompareWorkspaceState extends ConsumerState<CompareWorkspace>
           child: InteractiveViewer(
             minScale: .5,
             maxScale: 4,
-            child: CustomPaint(
-              painter: LabPlot(
-                side == 0 ? model.left : model.right,
-                side == 0
-                    ? model.left.first.keys.where((k) => k != 't').toList()
-                    : model.right.first.keys.where((k) => k != 't').toList(),
-                model.xLabels[side],
-                model.units[side],
-                0,
-                histogramKeys: pair == 4 && side == 1 ? {'observed'} : {},
+            child: RepaintBoundary(
+              child: CustomPaint(
+                painter: LabPlot(
+                  side == 0 ? model.left : model.right,
+                  side == 0
+                      ? model.left.first.keys.where((k) => k != 't').toList()
+                      : model.right.first.keys.where((k) => k != 't').toList(),
+                  model.xLabels[side],
+                  model.units[side],
+                  0,
+                  contentRevision: Object.hash(
+                    identityHashCode(model),
+                    side,
+                    pair == 4 && side == 1 ? model.values['detections'] : 0,
+                  ),
+                  histogramKeys: pair == 4 && side == 1 ? {'observed'} : {},
+                ),
+                size: const Size(double.infinity, 230),
               ),
-              size: const Size(double.infinity, 230),
             ),
           ),
         ),
       ),
     ],
   );
+  Widget pairedScenes() => AspectRatio(
+    aspectRatio: 4 / 3,
+    child: ListenableBuilder(
+      listenable: tick,
+      builder: (context, _) => Row(
+        children: [
+          for (int side = 0; side < 2; side++)
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    entryById(comparisonLabs[pair][side]).title,
+                    style: const TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                  Text(model.units[side]),
+                  Expanded(
+                    child: Center(
+                      child: AspectRatio(
+                        aspectRatio: 1.8,
+                        child: RepaintBoundary(
+                          child: CustomPaint(
+                            painter: ComparisonPainter(model, side),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    ),
+  );
+  Widget pairedGraphs() => ListenableBuilder(
+    listenable: tick,
+    builder: (context, _) => Column(
+      children: [
+        for (int side = 0; side < 2; side++) ...[
+          Text(
+            '${side == 0 ? 'Left' : 'Right'} · ${model.units[side]} versus ${model.xLabels[side]}',
+          ),
+          SizedBox(
+            height: 230,
+            child: InteractiveViewer(
+              minScale: .5,
+              maxScale: 4,
+              child: CustomPaint(
+                painter: LabPlot(
+                  side == 0 ? model.left : model.right,
+                  (side == 0 ? model.left : model.right).first.keys
+                      .where((k) => k != 't')
+                      .toList(),
+                  model.xLabels[side],
+                  model.units[side],
+                  0,
+                  histogramKeys: pair == 4 && side == 1 ? {'observed'} : {},
+                ),
+                size: const Size(double.infinity, 230),
+              ),
+            ),
+          ),
+        ],
+      ],
+    ),
+  );
+  List<Widget> comparisonDetails() => [
+    Paragraph('Synchronization', comparisonConventions[pair]),
+    Paragraph('Analogy limits', comparisonLimits[pair]),
+    for (final c in comparisonControls[pair])
+      Column(
+        children: [
+          Text('${c.label}: ${fmNumber(p[c.key])} ${c.unit}'),
+          Slider(
+            value: p[c.key]!,
+            min: c.min,
+            max: c.max,
+            onChanged: (v) => update(c.key, v),
+          ),
+        ],
+      ),
+    TextField(
+      controller: notes,
+      maxLines: 3,
+      decoration: const InputDecoration(labelText: 'Comparison notes'),
+      onChanged: (_) => setState(() => saved = false),
+    ),
+    FilledButton(
+      onPressed: save,
+      child: const Text('Save comparison configuration'),
+    ),
+    Text(
+      '${explored.length}/5 comparisons explored. Activity completion requires all five, an edit and saved notes.',
+    ),
+    FilledButton(
+      onPressed:
+          explored.length == 5 &&
+              changed &&
+              saved &&
+              notes.text.trim().isNotEmpty
+          ? () async {
+              await store.complete('s00-e04');
+              if (mounted) setState(() {});
+            }
+          : null,
+      child: const Text('Complete comparison activity'),
+    ),
+    for (final id in comparisonLabs[pair])
+      TextButton(
+        onPressed: () => context.push('/lab/$id'),
+        child: Text(entryById(id).title),
+      ),
+  ];
+  void inspectComparison() {
+    pause();
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (ctx) => SafeArea(
+        child: SizedBox(
+          height: MediaQuery.sizeOf(ctx).height * .7,
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: comparisonDetails(),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    if (!ready) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    final leftKeys = [
+      'springPosition',
+      'electricField',
+      'waveEnvelope',
+      'voltage',
+      'classicalPosition',
+    ];
+    final rightKeys = [
+      'pendulumAngle',
+      'gravityField',
+      'opticalIntensity',
+      'temperature',
+      'detections',
+    ];
+    return InstrumentShell(
+      key: const ValueKey('instrument-comparison'),
+      id: 's00-e04',
+      title: 'Compare Phenomena',
+      store: store,
+      changes: tick,
+      showLabSections: false,
+      recordLabel: 'Save comparison',
+      scene: pairedScenes,
+      graph: pairedGraphs,
+      controls: () => [
+        InstrumentControl(
+          'coordinate',
+          pair == 0 || pair == 4 ? 'Time' : 'Scan index',
+          pair == 0 || pair == 4 ? 's' : 'index',
+          coordinate,
+          0,
+          20,
+          (x) {
+            pause();
+            coordinate = x;
+            model.at(x);
+            if (x > 0) explored.add(pair);
+            tick.value++;
+            setState(() {});
+          },
+        ),
+        for (final c in comparisonControls[pair])
+          InstrumentControl(
+            c.key,
+            c.label,
+            c.unit,
+            p[c.key]!,
+            c.min,
+            c.max,
+            (v) => update(c.key, v),
+          ),
+      ],
+      readings: () => [
+        for (final k in [leftKeys[pair], rightKeys[pair]])
+          InstrumentReading(k, fmNumber(model.values[k]), model.valueUnit(k)),
+      ],
+      advanced: comparisonDetails,
+      results: comparisonDetails,
+      data: () => ListenableBuilder(
+        listenable: tick,
+        builder: (context, _) => ListView(
+          padding: const EdgeInsets.all(12),
+          children: [
+            for (final e in model.values.entries)
+              ListTile(
+                dense: true,
+                title: Text(e.key),
+                trailing: Text(
+                  '${fmNumber(e.value)} ${model.valueUnit(e.key)}',
+                ),
+              ),
+          ],
+        ),
+      ),
+      notice: () => '',
+      playing: () => ticker.isActive,
+      dynamicModel: () => true,
+      canRecord: () => true,
+      play: play,
+      pause: pause,
+      reset: () {
+        pause();
+        coordinate = 0;
+        model.at(0);
+        tick.value++;
+        setState(() {});
+      },
+      save: save,
+      record: save,
+      section: 1,
+      selectSection: (_) => inspectComparison(),
+      step: () {
+        pause();
+        coordinate = math.min(20, coordinate + 1 / 120);
+        model.at(coordinate);
+        explored.add(pair);
+        tick.value++;
+        setState(() {});
+      },
+      selection: () => DropdownButtonFormField<int>(
+        key: ValueKey('dock-pair-$pair'),
+        initialValue: pair,
+        isExpanded: true,
+        items: [
+          for (int i = 0; i < 5; i++)
+            DropdownMenuItem(
+              value: i,
+              child: Text(comparisonNames[i], overflow: TextOverflow.ellipsis),
+            ),
+        ],
+        onChanged: (v) {
+          if (v != null) choose(v);
+        },
+      ),
+    );
+  }
+
+  Widget legacyBuild(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: const Text('Compare Phenomena'),
       actions: [
@@ -427,7 +689,7 @@ class CompareWorkspaceState extends ConsumerState<CompareWorkspace>
               for (final id in comparisonLabs[pair])
                 TextButton(
                   onPressed: () => context.push('/lab/$id'),
-                  child: Text('Open source lab $id'),
+                  child: Text(entryById(id).title),
                 ),
             ],
           ),
