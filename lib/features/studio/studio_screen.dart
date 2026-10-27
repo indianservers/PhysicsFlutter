@@ -11,6 +11,7 @@ import '../../core/design_system/theme.dart';
 import '../home/home_screen.dart' show HomeArtwork;
 import '../home/studio_registry.dart';
 import '../workbench/lab_thumbnail.dart';
+import '../workbench/exploration_workbench.dart';
 
 class CompactStudio extends ConsumerStatefulWidget {
   final Studio studio;
@@ -141,6 +142,18 @@ class _CompactStudioState extends ConsumerState<CompactStudio> {
                   key: PageStorageKey('studio-${studio.id}'),
                   controller: scroll,
                   slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        child: OutlinedButton.icon(
+                          key: const Key('studio-exploration-tools'),
+                          onPressed: () =>
+                              showStudioTools(context, studios.indexOf(studio)),
+                          icon: const Icon(Icons.travel_explore),
+                          label: const Text('10 studio tools'),
+                        ),
+                      ),
+                    ),
                     if (query.trim().isEmpty)
                       SliverPadding(
                         padding: const EdgeInsets.fromLTRB(16, 6, 16, 8),

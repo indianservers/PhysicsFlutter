@@ -9,10 +9,10 @@ class SpherometerViewport extends StatefulWidget {
   final Experiment experiment;
   const SpherometerViewport({super.key, required this.experiment});
   @override
-  State<SpherometerViewport> createState() => _SpherometerViewportState();
+  State<SpherometerViewport> createState() => SpherometerViewportState();
 }
 
-class _SpherometerViewportState extends State<SpherometerViewport> {
+class SpherometerViewportState extends State<SpherometerViewport> {
   bool turning = false;
   double dragReading = 0;
   Experiment get e => widget.experiment;
@@ -65,7 +65,7 @@ class _SpherometerViewportState extends State<SpherometerViewport> {
     builder: (c, _) => LayoutBuilder(
       builder: (c, b) => Column(
         children: [
-          if (b.maxHeight > 120)
+          if (b.maxHeight > 240)
             SizedBox(
               height: 48,
               child: SingleChildScrollView(
@@ -87,7 +87,7 @@ class _SpherometerViewportState extends State<SpherometerViewport> {
                         ),
                       ),
                     IconButton(
-                      tooltip: 'Scale magnifier',
+                      tooltip: 'Open circular scale',
                       onPressed: scale,
                       icon: const Icon(Icons.zoom_in),
                     ),
@@ -117,10 +117,10 @@ class _SpherometerViewportState extends State<SpherometerViewport> {
           Expanded(
             child: LayoutBuilder(
               builder: (c, box) {
-                final fit = math.min(box.maxWidth / 440, box.maxHeight / 290),
+                final fit = math.min(box.maxWidth / 350, box.maxHeight / 260),
                     origin = Offset(
-                      (box.maxWidth - 440 * fit) / 2,
-                      (box.maxHeight - 290 * fit) / 2,
+                      (box.maxWidth - 350 * fit) / 2 - 45 * fit,
+                      (box.maxHeight - 260 * fit) / 2 - 20 * fit,
                     );
                 return GestureDetector(
                   key: const Key('spherometer-apparatus'),
@@ -178,7 +178,7 @@ class SpherometerPainter extends CustomPainter {
     Canvas c,
     String v,
     Offset p, {
-    double size = 11,
+    double size = 13,
     Color color = const Color(0xff283b50),
   }) {
     final t = TextPainter(
@@ -224,9 +224,12 @@ class SpherometerPainter extends CustomPainter {
 
   @override
   void paint(Canvas c, Size size) {
-    final fit = math.min(size.width / 440, size.height / 290);
+    final fit = math.min(size.width / 350, size.height / 260);
     c.save();
-    c.translate((size.width - 440 * fit) / 2, (size.height - 290 * fit) / 2);
+    c.translate(
+      (size.width - 350 * fit) / 2 - 45 * fit,
+      (size.height - 260 * fit) / 2 - 20 * fit,
+    );
     c.scale(fit);
     final gain = s.exaggerated ? 12.0 : 1.0;
     Offset p(double x, double y, double z) => Offset(
@@ -467,13 +470,13 @@ class SpherometerPainter extends CustomPainter {
       }
       text(c, '0.50 mm/turn', const Offset(280, 106), size: 10);
       if (s.labels) {
-        text(c, 'Three fixed tips', const Offset(24, 258));
-        text(c, 'Rigid frame', const Offset(25, 105));
+        text(c, 'Three fixed tips', const Offset(48, 258));
+        text(c, 'Rigid frame', const Offset(48, 105));
         text(c, 'Central screw', const Offset(290, 125));
         text(
           c,
           s.surface == 0 ? 'Plane reference plate' : 'Curved glass cap',
-          const Offset(272, 243),
+          const Offset(250, 243),
         );
       }
     }

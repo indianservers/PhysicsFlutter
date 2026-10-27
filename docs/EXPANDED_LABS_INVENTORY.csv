@@ -1,0 +1,21 @@
+﻿id,studio,title,route,apparatus,graph,inspector
+s02-e06,Mechanics,Rotational Inertia,/lab/s02-e06,Target UI/expandedLabsScreens/s02/s02-e06_apparatus.png,Target UI/expandedLabsScreens/s02/s02-e06_graph.png,Target UI/expandedLabsScreens/s02/s02-e06_inspect.png
+s02-e07,Mechanics,Rolling Motion,/lab/s02-e07,Target UI/expandedLabsScreens/s02/s02-e07_apparatus.png,Target UI/expandedLabsScreens/s02/s02-e07_graph.png,Target UI/expandedLabsScreens/s02/s02-e07_inspect.png
+s02-e08,Mechanics,Hooke’s Law,/lab/s02-e08,Target UI/expandedLabsScreens/s02/s02-e08_apparatus.png,Target UI/expandedLabsScreens/s02/s02-e08_graph.png,Target UI/expandedLabsScreens/s02/s02-e08_inspect.png
+s02-e09,Mechanics,Young’s Modulus,/lab/s02-e09,Target UI/expandedLabsScreens/s02/s02-e09_apparatus.png,Target UI/expandedLabsScreens/s02/s02-e09_graph.png,Target UI/expandedLabsScreens/s02/s02-e09_inspect.png
+s03-e06,Motion & Kinematics,Free Fall,/lab/s03-e06,Target UI/expandedLabsScreens/s03/s03-e06_apparatus.png,Target UI/expandedLabsScreens/s03/s03-e06_graph.png,Target UI/expandedLabsScreens/s03/s03-e06_inspect.png
+s07-e06,Oscillations,Torsional Pendulum,/lab/s07-e06,Target UI/expandedLabsScreens/s07/s07-e06_apparatus.png,Target UI/expandedLabsScreens/s07/s07-e06_graph.png,Target UI/expandedLabsScreens/s07/s07-e06_inspect.png
+s08-e06,Waves & Sound,Beats,/lab/s08-e06,Target UI/expandedLabsScreens/s08/s08-e06_apparatus.png,Target UI/expandedLabsScreens/s08/s08-e06_graph.png,Target UI/expandedLabsScreens/s08/s08-e06_inspect.png
+s09-e06,Optics,Polarization,/lab/s09-e06,Target UI/expandedLabsScreens/s09/s09-e06_apparatus.png,Target UI/expandedLabsScreens/s09/s09-e06_graph.png,Target UI/expandedLabsScreens/s09/s09-e06_inspect.png
+s10-e06,Electricity,Wire Resistivity,/lab/s10-e06,Target UI/expandedLabsScreens/s10/s10-e06_apparatus.png,Target UI/expandedLabsScreens/s10/s10-e06_graph.png,Target UI/expandedLabsScreens/s10/s10-e06_inspect.png
+s10-e07,Electricity,Wheatstone Bridge,/lab/s10-e07,Target UI/expandedLabsScreens/s10/s10-e07_apparatus.png,Target UI/expandedLabsScreens/s10/s10-e07_graph.png,Target UI/expandedLabsScreens/s10/s10-e07_inspect.png
+s10-e08,Electricity,AC RLC Circuits,/lab/s10-e08,Target UI/expandedLabsScreens/s10/s10-e08_apparatus.png,Target UI/expandedLabsScreens/s10/s10-e08_graph.png,Target UI/expandedLabsScreens/s10/s10-e08_inspect.png
+s11-e06,Magnetism,Transformer,/lab/s11-e06,Target UI/expandedLabsScreens/s11/s11-e06_apparatus.png,Target UI/expandedLabsScreens/s11/s11-e06_graph.png,Target UI/expandedLabsScreens/s11/s11-e06_inspect.png
+s12-e06,Electronics,Full-wave Rectifier,/lab/s12-e06,Target UI/expandedLabsScreens/s12/s12-e06_apparatus.png,Target UI/expandedLabsScreens/s12/s12-e06_graph.png,Target UI/expandedLabsScreens/s12/s12-e06_inspect.png
+s13-e06,Thermodynamics,Calorimetry,/lab/s13-e06,Target UI/expandedLabsScreens/s13/s13-e06_apparatus.png,Target UI/expandedLabsScreens/s13/s13-e06_graph.png,Target UI/expandedLabsScreens/s13/s13-e06_inspect.png
+s13-e07,Thermodynamics,Heating Curve & Latent Heat,/lab/s13-e07,Target UI/expandedLabsScreens/s13/s13-e07_apparatus.png,Target UI/expandedLabsScreens/s13/s13-e07_graph.png,Target UI/expandedLabsScreens/s13/s13-e07_inspect.png
+s13-e08,Thermodynamics,Thermal Expansion,/lab/s13-e08,Target UI/expandedLabsScreens/s13/s13-e08_apparatus.png,Target UI/expandedLabsScreens/s13/s13-e08_graph.png,Target UI/expandedLabsScreens/s13/s13-e08_inspect.png
+s14-e06,Fluid Mechanics,Capillary Rise,/lab/s14-e06,Target UI/expandedLabsScreens/s14/s14-e06_apparatus.png,Target UI/expandedLabsScreens/s14/s14-e06_graph.png,Target UI/expandedLabsScreens/s14/s14-e06_inspect.png
+s15-e06,Modern Physics,Rutherford Scattering,/lab/s15-e06,Target UI/expandedLabsScreens/s15/s15-e06_apparatus.png,Target UI/expandedLabsScreens/s15/s15-e06_graph.png,Target UI/expandedLabsScreens/s15/s15-e06_inspect.png
+s15-e07,Modern Physics,Time Dilation & Length Contraction,/lab/s15-e07,Target UI/expandedLabsScreens/s15/s15-e07_apparatus.png,Target UI/expandedLabsScreens/s15/s15-e07_graph.png,Target UI/expandedLabsScreens/s15/s15-e07_inspect.png
+s16-e06,Astronomy & Astrophysics,Stellar Parallax,/lab/s16-e06,Target UI/expandedLabsScreens/s16/s16-e06_apparatus.png,Target UI/expandedLabsScreens/s16/s16-e06_graph.png,Target UI/expandedLabsScreens/s16/s16-e06_inspect.png

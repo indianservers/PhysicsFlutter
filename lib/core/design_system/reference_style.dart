@@ -3,9 +3,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../content/catalog.dart';
 import 'theme.dart';
+import 'app_navigation.dart';
 
-/// The four contextual destinations shown by the supplied Target UI.
-/// This is separate from the former five-section navigation bar.
+/// Global destinations share the exact same menu as the home screen.
+/// Lab-specific learning and results live in the workspace toolbar.
 class ReferenceNavigation extends StatelessWidget {
   final int selected;
   final VoidCallback? onFirst, onLabs, onResults;
@@ -22,93 +23,24 @@ class ReferenceNavigation extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final labels = [homeFirst ? 'Home' : 'Learn', 'Labs', 'Results', 'Profile'];
-    final icons = [
-      firstIcon ?? (homeFirst ? Icons.home_outlined : Icons.menu_book_outlined),
-      Icons.science_outlined,
-      Icons.bar_chart_outlined,
-      Icons.person_outline,
-    ];
-    final height = (42 + MediaQuery.textScalerOf(context).scale(10)).clamp(
-      56.0,
-      84.0,
-    );
-    return Material(
-      color: Colors.white,
-      child: DecoratedBox(
-        decoration: const BoxDecoration(
-          border: Border(top: BorderSide(color: Color(0xffdce7f1))),
-        ),
-        child: SafeArea(
-          top: false,
-          child: SizedBox(
-            height: height,
-            child: Row(
-              children: [
-                for (int i = 0; i < 4; i++)
-                  Expanded(
-                    child: Semantics(
-                      selected: selected == i,
-                      button: true,
-                      label: labels[i],
-                      child: InkWell(
-                        key: Key('reference-nav-${labels[i].toLowerCase()}'),
-                        onTap: () {
-                          switch (i) {
-                            case 0:
-                              if (onFirst != null) {
-                                onFirst!();
-                              } else {
-                                context.go('/');
-                              }
-                            case 1:
-                              if (onLabs != null) {
-                                onLabs!();
-                              } else {
-                                context.go('/studio/s01');
-                              }
-                            case 2:
-                              if (onResults != null) {
-                                onResults!();
-                              } else {
-                                context.push('/notebook');
-                              }
-                            case 3:
-                              context.push('/profile');
-                          }
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              icons[i],
-                              size: 22,
-                              color: selected == i ? cobalt : muted,
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              labels[i],
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 10,
-                                height: 1.1,
-                                fontWeight: selected == i
-                                    ? FontWeight.w700
-                                    : FontWeight.w500,
-                                color: selected == i ? cobalt : navy,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-        ),
-      ),
+    final configuration = GoRouter.maybeOf(context)
+        ?.routerDelegate
+        .currentConfiguration;
+    final path = configuration == null || configuration.isEmpty
+        ? ''
+        : configuration.last.matchedLocation;
+    return HomeNavigation(
+      selected: path == '/settings'
+          ? 3
+          : path.startsWith('/studio') || path.startsWith('/lab')
+          ? 1
+          : -1,
+      onSelect: (index) => context.push(switch (index) {
+        1 => '/?tab=explore',
+        2 => '/?tab=saved',
+        3 => '/settings',
+        _ => '/',
+      }),
     );
   }
 }
@@ -121,11 +53,7 @@ class ReferenceLabHeading extends StatelessWidget {
     final known = allEntries.where((e) => e.id == id);
     final entry = known.isEmpty ? null : known.first;
     final compact = MediaQuery.textScalerOf(context).scale(1) > 1.4;
-    final label = entry == null
-        ? title
-        : entry.studioIndex >= 10
-        ? entry.title
-        : '${entry.index + 1}. ${entry.title}';
+    final label = entry?.title ?? title;
     return Semantics(
       header: true,
       child: Column(
@@ -134,7 +62,7 @@ class ReferenceLabHeading extends StatelessWidget {
           Text(
             label,
             textAlign: TextAlign.center,
-            maxLines: compact ? 1 : 2,
+            maxLines: compact ? 3 : 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               fontSize: 15,

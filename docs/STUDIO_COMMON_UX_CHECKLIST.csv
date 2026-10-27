@@ -1,0 +1,181 @@
+﻿id,studio,lab_id,enhancement,behavior
+common-01,All 116 physical labs,*,Searchable controls,"Find inputs by name, symbol or unit, see the result count and clear the filter."
+common-02,All 116 physical labs,*,Precise bounded entry,"Open the existing precision editor beside every current control, with its live range and units."
+common-03,All 116 physical labs,*,Selectable fine steps,"Choose 0.01%, 0.1% or 1% of the current control range; use named decrease/increase buttons without dragging."
+common-04,All 116 physical labs,*,Previewed paired setups,Inspect actual A/B control values and units before applying a studio setup; unavailable mode controls block the whole change.
+common-05,All 116 physical labs,*,Setup undo and redo,"Undo and redo complete source configurations, including model options and time; recorded trials remain separate."
+common-06,All 116 physical labs,*,Baseline change ledger,"Review changes from the temporary opening reference, replace that reference explicitly, or restore it with Undo available."
+common-07,All 116 physical labs,*,Focused live readings,"Search calculated readings, pin useful quantities to the top and switch between the curated focus and all values."
+common-08,All 116 physical labs,*,Visible capture readiness,Show current validity and the full source notice; block evidence capture until the apparatus/model is ready.
+common-09,All 116 physical labs,*,Fair A/B interpretation,"Capture two actual paused states; show changed conditions and compute a secant only for one changed input, matching mode/units and equal available model time."
+common-10,All 116 physical labs,*,Deliberate evidence sharing,"Copy only the selected setup inputs, calculated readings and explicit A/B evidence; source notes and histories are excluded."
+s00-t01,Concept Overview,s00-e00,Readable atlas cards,Apply the focused discovery action in its actual overview tool.
+s00-t02,Concept Overview,s00-e00,Find force-related laboratories,Apply the focused discovery action in its actual overview tool.
+s00-t03,Concept Overview,s00-e00,Compare the studio overview,Apply the focused discovery action in its actual overview tool.
+s00-t04,Concept Overview,s00-e01,Focus the force relationships,Apply the focused discovery action in its actual overview tool.
+s00-t05,Concept Overview,s00-e01,Return to the complete relationship map,Apply the focused discovery action in its actual overview tool.
+s00-t06,Concept Overview,s00-e02,Start with measurement foundations,Apply the focused discovery action in its actual overview tool.
+s00-t07,Concept Overview,s00-e02,Plan an energy investigation,Apply the focused discovery action in its actual overview tool.
+s00-t08,Concept Overview,s00-e03,Find foundational apparatus,Apply the focused discovery action in its actual overview tool.
+s00-t09,Concept Overview,s00-e03,Explore wave experiments,Apply the focused discovery action in its actual overview tool.
+s00-t10,Concept Overview,s00-e05,Practice measurement predictions,Apply the focused discovery action in its actual overview tool.
+s01-t01,Measurement,s01-e00,Read from a nonzero origin,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t02,Measurement,s01-e01,Practice positive zero correction,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t03,Measurement,s01-e02,Cross a sleeve millimetre mark,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t04,Measurement,s01-e03,Approach plane contact gently,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t05,Measurement,s01-e04,Establish a constant-speed timing run,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t06,Measurement,s01-e05,Compare resolution contributions,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t07,Measurement,s01-e00,Translate both ruler endpoints,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t08,Measurement,s01-e01,Signed caliper zero-error clinic,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t09,Measurement,s01-e02,Cross a micrometer sleeve boundary,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s01-t10,Measurement,s01-e03,Spherometer screw-calibration comparison,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t01,Mechanics,s02-e00,Resolve an angled applied force,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t02,Mechanics,s02-e01,Compare below and above breakaway,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t03,Mechanics,s02-e02,Compare balanced and unbalanced loads,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t04,Mechanics,s02-e03,Compare moment arms,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t05,Mechanics,s02-e04,Place support near the mass-weighted centre,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t06,Mechanics,s02-e05,Compare inelastic and elastic outcomes,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t07,Mechanics,s02-e06,Increase the solid disk radius,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t08,Mechanics,s02-e07,Compare two rolling accelerations,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t09,Mechanics,s02-e08,Compare force and energy scaling,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s02-t10,Mechanics,s02-e09,Double the wire radius,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t01,Motion & Kinematics,s03-e00,Create a straight position-time trace,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t02,Motion & Kinematics,s03-e01,Hold velocity constant,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t03,Motion & Kinematics,s03-e02,Change the second acceleration segment,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t04,Motion & Kinematics,s03-e03,Compare complementary launch angles,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t05,Motion & Kinematics,s03-e04,Compare approaching and separating frames,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t06,Motion & Kinematics,s03-e05,Increase circular speed,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t07,Motion & Kinematics,s03-e06,Try a lunar-like gravity setting,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t08,Motion & Kinematics,s03-e00,Translate the position origin,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t09,Motion & Kinematics,s03-e01,Reverse the initial velocity,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s03-t10,Motion & Kinematics,s03-e02,Move the acceleration-switch event,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t01,Force & Newton’s Laws,s04-e00,Remove the applied impulse,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t02,Force & Newton’s Laws,s04-e01,Find the zero-net-force case,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t03,Force & Newton’s Laws,s04-e02,Compare action-reaction accelerations,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t04,Force & Newton’s Laws,s04-e03,Compare static and kinetic response,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t05,Force & Newton’s Laws,s04-e04,Compare apparent weights,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t06,Force & Newton’s Laws,s04-e05,Compare reinforcement and opposition,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t07,Force & Newton’s Laws,s04-e00,Motion without an applied impulse,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t08,Force & Newton’s Laws,s04-e01,"Same force, different inertial mass",Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t09,Force & Newton’s Laws,s04-e02,Swap unequal interacting masses,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s04-t10,Force & Newton’s Laws,s04-e03,Sliding friction reverses with motion,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t01,"Work, Energy & Power",s05-e00,Compare parallel and transverse work,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t02,"Work, Energy & Power",s05-e01,Compare kinetic energy scaling,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t03,"Work, Energy & Power",s05-e02,Compare two reference levels,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t04,"Work, Energy & Power",s05-e03,Compare mechanical-energy histories,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t05,"Work, Energy & Power",s05-e04,Compare equal lifts at different durations,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t06,"Work, Energy & Power",s05-e05,Compare useful and wasted energy,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t07,"Work, Energy & Power",s05-e00,Friction changes the work ledger,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t08,"Work, Energy & Power",s05-e01,Mass scaling of kinetic energy,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t09,"Work, Energy & Power",s05-e02,Move the potential-energy zero,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s05-t10,"Work, Energy & Power",s05-e03,Conservative and dissipative track runs,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t01,Gravitation,s06-e00,Double centre-to-centre separation,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t02,Gravitation,s06-e01,Move the gravitational probe outward,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t03,Gravitation,s06-e02,Move outward in a negative potential,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t04,Gravitation,s06-e03,Introduce a radial launch component,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t05,Gravitation,s06-e04,Try a faster outward launch,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t06,Gravitation,s06-e05,Start with a circular Kepler orbit,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t07,Gravitation,s06-e00,Change the second gravitating mass,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t08,Gravitation,s06-e01,Rotate the gravitational-field probe,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t09,Gravitation,s06-e02,Potential versus test-mass energy,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s06-t10,Gravitation,s06-e03,Add a radial launch component,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t01,Oscillations,s07-e00,Stiffen the SHM spring,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t02,Oscillations,s07-e01,Start with a small pendulum angle,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t03,Oscillations,s07-e02,Add an initial kinetic contribution,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t04,Oscillations,s07-e03,Compare underdamped and overdamped response,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t05,Oscillations,s07-e04,Compare detuned driving frequencies,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t06,Oscillations,s07-e05,Compare uncoupled and coupled motion,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t07,Oscillations,s07-e06,Increase rotational inertia fourfold,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t08,Oscillations,s07-e00,Mass controls the spring period,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t09,Oscillations,s07-e01,Gravity controls pendulum timing,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s07-t10,Oscillations,s07-e02,Add initial kinetic energy,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t01,Waves & Sound,s08-e00,Move the local wave probe,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t02,Waves & Sound,s08-e01,Compare cancellation and reinforcement,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t03,Waves & Sound,s08-e02,Compare coherent phase conditions,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t04,Waves & Sound,s08-e03,Compare fundamental and third harmonic,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t05,Waves & Sound,s08-e04,Move the generated tone by one FFT bin,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t06,Waves & Sound,s08-e05,Compare recession and approach,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t07,Waves & Sound,s08-e06,Compare slow and fast envelopes,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t08,Waves & Sound,s08-e00,Phase shifts without changing wave speed,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t09,Waves & Sound,s08-e01,Compare unequal pulse widths,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s08-t10,Waves & Sound,s08-e02,Unequal amplitudes at opposing phase,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t01,Optics,s09-e00,Compare two reflected directions,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t02,Optics,s09-e01,Match the two refractive indices,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t03,Optics,s09-e02,Compare inside-focus and outside-focus images,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t04,Optics,s09-e03,Compare two mirror object distances,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t05,Optics,s09-e04,Try a shorter optical wavelength,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t06,Optics,s09-e05,Compare narrow and wide central maxima,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t07,Optics,s09-e06,Compare aligned and diagonal transmission,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t08,Optics,s09-e00,Translate the ray hit point,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t09,Optics,s09-e01,Change the receiving refractive index,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s09-t10,Optics,s09-e02,Move the screen through image focus,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t01,Electricity,s10-e00,Change attraction into repulsion,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t02,Electricity,s10-e01,Reverse the test-charge sign,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t03,Electricity,s10-e02,Move toward the dipole symmetry line,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t04,Electricity,s10-e03,Open the DC circuit,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t05,Electricity,s10-e04,Compare two selected-component values,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t06,Electricity,s10-e05,Insert a higher-permittivity dielectric,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t07,Electricity,s10-e06,Double the conductor radius,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t08,Electricity,s10-e07,Compare either side of bridge balance,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t09,Electricity,s10-e08,Compare capacitive and inductive sides,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s10-t10,Electricity,s10-e00,Reverse attraction and repulsion,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t01,Magnetism,s11-e00,Reverse the dipole polarity,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t02,Magnetism,s11-e01,Reverse the particle charge,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t03,Magnetism,s11-e02,Compare current magnitudes,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t04,Magnetism,s11-e03,Move the probe beyond the solenoid centre,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t05,Magnetism,s11-e04,Reverse magnet motion through the loop,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t06,Magnetism,s11-e05,Increase the magnetic air gap,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t07,Magnetism,s11-e06,Compare step-down and step-up ratios,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t08,Magnetism,s11-e00,Dipole probe symmetry explorer,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t09,Magnetism,s11-e01,Parallel and perpendicular magnetic motion,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s11-t10,Magnetism,s11-e02,Wire-field distance explorer,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t01,Electronics,s12-e00,Compare thermal carrier populations,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t02,Electronics,s12-e01,Compare two forward-drive voltages,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t03,Electronics,s12-e02,Compare active and saturation drive,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t04,Electronics,s12-e03,Drive the amplifier toward clipping,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t05,Electronics,s12-e04,Toggle the first binary input,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t06,Electronics,s12-e05,Compare two calibrated sensor inputs,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t07,Electronics,s12-e06,Change the input AC frequency,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t08,Electronics,s12-e00,Low and high temperature carrier response,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t09,Electronics,s12-e01,Series resistance limits diode current,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s12-t10,Electronics,s12-e02,Collector supply and operating headroom,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t01,Thermodynamics,s13-e00,Compare sensor response times,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t02,Thermodynamics,s13-e01,Double the conducting-rod length,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t03,Thermodynamics,s13-e02,Plan an isothermal volume doubling,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t04,Thermodynamics,s13-e03,Compare cooling and heating endpoints,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t05,Thermodynamics,s13-e04,Remove the volume-change contribution,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t06,Thermodynamics,s13-e05,Lower the cold reservoir temperature,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t07,Thermodynamics,s13-e06,Remove the calorimeter heat capacity,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t08,Thermodynamics,s13-e07,Double the heater power,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t09,Thermodynamics,s13-e08,Establish an unheated rod reference,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s13-t10,Thermodynamics,s13-e00,Fast and slow thermometer response,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t01,Fluid Mechanics,s14-e00,Move the pressure probe to the surface,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t02,Fluid Mechanics,s14-e01,Compare opposite pressure differences,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t03,Fluid Mechanics,s14-e02,Compare floating and sinking tendencies,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t04,Fluid Mechanics,s14-e03,Compare constrictions and expansions,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t05,Fluid Mechanics,s14-e04,Raise the Bernoulli outlet,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t06,Fluid Mechanics,s14-e05,Use a more viscous liquid,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t07,Fluid Mechanics,s14-e06,Compare capillary rise and depression,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t08,Fluid Mechanics,s14-e00,Specimen mass-volume density card,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t09,Fluid Mechanics,s14-e01,Unequal communicating-column areas,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s14-t10,Fluid Mechanics,s14-e02,Floating versus sinking density,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t01,Modern Physics,s15-e00,Select the ground-state well level,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t02,Modern Physics,s15-e01,Probe below the default photoemission threshold,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t03,Modern Physics,s15-e02,Compare matter wavelengths,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t04,Modern Physics,s15-e03,Compare two upper-state transitions,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t05,Modern Physics,s15-e04,Rotate the nuclear structure for inspection,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t06,Modern Physics,s15-e05,Compare counts with the same decay model,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t07,Modern Physics,s15-e06,Compare small and large impact parameters,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t08,Modern Physics,s15-e07,Compare two relativistic speeds,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t09,Modern Physics,s15-e00,Particle mass in the same quantum well,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s15-t10,Modern Physics,s15-e01,Retarding-bias stopping test,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t01,Astronomy & Astrophysics,s16-e00,Compare half-year-separated positions,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t02,Astronomy & Astrophysics,s16-e01,Compare two actual track locations,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t03,Astronomy & Astrophysics,s16-e02,Redshift the synthetic stellar spectrum,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t04,Astronomy & Astrophysics,s16-e03,Compare baryonic and halo-supported rotation,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t05,Astronomy & Astrophysics,s16-e04,Start at zero cosmological redshift,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t06,Astronomy & Astrophysics,s16-e05,Centre the transit observation,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t07,Astronomy & Astrophysics,s16-e06,Double the orbital-radius baseline,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t08,Astronomy & Astrophysics,s16-e00,Visual-scale independence of orbital data,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t09,Astronomy & Astrophysics,s16-e01,Inspect the ends of a stored stellar track,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.
+s16-t10,Astronomy & Astrophysics,s16-e02,Thermal continuum without radial motion,Preview and apply A/B setups through the actual source controls; inspect the curated live quantities and explicitly capture evidence.

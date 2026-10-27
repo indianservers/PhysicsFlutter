@@ -423,25 +423,28 @@ void main() {
     final s = AstronomyRun(2, defaults(2));
     expect(s.profile.length, greaterThan(900));
   });
-  test('Stable inventory includes exactly96 labs and six tools with all links valid', () {
-    expect(studios.length, 17);
-    expect(allEntries.length, 102);
-    expect(allEntries.map((e) => e.id).toSet().length, 102);
-    expect(labInventory.length, 96);
-    expect(allEntries.where((e) => e.tool).length, 6);
-    for (final edge in conceptEdges) {
-      expect(edge.explanation, isNotEmpty);
-      expect(edge.assumptions, isNotEmpty);
-      for (final id in edge.labs) {
-        expect(entryById(id).interactive, true);
+  test(
+    'Stable inventory includes 116 labs and six tools with all links valid',
+    () {
+      expect(studios.length, 17);
+      expect(allEntries.length, 122);
+      expect(allEntries.map((e) => e.id).toSet().length, 122);
+      expect(labInventory.length, 116);
+      expect(allEntries.where((e) => e.tool).length, 6);
+      for (final edge in conceptEdges) {
+        expect(edge.explanation, isNotEmpty);
+        expect(edge.assumptions, isNotEmpty);
+        for (final id in edge.labs) {
+          expect(entryById(id).interactive, true);
+        }
       }
-    }
-    for (final targets in relatedDestinations.values) {
-      for (final id in targets) {
-        expect(entryById(id).interactive, true);
+      for (final targets in relatedDestinations.values) {
+        for (final id in targets) {
+          expect(entryById(id).interactive, true);
+        }
       }
-    }
-  });
+    },
+  );
   test('Eight guided paths cover every lab exactly once without cyclic prerequisites', () {
     expect(learningPaths.length, 8);
     expect(
@@ -469,8 +472,8 @@ void main() {
       );
     }
   });
-  test('Launcher metadata filters and search use the same96 identities', () {
-    expect(filterLabs().length, 96);
+  test('Launcher metadata filters and search use the same116 identities', () {
+    expect(filterLabs().length, 116);
     expect(
       filterLabs(studio: 16).map((e) => e.id).toList(),
       studios[16].entries.map((e) => e.id).toList(),
@@ -483,7 +486,7 @@ void main() {
         true,
       );
     }
-    expect(filterLabs(stage: 'Foundation').length, 32);
+    expect(filterLabs(stage: 'Foundation').length, 36);
   });
   test(
     'Every mastery answer evaluates with documented units and tolerance',

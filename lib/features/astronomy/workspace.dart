@@ -12,6 +12,7 @@ import 'package:flutter_math_fork/flutter_math.dart';
 
 import '../../app/app.dart';
 import '../workbench/workbench.dart';
+import '../workbench/quantity_ledger.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/design_system/reference_style.dart';
@@ -26,6 +27,7 @@ import '../lab_workspace/workspace.dart' show NumericInputDialog;
 import '../fluid_modern/workspace.dart' show fmNumber, fmLabel;
 import 'curriculum.dart';
 import 'scene.dart';
+import 'hr_diagram.dart';
 
 class AstronomyWorkspace extends ConsumerStatefulWidget {
   final Entry entry;
@@ -360,6 +362,21 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
     if (mounted) setState(() {});
   }
 
+  Future<void> predict() async {
+    pause();
+    if (result == null) return;
+    await showDialog<void>(
+      context: context,
+      builder: (_) => NumericInputDialog(
+        label: 'Predict ${lesson.metric} (${lesson.unit})',
+        initial: 0,
+        min: -1e35,
+        max: 1e35,
+        onApply: submit,
+      ),
+    );
+  }
+
   bool matches(dynamic p) =>
       p is Map &&
       parameters.entries
@@ -423,6 +440,67 @@ class AstronomyWorkspaceState extends ConsumerState<AstronomyWorkspace>
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchReadings: () => [
+          for (final e in run.state.entries)
+            InstrumentReading(e.key, e.value.toString(), units(e.key)),
+        ],
+        principle: () => lesson.principle,
+        modelLimits: () => lesson.limits,
+        equation: lesson.formula,
+        predict: predict,
+        captureConfiguration: configuration,
+        finished: () => run.finished,
+        data: () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (kind == 3)
+              QuantityLedger(
+                title: 'Galaxy rotation components',
+                unit: 'm/s',
+                quantities: {
+                  for (final key in [
+                    'bulgeSpeed',
+                    'diskSpeed',
+                    'haloSpeed',
+                    'speed',
+                  ])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            if (kind == 4)
+              QuantityLedger(
+                title: 'Cosmological distance definitions',
+                unit: 'm',
+                quantities: {
+                  for (final key in [
+                    'comovingDistance',
+                    'luminosityDistance',
+                    'angularDistance',
+                    'lightTravelDistance',
+                  ])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            if (kind == 1 && run.state.containsKey('logT'))
+              HRDiagram(
+                track: mode,
+                logTemperature: run.state['logT']!,
+                logLuminosity: run.state['logL']!,
+                ageFraction: (parameters['ageFraction']! + run.time / 20).clamp(
+                  0,
+                  1,
+                ),
+                changeAge: (value) => update('ageFraction', value),
+              ),
+            metrics(),
+          ],
+        ),
+        restoreConfiguration: (data) {
+          final restored = restore(data);
+          tick.value++;
+          if (mounted) setState(() {});
+          return restored;
+        },
         key: ValueKey('instrument-${entry.id}'),
         referenceChart: referencePlot,
         exportRecorded: (trials) => exportTrials(context, trials),

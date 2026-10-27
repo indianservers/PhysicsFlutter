@@ -80,7 +80,7 @@ void main() {
   });
 
   testWidgets(
-    'All96 illustrated guides return to the same live controls at200% text',
+    'All illustrated guides return to the same live controls at200% text',
     (t) async {
       t.view.physicalSize = const Size(640, 1136);
       t.view.devicePixelRatio = 2;

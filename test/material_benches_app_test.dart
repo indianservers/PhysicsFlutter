@@ -1,4 +1,5 @@
 import 'ui_navigation.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -145,12 +146,15 @@ void main() {
       final dynamic state = t.state(find.byType(Workspace));
       final e = state.experiment;
       final area = t.getRect(find.byKey(const Key('spherometer-apparatus')));
-      final fit = (area.width / 440) < (area.height / 290)
-          ? area.width / 440
-          : area.height / 290;
+      final fit = (area.width / 350) < (area.height / 260)
+          ? area.width / 350
+          : area.height / 260;
       final origin =
           area.topLeft +
-          Offset((area.width - 440 * fit) / 2, (area.height - 290 * fit) / 2);
+          Offset(
+            (area.width - 350 * fit) / 2 - 45 * fit,
+            (area.height - 260 * fit) / 2 - 20 * fit,
+          );
       final start = e.a;
       await t.dragFrom(
         origin + const Offset(220, 90) * fit,
@@ -159,10 +163,50 @@ void main() {
       await t.pumpAndSettle();
       expect(e.a, greaterThan(start));
       final after = e.a;
-      await t.tap(find.text('Top'));
+      await t.tap(find.byKey(const Key('workspace-inspect')));
+      await t.pumpAndSettle();
+      await t.ensureVisible(
+        find
+            .descendant(
+              of: find.byType(BottomSheet),
+              matching: find.text('Top'),
+            )
+            .last,
+      );
+      await t.pumpAndSettle();
+      await t.tap(
+        find
+            .descendant(
+              of: find.byType(BottomSheet),
+              matching: find.text('Top'),
+            )
+            .last,
+      );
+      await t.pumpAndSettle();
+      await t.tap(find.byTooltip('Close inspector'));
       await t.pumpAndSettle();
       expect(e.a, after);
-      await t.tap(find.text('Section'));
+      await t.tap(find.byKey(const Key('workspace-inspect')));
+      await t.pumpAndSettle();
+      await t.ensureVisible(
+        find
+            .descendant(
+              of: find.byType(BottomSheet),
+              matching: find.text('Section'),
+            )
+            .last,
+      );
+      await t.pumpAndSettle();
+      await t.tap(
+        find
+            .descendant(
+              of: find.byType(BottomSheet),
+              matching: find.text('Section'),
+            )
+            .last,
+      );
+      await t.pumpAndSettle();
+      await t.tap(find.byTooltip('Close inspector'));
       await t.pumpAndSettle();
       expect(e.a, after);
       await t.tap(find.byTooltip('Scale magnifier'));

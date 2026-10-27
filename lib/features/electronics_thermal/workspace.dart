@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app.dart';
 import '../workbench/workbench.dart';
+import '../workbench/quantity_ledger.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/design_system/reference_style.dart';
@@ -412,6 +413,71 @@ class _ETWorkspaceState extends ConsumerState<ETWorkspace>
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchReadings: () => [
+          for (final e in run.state.entries)
+            InstrumentReading(
+              e.key,
+              e.value.toString(),
+              e.key == 't' ? 's' : stateUnit(e.key),
+            ),
+        ],
+        principle: () => kind == 7
+            ? switch (mode) {
+                1 => 'Convection transfers heat between a surface and its surrounding fluid; compare temperature difference and exposed area.',
+                2 => 'Thermal radiation depends on emissivity, exposed area and the fourth powers of absolute temperatures.',
+                _ => 'Conduction transfers heat through a material; compare conductivity, length and temperature difference.',
+              }
+            : lesson.principle,
+        modelLimits: () => lesson.limits,
+        equation: lesson.formula,
+        captureConfiguration: configuration,
+        finished: () => run.finished,
+        data: () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (kind >= 8)
+              QuantityLedger(
+                title: 'Energy transfer · heat into gas, work by gas',
+                unit: 'J',
+                quantities: {
+                  for (final key in ['heat', 'work', 'deltaU'])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            if (kind == 10)
+              QuantityLedger(
+                title: 'Entropy of each body and the whole system',
+                unit: 'J/K',
+                quantities: {
+                  for (final key in ['entropy1', 'entropy2', 'entropy'])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            if (kind == 3)
+              QuantityLedger(
+                title: 'Input, output and clipping limit',
+                unit: 'V',
+                quantities: {
+                  for (final key in [
+                    'inputVoltage',
+                    'outputVoltage',
+                    'unclippedOutput',
+                    'swingLimit',
+                  ])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            metrics(),
+          ],
+        ),
+        restoreConfiguration: (data) {
+          final restored = restore(data);
+          tick.value++;
+          if (mounted) setState(() {});
+          return restored;
+        },
+        predict: predict,
+        investigationTools: () => [if (kind == 4) truthTable()],
         key: ValueKey('instrument-${entry.id}'),
         referenceChart: referencePlot,
         toolbarActions: [
@@ -478,6 +544,12 @@ class _ETWorkspaceState extends ConsumerState<ETWorkspace>
             result?.toStringAsPrecision(5) ?? 'Undefined',
             lesson.unit,
           ),
+          if (kind == 6 && result != null)
+            InstrumentReading(
+              'Celsius',
+              (result! - 273.15).toStringAsFixed(1),
+              '°C',
+            ),
           InstrumentReading('Model t', run.time.toStringAsPrecision(4), 's'),
         ],
         advanced: () => experiment().skip(1).toList(),

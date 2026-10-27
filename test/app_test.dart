@@ -124,7 +124,7 @@ void main() {
       }
       paths.add(router.routeInformationProvider.value.uri.path);
     }
-    expect(paths.toSet().length, 102);
+    expect(paths.toSet().length, 122);
     router.go('/');
     await tester.pumpAndSettle();
   });

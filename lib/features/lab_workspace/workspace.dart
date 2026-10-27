@@ -17,6 +17,7 @@ import '../../core/persistence/notebook.dart';
 import '../../core/physics/measurement.dart';
 import '../../core/rendering/apparatus.dart';
 import '../measurement/experiment.dart';
+import '../measurement/reading_inspector.dart';
 import '../measurement/micrometer_viewport.dart';
 import '../measurement/spherometer_viewport.dart';
 import '../../core/physics/spherometer.dart';
@@ -38,6 +39,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
   bool ready = false, recording = false;
   int dragTarget = 2;
   final transform = TransformationController();
+  final micrometerView = GlobalKey<MicrometerViewportState>();
+  final spherometerView = GlobalKey<SpherometerViewportState>();
   Entry get entry => widget.entry;
   late final LocalNotebook store;
   @override
@@ -271,6 +274,32 @@ class _WorkspaceState extends ConsumerState<Workspace>
     }
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchReadings: researchReadings,
+        toolbarActions: [
+          if (entry.index == 3)
+            IconButton(
+              tooltip: 'Scale magnifier',
+              onPressed: () => spherometerView.currentState?.scale(),
+              icon: const Icon(Icons.zoom_in),
+            ),
+          if (entry.index == 2)
+            IconButton(
+              tooltip: 'Full-screen precision reading',
+              onPressed: () => micrometerView.currentState?.precision(),
+              icon: const Icon(Icons.center_focus_strong),
+            ),
+        ],
+        captureConfiguration: experiment.toJson,
+        data: () => MeasurementInspector(experiment),
+        finished: () =>
+            entry.index == 4 && experiment.elapsed >= experiment.duration,
+        restoreConfiguration: (data) {
+          final restored = experiment.restore(data);
+          experiment.changed();
+          return restored;
+        },
+        predict: challenge,
+        modelLimits: () => errors[entry.index],
         key: ValueKey('instrument-${entry.id}'),
         exportRecorded: (trials) => exportTrials(context, trials),
         reopenTrial: (trial) {
@@ -442,9 +471,11 @@ class _WorkspaceState extends ConsumerState<Workspace>
     final e = experiment, s = e.spherometer!;
     return Column(
       children: [
-        Row(
-          children: [
-            Expanded(
+        LayoutBuilder(
+          builder: (context, bounds) {
+            final wide = bounds.maxWidth >= 270;
+            final selection = SizedBox(
+              width: double.infinity,
               child: DropdownButtonFormField<int>(
                 key: ValueKey('sphero-surface-${s.surface}'),
                 initialValue: s.surface,
@@ -469,25 +500,38 @@ class _WorkspaceState extends ConsumerState<Workspace>
                   e.changed();
                 },
               ),
-            ),
-            IconButton(
-              tooltip: 'Record plane reference',
-              onPressed: s.surface == 0 && s.atContact(e.a)
-                  ? () => record()
-                  : null,
-              icon: const Icon(Icons.adjust),
-            ),
-            IconButton(
-              tooltip: 'Lower by one division',
-              onPressed: () => e.setA(e.a - .00001),
-              icon: const Icon(Icons.remove),
-            ),
-            IconButton(
-              tooltip: 'Raise by one division',
-              onPressed: () => e.setA(e.a + .00001),
-              icon: const Icon(Icons.add),
-            ),
-          ],
+            );
+            final steps = Wrap(
+              alignment: WrapAlignment.end,
+              children: [
+                IconButton(
+                  tooltip: 'Record plane reference',
+                  onPressed: s.surface == 0 && s.atContact(e.a)
+                      ? () => record()
+                      : null,
+                  icon: const Icon(Icons.adjust),
+                ),
+                IconButton(
+                  tooltip: 'Lower by one division',
+                  onPressed: () => e.setA(e.a - .00001),
+                  icon: const Icon(Icons.remove),
+                ),
+                IconButton(
+                  tooltip: 'Raise by one division',
+                  onPressed: () => e.setA(e.a + .00001),
+                  icon: const Icon(Icons.add),
+                ),
+              ],
+            );
+            return wide
+                ? Row(
+                    children: [
+                      Expanded(child: selection),
+                      steps,
+                    ],
+                  )
+                : Column(children: [selection, steps]);
+          },
         ),
         Row(
           children: [
@@ -697,6 +741,48 @@ class _WorkspaceState extends ConsumerState<Workspace>
       ),
     ],
   );
+
+  List<InstrumentReading> researchReadings() {
+    final e = experiment, result = e.result;
+    InstrumentReading r(String key, double value, String unit) =>
+        InstrumentReading(key, value.toString(), unit);
+    final statistics = Statistics(
+      e.samples,
+      e.resolutionKnown ? e.resolution : null,
+    );
+    return [
+      if (result != null && result.isFinite) r(e.quantity, result, e.siUnit),
+      if (e.kind == 0) ...[r('endpointA', e.a, 'm'), r('endpointB', e.b, 'm')],
+      if (e.kind == 1 || e.kind == 2) ...[
+        r('main', e.reading.main, 'm'),
+        r('fraction', e.reading.fraction, 'm'),
+        r('observed', e.reading.observed, 'm'),
+        r('zero', e.zero, 'm'),
+      ],
+      if (e.kind == 3) ...[
+        r('indication', e.a, 'm'),
+        r('legRadius', e.b, 'm'),
+        if (e.spherometer?.reference != null)
+          r('reference', e.spherometer!.reference!, 'm'),
+        if (e.spherometer?.measuredH != null)
+          r('sagitta', e.spherometer!.measuredH!, 'm'),
+      ],
+      if (e.kind == 4) ...[
+        r('elapsed', e.elapsed, 's'),
+        r('travelled', e.travelled, 'm'),
+        r('instantaneousSpeed', e.v0 + e.acceleration * e.elapsed, 'm/s'),
+      ],
+      if (e.kind == 5) ...[
+        r('sampleCount', e.samples.length.toDouble(), ''),
+        if (statistics.sd != null) r('sd', statistics.sd!, e.unit),
+        if (statistics.sem != null) r('sem', statistics.sem!, e.unit),
+        if (statistics.instrument != null)
+          r('instrument', statistics.instrument!, e.unit),
+        if (statistics.combined != null)
+          r('combined', statistics.combined!, e.unit),
+      ],
+    ];
+  }
 
   List<InstrumentControl> instrumentControls() {
     final e = experiment;
@@ -1024,9 +1110,9 @@ class _WorkspaceState extends ConsumerState<Workspace>
     builder: (_, _) => sceneFrame(enlarged: enlarged),
   );
   Widget compactScene({bool enlarged = false}) => entry.index == 2
-      ? MicrometerViewport(experiment: experiment)
+      ? MicrometerViewport(key: micrometerView, experiment: experiment)
       : entry.index == 3
-      ? SpherometerViewport(experiment: experiment)
+      ? SpherometerViewport(key: spherometerView, experiment: experiment)
       : ListenableBuilder(
           listenable: Listenable.merge([experiment, experiment.clockTick]),
           builder: (context, _) {

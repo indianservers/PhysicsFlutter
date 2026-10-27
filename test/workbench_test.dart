@@ -121,7 +121,9 @@ void main() {
       }
       router.go('/lab/s00-e00');
       await t.pumpAndSettle();
-      await t.tap(find.text('List').last);
+      if (find.text('List').evaluate().isNotEmpty) {
+        await t.tap(find.text('List').last);
+      }
       await t.pumpAndSettle();
       expect(t.takeException(), isNull);
       router.go('/');
@@ -129,7 +131,7 @@ void main() {
     },
   );
   testWidgets(
-    'All 102 working destinations fit 200 percent text in small portrait and landscape',
+    'All working destinations fit 200 percent text in small portrait and landscape',
     (t) async {
       t.view.physicalSize = const Size(640, 1136);
       t.view.devicePixelRatio = 2;
@@ -236,6 +238,8 @@ void main() {
           .widget<InstrumentShell>(find.byType(InstrumentShell))
           .controls()
           .first;
+      await t.ensureVisible(find.byKey(ValueKey('dock-edit-${c.keyName}')));
+      await t.pumpAndSettle();
       await t.tap(find.byKey(ValueKey('dock-edit-${c.keyName}')));
       await t.pumpAndSettle();
       t.view.viewInsets = const FakeViewPadding(bottom: 600);

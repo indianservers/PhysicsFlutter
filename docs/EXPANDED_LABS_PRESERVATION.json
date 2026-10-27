@@ -1,0 +1,18 @@
+{
+  "originalTrialBodiesByteForBytePreserved": 428,
+  "currentTrials": 428,
+  "originalSessionStatesExactlyPreserved": 108,
+  "originalChallengeBodiesExactlyPreserved": 123,
+  "oldSessionNotesAndParametersPreserved": 108,
+  "originalPreferencesPreserved": 5,
+  "baselineHasExplicitCompletionPreference": false,
+  "originalSchema": 3,
+  "currentSchema": 3,
+  "integrity": "ok",
+  "device": "emulator-5556",
+  "qualification": "Exact SQLite JSON text and preference type/value comparison after final APK installation; insignificant XML element-tail whitespace is ignored. Original backup stays local and is not committed.",
+  "allSessionRowsExactlyMatchBaseline": true,
+  "allPreferenceKeysAndValuesExactlyMatchBaseline": true,
+  "qaOnlyNewSessionRowsRemoved": 20,
+  "privateFixtureRemovedFromAppSandbox": true
+}

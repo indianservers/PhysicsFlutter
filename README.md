@@ -1,4 +1,4 @@
-# Physics Atelier — studio and lab exploration (1.12.0+15)
+# Physics Atelier — studio exploration workbenches (1.16.0+19)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
 
@@ -6,7 +6,15 @@ Repository: https://github.com/indianservers/PhysicsFlutter
 
 Project directory: `C:\Indian Servers\Android Physics`. The supplied `Target UI` folder remains intact and ignored. Runtime copies in `assets/reference_previews` provide static launcher thumbnails; their provenance remains user-supplied.
 
-Current studio/lab audit: [changes and verification](docs/EXPLORATION_QA.md), [all102 entries](docs/EXPLORATION_SCREEN_AUDIT.csv), [running-app screenshots](docs/EXPLORATION_SCREENSHOTS.md).
+Shared and studio-specific experience: [all 180 improvements](docs/STUDIO_COMMON_UX_SUGGESTIONS.md), [implementation checklist](docs/STUDIO_COMMON_UX_CHECKLIST.csv), [QA and scope](docs/STUDIO_COMMON_UX_QA.md). Every physical lab has a searchable exploration workbench with precise stepping, reversible setups, focused live readings and guarded A/B interpretation. Each of the 17 studios exposes ten curated tools.
+
+Lab-specific learning tools: [all 580 suggestions and implemented behaviors](docs/LAB_SPECIFIC_UX_SUGGESTIONS.md), [per-lab checklist](docs/LAB_SPECIFIC_UX_CHECKLIST.csv), [implementation and QA](docs/LAB_SPECIFIC_UX_QA.md). Each of the 116 physical labs has curated Tune, Compare, Watch, Plot and Explain tools. Saved investigation worksheets reopen directly from Saved.
+
+Expanded curriculum: [20 added labs and studio coverage audit](docs/EXPANDED_LABS_QA.md). The catalog now contains 116 physical labs and six learning tools across 17 studios, with every original ID retained.
+
+Lab experience upgrade: [implementation and QA](docs/LAB_EXPERIENCE_QA.md), [validation results](docs/LAB_EXPERIENCE_VALIDATION.json). Includes consistent navigation, readable inspection and comparison, graph measurements, ray construction, a wavelength ruler, connected circuit schematics, stellar H–R exploration and optional generated Android sound.
+
+Earlier studio/lab audit: [changes and verification](docs/EXPLORATION_QA.md), [all102 entries](docs/EXPLORATION_SCREEN_AUDIT.csv), [running-app screenshots](docs/EXPLORATION_SCREENSHOTS.md).
 
 Home design: [implementation, routes and screenshots](docs/HOME_SCREEN_QA.md), [generated artwork and exact prompts](docs/HOME_ARTWORK_PROMPTS.json).
 
@@ -16,9 +24,11 @@ Home design: [implementation, routes and screenshots](docs/HOME_SCREEN_QA.md), [
 - Heat Transfer material bench: 36 named records, with 16 solid-conduction and 13 heating presets enabled where the required sourced properties exist; equal-condition comparison, heating and composite/contact resistance.
 - Shared optical bench from Reflection, Refraction, Lenses and Mirrors: 40 named component entries with explicit section/3D scopes, eight material presets, analytic boundary tracing and 12 guided investigations. Geometry, source and actual branch observations can be saved, reopened and exported.
 
-- 17 studio pages, six exact entries each, 102 stable destinations.
+- 17 studio pages, 122 stable destinations; the original 102 identities remain unchanged.
+- Twenty added experiments cover rotational inertia, rolling, elasticity, free fall, torsion, beats, polarization, resistivity, bridges, AC RLC, transformers, rectification, calorimetry, phase changes, capillarity, Rutherford scattering, special relativity, parallax and thermal expansion.
 - Search across studio names, entry names and principles; real Continue Learning and explicit activity completion.
-- All 96 physical labs open directly into a compact apparatus workspace, with bounded primary controls, live readings, meaningful actions and contextual Learn/Formulas/Results. Scene, graph, split data and fullscreen views share the original scientific state.
+- All 116 physical labs open directly into a compact apparatus workspace, with bounded primary controls, live readings, meaningful actions and contextual Learn/Formulas/Results. Scene, graph, split data and fullscreen views share the original scientific state.
+- Five experiment-specific learning tools per lab: reversible setup scenarios, explicit A/B snapshots, focused source readings, learner-captured scatter plots and saved evidence/reasoning worksheets. Opening these tools never records a trial or marks mastery complete.
 - Compact Home and 17 studio launchers use distinct model-derived apparatus previews. All six overview tools have purpose-specific working layouts.
 - Local pane preferences, camera/interaction modes, resizable splits and selected-trial details, recorded comparison, CSV export and safe configuration reopening.
 - Six interactive Measurement instruments: ruler, external vernier caliper, micrometer, spherometer, simulated balance/track/stopwatch, and uncertainty analysis.
@@ -31,11 +41,11 @@ Home design: [implementation, routes and screenshots](docs/HOME_SCREEN_QA.md), [
 - Drag and precise numeric controls, magnified scales, signed calibration correction, guided reading practice, recorded trials and notes.
 - Local SQLite notebook, versioned sessions, reopen, CSV file sharing; preferences and recovery notices.
 - Six Astronomy & Astrophysics labs using `astronomy-8.0`: frozen J2000 Kepler orbits, sourced MIST stellar tracks, synthetic spectra, galaxy rotation with optional SPARC observations, flat FLRW distances, and exact uniform-star transit overlap.
-- Six Concept Overview tools: Physics Atlas, Relationship Map, eight Guided Paths, Experiment Launcher, five Compare Phenomena workspaces, and a validated 16-question Mastery Challenge bank covering six task types. One catalog supplies all 96 lab routes, favorites, saved configurations and real completion progress.
+- Six Concept Overview tools: Physics Atlas, Relationship Map, eight Guided Paths, Experiment Launcher, five Compare Phenomena workspaces, and a validated 16-question Mastery Challenge bank covering six task types. One catalog supplies all 116 lab routes, favorites, saved configurations and real completion progress.
 
 Live graphics remain procedural instrument drawings with generated material textures. Studio launchers now use cropped user-supplied reference previews. Live apparatus photography remains a visual quality gap relative to the targets; the application is not pixel-identical. iOS compilation and device QA are pending. See the handover for precise limits; this is not a claim of store-release readiness.
 
-Micrometer now has opposed measuring faces, a state-linked sleeve/thimble, a floating magnifier and precision controls. All physical labs use the reference four-item Learn / Labs / Results / Profile footer, with camera tools and advanced investigation settings in the contextual menu.
+Micrometer now has opposed measuring faces, a state-linked sleeve/thimble, a floating magnifier and precision controls. All physical labs use the reference Home / Explore / Saved / Settings footer. Apparatus, Graph, Inspect and Results are lab-specific tools.
 
 Current UI audit: [Target UI audit](docs/TARGET_UI_AUDIT.md), [102-entry checklist](docs/TARGET_UI_SCREEN_AUDIT.csv), [asset provenance](docs/TARGET_UI_ASSETS.json).
 
@@ -59,7 +69,13 @@ flutter run -d <android-device-id>
 flutter build apk --debug --target lib/main.dart
 ```
 
-Installable version **1.12.0+15**: [debug APK](deliverables/physics-atelier-exploration-debug.apk) and [release APK with development signing](deliverables/physics-atelier-exploration-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
+Current installable version **1.16.0+19**: [studio exploration debug APK](deliverables/physics-atelier-studio-common-ux-debug.apk), with a SHA-256 sidecar. See [validation](docs/STUDIO_COMMON_UX_VALIDATION.json) and [data preservation](docs/STUDIO_COMMON_UX_PRESERVATION.json) for the actual checks.
+
+Previous version **1.15.0+18**: [lab-specific learning tools debug APK](deliverables/physics-atelier-lab-specific-ux-debug.apk). Its [validation](docs/LAB_SPECIFIC_UX_VALIDATION.json) and [data preservation](docs/LAB_SPECIFIC_UX_PRESERVATION.json) reports remain available.
+
+Previous version **1.14.0+17**: [expanded labs debug APK](deliverables/physics-atelier-expanded-labs-debug.apk). Previous version **1.13.0+16**: [lab experience debug APK](deliverables/physics-atelier-lab-experience-debug.apk). Their historical reports and SHA-256 sidecars remain available.
+
+Previous version **1.12.0+15**: [debug APK](deliverables/physics-atelier-exploration-debug.apk) and [release APK with development signing](deliverables/physics-atelier-exploration-release-dev-signed.apk). SHA-256 sidecars accompany both. Production signing and physical-device/iOS QA remain pending.
 
 Device integration and screenshot capture:
 

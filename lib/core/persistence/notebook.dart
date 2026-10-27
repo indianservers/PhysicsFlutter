@@ -1,3 +1,5 @@
+import '../physics/supplemental_labs.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -82,6 +84,14 @@ class Trial {
       'pressure': 'Pa',
       'entropy': 'J/K',
       'activity': 'Bq',
+      'inertia': 'kg·m²',
+      'period': 's',
+      'intensity': 'W/m²',
+      'resistance': 'Ω',
+      'rmsCurrent': 'A',
+      'rmsVoltage': 'V',
+      'averageVoltage': 'V',
+      'parallax': 'mas',
     };
     if (!units.containsKey(m['quantity']) ||
         units[m['quantity']] != m['unit'] ||
@@ -102,6 +112,7 @@ class Trial {
           etVersion,
           fmVersion,
           astroVersion,
+          supplementalVersion,
         ].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }
@@ -363,6 +374,18 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
       }
     }
     return result;
+  }
+
+  Future<bool> saveLabWorksheet(String id, String body) async {
+    if (!allEntries.any((e) => e.id == id && e.interactive)) {
+      throw ArgumentError('Known physical lab required');
+    }
+    if (utf8.encode(body).length > 1000000) {
+      throw ArgumentError('Worksheet exceeds the local size limit');
+    }
+    final ok = await preferences.setString('lab-research:$id', body);
+    if (ok) notifyListeners();
+    return ok;
   }
 
   Future<void> complete(String id) async {

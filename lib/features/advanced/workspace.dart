@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app.dart';
 import '../workbench/workbench.dart';
+import '../workbench/quantity_ledger.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/design_system/reference_style.dart';
@@ -442,6 +443,56 @@ class _AdvancedState extends ConsumerState<AdvancedWorkspace>
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchReadings: () => [
+          for (final e in run.state.entries)
+            InstrumentReading(e.key, e.value.toString(), unitFor(e.key)),
+        ],
+        principle: () => lesson.principle,
+        modelLimits: () => lesson.limits,
+        equation: lesson.formula,
+        investigationTools: presets,
+        captureConfiguration: configuration,
+        finished: () => run.finished,
+        data: () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (kind <= 5 || kind >= 12)
+              QuantityLedger(
+                title: 'Energy accounting',
+                unit: 'J',
+                quantities: {
+                  for (final key in [
+                    'K',
+                    'U',
+                    'total',
+                    'loss',
+                    'input',
+                    'useful',
+                    'energy1',
+                    'energy2',
+                  ])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            if (kind == 7)
+              QuantityLedger(
+                title: 'Gravitational field components',
+                unit: 'm/s²',
+                quantities: {
+                  for (final key in ['gx', 'gy', 'field'])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            metrics(),
+          ],
+        ),
+        restoreConfiguration: (data) {
+          final restored = restore(data);
+          tick.value++;
+          if (mounted) setState(() {});
+          return restored;
+        },
+        predict: prediction,
         key: ValueKey('instrument-${entry.id}'),
         referenceChart: referencePlot,
         exportRecorded: (trials) => exportTrials(context, trials),

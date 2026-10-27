@@ -1,0 +1,93 @@
+{
+  "version": "1.15.0+18",
+  "physicalLabs": 116,
+  "experimentStudios": 16,
+  "additionalConceptOverviewStudio": 1,
+  "specificEnhancements": 580,
+  "toolsPerLab": [
+    "Tune",
+    "Compare",
+    "Watch",
+    "Plot",
+    "Explain"
+  ],
+  "definitionSource": "lib/content/lab_research_profiles.tsv",
+  "analysis": "flutter analyze --no-pub: no issues",
+  "fullUnitWidgetSuite": {
+    "passed": 386,
+    "command": "flutter test --no-pub --reporter expanded",
+    "source": "final post-polish run"
+  },
+  "finalFocusedRegression": {
+    "passed": 7,
+    "command": "flutter test --no-pub --concurrency=1 test/lab_research_test.dart test/lab_research_layout_test.dart test/lab_research_discovery_test.dart",
+    "includesFinalModeGuard": true,
+    "qualification": "A concurrent focused repeat stalled in the host test runner and was stopped; the serial repeat completed."
+  },
+  "responsiveChecks": {
+    "logicalSize": [
+      320,
+      568
+    ],
+    "textScale": 2,
+    "panels": 580,
+    "landscapeAndKeyboardFamilies": 9,
+    "dirtyCloseProtection": true
+  },
+  "nativeAndroid": {
+    "device": "emulator-5556",
+    "api": 37,
+    "abi": "x86_64",
+    "screenPixels": [
+      720,
+      1280
+    ],
+    "integrationRenderer": "software",
+    "physicalLabs": 116,
+    "tailoredPanelsVisited": 580,
+    "specificSuggestions": 580,
+    "representativeFiveTabCaptures": 10,
+    "savedWorksheetRoundTrip": true,
+    "sourceNotesCopiedIntoWorksheets": false,
+    "newNotebookTrials": 0,
+    "newMasteryCompletions": 0,
+    "screenshots": 160,
+    "watchScreensForEveryPhysicalLab": true,
+    "representativeAllFiveTabs": 10,
+    "qaCreatedSessionRowsRemoved": 20,
+    "qaWorksheetPreferencesRemoved": 1
+  },
+  "delivery": {
+    "version": "1.15.0+18",
+    "entryPoint": "lib/main.dart",
+    "apk": "physics-atelier-lab-specific-ux-debug.apk",
+    "bytes": 248192771,
+    "sha256": "d2e5fdeba4bb3d29e5da8007e5f6568f3acc534c8fc1a4605246effc5c978eee",
+    "installedHashMatches": true,
+    "testEntryPointMarkersAbsent": true,
+    "privateFixtureRemoved": true,
+    "device": "emulator-5556",
+    "nativeRenderer": "default",
+    "defaultHomeVisuallyVerified": true,
+    "rendererObserved": "Impeller OpenGLES",
+    "defaultHomeScreenshot": "Target UI/labSpecificUXScreens/final-home-default-renderer.png"
+  },
+  "preservation": {
+    "originalTrialBodiesByteForBytePreserved": 428,
+    "currentTrials": 428,
+    "originalSessionStatesExactlyPreserved": 108,
+    "originalChallengeBodiesExactlyPreserved": 123,
+    "oldSessionNotesAndParametersPreserved": 108,
+    "originalPreferencesPreserved": 5,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Original trial and challenge JSON bodies compare byte for byte; complete parsed session states and preference type/value pairs compare exactly after final APK installation. Session save timestamps may differ. Insignificant XML element-tail whitespace is ignored. Original backup stays local and is not committed."
+  },
+  "measurementGuards": "Spherometer curvature, timing speed and uncertainty require their apparatus procedures; undefined values are not invented.",
+  "dataBoundaries": "Worksheets do not copy existing source notes or add trials, favorites or mastery completions.",
+  "localEvidence": "Target UI/labSpecificUXScreens",
+  "qualification": "All-lab native captures precede final button/acronym wording polish and the defensive scatter-series mode guard. The final full 386-test suite covers that guard and stored mixed-mode rejection; ordinary entry-point APK checks use final source. Physical-device and iOS validation remain outside this run."
+}

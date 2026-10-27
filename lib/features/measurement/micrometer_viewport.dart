@@ -9,10 +9,10 @@ class MicrometerViewport extends StatefulWidget {
   final Experiment experiment;
   const MicrometerViewport({super.key, required this.experiment});
   @override
-  State<MicrometerViewport> createState() => _MicrometerViewportState();
+  State<MicrometerViewport> createState() => MicrometerViewportState();
 }
 
-class _MicrometerViewportState extends State<MicrometerViewport> {
+class MicrometerViewportState extends State<MicrometerViewport> {
   bool lens = true, turning = false;
   Offset lensPosition = const Offset(.95, .95);
   double dragOpening = 0;
@@ -21,6 +21,7 @@ class _MicrometerViewportState extends State<MicrometerViewport> {
     widget.experiment.b,
     widget.experiment.zero,
   );
+  double lensHeight(BoxConstraints b) => math.min(100, b.maxHeight * .35);
   void precision() => showDialog<void>(
     context: context,
     builder: (context) => Dialog.fullscreen(
@@ -140,7 +141,7 @@ class _MicrometerViewportState extends State<MicrometerViewport> {
                     icon: const Icon(Icons.search),
                   ),
                   IconButton(
-                    tooltip: 'Full-screen precision reading',
+                    tooltip: 'Enlarge precision reading',
                     onPressed: precision,
                     icon: const Icon(Icons.center_focus_strong),
                   ),
@@ -150,23 +151,28 @@ class _MicrometerViewportState extends State<MicrometerViewport> {
             Positioned(
               top: 2,
               left: 8,
-              child: Text(
-                geometry.contact ? 'Contact' : 'Open gap',
-                style: const TextStyle(fontSize: 12, color: Color(0xff4d6475)),
+              child: IgnorePointer(
+                child: Text(
+                  geometry.contact ? 'Contact' : 'Open gap',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: Color(0xff4d6475),
+                  ),
+                ),
               ),
             ),
-            if (lens)
+            if (lens && b.maxHeight > 95)
               Positioned(
                 left: ((b.maxWidth - 174) * lensPosition.dx).clamp(
                   0,
                   math.max(0, b.maxWidth - 174),
                 ),
-                top: ((b.maxHeight - 100) * lensPosition.dy).clamp(
-                  48,
-                  math.max(48, b.maxHeight - 100),
+                top: ((b.maxHeight - lensHeight(b)) * lensPosition.dy).clamp(
+                  0,
+                  math.max(0, b.maxHeight - lensHeight(b)),
                 ),
                 width: 174,
-                height: 100,
+                height: lensHeight(b),
                 child: Semantics(
                   label:
                       'Draggable lens of the actual sleeve and thimble scale. Observed ${(geometry.reading.observed * 1000).toStringAsFixed(2)} millimeters.',

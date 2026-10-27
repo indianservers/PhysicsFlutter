@@ -1024,9 +1024,11 @@ class MaterialBenchState extends ConsumerState<MaterialBenchWorkspace>
         ];
   Widget dock() => Column(
     children: [
-      Row(
+      Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
         children: [
-          Expanded(
+          SizedBox(
+            width: 160,
             child: TextButton(
               key: const Key('bench-picker'),
               onPressed: isThermal ? guided : () => componentPicker(),
@@ -1072,10 +1074,11 @@ class MaterialBenchState extends ConsumerState<MaterialBenchWorkspace>
           ),
         )
       else
-        Row(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Rotate'),
-            Expanded(
+            const Text('Rotate', style: TextStyle(fontSize: 12)),
+            SizedBox(
               child: Slider(
                 value: chosen.rotation * 180 / math.pi,
                 min: -180,

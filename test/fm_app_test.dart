@@ -98,8 +98,8 @@ void main() {
       addTearDown(t.platformDispatcher.clearTextScaleFactorTestValue);
       final store = await notebook();
       await fmBoot(t, store, 's14-e00');
-      expect(allEntries.length, 102);
-      expect(allEntries.where((e) => e.interactive).length, 96);
+      expect(allEntries.length, 122);
+      expect(allEntries.where((e) => e.interactive).length, 116);
       for (final e in allEntries.where((e) => e.fluidModern)) {
         router.go('/lab/${e.id}');
         await t.pumpAndSettle();
@@ -186,7 +186,7 @@ void main() {
     expect(fmScene(t).run.invalid, contains('Re'));
     await show(t, find.byKey(const Key('record-trial')));
     expect(
-      t.widget<IconButton>(find.byKey(const Key('record-trial'))).onPressed,
+      (t.widget(find.byKey(const Key('record-trial'))) as dynamic).onPressed,
       isNull,
     );
     router.go('/lab/s14-e01');

@@ -39,10 +39,16 @@ Color wavelengthColor(double meters) {
 
 class WavePainter extends ScientificScene {
   final WaveOpticsRun run;
+  final bool fitImage;
+  final double? wavelengthRuler;
+  final int constructionStep;
   final bool labels, overlays, comparison, intensity, microphone;
   const WavePainter(
     this.run, {
     this.labels = true,
+    this.fitImage = false,
+    this.wavelengthRuler,
+    this.constructionStep = 0,
     this.overlays = true,
     this.comparison = false,
     this.intensity = false,
@@ -99,6 +105,11 @@ class WavePainter extends ScientificScene {
   }
 
   void ray(Canvas c, Offset a, Offset b, Color color, {bool dashed = false}) {
+    if (kind >= 6 && kind <= 9 && constructionStep > 0) {
+      if (dashed && constructionStep < 3) return;
+      if (color == teal && constructionStep < 2) return;
+      if (kind <= 7 && color == amber && constructionStep < 2) return;
+    }
     line(c, a, b, color: color, dashed: dashed, width: 1.4);
     if (!dashed) {
       final middle = a + (b - a) * .6, ang = (b - a).direction;
@@ -117,8 +128,16 @@ class WavePainter extends ScientificScene {
     }
   }
 
-  double get imagingExtent =>
-      [.4, v('u'), v('screen'), 4 * v('focal')].reduce(math.max);
+  double get imagingExtent => [
+    .4,
+    v('u'),
+    v('screen'),
+    4 * v('focal'),
+    if (fitImage && (s['imageDistance']?.isFinite ?? false))
+      s['imageDistance']!.abs() * 1.25,
+    if (fitImage && (s['imageHeight']?.isFinite ?? false))
+      s['imageHeight']!.abs() * 18,
+  ].reduce(math.max);
   Map<String, double> interaction(Offset at) => switch (kind) {
     0 => {'probe': (at.dx - 30) / 150},
     1 => {'probe': (at.dx - 30) / 150 - 1},
@@ -179,6 +198,28 @@ class WavePainter extends ScientificScene {
       imaging(c);
     } else {
       slits(c);
+    }
+    if (kind == 0 && wavelengthRuler != null) {
+      final length = v('wavelength'),
+          start = wavelengthRuler!.clamp(0, math.max(0, 2 - length)).toDouble();
+      final a = Offset(30 + 150 * start, 206),
+          b = Offset(30 + 150 * (start + length), 206);
+      line(c, a, b, color: navy, width: 2);
+      for (final p in [a, b]) {
+        line(
+          c,
+          p - const Offset(0, 7),
+          p + const Offset(0, 7),
+          color: navy,
+          width: 2,
+        );
+      }
+      tool.text(
+        c,
+        'λ = ${length.toStringAsPrecision(3)} m · drag ruler',
+        const Offset(35, 229),
+        font: 12,
+      );
     }
     c.restore();
   }
@@ -508,7 +549,7 @@ class WavePainter extends ScientificScene {
       c,
       microphone
           ? 'Actual microphone input · no synthetic replacement'
-          : 'Generated educational signal · no audio playback',
+          : 'Generated signal · optional audio in Inspect',
       const Offset(12, 17),
       size: 9,
     );
@@ -782,7 +823,8 @@ class WavePainter extends ScientificScene {
         }
       }
       final imageX = kind == 8 ? (imageDistance ?? 0) : -(imageDistance ?? 0);
-      if (imageDistance != null &&
+      if ((constructionStep == 0 || constructionStep >= 3) &&
+          imageDistance != null &&
           imageX.abs() < extent &&
           imageHeight!.abs() * yscale < 100) {
         ray(

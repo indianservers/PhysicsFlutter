@@ -1,0 +1,92 @@
+{
+  "version": "1.16.0+19",
+  "commonEnhancements": 10,
+  "studios": 17,
+  "toolsPerStudio": 10,
+  "reviewItems": 180,
+  "physicalLabsCovered": 116,
+  "physicalScenarioTools": 160,
+  "overviewDiscoveryActions": 10,
+  "additionalDistinctControlScenarios": 44,
+  "analysis": "flutter analyze --no-pub: no issues",
+  "fullUnitWidgetSuite": {
+    "passed": 395,
+    "command": "flutter test --no-pub --reporter expanded"
+  },
+  "focusedFinalRegression": {
+    "passed": 9,
+    "includesFinalCategoryGuard": true,
+    "command": "flutter test --no-pub --concurrency=1 test/studio_common_experience_test.dart test/studio_common_layout_test.dart --reporter expanded"
+  },
+  "finalCompactKeyboardRegression": {
+    "passed": 1,
+    "combinedLandscapeKeyboardAndTextScale2": true
+  },
+  "sourceCoverage": {
+    "physicalLabs": 116,
+    "physicalRecipes": 160,
+    "presetApplications": 320,
+    "realSourceCallbacks": true,
+    "undoRedoAndReferenceRestoration": true,
+    "overviewActions": 10,
+    "nonzeroInputRelativeTolerance": 1e-08
+  },
+  "responsiveCoverage": {
+    "smallPhoneLogicalPixels": [
+      320,
+      568
+    ],
+    "textScale": 2,
+    "sharedPanels": 464,
+    "discoveryCards": 170,
+    "landscapeFamilies": 9,
+    "portraitAndLandscapeKeyboard": true
+  },
+  "nativeAndroid": {
+    "device": "emulator-5556",
+    "api": 37,
+    "abi": "x86_64",
+    "renderer": "software",
+    "studioCatalogs": 17,
+    "physicalStudioRepresentatives": 16,
+    "sharedPanelsVisited": 64,
+    "pairedSetupsThroughUI": 32,
+    "physicalScenarioDefinitions": 160,
+    "overviewDiscoveryDefinitions": 10,
+    "captureAndApplyAreExplicit": true,
+    "screenshots": 82,
+    "qaOnlySessionRowsRemoved": 0
+  },
+  "resolvedNativeFinding": "Expanded paired setup preview lost state on a Controls \u2192 Compare \u2192 Controls transition. The preview now retains its expanded state; both the UI regression and repeated native audit passed.",
+  "delivery": {
+    "version": "1.16.0+19",
+    "entryPoint": "lib/main.dart",
+    "apk": "physics-atelier-studio-common-ux-debug.apk",
+    "bytes": 248371362,
+    "sha256": "474bca9dace2005cf4753ca0a5bbbc9a39a4fefcdee79df4559ba05f3dd8d059",
+    "installedHashMatches": true,
+    "testEntryPointMarkersAbsent": true,
+    "privateFixtureRemoved": true,
+    "device": "emulator-5556",
+    "nativeRenderer": "default",
+    "defaultHomeVisuallyVerified": true,
+    "defaultHomeScreenshot": "Target UI/studioCommonUXScreens/final-home-default-renderer.png"
+  },
+  "preservation": {
+    "originalTrialBodiesByteForBytePreserved": 428,
+    "currentTrials": 428,
+    "originalSessionStatesExactlyPreserved": 108,
+    "originalChallengeBodiesExactlyPreserved": 123,
+    "oldSessionNotesAndParametersPreserved": 108,
+    "originalPreferencesPreserved": 5,
+    "baselineHasExplicitCompletionPreference": false,
+    "originalSchema": 3,
+    "currentSchema": 3,
+    "integrity": "ok",
+    "device": "emulator-5556",
+    "qualification": "Original trial and challenge JSON bodies compare byte for byte; complete parsed session states and preference type/value pairs compare exactly after final APK installation. Session save timestamps may differ. Insignificant XML element-tail whitespace is ignored. Original backup stays local and is not committed."
+  },
+  "evidenceDirectory": "Target UI/studioCommonUXScreens",
+  "scope": "Native sampling covers all 17 catalogs and one physical lab per experiment studio; source/widget coverage covers all 116 labs and all 170 tools. Studio tools reuse existing scientific models and do not add labs or mark completion.",
+  "qualification": "Final focused checks cover the category-code secant guard; the additional compact-keyboard branch is verified separately. Native screenshots use the regular-size workbench layout. This debug emulator run is not physical-device, iOS or release-performance validation."
+}

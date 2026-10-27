@@ -87,7 +87,7 @@ class DynamicsPainter extends ScientificScene {
       paint,
     );
     if (labels) {
-      text(c, label, end + const Offset(3, -12), color: color, font: 10);
+      ScientificText.callout(c, label, end + const Offset(3, -12), color);
     }
   }
 
@@ -196,6 +196,7 @@ class DynamicsPainter extends ScientificScene {
 
   @override
   void paint(Canvas original, Size actual) {
+    ScientificText.beginCallouts();
     original.save();
     original.clipRect(Offset.zero & actual);
     original.scale(actual.width / 360, actual.height / 270);

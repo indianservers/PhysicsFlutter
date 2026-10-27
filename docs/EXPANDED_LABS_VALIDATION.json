@@ -1,0 +1,65 @@
+{
+  "version": "1.14.0+17",
+  "date": "2026-10-26",
+  "inventory": {
+    "studios": 17,
+    "addedLabs": 20,
+    "affectedStudios": 12,
+    "physicalLabs": 116,
+    "learningTools": 6,
+    "destinations": 122,
+    "originalIdsRetained": 102,
+    "existingRequiredPathActivitiesUnchanged": true
+  },
+  "analysis": "No issues found",
+  "fullUnitAndWidgetTests": {
+    "passed": 379,
+    "failed": 0
+  },
+  "focusedTestsAfterFinalRestorationGuard": {
+    "passed": 37,
+    "failed": 0
+  },
+  "nativeAndroidFullTraversal": {
+    "addedLabs": 20,
+    "physicalLabs": 116,
+    "destinations": 122,
+    "studios": 17,
+    "nativeScenes": 20,
+    "nativeGraphs": 20,
+    "nativeInspectors": 20,
+    "changedStudioPreviews": 12,
+    "recordedUserTrials": 0
+  },
+  "nativeFinalLiveApparatusRefresh": {
+    "passed": true,
+    "scenes": 20,
+    "apparatusInputsAndStateMatchReadings": true,
+    "qaOnlyNewSessionsRemoved": 20
+  },
+  "screenshots": {
+    "folder": "Target UI/expandedLabsScreens",
+    "pngs": 72,
+    "apparatus": 20,
+    "graphs": 20,
+    "inspectors": 20,
+    "studioPages": 12,
+    "contactSheets": 2
+  },
+  "apk": {
+    "version": "1.14.0+17",
+    "path": "deliverables/physics-atelier-expanded-labs-debug.apk",
+    "bytes": 247998656,
+    "sha256": "64fa65d0da83323bcb7fa59e3d71f16c3897e237cde7636a01d9fa4a2b739daa",
+    "installedHashMatches": true,
+    "ordinaryMainTarget": true,
+    "privateFixtureMarkersAbsent": true,
+    "device": "emulator-5556"
+  },
+  "ordinaryAppHomeVisuallyVerified": true,
+  "qualifications": [
+    "Native integration captures use the dedicated Android API37 emulator with software rendering; the ordinary main-target APK was additionally launched with its default renderer.",
+    "Curves and observations are explicitly calculated educational models with per-lab assumptions, not physical measurements.",
+    "No iOS build or physical-device performance certification is claimed."
+  ]
+}

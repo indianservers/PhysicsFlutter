@@ -1,5 +1,14 @@
+import '../../content/lab_research_profiles.dart';
+import 'lab_research.dart';
+import 'exploration_workbench.dart';
+import '../../content/studio_investigations.dart';
+import 'instrument_types.dart';
+export 'instrument_types.dart';
+
 import 'dart:convert';
 import 'dart:math' as math;
+
+import 'package:flutter_math_fork/flutter_math.dart';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,28 +20,9 @@ import '../../content/catalog.dart';
 import '../../core/persistence/notebook.dart';
 import '../lab_workspace/workspace.dart' show NumericInputDialog;
 import '../advanced/scene.dart' show LabPlot;
+import 'graph_measurement.dart';
 
 /// Layout and camera state only. Scientific state stays in the owning workspace.
-class InstrumentControl {
-  final String keyName, label, unit;
-  final double value, min, max;
-  final ValueChanged<double> change;
-  const InstrumentControl(
-    this.keyName,
-    this.label,
-    this.unit,
-    this.value,
-    this.min,
-    this.max,
-    this.change,
-  );
-}
-
-class InstrumentReading {
-  final String label, value, unit;
-  const InstrumentReading(this.label, this.value, [this.unit = '']);
-}
-
 enum WorkspacePane {
   scene,
   sceneGraph,
@@ -95,7 +85,7 @@ class LabBackButton extends StatelessWidget {
 class LabSectionMenu extends StatelessWidget {
   final int section;
   final ValueChanged<int> select;
-  final VoidCallback? controls, save, camera, guide;
+  final VoidCallback? controls, save, camera, guide, research, exploration;
   final String? labId;
   final LocalNotebook? notebook;
   final bool showSections;
@@ -107,6 +97,8 @@ class LabSectionMenu extends StatelessWidget {
     this.save,
     this.camera,
     this.guide,
+    this.research,
+    this.exploration,
     this.labId,
     this.notebook,
     this.showSections = true,
@@ -116,7 +108,16 @@ class LabSectionMenu extends StatelessWidget {
     tooltip: 'Lab options',
     icon: const Icon(Icons.more_vert),
     onSelected: (value) async {
-      if (value == 8 && notebook != null && labId != null) {
+      if (value == 12) {
+        exploration?.call();
+      } else if (value == 13 && labId != null) {
+        showStudioTools(
+          context,
+          int.parse(labId!.split('-').first.substring(1)),
+        );
+      } else if (value == 11) {
+        research?.call();
+      } else if (value == 8 && notebook != null && labId != null) {
         await notebook!.toggleFavorite(labId!);
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -144,6 +145,12 @@ class LabSectionMenu extends StatelessWidget {
       }
     },
     itemBuilder: (_) => [
+      if (exploration != null)
+        const PopupMenuItem(value: 12, child: Text('Exploration workbench')),
+      if (labId != null)
+        const PopupMenuItem(value: 13, child: Text('10 studio tools')),
+      if (research != null)
+        const PopupMenuItem(value: 11, child: Text('Lab-specific tools')),
       if (camera != null)
         const PopupMenuItem(value: 7, child: Text('Camera tools')),
       if (controls != null)
@@ -179,6 +186,15 @@ class LabSectionMenu extends StatelessWidget {
 
 class InstrumentShell extends StatefulWidget {
   final String id, title;
+  final String Function()? principle, modelLimits;
+  final List<InstrumentReading> Function()? researchReadings;
+  final Widget Function()? researchSelection;
+  final String? equation;
+  final List<Widget> Function()? investigationTools;
+  final VoidCallback? predict;
+  final bool Function()? finished;
+  final Map<String, dynamic> Function()? captureConfiguration;
+  final bool Function(Map<String, dynamic>)? restoreConfiguration;
   final CustomPainter Function()? referenceChart;
   final List<Widget> toolbarActions;
   final Widget Function()? parameterDock;
@@ -250,12 +266,151 @@ class InstrumentShell extends StatefulWidget {
     this.changeGuidedStep,
     this.guideInstructions,
     this.canAdvanceGuide,
+    this.researchReadings,
+    this.researchSelection,
+    this.principle,
+    this.modelLimits,
+    this.equation,
+    this.investigationTools,
+    this.predict,
+    this.finished,
+    this.captureConfiguration,
+    this.restoreConfiguration,
   });
   @override
   State<InstrumentShell> createState() => _InstrumentShellState();
 }
 
 class _InstrumentShellState extends State<InstrumentShell> {
+  String? handledStudioTool;
+  bool studioLinkScheduled = false;
+  ExplorationController? explorationSession;
+  Future<void> openExploration([StudioInvestigation? tool]) async {
+    if (!hasResearch) return;
+    widget.pause();
+    final controller = explorationSession ??= ExplorationController(
+      controls: () => widget.controls(),
+      readings: () => widget.researchReadings?.call() ?? widget.readings(),
+      configuration: () => widget.captureConfiguration!(),
+      restore: (value) => widget.restoreConfiguration!(value),
+      valid: () => widget.canRecord(),
+      pause: () => widget.pause(),
+    );
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      builder: (sheetContext) => AnimatedPadding(
+        duration: const Duration(milliseconds: 160),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.viewInsetsOf(sheetContext).bottom,
+        ),
+        child: SafeArea(
+          top: false,
+          child: SizedBox(
+            height:
+                (MediaQuery.sizeOf(sheetContext).height -
+                    MediaQuery.viewInsetsOf(sheetContext).bottom) *
+                .92,
+            child: ExplorationWorkbench(
+              id: widget.id,
+              title: widget.title,
+              controller: controller,
+              sourceChanges: widget.changes,
+              notice: () => widget.notice(),
+              limits: widget.modelLimits,
+              selection: widget.researchSelection ?? widget.selection,
+              tool: tool,
+              focus: labResearchProfiles[widget.id]!.watchKeys,
+              onWorksheet: () => openResearch(4),
+              playing: () => widget.playing(),
+              dynamicModel: () => widget.dynamicModel(),
+              play: () => widget.play(),
+              pause: () => widget.pause(),
+              step: widget.step,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void checkStudioLink() {
+    if (!hasResearch ||
+        studioLinkScheduled ||
+        GoRouter.maybeOf(context) == null) {
+      return;
+    }
+    studioLinkScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      studioLinkScheduled = false;
+      if (!mounted) return;
+      final id = GoRouterState.of(context).uri.queryParameters['studioTool'];
+      final tool = studioInvestigation(id);
+      if (tool != null && tool.labId == widget.id && id != handledStudioTool) {
+        handledStudioTool = id;
+        openExploration(tool);
+      }
+    });
+  }
+
+  LabResearchSession? researchSession;
+  String researchControlsSignature = "";
+  bool get hasResearch =>
+      labResearchProfiles.containsKey(widget.id) &&
+      widget.captureConfiguration != null &&
+      widget.restoreConfiguration != null;
+  Future<void> openResearch([int initialPage = 0]) async {
+    widget.pause();
+    final session = researchSession ??= LabResearchSession(
+      profile: labResearchProfiles[widget.id]!,
+      store: widget.store,
+      controls: () => widget.controls(),
+      readings: () => widget.researchReadings?.call() ?? widget.readings(),
+      configuration: () => widget.captureConfiguration!(),
+      restore: (value) => widget.restoreConfiguration!(value),
+      valid: () => widget.canRecord(),
+      pause: () => widget.pause(),
+    );
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      isDismissible: false,
+      enableDrag: false,
+      builder: (context) => AnimatedPadding(
+        duration: const Duration(milliseconds: 160),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.viewInsetsOf(context).bottom,
+        ),
+        child: SafeArea(
+          top: false,
+          child: SizedBox(
+            height:
+                (MediaQuery.sizeOf(context).height -
+                    MediaQuery.viewInsetsOf(context).bottom) *
+                .92,
+            child: LabResearchSheet(
+              initialPage: initialPage,
+              title: widget.title,
+              session: session,
+              sourceChanges: widget.changes,
+              notice: () => widget.notice(),
+              selection: widget.researchSelection != null
+                  ? () => widget.researchSelection!()
+                  : widget.selection == null
+                  ? null
+                  : () => widget.selection!(),
+              playing: () => widget.playing(),
+              dynamicModel: () => widget.dynamicModel(),
+              play: () => widget.play(),
+              pause: () => widget.pause(),
+              step: widget.step,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   final camera = TransformationController();
   final graphCamera = TransformationController();
   int graphViewRevision = 0;
@@ -271,6 +426,308 @@ class _InstrumentShellState extends State<InstrumentShell> {
   bool guideVisible = false;
   int currentGuideStep = 0;
   PersistentBottomSheetController? sheet;
+  bool savingObservation = false;
+  List<InstrumentReading>? comparison;
+  Map<String, double>? comparisonInputs;
+  Map<String, dynamic>? resetBackup;
+
+  Future<void> recordObservation() async {
+    if (savingObservation || !widget.canRecord()) return;
+    final count = widget.store.trials.where((t) => t.labId == widget.id).length;
+    setState(() => savingObservation = true);
+    try {
+      await widget.record();
+      if (!mounted) return;
+      final trials = widget.store.trials
+          .where((t) => t.labId == widget.id)
+          .toList();
+      if (trials.length > count) {
+        final latest = trials.last;
+        final reading = presentReading(
+          latest.quantity,
+          '${latest.value}',
+          latest.unit,
+        );
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            SnackBar(
+              content: Text(
+                'Saved ${reading.value} ${reading.unit} · ${reading.label}',
+              ),
+              action: SnackBarAction(
+                label: 'Results',
+                onPressed: () => widget.selectSection(4),
+              ),
+            ),
+          );
+      }
+    } finally {
+      if (mounted) setState(() => savingObservation = false);
+    }
+  }
+
+  void resetExperiment() {
+    widget.pause();
+    resetBackup = widget.captureConfiguration == null
+        ? null
+        : Map<String, dynamic>.from(
+            jsonDecode(jsonEncode(widget.captureConfiguration!())),
+          );
+    widget.reset();
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: const Text('Experiment reset. Recorded trials are kept.'),
+          action: resetBackup != null && widget.restoreConfiguration != null
+              ? SnackBarAction(
+                  label: 'Undo',
+                  onPressed: () {
+                    widget.pause();
+                    final backup = resetBackup;
+                    if (backup != null) widget.restoreConfiguration!(backup);
+                    resetBackup = null;
+                  },
+                )
+              : null,
+        ),
+      );
+  }
+
+  Widget graphMeasurement() {
+    final painter = widget.referenceChart?.call();
+    return painter is LabPlot
+        ? ExpansionTile(
+            title: const Text('Measure graph interval'),
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: GraphMeasurement(painter),
+              ),
+            ],
+          )
+        : const SizedBox.shrink();
+  }
+
+  /// Inspect uses the owning model's controls and readings, never sample results.
+  void inspect() {
+    widget.pause();
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (sheetContext) => StatefulBuilder(
+        builder: (context, refresh) => ListenableBuilder(
+          listenable: widget.changes,
+          builder: (context, _) => SafeArea(
+            child: SizedBox(
+              height: MediaQuery.sizeOf(context).height * .82,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Inspect ${widget.title}',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: 'Close inspector',
+                          onPressed: () => Navigator.pop(sheetContext),
+                          icon: const Icon(Icons.close),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'Calculated model readings · ${experimentState.toLowerCase()}',
+                          ),
+                          if (hasResearch)
+                            OutlinedButton.icon(
+                              key: const Key('exploration-launch'),
+                              onPressed: () {
+                                Navigator.pop(sheetContext);
+                                openExploration();
+                              },
+                              icon: const Icon(Icons.travel_explore),
+                              label: const Text('Exploration workbench'),
+                            ),
+                          if (hasResearch)
+                            OutlinedButton.icon(
+                              key: const Key('lab-research-launch'),
+                              onPressed: () {
+                                Navigator.pop(sheetContext);
+                                openResearch();
+                              },
+                              icon: const Icon(Icons.science_outlined),
+                              label: const Text('5 lab-specific tools'),
+                            ),
+                          if (widget.selection != null) widget.selection!(),
+                          for (final r in widget.readings())
+                            ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              title: Text(
+                                presentReading(r.label, r.value, r.unit).label,
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SelectableText(
+                                    '${presentReading(r.label, r.value, r.unit).value} ${presentReading(r.label, r.value, r.unit).unit}',
+                                  ),
+                                  if (comparison != null)
+                                    Text(
+                                      comparison!
+                                          .where(
+                                            (b) =>
+                                                b.label == r.label &&
+                                                b.unit == r.unit,
+                                          )
+                                          .map(
+                                            (b) =>
+                                                'Before: ${presentReading(b.label, b.value, b.unit).value} ${presentReading(b.label, b.value, b.unit).unit}',
+                                          )
+                                          .join(),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          OutlinedButton.icon(
+                            key: const Key('pin-comparison'),
+                            icon: const Icon(Icons.compare_arrows),
+                            onPressed: () => refresh(() {
+                              comparison = List.of(widget.readings());
+                              comparisonInputs = {
+                                for (final c in widget.controls())
+                                  c.keyName: c.value,
+                              };
+                            }),
+                            label: Text(
+                              comparison == null
+                                  ? 'Pin current state for comparison'
+                                  : 'Replace pinned comparison',
+                            ),
+                          ),
+                          if (comparisonInputs != null) ...[
+                            const SizedBox(height: 8),
+                            const Text('Input changes since pinned state'),
+                            for (final c in widget.controls().where(
+                              (c) =>
+                                  comparisonInputs!.containsKey(c.keyName) &&
+                                  comparisonInputs![c.keyName] != c.value,
+                            ))
+                              Text(
+                                '${c.label}: ${conciseNumber(comparisonInputs![c.keyName]!)} → ${conciseNumber(c.value)} ${c.unit}',
+                              ),
+                            TextButton(
+                              onPressed: () => refresh(() {
+                                comparison = null;
+                                comparisonInputs = null;
+                              }),
+                              child: const Text('Clear comparison'),
+                            ),
+                          ],
+                          if (widget.data != null)
+                            widget.id == 's00-e04'
+                                ? SizedBox(height: 260, child: widget.data!())
+                                : widget.data!(),
+                          if (widget.guidedStep != null)
+                            OutlinedButton.icon(
+                              onPressed: () {
+                                Navigator.pop(sheetContext);
+                                setState(() => guideVisible = true);
+                              },
+                              icon: const Icon(Icons.route_outlined),
+                              label: const Text('Start guided investigation'),
+                            ),
+                          if (widget.investigationTools != null)
+                            ...widget.investigationTools!(),
+                          if (widget.referenceChart != null) graphMeasurement(),
+                          if (widget.principle != null)
+                            ExpansionTile(
+                              title: const Text('What to investigate'),
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Text(widget.principle!()),
+                                ),
+                              ],
+                            ),
+                          if (widget.equation != null)
+                            ExpansionTile(
+                              title: const Text('Equation and units'),
+                              children: [
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: const EdgeInsets.all(12),
+                                  child: Math.tex(widget.equation!),
+                                ),
+                                for (final c in widget.controls())
+                                  Text(
+                                    '${c.label}: ${c.unit.isEmpty ? 'dimensionless' : c.unit}',
+                                  ),
+                              ],
+                            ),
+                          if (widget.modelLimits != null)
+                            ExpansionTile(
+                              title: const Text('Model & limits'),
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: SelectableText(widget.modelLimits!()),
+                                ),
+                              ],
+                            ),
+                          if (widget.predict != null)
+                            FilledButton.icon(
+                              onPressed: () {
+                                Navigator.pop(sheetContext);
+                                widget.predict!();
+                              },
+                              icon: const Icon(Icons.psychology_outlined),
+                              label: const Text('Check a prediction'),
+                            ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'All parameters (${widget.controls().length})',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          const Text(
+                            'Adjust a slider, use the step buttons, or tap a value for precise entry. Stored data stays in SI units.',
+                          ),
+                          ...widget.controls().map(parameter),
+                          OutlinedButton(
+                            onPressed: () {
+                              Navigator.pop(sheetContext);
+                              more();
+                            },
+                            child: const Text(
+                              'More model controls and investigation',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -298,9 +755,43 @@ class _InstrumentShellState extends State<InstrumentShell> {
     if (widget.section == 2) pane = WorkspacePane.graph;
   }
 
+  bool researchLinkHandled = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    checkStudioLink();
+    if (researchLinkHandled ||
+        !hasResearch ||
+        GoRouter.maybeOf(context) == null) {
+      return;
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || researchLinkHandled) return;
+      if (GoRouterState.of(context).uri.queryParameters['worksheet'] ==
+          'open') {
+        researchLinkHandled = true;
+        openResearch(4);
+      }
+    });
+  }
+
   @override
   void didUpdateWidget(covariant InstrumentShell oldWidget) {
     super.didUpdateWidget(oldWidget);
+    checkStudioLink();
+    if (researchSession != null) {
+      final signature = widget
+          .controls()
+          .map((c) => '${c.keyName}:${c.label}:${c.unit}')
+          .join('|');
+      if (signature != researchControlsSignature) {
+        researchControlsSignature = signature;
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) researchSession?.changed();
+        });
+      }
+    }
+
     if (oldWidget.section != widget.section && widget.section == 2) {
       pane = WorkspacePane.graph;
     }
@@ -329,6 +820,8 @@ class _InstrumentShellState extends State<InstrumentShell> {
 
   @override
   void dispose() {
+    explorationSession?.dispose();
+    researchSession?.dispose();
     camera.dispose();
     graphCamera.dispose();
     super.dispose();
@@ -395,11 +888,14 @@ class _InstrumentShellState extends State<InstrumentShell> {
                   ],
                 ),
                 Expanded(
-                  child: ListView(
+                  child: SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                    children: widget.section == 4
-                        ? notebookSummary()
-                        : widget.advanced(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: widget.section == 4
+                          ? notebookSummary()
+                          : widget.advanced(),
+                    ),
                   ),
                 ),
               ],
@@ -410,6 +906,11 @@ class _InstrumentShellState extends State<InstrumentShell> {
       showDragHandle: true,
       enableDrag: true,
     );
+    final active = sheet!;
+    setState(() {});
+    active.closed.then((_) {
+      if (mounted && identical(sheet, active)) setState(() => sheet = null);
+    });
   }
 
   List<Widget> notebookSummary() {
@@ -444,83 +945,122 @@ class _InstrumentShellState extends State<InstrumentShell> {
     ),
     child: parameterRow(c),
   );
-  Widget parameterRow(InstrumentControl c) => Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '${c.label}${c.unit.isEmpty ? '' : ' (${c.unit})'}',
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+  Widget parameterRow(InstrumentControl c) {
+    final scale = displayScale(c.value, c.unit);
+    final formatted =
+        '${conciseNumber(c.value / scale.factor)}${scale.unit.isEmpty ? '' : ' ${scale.unit}'}';
+    if (widget.id == 's12-e04' && {'inputA', 'inputB'}.contains(c.keyName)) {
+      return Material(
+        color: Colors.white,
+        child: SwitchListTile(
+          key: ValueKey('dock-control-${c.keyName}'),
+          title: Text(c.label),
+          subtitle: Text(c.value >= .5 ? '1 · On' : '0 · Off'),
+          value: c.value >= .5,
+          onChanged: (v) => c.change(v ? 1 : 0),
         ),
-        Row(
-          children: [
-            IconButton(
-              tooltip: 'Decrease ${c.label}',
-              onPressed: c.max > c.min
-                  ? () => c.change(
-                      (c.value - (c.max - c.min) / 100).clamp(c.min, c.max),
-                    )
-                  : null,
-              icon: const Icon(Icons.chevron_left, size: 19),
+      );
+    }
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Tooltip(
+            message:
+                '${c.label} (${c.unit.isEmpty ? 'dimensionless' : c.unit})',
+            child: Text(
+              c.label,
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
             ),
-            Expanded(
-              child: Slider(
-                key: ValueKey('dock-control-${c.keyName}'),
-                min: c.min,
-                max: c.max,
-                value: c.value.clamp(c.min, c.max),
-                label: '${c.value.toStringAsPrecision(4)} ${c.unit}',
-                onChanged: c.max > c.min ? c.change : null,
-              ),
-            ),
-            IconButton(
-              tooltip: 'Increase ${c.label}',
-              onPressed: c.max > c.min
-                  ? () => c.change(
-                      (c.value + (c.max - c.min) / 100).clamp(c.min, c.max),
-                    )
-                  : null,
-              icon: const Icon(Icons.chevron_right, size: 19),
-            ),
-            SizedBox(
-              width: 76,
-              child: OutlinedButton(
-                key: ValueKey('dock-edit-${c.keyName}'),
-                style: OutlinedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
+          ),
+          LayoutBuilder(
+            builder: (context, bounds) {
+              final children = <Widget>[
+                IconButton(
+                  tooltip: 'Decrease ${c.label}',
+                  onPressed: c.max > c.min
+                      ? () => c.change(
+                          (c.value - (c.max - c.min) / 100).clamp(c.min, c.max),
+                        )
+                      : null,
+                  icon: const Icon(Icons.chevron_left, size: 20),
                 ),
-                onPressed: () async {
-                  widget.pause();
-                  await showDialog<void>(
-                    context: context,
-                    builder: (_) => NumericInputDialog(
-                      label: '${c.label} (${c.unit})',
-                      initial: c.value,
-                      min: c.min,
-                      max: c.max,
-                      onApply: c.change,
-                    ),
-                  );
-                },
-                child: Text(
-                  c.value.toStringAsPrecision(4),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 12,
+                Expanded(
+                  child: Slider(
+                    key: ValueKey('dock-control-${c.keyName}'),
+                    min: c.min,
+                    max: c.max > c.min ? c.max : c.min + 1,
+                    value: c.value.clamp(c.min, c.max),
+                    label: formatted,
+                    semanticFormatterCallback: (value) =>
+                        '${conciseNumber(value / scale.factor)} ${scale.unit}',
+                    onChanged: c.max > c.min ? c.change : null,
                   ),
                 ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
+                IconButton(
+                  tooltip: 'Increase ${c.label}',
+                  onPressed: c.max > c.min
+                      ? () => c.change(
+                          (c.value + (c.max - c.min) / 100).clamp(c.min, c.max),
+                        )
+                      : null,
+                  icon: const Icon(Icons.chevron_right, size: 20),
+                ),
+                SizedBox(
+                  width: 100,
+                  child: OutlinedButton(
+                    key: ValueKey('dock-edit-${c.keyName}'),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                    ),
+                    onPressed: () async {
+                      widget.pause();
+                      await showDialog<void>(
+                        context: context,
+                        builder: (_) => NumericInputDialog(
+                          label:
+                              '${c.label}${scale.unit.isEmpty ? '' : ' (${scale.unit})'}',
+                          initial: c.value / scale.factor,
+                          min: c.min / scale.factor,
+                          max: c.max / scale.factor,
+                          onApply: (value) => c.change(
+                            (value * scale.factor).clamp(c.min, c.max),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      formatted,
+                      textAlign: TextAlign.center,
+                      softWrap: true,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ];
+              return bounds.maxWidth >= 280
+                  ? Row(children: children)
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        (children[1] as Expanded).child,
+                        Wrap(
+                          alignment: WrapAlignment.spaceBetween,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [children[0], children[2], children[3]],
+                        ),
+                      ],
+                    );
+            },
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget dock() => ListenableBuilder(
     listenable: widget.changes,
@@ -570,6 +1110,12 @@ class _InstrumentShellState extends State<InstrumentShell> {
               child: SingleChildScrollView(child: guideStrip()),
             ),
           ...available.take(2).map(parameter),
+          if (available.length > 2)
+            TextButton.icon(
+              onPressed: inspect,
+              icon: const Icon(Icons.tune),
+              label: Text('All ${available.length} parameters'),
+            ),
           if (available.isEmpty)
             ListTile(
               dense: true,
@@ -685,17 +1231,50 @@ class _InstrumentShellState extends State<InstrumentShell> {
   Widget viewport() => ClipRect(
     child: ColoredBox(
       color: const Color(0xfff7faff),
-      child: cameraLayer(
-        camera,
-        widget.fitScene
-            ? Center(
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: SizedBox(width: 360, child: widget.scene()),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          cameraLayer(
+            camera,
+            widget.fitScene
+                ? Center(
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: SizedBox(width: 360, child: widget.scene()),
+                    ),
+                  )
+                : SizedBox.expand(child: widget.scene()),
+            key: const Key('workspace-camera'),
+          ),
+          Positioned(
+            top: 3,
+            right: 8,
+            child: IgnorePointer(
+              child: ListenableBuilder(
+                listenable: widget.changes,
+                builder: (context, _) => Semantics(
+                  liveRegion: true,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: .92),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 2,
+                      ),
+                      child: Text(
+                        experimentState,
+                        style: const TextStyle(fontSize: 11, color: navy),
+                      ),
+                    ),
+                  ),
                 ),
-              )
-            : SizedBox.expand(child: widget.scene()),
-        key: const Key('workspace-camera'),
+              ),
+            ),
+          ),
+        ],
       ),
     ),
   );
@@ -778,7 +1357,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
   );
 
   bool get referenceHintVisible =>
-      MediaQuery.sizeOf(context).height >= 600 &&
+      MediaQuery.sizeOf(context).height >= 1000 &&
       MediaQuery.textScalerOf(context).scale(1) < 1.5;
   Widget referenceHint() {
     final entries = allEntries.where((e) => e.id == widget.id);
@@ -812,11 +1391,11 @@ class _InstrumentShellState extends State<InstrumentShell> {
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          entries.first.principle,
+                          widget.principle?.call() ?? entries.first.principle,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
                             height: 1.25,
                             color: navy,
                           ),
@@ -832,7 +1411,9 @@ class _InstrumentShellState extends State<InstrumentShell> {
             IconButton(
               key: const Key('record-trial'),
               tooltip: widget.recordLabel,
-              onPressed: widget.canRecord() ? widget.record : null,
+              onPressed: widget.canRecord() && !savingObservation
+                  ? recordObservation
+                  : null,
               icon: const Icon(Icons.add_circle_outline, size: 20),
               constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               padding: EdgeInsets.zero,
@@ -846,7 +1427,21 @@ class _InstrumentShellState extends State<InstrumentShell> {
     listenable: widget.changes,
     builder: (context, _) => actionContent(),
   );
-  Widget actionContent() => Padding(
+  String get experimentState {
+    if (savingObservation) return 'Saving observation';
+    if (widget.playing()) return 'Running';
+    if (widget.finished?.call() ?? false) return 'Finished';
+    if (!widget.dynamicModel()) return 'Ready to inspect';
+    final time = widget.readings().where(
+      (r) => r.label.toLowerCase().contains('t') && r.unit == 's',
+    );
+    return time.any((r) => (double.tryParse(r.value) ?? 0) > 0)
+        ? 'Paused'
+        : 'Ready';
+  }
+
+  Widget actionContent() => actionButtons();
+  Widget actionButtons() => Padding(
     padding: const EdgeInsets.fromLTRB(10, 5, 10, 6),
     child: LayoutBuilder(
       builder: (context, b) {
@@ -874,7 +1469,9 @@ class _InstrumentShellState extends State<InstrumentShell> {
                     )
                   : FilledButton.icon(
                       key: const Key('record-trial'),
-                      onPressed: widget.canRecord() ? widget.record : null,
+                      onPressed: widget.canRecord() && !savingObservation
+                          ? recordObservation
+                          : null,
                       icon: const Icon(Icons.add, size: 20),
                       label: Text(
                         widget.recordLabel,
@@ -891,14 +1488,19 @@ class _InstrumentShellState extends State<InstrumentShell> {
             Tooltip(
               message: 'Reset',
               child: OutlinedButton(
-                onPressed: widget.reset,
+                onPressed: resetExperiment,
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: large ? 10 : 14),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.restart_alt, size: 20),
+                    const Icon(
+                      Icons.restart_alt,
+                      size: 20,
+                      semanticLabel:
+                          'Reset experiment; recorded trials are kept',
+                    ),
                     if (!large) ...[
                       const SizedBox(width: 5),
                       const Text(
@@ -919,11 +1521,17 @@ class _InstrumentShellState extends State<InstrumentShell> {
                 message: widget.recordLabel,
                 child: FilledButton.tonal(
                   key: const Key('record-trial'),
-                  onPressed: widget.canRecord() ? widget.record : null,
+                  onPressed: widget.canRecord() && !savingObservation
+                      ? recordObservation
+                      : null,
                   style: FilledButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                   ),
-                  child: const Icon(Icons.add, size: 20),
+                  child: Icon(
+                    Icons.add,
+                    size: 20,
+                    semanticLabel: widget.recordLabel,
+                  ),
                 ),
               ),
             ],
@@ -1151,6 +1759,64 @@ class _InstrumentShellState extends State<InstrumentShell> {
           onBack: full ? () => choose(WorkspacePane.scene) : null,
         ),
         title: ReferenceLabHeading(widget.id, widget.title),
+        bottom: MediaQuery.sizeOf(context).height < 450
+            ? null
+            : PreferredSize(
+                preferredSize: const Size.fromHeight(48),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      TextButton.icon(
+                        key: const Key('workspace-scene'),
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          textStyle: const TextStyle(fontSize: 12),
+                        ),
+                        onPressed: () {
+                          if (widget.showLabSections) widget.selectSection(1);
+                          choose(WorkspacePane.scene);
+                        },
+                        icon: const Icon(Icons.science_outlined, size: 18),
+                        label: const Text('Apparatus'),
+                      ),
+                      TextButton.icon(
+                        key: const Key('workspace-graph'),
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          textStyle: const TextStyle(fontSize: 12),
+                        ),
+                        onPressed: () {
+                          if (widget.showLabSections) widget.selectSection(1);
+                          choose(WorkspacePane.graph);
+                        },
+                        icon: const Icon(Icons.insights_outlined, size: 18),
+                        label: const Text('Graph'),
+                      ),
+                      TextButton.icon(
+                        key: const Key('workspace-inspect'),
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          textStyle: const TextStyle(fontSize: 12),
+                        ),
+                        onPressed: inspect,
+                        icon: const Icon(Icons.tune, size: 18),
+                        label: const Text('Inspect'),
+                      ),
+                      TextButton.icon(
+                        key: const Key('workspace-results'),
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          textStyle: const TextStyle(fontSize: 12),
+                        ),
+                        onPressed: () => widget.selectSection(4),
+                        icon: const Icon(Icons.bar_chart_outlined, size: 18),
+                        label: const Text('Results'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
         actions: [
           ...widget.toolbarActions,
           IconButton(
@@ -1159,6 +1825,8 @@ class _InstrumentShellState extends State<InstrumentShell> {
             icon: const Icon(Icons.help_outline),
           ),
           LabSectionMenu(
+            exploration: hasResearch ? openExploration : null,
+            research: hasResearch ? openResearch : null,
             labId: widget.id,
             notebook: widget.store,
             guide: widget.guidedStep == null
@@ -1184,12 +1852,14 @@ class _InstrumentShellState extends State<InstrumentShell> {
           : Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (widget.section != 4 && referenceHintVisible)
+                if (sheet == null &&
+                    widget.section != 4 &&
+                    referenceHintVisible)
                   ListenableBuilder(
                     listenable: widget.changes,
                     builder: (context, _) => referenceHint(),
                   ),
-                if (widget.section != 4) actions(),
+                if (sheet == null && widget.section != 4) actions(),
                 ReferenceNavigation(
                   selected: widget.section == 4
                       ? 2
@@ -1382,7 +2052,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
                       child: SizedBox(
                         height: math.max(
                           b.maxHeight,
-                          520.0 + (widget.selection == null ? 0 : 52),
+                          600.0 + (widget.selection == null ? 0 : 56),
                         ),
                         child: Column(
                           children: [
@@ -1396,7 +2066,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
                             SizedBox(
                               height:
                                   (widget.dockExtent ??
-                                      (widget.controls().take(2).length * 76.0 +
+                                      (widget.controls().take(2).length * 92.0 +
                                           (widget.selection == null
                                               ? 0
                                               : 52))) *

@@ -1,3 +1,5 @@
+import '../core/physics/supplemental_labs.dart';
+
 import 'dart:convert';
 
 class Entry {
@@ -12,13 +14,17 @@ class Entry {
     this.index,
   );
   bool get interactive => studioIndex >= 1 && studioIndex <= 16;
-  bool get astronomy => studioIndex == 16;
-  bool get fluidModern => studioIndex >= 14 && studioIndex <= 15;
-  bool get electronicsThermal => studioIndex >= 12 && studioIndex <= 13;
-  bool get electromagnetism => studioIndex >= 10 && studioIndex <= 11;
-  bool get wavesOptics => studioIndex >= 8 && studioIndex <= 9;
-  bool get advanced => studioIndex >= 5 && studioIndex <= 7;
-  bool get dynamics => studioIndex >= 2 && studioIndex <= 4;
+  bool get supplemental => studioIndex > 0 && index >= 6;
+  bool get astronomy => !supplemental && studioIndex == 16;
+  bool get fluidModern =>
+      !supplemental && studioIndex >= 14 && studioIndex <= 15;
+  bool get electronicsThermal =>
+      !supplemental && studioIndex >= 12 && studioIndex <= 13;
+  bool get electromagnetism =>
+      !supplemental && studioIndex >= 10 && studioIndex <= 11;
+  bool get wavesOptics => !supplemental && studioIndex >= 8 && studioIndex <= 9;
+  bool get advanced => !supplemental && studioIndex >= 5 && studioIndex <= 7;
+  bool get dynamics => !supplemental && studioIndex >= 2 && studioIndex <= 4;
   bool get tool => studioIndex == 0;
   String get availability => interactive
       ? 'Experiment'
@@ -36,24 +42,27 @@ class Studio {
 final List<Studio> studios = (jsonDecode(_catalog) as List).asMap().entries.map(
   (s) {
     final m = s.value as Map;
-    return Studio(
-      m['id'],
-      m['title'],
-      (m['entries'] as List)
-          .asMap()
-          .entries
-          .map(
-            (e) => Entry(
-              e.value['id'],
-              e.value['title'],
-              e.value['principle'],
-              e.value['formula'],
-              s.key,
-              e.key,
-            ),
-          )
-          .toList(),
-    );
+    return Studio(m['id'], m['title'], [
+      ...(m['entries'] as List).asMap().entries.map(
+        (e) => Entry(
+          e.value['id'],
+          e.value['title'],
+          e.value['principle'],
+          e.value['formula'],
+          s.key,
+          e.key,
+        ),
+      ),
+      for (final lab in supplementalLabs.where((l) => l.studio == s.key))
+        Entry(
+          lab.id,
+          lab.title,
+          lab.principle,
+          lab.equation,
+          s.key,
+          int.parse(lab.id.split('e').last),
+        ),
+    ]);
   },
 ).toList();
 final allEntries = studios.expand((s) => s.entries).toList();

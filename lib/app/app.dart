@@ -1,3 +1,5 @@
+import '../features/supplemental/workspace.dart';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -30,7 +32,17 @@ final notebookProvider = Provider<LocalNotebook>(
 final router = GoRouter(
   observers: [dynamicsRouteObserver],
   routes: [
-    GoRoute(path: '/', builder: (c, s) => const HomeScreen()),
+    GoRoute(
+      path: '/',
+      builder: (c, s) => CompactHome(
+        key: ValueKey(s.uri.queryParameters['tab']),
+        initialDestination: switch (s.uri.queryParameters['tab']) {
+          'explore' => 1,
+          'saved' => 2,
+          _ => 0,
+        },
+      ),
+    ),
     GoRoute(
       path: '/studio/:id',
       builder: (c, s) => StudioScreen(
@@ -39,7 +51,12 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => entryById(s.pathParameters['id']!).tool
+      builder: (c, s) => entryById(s.pathParameters['id']!).supplemental
+          ? SupplementalWorkspace(
+              key: ValueKey(s.pathParameters['id']),
+              entry: entryById(s.pathParameters['id']!),
+            )
+          : entryById(s.pathParameters['id']!).tool
           ? (entryById(s.pathParameters['id']!).index == 4
                 ? const CompareWorkspace()
                 : OverviewWorkspace(

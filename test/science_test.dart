@@ -31,26 +31,23 @@ void main() {
       );
     },
   );
-  test(
-    'Curriculum has exactly 17 studios, six entries each, 102 distinct IDs',
-    () {
-      expect(studios.length, 17);
-      expect(studios.every((s) => s.entries.length == 6), true);
-      expect(allEntries.length, 102);
-      expect(allEntries.map((e) => e.id).toSet().length, 102);
-      expect(allEntries.where((e) => e.interactive).length, 96);
-      expect(studios[1].entries.where((e) => e.interactive).length, 6);
-      expect(allEntries.where((e) => e.tool).length, 6);
-      expect(studios[1].entries.map((e) => e.title), [
-        'Meter Scale',
-        'Vernier Caliper',
-        'Micrometer',
-        'Spherometer',
-        'Mass & Time',
-        'Uncertainty',
-      ]);
-    },
-  );
+  test('Curriculum has exactly 17 studios, at least six entries each, 122 distinct IDs', () {
+    expect(studios.length, 17);
+    expect(studios.every((s) => s.entries.length >= 6), true);
+    expect(allEntries.length, 122);
+    expect(allEntries.map((e) => e.id).toSet().length, 122);
+    expect(allEntries.where((e) => e.interactive).length, 116);
+    expect(studios[1].entries.where((e) => e.interactive).length, 6);
+    expect(allEntries.where((e) => e.tool).length, 6);
+    expect(studios[1].entries.map((e) => e.title), [
+      'Meter Scale',
+      'Vernier Caliper',
+      'Micrometer',
+      'Spherometer',
+      'Mass & Time',
+      'Uncertainty',
+    ]);
+  });
   test('SI conversions and view inverse preserve ruler length at any zoom', () {
     expect(metres(mm(.0123)), closeTo(.0123, 1e-12));
     for (final zoom in [1.0, 2.7, 5.0]) {

@@ -422,6 +422,13 @@ class CompareWorkspaceState extends ConsumerState<CompareWorkspace>
       'detections',
     ];
     return InstrumentShell(
+      captureConfiguration: configuration,
+      restoreConfiguration: (data) {
+        final restored = restore(data);
+        tick.value++;
+        if (mounted) setState(() {});
+        return restored;
+      },
       key: const ValueKey('instrument-comparison'),
       id: 's00-e04',
       title: 'Compare Phenomena',

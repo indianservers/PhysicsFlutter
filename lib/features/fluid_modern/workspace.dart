@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app.dart';
 import '../workbench/workbench.dart';
+import '../workbench/quantity_ledger.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/design_system/reference_style.dart';
@@ -502,6 +503,60 @@ class _FMWorkspaceState extends ConsumerState<FMWorkspace>
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchReadings: () => [
+          for (final e in run.state.entries)
+            InstrumentReading(
+              e.key,
+              e.value.toString(),
+              e.key == 't' ? 's' : stateUnit(e.key),
+            ),
+        ],
+        principle: () => lesson.principle,
+        modelLimits: () => lesson.limits,
+        equation: lesson.formula,
+        captureConfiguration: configuration,
+        finished: () => run.finished,
+        data: () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (kind == 2 || kind == 5)
+              QuantityLedger(
+                title: 'Vertical forces',
+                unit: 'N',
+                quantities: {
+                  for (final key in [
+                    'buoyantForce',
+                    'weight',
+                    'freeNetForceUp',
+                    'supportForceUp',
+                    'drag',
+                  ])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            if (kind == 7)
+              QuantityLedger(
+                title: 'Photon energy and emission threshold',
+                unit: 'J',
+                quantities: {
+                  for (final key in [
+                    'photonEnergy',
+                    'workFunction',
+                    'maxKinetic',
+                  ])
+                    if (run.state[key] != null) key: run.state[key]!,
+                },
+              ),
+            metrics(),
+          ],
+        ),
+        restoreConfiguration: (data) {
+          final restored = restore(data);
+          tick.value++;
+          if (mounted) setState(() {});
+          return restored;
+        },
+        predict: predict,
         key: ValueKey('instrument-${entry.id}'),
         referenceChart: referencePlot,
         exportRecorded: (trials) => exportTrials(context, trials),
@@ -552,7 +607,7 @@ class _FMWorkspaceState extends ConsumerState<FMWorkspace>
         controls: instrumentControls,
         readings: () => [
           InstrumentReading(
-            lesson.metric,
+            kind == 6 ? 'Quantum energy' : lesson.metric,
             result?.toStringAsPrecision(5) ?? 'Undefined',
             lesson.unit,
           ),

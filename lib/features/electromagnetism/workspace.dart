@@ -23,6 +23,7 @@ import '../dynamics/workspace.dart' show dynamicsRouteObserver;
 import '../lab_workspace/workspace.dart' show NumericInputDialog;
 import 'curriculum.dart';
 import 'scene.dart';
+import 'circuit_schematic.dart';
 
 class EMWorkspace extends ConsumerStatefulWidget {
   final Entry entry;
@@ -234,6 +235,7 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
     'ticks': run.ticks,
     'heldCharge': heldCharge ?? run.heldCharge,
     'circuit': circuit.toJson(),
+    'selectedPart': selected,
     'notes': notes.text,
     'guided': guided,
     'attempts': attempts,
@@ -321,7 +323,12 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
           : 'profile';
       graphMetric = data['graphMetric'] ?? lesson.metric;
       clock.speed = ((data['speed'] as num?)?.toDouble() ?? 1).clamp(.25, 2);
-      selected = circuit.parts.firstOrNull?.id ?? '';
+      final savedPart = data['selectedPart'];
+      selected = circuit.parts.any((p) => p.id == savedPart)
+          ? savedPart as String
+          : circuit.parts.any((p) => p.id == 'R1')
+          ? 'R1'
+          : circuit.parts.firstOrNull?.id ?? '';
       cursor = 0;
       notice = 'Original SI parameters, topology and initial conditions restored; playback paused.';
       return true;
@@ -491,6 +498,74 @@ class _EMWorkspaceState extends ConsumerState<EMWorkspace>
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchSelection: kind == 5 || kind == 11
+            ? modes
+            : kind == 4
+            ? () => DropdownButtonFormField<String>(
+                key: ValueKey('research-circuit-part-$selected'),
+                initialValue:
+                    circuit.parts.any(
+                      (p) =>
+                          p.id == selected &&
+                          ['source', 'resistor', 'lamp'].contains(p.type),
+                    )
+                    ? selected
+                    : null,
+                isExpanded: true,
+                decoration: const InputDecoration(
+                  labelText: 'Editable circuit component',
+                ),
+                items: [
+                  for (final part in circuit.parts.where(
+                    (p) => ['source', 'resistor', 'lamp'].contains(p.type),
+                  ))
+                    DropdownMenuItem(
+                      value: part.id,
+                      child: Text('${part.id} (${part.type})'),
+                    ),
+                ],
+                onChanged: (value) {
+                  if (value != null) {
+                    setState(() => selected = value);
+                    tick.value++;
+                  }
+                },
+              )
+            : null,
+
+        researchReadings: () => [
+          for (final e in run.state.entries)
+            InstrumentReading(
+              e.key,
+              e.value.toString(),
+              e.key == 't' ? 's' : unitFor(e.key),
+            ),
+        ],
+        principle: () => lesson.principle,
+        modelLimits: () => lesson.limits,
+        equation: lesson.formula,
+        captureConfiguration: configuration,
+        finished: () => run.finished,
+        data: () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (kind == 4)
+              ExpansionTile(
+                title: const Text('Schematic / component readings'),
+                children: [
+                  CircuitSchematic(circuit: circuit, solution: run.network),
+                ],
+              ),
+            metrics(),
+          ],
+        ),
+        restoreConfiguration: (data) {
+          final restored = restore(data);
+          tick.value++;
+          if (mounted) setState(() {});
+          return restored;
+        },
+        predict: predict,
         key: ValueKey('instrument-${entry.id}'),
         referenceChart: referencePlot,
         exportRecorded: (trials) => exportTrials(context, trials),

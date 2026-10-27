@@ -71,7 +71,7 @@ void main() {
           child: const PhysicsApp(),
         ),
       );
-      expect(allEntries.where((e) => e.interactive).length, 96);
+      expect(allEntries.where((e) => e.interactive).length, 116);
       for (final e in allEntries.where((e) => e.electromagnetism)) {
         router.go('/lab/${e.id}');
         await t.pumpAndSettle();
@@ -147,7 +147,11 @@ void main() {
       await show(t, find.byKey(const Key('play-em')));
       await t.tap(find.byKey(const Key('play-em')));
       await t.pump(const Duration(milliseconds: 80));
+      t.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      t.binding.handleAppLifecycleStateChanged(AppLifecycleState.hidden);
       t.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+      t.binding.handleAppLifecycleStateChanged(AppLifecycleState.hidden);
+      t.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
       t.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
       await t.pumpAndSettle();
       expect(find.text('Play'), findsOneWidget);

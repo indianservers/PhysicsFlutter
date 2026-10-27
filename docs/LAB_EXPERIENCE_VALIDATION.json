@@ -1,0 +1,21 @@
+{
+  "version": "1.13.0+16",
+  "artifact": "physics-atelier-lab-experience-debug.apk",
+  "sha256": "897dbe87562edc6f1aabf43cd7a5e33ec2e0f5fd54a9ba4c55ec7d547930db80",
+  "installedPackageHashMatches": true,
+  "ordinaryMainEntryPoint": true,
+  "analyze": "No issues found",
+  "unitAndWidgetTests": 342,
+  "targetedFollowUpTests": 5,
+  "nativeFullTraversal": {
+    "studios": 17,
+    "destinations": 102,
+    "inspectors": 96,
+    "graphs": 96
+  },
+  "finalNativeRefresh": {
+    "primaryViews": 102,
+    "specialistDetailViews": 4,
+    "nativeAudioPlayAndStop": true
+  }
+}

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:physics_atelier/app/app.dart';
-import 'package:physics_atelier/core/design_system/reference_style.dart';
 import 'package:physics_atelier/features/workbench/workbench.dart';
+import 'package:physics_atelier/features/home/home_screen.dart';
 
 import 'app_test.dart' show notebook;
 
@@ -37,7 +37,7 @@ void main() {
   });
 
   testWidgets(
-    'Reference footer destinations work in every physical workspace family',
+    'Global footer retains the approved four destinations across lab families',
     (t) async {
       final store = await notebook();
       await t.pumpWidget(
@@ -58,36 +58,18 @@ void main() {
       ]) {
         router.go('/lab/$id');
         await t.pumpAndSettle();
-        expect(find.byKey(const Key('reference-nav-learn')), findsOneWidget);
         final before = t
             .widget<InstrumentShell>(find.byType(InstrumentShell))
             .controls()
             .map((c) => c.value)
             .toList();
-        await t.tap(find.byKey(const Key('reference-nav-results')));
+        for (final name in ['Home', 'Explore', 'Saved', 'Settings']) {
+          expect(find.text(name), findsOneWidget, reason: id);
+        }
+        await t.tap(find.byKey(const Key('workspace-results')));
         await t.pumpAndSettle();
-        expect(
-          t
-              .widget<ReferenceNavigation>(find.byType(ReferenceNavigation))
-              .selected,
-          2,
-        );
-        await t.tap(find.byKey(const Key('reference-nav-labs')));
-        await t.pumpAndSettle();
-        await t.tap(find.byKey(const Key('reference-nav-learn')));
-        await t.pumpAndSettle();
-        expect(
-          find.byType(InstrumentShell),
-          findsNothing,
-          reason: '$id reader',
-        );
-        expect(
-          t
-              .widget<ReferenceNavigation>(find.byType(ReferenceNavigation))
-              .selected,
-          0,
-        );
-        await t.tap(find.byKey(const Key('reference-nav-labs')));
+        expect(find.textContaining('recorded trials'), findsWidgets);
+        await t.tap(find.byKey(const Key('workspace-scene')));
         await t.pumpAndSettle();
         expect(
           t
@@ -97,9 +79,22 @@ void main() {
               .toList(),
           before,
         );
-        await t.tap(find.byKey(const Key('reference-nav-profile')));
+        await t.tap(find.byKey(const Key('home-nav-saved')));
         await t.pumpAndSettle();
-        expect(find.text('Your learning'), findsOneWidget);
+        expect(
+          t.widget<CompactHome>(find.byType(CompactHome)).initialDestination,
+          2,
+        );
+        router.pop();
+        await t.pumpAndSettle();
+        expect(find.byType(InstrumentShell), findsOneWidget);
+        await t.tap(find.byKey(const Key('home-nav-settings')));
+        await t.pumpAndSettle();
+        expect(find.text('Settings'), findsWidgets);
+        expect(
+          t.widget<HomeNavigation>(find.byType(HomeNavigation)).selected,
+          3,
+        );
         expect(t.takeException(), isNull, reason: id);
       }
       router.go('/');

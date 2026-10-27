@@ -24,6 +24,7 @@ import '../dynamics/workspace.dart' show dynamicsRouteObserver;
 import '../lab_workspace/workspace.dart' show NumericInputDialog;
 import 'curriculum.dart';
 import 'scene.dart';
+import 'tone_preview.dart';
 import 'microphone.dart';
 
 final liveMicrophoneProvider = Provider<LiveMicrophone>((ref) {
@@ -578,11 +579,110 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     );
   }
 
+  bool fitImage = false, rulerVisible = true, draggingRuler = false;
+  double rulerStart = .2;
+  int constructionStep = 0;
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchSelection: [0, 4, 8, 9].contains(kind)
+            ? () => Column(children: modeControls())
+            : null,
+        researchReadings: () => [
+          for (final e in run.state.entries)
+            InstrumentReading(
+              e.key,
+              e.value.toString(),
+              e.key == 't' ? 's' : waveUnit(e.key),
+            ),
+        ],
+        principle: () => lesson.principle,
+        modelLimits: () => lesson.limits,
+        equation: lesson.formula,
+        investigationTools: () => [
+          if (kind == 0) ...[
+            SwitchListTile(
+              title: const Text('Wavelength ruler'),
+              subtitle: const Text(
+                'Drag the ruler on the tank, or position it with this slider. View only.',
+              ),
+              value: rulerVisible,
+              onChanged: (v) {
+                setState(() => rulerVisible = v);
+                tick.value++;
+              },
+            ),
+            Slider(
+              value: rulerStart.clamp(
+                0,
+                math.max(0, 2 - parameters['wavelength']!),
+              ),
+              min: 0,
+              max: math.max(.001, 2 - parameters['wavelength']!),
+              label: '${rulerStart.toStringAsFixed(2)} m',
+              onChanged: (v) {
+                setState(() => rulerStart = v);
+                tick.value++;
+              },
+            ),
+          ],
+          if (kind >= 6 && kind <= 9) ...[
+            const Text('Ray construction · view only'),
+            Wrap(
+              spacing: 8,
+              children: [
+                for (final step in [0, 1, 2, 3])
+                  ChoiceChip(
+                    label: Text(
+                      [
+                        'All rays',
+                        kind <= 7 ? 'Incident' : 'Parallel ray',
+                        kind <= 7 ? 'Outgoing rays' : 'Central ray',
+                        'Complete',
+                      ][step],
+                    ),
+                    selected: constructionStep == step,
+                    onSelected: (_) {
+                      setState(() => constructionStep = step);
+                      tick.value++;
+                    },
+                  ),
+              ],
+            ),
+          ],
+          if (kind == 8 || kind == 9)
+            SwitchListTile(
+              title: const Text('Fit object and image'),
+              subtitle: const Text(
+                'Includes finite virtual images. At the focal limit the image is at infinity.',
+              ),
+              value: fitImage,
+              onChanged: (value) {
+                setState(() => fitImage = value);
+                tick.value++;
+              },
+            ),
+          ...presets(),
+        ],
+        captureConfiguration: configuration,
+        finished: () => run.finished,
+        data: () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            metrics(),
+            if (kind == 4 && !micMode)
+              TonePreview(parameters: Map.of(parameters), mode: mode),
+          ],
+        ),
+        restoreConfiguration: (data) {
+          final restored = restore(data);
+          tick.value++;
+          if (mounted) setState(() {});
+          return restored;
+        },
+        predict: predict,
         key: ValueKey('instrument-${entry.id}'),
         referenceChart: referencePlot,
         toolbarActions: [
@@ -797,6 +897,9 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     builder: (context, _) {
       final painter = WavePainter(
         run,
+        fitImage: fitImage,
+        wavelengthRuler: kind == 0 && rulerVisible ? rulerStart : null,
+        constructionStep: constructionStep,
         labels: labels,
         overlays: overlays,
         comparison: comparison,
@@ -812,13 +915,33 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
             minScale: 1,
             maxScale: 4,
             child: GestureDetector(
+              onHorizontalDragStart: kind == 0 && rulerVisible
+                  ? (event) {
+                      final point = event.localPosition / (box.maxWidth / 360);
+                      draggingRuler = (point.dy - 206).abs() < 20;
+                    }
+                  : null,
               onHorizontalDragUpdate: micMode
                   ? null
-                  : (event) => updateMany(
-                      painter.interaction(
-                        event.localPosition / (box.maxWidth / 360),
-                      ),
-                    ),
+                  : (event) {
+                      if (kind == 0 && draggingRuler && rulerVisible) {
+                        rulerStart =
+                            (rulerStart +
+                                    event.delta.dx / (box.maxWidth / 360) / 150)
+                                .clamp(
+                                  0,
+                                  math.max(0, 2 - parameters['wavelength']!),
+                                );
+                        tick.value++;
+                      } else {
+                        updateMany(
+                          painter.interaction(
+                            event.localPosition / (box.maxWidth / 360),
+                          ),
+                        );
+                      }
+                    },
+              onHorizontalDragEnd: (_) => draggingRuler = false,
               child: RepaintBoundary(
                 child: CustomPaint(
                   size: Size(box.maxWidth, box.maxWidth * .75),
@@ -837,6 +960,9 @@ class _WaveWorkspaceState extends ConsumerState<WaveWorkspace>
     builder: (context, _) {
       final painter = WavePainter(
         run,
+        fitImage: fitImage,
+        wavelengthRuler: kind == 0 && rulerVisible ? rulerStart : null,
+        constructionStep: constructionStep,
         labels: labels,
         overlays: overlays,
         comparison: comparison,

@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app.dart';
 import '../workbench/workbench.dart';
+import '../workbench/quantity_ledger.dart';
 import '../../content/catalog.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/design_system/reference_style.dart';
@@ -432,6 +433,117 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
+        researchSelection: [2, 4, 8, 10, 16].contains(kind)
+            ? () => Column(children: modeControls())
+            : null,
+        researchReadings: () => [
+          for (final e in current.entries)
+            InstrumentReading(
+              e.key,
+              e.value.toString(),
+              e.key == 't' ? 's' : units(e.key),
+            ),
+        ],
+        principle: () => lesson.principle,
+        modelLimits: () => lesson.limits,
+        equation: lesson.formula,
+        investigationTools: () => [
+          if ([0, 1, 15, 16].contains(kind))
+            SwitchListTile(
+              title: const Text('Isolated body diagram'),
+              value: isolated,
+              onChanged: (value) {
+                setState(() => isolated = value);
+                tick.value++;
+              },
+            ),
+          if (kind == 1)
+            SwitchListTile(
+              title: const Text('Resolve weight into incline components'),
+              value: components,
+              onChanged: (value) {
+                setState(() => components = value);
+                tick.value++;
+              },
+            ),
+          if (kind == 15) ...surfacePresets(),
+          if ([6, 7, 8].contains(kind))
+            Wrap(
+              spacing: 8,
+              children: [
+                OutlinedButton(
+                  onPressed: () {
+                    update('v0', 0);
+                    update('a', 0);
+                  },
+                  child: const Text('At rest'),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    update('v0', 2);
+                    update('a', 0);
+                  },
+                  child: const Text('Uniform motion'),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    update('v0', 0);
+                    update('a', 1);
+                  },
+                  child: const Text('Uniform acceleration'),
+                ),
+              ],
+            ),
+        ],
+        captureConfiguration: configuration,
+        finished: () => run.finished,
+        data: () => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (kind == 3)
+              QuantityLedger(
+                title: 'Clockwise and anticlockwise moments',
+                unit: 'N·m',
+                quantities: {
+                  for (final key in ['torque1', 'torque2', 'netTorque'])
+                    if (current[key] != null) key: current[key]!,
+                },
+              ),
+            if (kind == 5)
+              QuantityLedger(
+                title: 'Collision momentum before and after',
+                unit: 'kg·m/s',
+                quantities: {
+                  for (final key in ['initialMomentum', 'momentum'])
+                    if (current[key] != null) key: current[key]!,
+                },
+              ),
+            if ([0, 1, 12, 13, 14, 15, 16, 17].contains(kind))
+              QuantityLedger(
+                title: 'Force components · net and individual forces',
+                unit: 'N',
+                quantities: {
+                  for (final key in [
+                    'fx',
+                    'fy',
+                    'normal',
+                    'friction',
+                    'supportForce',
+                    'force2',
+                  ])
+                    if (current[key] != null) key: current[key]!,
+                },
+              ),
+            metrics(),
+          ],
+        ),
+        restoreConfiguration: (data) {
+          final restored = restore(data);
+          tick.value++;
+          if (mounted) setState(() {});
+          return restored;
+        },
+        predict: prediction,
         key: ValueKey('instrument-${entry.id}'),
         referenceChart: referencePlot,
         exportRecorded: (trials) => exportTrials(context, trials),

@@ -13,6 +13,7 @@ import '../../core/physics/advanced.dart';
 import '../../core/physics/dynamics.dart' show Vec2;
 import '../../core/rendering/apparatus.dart';
 import '../../core/rendering/materials.dart';
+import '../../core/rendering/scientific_text.dart';
 import '../dynamics/scene.dart';
 
 class AdvancedPainter extends ScientificScene {
@@ -167,6 +168,7 @@ class AdvancedPainter extends ScientificScene {
 
   @override
   void paint(Canvas c, Size size) {
+    ScientificText.beginCallouts();
     c.save();
     c.clipRect(Offset.zero & size);
     final scale = math.min(size.width / 360, size.height / 270);

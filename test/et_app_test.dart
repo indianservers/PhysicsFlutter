@@ -53,8 +53,8 @@ void main() {
       addTearDown(t.platformDispatcher.clearTextScaleFactorTestValue);
       final store = await notebook();
       await etBoot(t, store, 's12-e00');
-      expect(allEntries.length, 102);
-      expect(allEntries.where((e) => e.interactive).length, 96);
+      expect(allEntries.length, 122);
+      expect(allEntries.where((e) => e.interactive).length, 116);
       for (final e in allEntries.where((e) => e.electronicsThermal)) {
         router.go('/lab/${e.id}');
         await t.pumpAndSettle();

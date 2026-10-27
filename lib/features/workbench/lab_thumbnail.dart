@@ -1,3 +1,6 @@
+import '../../core/physics/supplemental_labs.dart';
+import '../supplemental/scene.dart';
+
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
@@ -36,7 +39,7 @@ class LabThumbnail extends StatelessWidget {
   Widget build(BuildContext context) => Semantics(
     image: true,
     label: '${entry.title}, static reference illustration',
-    child: entry.studioIndex == 1 && entry.index == 5
+    child: entry.supplemental || entry.studioIndex == 1 && entry.index == 5
         ? RepaintBoundary(child: CustomPaint(painter: _Preview(entry)))
         : ReferencePreview(
             entry,
@@ -52,6 +55,15 @@ class _Preview extends CustomPainter {
   final Entry entry;
   _Preview(this.entry);
   CustomPainter painter() {
+    if (entry.supplemental) {
+      final lab = supplementalById(entry.id);
+      return SupplementalPainter(
+        lab,
+        lab.defaults,
+        lab.evaluate(lab.defaults, 0),
+        0,
+      );
+    }
     final k = entry.index, studio = entry.studioIndex;
     if (entry.astronomy) {
       return AstronomyPainter(

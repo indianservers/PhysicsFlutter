@@ -1,3 +1,5 @@
+import '../core/physics/supplemental_labs.dart';
+
 import 'dart:math' as math;
 
 import 'catalog.dart';
@@ -41,8 +43,9 @@ String apparatusFor(Entry e) => switch (e.studioIndex) {
   14 => 'Fluid apparatus',
   _ => 'Quantum / nuclear model',
 };
-String stageFor(Entry e) =>
-    ['Foundation', 'Intermediate', 'Advanced'][e.index ~/ 2];
+String stageFor(Entry e) => e.supplemental
+    ? supplementalById(e.id).stage
+    : ['Foundation', 'Intermediate', 'Advanced'][e.index ~/ 2];
 List<String> tagsFor(Entry e) => [
   groups[groupFor(e.studioIndex)],
   studios[e.studioIndex].title,
@@ -210,7 +213,7 @@ class LearningPath {
   List<Entry> get activities => [
     for (final s in studiosInOrder) ...studios[s].entries,
   ];
-  bool required(Entry e) => e.index != 5;
+  bool required(Entry e) => e.index < 5;
   List<Entry> get requiredActivities => activities.where(required).toList();
   double progress(Set<String> completed) =>
       requiredActivities.where((e) => completed.contains(e.id)).length /

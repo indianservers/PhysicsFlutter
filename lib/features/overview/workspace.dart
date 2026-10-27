@@ -8,6 +8,8 @@ import '../../app/app.dart';
 import '../workbench/lab_thumbnail.dart';
 import '../../content/catalog.dart';
 import '../../content/learning.dart';
+import '../../content/studio_investigations.dart';
+import '../workbench/exploration_workbench.dart';
 import '../../core/design_system/theme.dart';
 import '../../core/design_system/reference_style.dart';
 import '../../core/persistence/notebook.dart';
@@ -28,7 +30,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
     with WidgetsBindingObserver {
   late LocalNotebook store;
   bool ready = false,
-      listView = false,
+      listView = true,
       onlyFavorites = false,
       filterUsed = false;
   String query = '',
@@ -52,6 +54,73 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
   Entry get entry => widget.entry;
   MasteryQuestion get question =>
       masteryQuestions.firstWhere((q) => q.id == questionId);
+  String? handledStudioTool;
+  StudioInvestigation? activeStudioTool;
+  void applyStudioTool() {
+    if (!mounted || GoRouter.maybeOf(context) == null) return;
+    final id = GoRouterState.of(context).uri.queryParameters['studioTool'];
+    final tool = studioInvestigation(id);
+    if (tool == null ||
+        tool.studio != 0 ||
+        tool.labId != entry.id ||
+        id == handledStudioTool) {
+      return;
+    }
+    handledStudioTool = id;
+    activeStudioTool = tool;
+    // These named entry points provide a known view, not an intersection with
+    // stale saved filters. Notes, attempts and completion are left untouched.
+    query = '';
+    studio = -1;
+    apparatus = '';
+    stage = '';
+    onlyFavorites = false;
+    focus = '';
+    final action = tool.overview;
+    if (action.containsKey('query')) query = action['query']!;
+    if (action['view'] == 'cards') listView = true;
+    if (action['view'] == 'map') listView = false;
+    if (action.containsKey('focus') &&
+        (action['focus'] == '' ||
+            conceptEdges
+                .expand((e) => [e.from, e.to])
+                .contains(action['focus']))) {
+      focus = action['focus']!;
+    }
+    if (action.containsKey('stage') &&
+        [
+          '',
+          'Foundation',
+          'Intermediate',
+          'Advanced',
+        ].contains(action['stage'])) {
+      stage = action['stage']!;
+    }
+    if (action.containsKey('path') &&
+        learningPaths.any((p) => p.id == action['path'])) {
+      pathId = action['path']!;
+    }
+    final selectedTopic = int.tryParse(action['topic'] ?? '');
+    if (selectedTopic != null && selectedTopic >= 1 && selectedTopic <= 16) {
+      topic = selectedTopic;
+      challengeMode = 'Topic focused';
+      questionId = masteryQuestions.firstWhere((q) => q.studio == topic).id;
+      answer.clear();
+      feedback = '';
+    }
+    queryInput.text = query;
+  }
+
+  @override
+  void didUpdateWidget(covariant OverviewWorkspace oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && ready) {
+        setState(applyStudioTool);
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -150,6 +219,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
             'Older tool state retained; new tools use documented defaults.';
       }
     }
+    applyStudioTool();
     queryInput.text = query;
     savedIds = await store.savedSessionIds();
     attempts = await store.readAttempts('s00-e05');
@@ -159,7 +229,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
 
   Map<String, dynamic> configuration() => {
     'model': learningVersion,
-    'inventory': 'catalog-17-102-stable',
+    'inventory': 'catalog-17-122-stable',
     'query': query,
     'studio': studio,
     'apparatus': apparatus,
@@ -367,7 +437,10 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
   }
 
   Widget mapWorkspace(bool atlasTool) {
+    final savedListView = listView;
+    listView = false;
     final items = atlasTool ? atlas() : relationships();
+    listView = savedListView;
     final mapBoxes = items.whereType<SizedBox>().toList();
     final Widget? content = mapBoxes.isEmpty
         ? null
@@ -416,6 +489,20 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
             ),
           ],
         ),
+        if (!atlasTool && focus.isNotEmpty)
+          TextButton.icon(
+            onPressed: () => setState(() {
+              focus = '';
+              mapNeedsFit = true;
+            }),
+            icon: const Icon(Icons.hub_outlined),
+            label: const Text('Show all concepts'),
+          ),
+        if (query.trim().isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text('${filtered.length} matching labs for “$query”'),
+          ),
         Expanded(
           child: listView
               ? ListView(
@@ -506,7 +593,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
             child: ListTile(
               title: Text(next?.title ?? 'Required path complete'),
               subtitle: Text(
-                '${path.requiredActivities.where((e) => store.completed.contains(e.id)).length}/${path.requiredActivities.length} required activities',
+                '${path.requiredActivities.where((e) => store.completed.contains(e.id)).length}/${path.requiredActivities.length} required activities\n${path.objective}',
               ),
               trailing: IconButton(
                 tooltip: 'Launch current step',
@@ -524,7 +611,11 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
                   leading: CircleAvatar(child: Text('${i + 1}')),
                   title: Text(path.activities[i].title),
                   subtitle: Text(
-                    '${path.required(path.activities[i]) ? 'Required' : 'Optional'} · ${store.completed.contains(path.activities[i].id) ? 'Complete' : 'Not complete'}',
+                    '${path.required(path.activities[i]) ? 'Required' : 'Optional'} · ${store.completed.contains(path.activities[i].id)
+                        ? 'Complete'
+                        : store.trials.any((t) => t.labId == path.activities[i].id)
+                        ? 'Practiced'
+                        : 'Ready to explore'}',
                   ),
                   onTap: () => launch(path.activities[i].id),
                 ),
@@ -659,6 +750,11 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
         ),
         actions: [
           IconButton(
+            tooltip: '10 studio tools',
+            onPressed: () => showStudioTools(context, 0),
+            icon: const Icon(Icons.travel_explore),
+          ),
+          IconButton(
             tooltip: 'Tool notes and help',
             onPressed: () => toolDetails(),
             icon: const Icon(Icons.help_outline),
@@ -754,7 +850,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
   String get completionRule => switch (entry.index) {
     0 => 'Completion: use a filter and launch three distinct labs. This is navigation practice, not lab mastery.',
     1 => 'Completion: inspect three relationship explanations, open a linked lab and write notes.',
-    2 => 'Completion: finish every required activity in the selected path using its source lab criteria. Optional sixth activities do not block progress.',
+    2 => 'Completion: finish every required activity in the selected path using its source lab criteria. Optional extension activities do not block progress.',
     3 => 'Completion: favorite a lab, open a lab and retain a real saved lab configuration.',
     _ => 'Completion: a correct actual attempt in each of the six question types. Practice accuracy is not a validated measure of ability.',
   };
@@ -794,30 +890,64 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            leading: SizedBox(width: 58, height: 48, child: LabThumbnail(e)),
-            title: Text(e.title),
-            subtitle: Text(
-              '${studios[e.studioIndex].title} · ${stageFor(e)}\n${e.principle}\n${store.completed.contains(e.id) ? 'Activity complete' : 'Not completed'} · ${e.availability}',
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 88, height: 76, child: LabThumbnail(e)),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            e.title,
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          Text(
+                            '${studios[e.studioIndex].title} · ${stageFor(e)}',
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                          Text(
+                            store.completed.contains(e.id)
+                                ? 'Activity complete'
+                                : store.trials.any((t) => t.labId == e.id)
+                                ? 'Practiced · observations saved'
+                                : 'Ready to explore',
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      key: Key('favorite-${e.id}'),
+                      tooltip: store.favorites.contains(e.id)
+                          ? 'Remove favorite'
+                          : 'Add favorite',
+                      onPressed: () => store.toggleFavorite(e.id),
+                      icon: Icon(
+                        store.favorites.contains(e.id)
+                            ? Icons.star
+                            : Icons.star_border,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(e.principle),
+              ],
             ),
-            trailing: IconButton(
-              key: Key('favorite-${e.id}'),
-              tooltip: store.favorites.contains(e.id)
-                  ? 'Remove favorite'
-                  : 'Add favorite',
-              onPressed: () => store.toggleFavorite(e.id),
-              icon: Icon(
-                store.favorites.contains(e.id) ? Icons.star : Icons.star_border,
-              ),
-            ),
-            onTap: () => launch(e.id),
           ),
           Wrap(
             spacing: 8,
             children: [
               TextButton(
                 onPressed: () => launch(e.id),
-                child: const Text('Open lab / current session'),
+                child: const Text('Open lab'),
               ),
               if (preset)
                 TextButton(
@@ -854,9 +984,9 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
   List<Widget> atlas() {
     final filtered = filterLabs(query: query, studio: studio);
     return [
-      const Paragraph(
+      Paragraph(
         'Physics Atlas',
-        'All96 lab identities across16 subject studios. The map groups disciplines semantically; it is not a map of physical space. Use the accessible list to discover every lab.',
+        'All ${labInventory.length} lab identities across16 subject studios. The map groups disciplines semantically; it is not a map of physical space. Use the accessible list to discover every lab.',
       ),
       search(),
       studioFilter(),
@@ -908,7 +1038,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
                                 style: const TextStyle(fontSize: 11),
                               ),
                               Text(
-                                '${studios[i].entries.where((e) => store.completed.contains(e.id)).length}/6 activities complete',
+                                '${studios[i].entries.where((e) => store.completed.contains(e.id)).length}/${studios[i].entries.length} activities complete',
                               ),
                             ],
                           ),
@@ -926,7 +1056,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
         ),
       ],
       Text(
-        '${filtered.length}/96 labs match. All routes use the catalog identities.',
+        '${filtered.length}/${labInventory.length} labs match. All routes use the catalog identities.',
       ),
       for (final e in filtered) labTile(e),
     ];
@@ -942,8 +1072,12 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
                   ),
             )
             .toList(),
-        nodes = conceptEdges.expand((e) => [e.from, e.to]).toSet().toList()
-          ..sort();
+        nodes =
+            (focus.isEmpty && query.isEmpty ? conceptEdges : edges)
+                .expand((e) => [e.from, e.to])
+                .toSet()
+                .toList()
+              ..sort();
     return [
       const Paragraph(
         'Curated concept graph',
@@ -1035,9 +1169,9 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
     final selected = learningPaths.firstWhere((p) => p.id == pathId),
         resume = selected.resume(store.completed);
     return [
-      const Paragraph(
+      Paragraph(
         'Guided Path',
-        'Eight curated paths cover all96 labs. Prerequisites guide learning and never lock exploration. Required progress uses actual source-lab completion; estimates are planning aids, not measured time.',
+        'Eight curated paths cover all ${labInventory.length} labs. Prerequisites guide learning and never lock exploration. Required progress uses actual source-lab completion; estimates are planning aids, not measured time.',
       ),
       DropdownButtonFormField<String>(
         initialValue: pathId,
@@ -1097,9 +1231,9 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
         ),
         apparatuses = labInventory.map(apparatusFor).toSet().toList()..sort();
     return [
-      const Paragraph(
+      Paragraph(
         'Experiment Launcher',
-        'Search all96 working lab routes. Learning-stage labels are curated teaching estimates. Presets use the source lab’s documented default inputs and never insert results.',
+        'Search all ${labInventory.length} working lab routes. Learning-stage labels are curated teaching estimates. Presets use the source lab’s documented default inputs and never insert results.',
       ),
       search(),
       studioFilter(),
@@ -1184,7 +1318,7 @@ class OverviewWorkspaceState extends ConsumerState<OverviewWorkspace>
             ),
         ],
       ),
-      Text('${filtered.length}/96 matching labs'),
+      Text('${filtered.length}/${labInventory.length} matching labs'),
       for (final e in filtered) labTile(e, preset: true),
     ];
   }
