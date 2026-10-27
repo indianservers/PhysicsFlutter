@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-27",
+  "version": "1.17.0+20",
+  "implementedExperiences": 10,
+  "labIds": ["s04-e01", "s05-e03", "s10-e04", "s08-e00", "s09-e02", "s13-e01", "s11-e04", "s14-e02", "s01-e01", "s15-e01"],
+  "fullSuite": {
+    "command": "flutter test --no-pub --reporter expanded",
+    "passed": 399,
+    "failed": 0,
+    "duration": "05:06"
+  },
+  "focusedRegression": {
+    "command": "flutter test --no-pub test/lab_research_layout_test.dart test/focus_lab_test.dart --dart-define=FOCUS_VISUALS=true --reporter expanded",
+    "passed": 6,
+    "failed": 0,
+    "duration": "01:07",
+    "includes": ["all ten real source models", "drag and button interactions", "learner note retention", "close/reopen retention", "320x568 and 640x320 at 200% text", "populated replay and six-trial layouts", "existing worksheet landscape and keyboard regression"]
+  },
+  "analysis": {"command": "flutter analyze --no-pub", "result": "No issues found"},
+  "android": {
+    "command": "flutter build apk --debug --no-pub",
+    "result": "success",
+    "artifact": "deliverables/physics-atelier-top-ten-ux-debug.apk",
+    "bytes": 217921134,
+    "sha256": "0e9847754489e747e2bb9fd8a3f7923e4ab990245c38584fae708c03a65d14a8",
+    "ordinaryAppEntryPoint": true,
+    "interactiveExperienceMarkersPresent": true,
+    "nativeQaFixtureMarkerAbsent": true,
+    "installedDuringThisChange": false
+  },
+  "visualEvidence": {
+    "directory": "Target UI/topTenUXScreens",
+    "count": 10,
+    "type": "synthetic Flutter widget renders, not native device screenshots",
+    "bundledManropeLoaded": true,
+    "materialIconFontNotLoadedByWidgetHarness": true
+  },
+  "data": {
+    "emulatorDataTouched": false,
+    "testsUseMockNotebook": true,
+    "existingNotesRetainedForAllTenSourceModels": true,
+    "automaticTrialsAddedByChallenges": 0,
+    "masteryCompletionsAddedByChallenges": 0,
+    "learningEvidencePersistence": "in-memory for the current lab visit only"
+  },
+  "limitations": ["No physical-device runtime certification", "No iOS runtime certification", "No release performance benchmark", "Induction uses the existing finite-loop axial source model rather than a new field-boundary simulation"]
+}

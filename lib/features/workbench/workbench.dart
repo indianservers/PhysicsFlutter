@@ -1,5 +1,6 @@
 import '../../content/lab_research_profiles.dart';
 import 'lab_research.dart';
+import 'focus_lab.dart';
 import 'exploration_workbench.dart';
 import '../../content/studio_investigations.dart';
 import 'instrument_types.dart';
@@ -85,7 +86,13 @@ class LabBackButton extends StatelessWidget {
 class LabSectionMenu extends StatelessWidget {
   final int section;
   final ValueChanged<int> select;
-  final VoidCallback? controls, save, camera, guide, research, exploration;
+  final VoidCallback? controls,
+      save,
+      camera,
+      guide,
+      research,
+      exploration,
+      focus;
   final String? labId;
   final LocalNotebook? notebook;
   final bool showSections;
@@ -99,6 +106,7 @@ class LabSectionMenu extends StatelessWidget {
     this.guide,
     this.research,
     this.exploration,
+    this.focus,
     this.labId,
     this.notebook,
     this.showSections = true,
@@ -108,7 +116,9 @@ class LabSectionMenu extends StatelessWidget {
     tooltip: 'Lab options',
     icon: const Icon(Icons.more_vert),
     onSelected: (value) async {
-      if (value == 12) {
+      if (value == 14) {
+        focus?.call();
+      } else if (value == 12) {
         exploration?.call();
       } else if (value == 13 && labId != null) {
         showStudioTools(
@@ -145,6 +155,8 @@ class LabSectionMenu extends StatelessWidget {
       }
     },
     itemBuilder: (_) => [
+      if (focus != null)
+        const PopupMenuItem(value: 14, child: Text('Interactive challenge')),
       if (exploration != null)
         const PopupMenuItem(value: 12, child: Text('Exploration workbench')),
       if (labId != null)
@@ -282,6 +294,40 @@ class InstrumentShell extends StatefulWidget {
 }
 
 class _InstrumentShellState extends State<InstrumentShell> {
+  FocusLabSession? focusSession;
+  Future<void> openFocus() async {
+    widget.pause();
+    final session = focusSession ??= FocusLabSession(
+      id: widget.id,
+      controls: () => widget.controls(),
+      readings: () => widget.researchReadings?.call() ?? widget.readings(),
+      configuration: () => widget.captureConfiguration!(),
+      restore: (v) => widget.restoreConfiguration!(v),
+      valid: () => widget.canRecord(),
+      pause: () => widget.pause(),
+      play: () => widget.play(),
+      source: widget.changes,
+    );
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => SizedBox(
+        height: MediaQuery.sizeOf(context).height * .92,
+        child: RepaintBoundary(
+          key: const Key('focus-surface'),
+          child: Material(
+            color: Theme.of(context).colorScheme.surface,
+            child: FocusLabPanel(
+              session: session,
+              playing: () => widget.playing(),
+            ),
+          ),
+        ),
+      ),
+    );
+    if (mounted) session.stopReplay();
+  }
+
   String? handledStudioTool;
   bool studioLinkScheduled = false;
   ExplorationController? explorationSession;
@@ -552,6 +598,15 @@ class _InstrumentShellState extends State<InstrumentShell> {
                           Text(
                             'Calculated model readings · ${experimentState.toLowerCase()}',
                           ),
+                          if (hasResearch && focusLabs.containsKey(widget.id))
+                            OutlinedButton.icon(
+                              onPressed: () {
+                                Navigator.pop(sheetContext);
+                                openFocus();
+                              },
+                              icon: const Icon(Icons.touch_app_outlined),
+                              label: Text(focusLabs[widget.id]!),
+                            ),
                           if (hasResearch)
                             OutlinedButton.icon(
                               key: const Key('exploration-launch'),
@@ -820,6 +875,7 @@ class _InstrumentShellState extends State<InstrumentShell> {
 
   @override
   void dispose() {
+    focusSession?.dispose();
     explorationSession?.dispose();
     researchSession?.dispose();
     camera.dispose();
@@ -1825,6 +1881,9 @@ class _InstrumentShellState extends State<InstrumentShell> {
             icon: const Icon(Icons.help_outline),
           ),
           LabSectionMenu(
+            focus: hasResearch && focusLabs.containsKey(widget.id)
+                ? openFocus
+                : null,
             exploration: hasResearch ? openExploration : null,
             research: hasResearch ? openResearch : null,
             labId: widget.id,

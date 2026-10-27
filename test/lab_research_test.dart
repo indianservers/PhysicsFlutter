@@ -14,6 +14,8 @@ import 'app_test.dart' show notebook;
 Future<void> openResearch(WidgetTester t) async {
   await t.tap(find.byTooltip('Lab options').last);
   await t.pumpAndSettle();
+  await t.ensureVisible(find.text('Lab-specific tools'));
+  await t.pumpAndSettle();
   await t.tap(find.text('Lab-specific tools'));
   await t.pumpAndSettle();
 }

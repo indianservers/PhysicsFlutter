@@ -19,6 +19,8 @@ double inputTolerance(double value) => value == 0 ? 1e-14 : value.abs() * 1e-8;
 Future<void> openExploration(WidgetTester t) async {
   await t.tap(find.byTooltip('Lab options').last);
   await t.pumpAndSettle();
+  await t.ensureVisible(find.text('Exploration workbench'));
+  await t.pumpAndSettle();
   await t.tap(find.text('Exploration workbench'));
   await t.pumpAndSettle();
 }

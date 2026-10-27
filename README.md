@@ -1,6 +1,8 @@
-# Physics Atelier — studio exploration workbenches (1.16.0+19)
+# Physics Atelier — interactive lab experiences (1.17.0+20)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
+
+Ten focused interactive experiences: [features and validation](docs/TOP_TEN_LAB_UX.md). Open **Lab options → Interactive challenge** in the selected labs, or use their named shortcut in Inspect. Predictions, source-frame energy replay, circuit diagnosis, wave and temperature probes, principal-ray construction, induction exploration, vernier reading and a six-trial photoelectric hunt use the existing models.
 
 Repository: https://github.com/indianservers/PhysicsFlutter
 
