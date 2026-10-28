@@ -388,6 +388,26 @@ class LocalNotebook extends ChangeNotifier implements ExperimentRepository {
     return ok;
   }
 
+  Future<bool> saveStudioInvestigation(
+    String id,
+    String body, {
+    String? retained,
+  }) async {
+    if (!studios.any((s) => s.id == id) || utf8.encode(body).length > 1000000) {
+      throw ArgumentError('Known studio and bounded investigation required');
+    }
+    if (retained != null) {
+      final backedUp = await preferences.setString(
+        'studio-evidence-backup:$id:${DateTime.now().microsecondsSinceEpoch}',
+        retained,
+      );
+      if (!backedUp) return false;
+    }
+    final ok = await preferences.setString('studio-evidence:$id', body);
+    if (ok) notifyListeners();
+    return ok;
+  }
+
   Future<void> complete(String id) async {
     completed.add(id);
     await preferences.setStringList('completed', completed.toList());

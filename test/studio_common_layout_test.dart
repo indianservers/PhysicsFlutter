@@ -63,6 +63,17 @@ void main() {
       for (final studio in studios) {
         router.go('/studio/${studio.id}');
         await t.pumpAndSettle();
+        await t.scrollUntilVisible(
+          find.byKey(const Key('studio-exploration-tools')),
+          200,
+          scrollable: find
+              .descendant(
+                of: find.byType(CustomScrollView).first,
+                matching: find.byType(Scrollable),
+              )
+              .first,
+        );
+        await t.pumpAndSettle();
         await t.tap(find.byKey(const Key('studio-exploration-tools')));
         await t.pumpAndSettle();
         expect(find.byType(StudioToolCatalog), findsOneWidget);

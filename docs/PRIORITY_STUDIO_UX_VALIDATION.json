@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-27",
+  "version": "1.18.0+21",
+  "priority": "Subjective introductory-learning ranking; one distinct enhancement per studio",
+  "studios": [
+    "s01",
+    "s02",
+    "s03",
+    "s04",
+    "s05",
+    "s10",
+    "s08",
+    "s13",
+    "s09",
+    "s11"
+  ],
+  "activities": 10,
+  "realLabDestinationsExercised": 20,
+  "fullSuite": {
+    "command": "flutter test --no-pub --reporter expanded",
+    "passed": 403,
+    "failed": 0
+  },
+  "focusedSuite": {
+    "command": "flutter test --no-pub test/studio_mission_test.dart --dart-define=STUDIO_MISSION_VISUALS=true --reporter expanded",
+    "passed": 4,
+    "failed": 0
+  },
+  "staticAnalysis": "No issues found",
+  "layout": {
+    "studioPages": 17,
+    "activityPanels": 10,
+    "logicalSizes": [
+      [
+        320,
+        568
+      ],
+      [
+        640,
+        320
+      ]
+    ],
+    "textScale": 2
+  },
+  "interactions": [
+    "dragging",
+    "button alternatives",
+    "prediction and explanatory reveal",
+    "mode changes",
+    "wave time scrubber",
+    "reset",
+    "close/reopen evidence retention",
+    "all twenty real lab routes"
+  ],
+  "scientificChecks": [
+    "input bounds and finite outputs",
+    "all answer classifications",
+    "energy conservation",
+    "series/parallel current and power",
+    "thin-lens infinity and virtual cases",
+    "flux sign and normal at 90 degrees"
+  ],
+  "android": {
+    "build": "ordinary debug APK",
+    "result": "success",
+    "path": "deliverables/physics-atelier-priority-studios-debug.apk",
+    "bytes": 217961254,
+    "sha256": "fd98255d717b32f72b8851c309517fa6969bb9edb1b1de7d356a10612e35bcc8",
+    "installedDuringThisChange": false
+  },
+  "visualPreviews": {
+    "count": 10,
+    "path": "Target UI/priorityStudioScreens",
+    "type": "synthetic widget renders, not native screenshots",
+    "ManropeLoaded": true,
+    "MaterialIconsLoadedByHarness": false
+  },
+  "data": {
+    "emulatorDataTouched": false,
+    "previewMutatesNotebook": false,
+    "automaticTrials": 0,
+    "automaticCompletions": 0,
+    "labParametersTransferred": false,
+    "previewEvidence": "in memory for the studio visit"
+  },
+  "limitations": [
+    "No physical device runtime certification",
+    "No iOS runtime certification",
+    "No release performance benchmark"
+  ]
+}

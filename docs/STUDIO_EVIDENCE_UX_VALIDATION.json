@@ -1,0 +1,98 @@
+{
+  "version": "1.19.0+22",
+  "ranking": "Subjective introductory-learning priority; same ten studios as the prior upgrade",
+  "studios": [
+    "s01",
+    "s02",
+    "s03",
+    "s04",
+    "s05",
+    "s10",
+    "s08",
+    "s13",
+    "s09",
+    "s11"
+  ],
+  "newGuides": 10,
+  "goalSpecificRealLabRoutes": 30,
+  "fullSuite": {
+    "command": "flutter test --no-pub --reporter expanded",
+    "passed": 409,
+    "failed": 0
+  },
+  "focusedSuite": {
+    "command": "flutter test --no-pub test/studio_evidence_test.dart --reporter expanded",
+    "passed": 6,
+    "failed": 0
+  },
+  "catalogRegression": {
+    "passed": 1,
+    "failed": 0,
+    "coverage": "all 17 catalogs and their 170 tools at 200% text; scroll before activation"
+  },
+  "analysis": "No issues found",
+  "layout": {
+    "logicalSizes": [
+      [
+        320,
+        568
+      ],
+      [
+        640,
+        320
+      ]
+    ],
+    "textScale": 2,
+    "populatedGuideSheets": 10,
+    "keyboardInsetsTested": [
+      250,
+      150
+    ]
+  },
+  "behavior": [
+    "all thirty route handoffs",
+    "radio reasoning feedback",
+    "real dropdown selection",
+    "live notebook update",
+    "A/B compatibility guards",
+    "source record preservation",
+    "save and reload",
+    "missing source evidence",
+    "corrupt/future document backup",
+    "same-record rejection",
+    "Unicode grapheme round trip",
+    "failed save retention",
+    "unsaved-work choices"
+  ],
+  "storage": {
+    "version": "studio-evidence-1.0",
+    "prefix": "studio-evidence:",
+    "backupPrefix": "studio-evidence-backup:",
+    "evidence": "Trial ID references only",
+    "sourceTrialNotesCopied": false,
+    "sourceConfigurationCopied": false,
+    "automaticTrialInsertion": false,
+    "automaticMasteryAward": false
+  },
+  "android": {
+    "result": "ordinary debug APK built successfully",
+    "artifact": "deliverables/physics-atelier-studio-evidence-debug.apk",
+    "bytes": 217994406,
+    "sha256": "04fc9261405c44d89d67f33edc0adfb7d643d845a705d4a0afef1a7e8a46b93d",
+    "newGuideCodePresent": true,
+    "previousPreviewCodePresent": true,
+    "nativeQaFixtureMarkerAbsent": true,
+    "installedDuringThisChange": false
+  },
+  "userData": {
+    "tests": "isolated synthetic notebooks",
+    "emulatorAccessed": false,
+    "userDatabaseModified": false
+  },
+  "limitations": [
+    "No native screenshots produced in this change",
+    "No physical-device runtime certification",
+    "No iOS runtime certification",
+    "No release-performance benchmark"
+  ]
+}

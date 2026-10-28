@@ -12,6 +12,9 @@ import '../home/home_screen.dart' show HomeArtwork;
 import '../home/studio_registry.dart';
 import '../workbench/lab_thumbnail.dart';
 import '../workbench/exploration_workbench.dart';
+import 'studio_mission.dart';
+import 'studio_evidence.dart';
+import '../../content/studio_evidence_routes.dart';
 
 class CompactStudio extends ConsumerStatefulWidget {
   final Studio studio;
@@ -23,6 +26,46 @@ class CompactStudio extends ConsumerStatefulWidget {
 class _CompactStudioState extends ConsumerState<CompactStudio> {
   final search = TextEditingController(), scroll = ScrollController();
   String query = '', filter = 'All';
+  StudioMissionSession? mission;
+  StudioEvidenceSession? evidence;
+  Future<void> openEvidence() async {
+    FocusScope.of(context).unfocus();
+    final spec = evidenceRouteFor(studio.id);
+    if (spec == null) return;
+    final session = evidence ??= StudioEvidenceSession(
+      spec,
+      ref.read(notebookProvider),
+    );
+    final lab = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true,
+      isDismissible: false,
+      enableDrag: false,
+      builder: (context) => AnimatedPadding(
+        duration: const Duration(milliseconds: 160),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.viewInsetsOf(context).bottom,
+        ),
+        child: SizedBox(
+          height:
+              (MediaQuery.sizeOf(context).height -
+                  MediaQuery.viewInsetsOf(context).bottom) *
+              .92,
+          child: StudioEvidenceSheet(session: session),
+        ),
+      ),
+    );
+    if (lab != null && mounted) context.push('/lab/$lab');
+  }
+
+  Future<void> openMission() async {
+    FocusScope.of(context).unfocus();
+    final spec = missionForStudio(studio.id);
+    if (spec == null) return;
+    mission ??= StudioMissionSession(spec);
+    await showStudioMission(context, mission!);
+  }
+
   Studio get studio => widget.studio;
   HomeStudio get presentation =>
       homeStudios.firstWhere((s) => s.studio.id == studio.id);
@@ -39,6 +82,10 @@ class _CompactStudioState extends ConsumerState<CompactStudio> {
   void didUpdateWidget(covariant CompactStudio oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.studio.id != studio.id) {
+      evidence?.dispose();
+      evidence = null;
+      mission?.dispose();
+      mission = null;
       search.clear();
       query = '';
       filter = 'All';
@@ -52,6 +99,8 @@ class _CompactStudioState extends ConsumerState<CompactStudio> {
 
   @override
   void dispose() {
+    evidence?.dispose();
+    mission?.dispose();
     search.dispose();
     scroll.dispose();
     super.dispose();
@@ -142,6 +191,33 @@ class _CompactStudioState extends ConsumerState<CompactStudio> {
                   key: PageStorageKey('studio-${studio.id}'),
                   controller: scroll,
                   slivers: [
+                    if (evidenceRouteFor(studio.id) != null)
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                          child: OutlinedButton.icon(
+                            key: const Key('studio-evidence-launch'),
+                            onPressed: openEvidence,
+                            icon: const Icon(Icons.fact_check_outlined),
+                            label: const Text(
+                              'Guided investigation • real evidence',
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (missionForStudio(studio.id)
+                        case final StudioMission spec)
+                      SliverToBoxAdapter(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                          child: OutlinedButton.icon(
+                            key: const Key('studio-mission-launch'),
+                            onPressed: openMission,
+                            icon: const Icon(Icons.touch_app_outlined),
+                            label: Text('Try: ${spec.title}'),
+                          ),
+                        ),
+                      ),
                     SliverToBoxAdapter(
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),

@@ -1,6 +1,10 @@
-# Physics Atelier — interactive lab experiences (1.17.0+20)
+# Physics Atelier — studio investigations with recorded evidence (1.19.0+22)
 
 Offline Flutter physics learning application for Android, with an iOS source foundation.
+
+Ten new studio investigation guides provide thirty goal-specific lab routes, reasoning checks, real recorded-Trial selection, guarded evidence comparison and separately saved explanations. Open **Guided investigation • real evidence** in the ten priority studios. [New enhancements, ranking and validation scope](docs/STUDIO_EVIDENCE_UX.md).
+
+Ten priority studios now offer distinct interactive concept previews with prediction feedback and links to two related labs. Open the **Try:** activity at the top of a selected studio. [Ranking, ten enhancements and implementation scope](docs/PRIORITY_STUDIO_UX.md).
 
 Ten focused interactive experiences: [features and validation](docs/TOP_TEN_LAB_UX.md). Open **Lab options → Interactive challenge** in the selected labs, or use their named shortcut in Inspect. Predictions, source-frame energy replay, circuit diagnosis, wave and temperature probes, principal-ray construction, induction exploration, vernier reading and a six-trial photoelectric hunt use the existing models.
 
