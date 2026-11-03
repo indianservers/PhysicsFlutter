@@ -1,0 +1,17 @@
+Beats (s08-e06)
+Studio: Waves & Sound
+Concept: Nearby frequencies superpose to produce a slowly changing amplitude envelope.
+Formula: f_b=|f_2-f_1|
+
+Captured interaction: First frequency: 220.0 -> 340.0 Hz
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+frequency: 3.0000 Hz
+Model time: 1.7933 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -324,7 +324,7 @@ String waveLabel(String k) =>
       'pathDifference': 'Path difference',
       'phaseDifference': 'Phase difference',
       'nodeCount': 'Nodes including endpoints',
-      'peakFrequency': 'Strongest FFT bin',
+      'peakFrequency': 'Strongest FFT power bin',
       'peakAmplitude': 'Relative peak amplitude',
       'rms': 'RMS (full scale)',
       'sampleRate': 'Actual output sample rate',

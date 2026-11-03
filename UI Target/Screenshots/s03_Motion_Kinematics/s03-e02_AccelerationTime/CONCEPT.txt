@@ -1,0 +1,17 @@
+Acceleration–Time (s03-e02)
+Studio: Motion & Kinematics
+Concept: Interpret acceleration graph area as velocity change.
+Formula: \Delta v=\int a\,dt
+
+Captured interaction: Initial position A: 0.05 -> 1.0 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+vx: -4.9667 m/s
+Model t: 8.967 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

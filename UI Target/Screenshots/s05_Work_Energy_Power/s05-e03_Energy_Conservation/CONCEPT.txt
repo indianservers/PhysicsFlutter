@@ -1,0 +1,17 @@
+Energy Conservation (s05-e03)
+Studio: Work, Energy & Power
+Concept: Conserve total mechanical energy when nonconservative work vanishes.
+Formula: K_i+U_i=K_f+U_f
+
+Captured interaction: Mass: 1.02 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+total: 30.204 J
+Model t: 8.967 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

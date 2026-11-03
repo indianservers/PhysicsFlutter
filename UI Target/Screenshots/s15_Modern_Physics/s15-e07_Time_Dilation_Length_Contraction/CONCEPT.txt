@@ -1,0 +1,15 @@
+Time Dilation & Length Contraction (s15-e07)
+Studio: Modern Physics
+Concept: Inertial observers relate proper intervals through the Lorentz factor.
+Formula: \gamma=(1-\beta^2)^{-1/2},\quad t=\gamma\tau,\quad L=L_0/\gamma
+
+Captured interaction: Speed / speed of light: 0.6 -> 0.594 
+
+Model readings for 02_concept_interaction.png:
+time: 6.2153 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

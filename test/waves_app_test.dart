@@ -143,7 +143,9 @@ void main() {
         ),
       );
       for (final entry in allEntries.where((e) => e.wavesOptics)) {
-        router.go('/lab/${entry.id}');
+        router.go(
+          '/lab/${entry.id}${entry.studioIndex == 9 ? '?classic=1' : ''}',
+        );
         await tester.pumpAndSettle();
         for (final tab in [
           'Learn',
@@ -164,7 +166,7 @@ void main() {
         }
       }
       tester.view.physicalSize = const Size(1280, 720);
-      router.go('/lab/s09-e02');
+      router.go('/lab/s09-e02?classic=1');
       await tester.pumpAndSettle();
       await chooseSection(tester, 'Experiment');
       await tester.pumpAndSettle();

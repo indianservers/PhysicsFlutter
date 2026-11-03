@@ -1,0 +1,17 @@
+Current (s10-e03)
+Studio: Electricity
+Concept: Define current as charge flow per unit time.
+Formula: I=dQ/dt
+
+Captured interaction: Supply voltage: 6.0 -> 2.3999999999999986 V
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+current: 0.16000 A
+Model t: 8.975 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

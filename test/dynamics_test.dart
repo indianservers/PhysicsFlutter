@@ -19,6 +19,40 @@ void advance(DynamicsRun r, double t) {
 }
 
 void main() {
+  test('Pulley release offsets preserve the two-to-one rope constraint', () {
+    final r = make(2, {'release': .3, 'm': 2, 'm2': 1}, 1);
+    expect(r.state['x'], closeTo(.3, 1e-12));
+    expect(r.state['x2'], closeTo(.6, 1e-12));
+    advance(r, .5);
+    expect(r.state['x2'], closeTo(2 * r.state['x']!, 1e-12));
+  });
+
+  test('Cart hanger mode includes both masses and cart friction', () {
+    final r = make(13, {
+      'm': 1,
+      'hanger': .5,
+      'trackFriction': .05,
+      'v0': 0,
+    }, 1);
+    advance(r, 1);
+    final expected = (.5 - .05) * standardGravity / 1.5;
+    expect(r.state['ax'], closeTo(expected, 1e-9));
+    expect(r.state['vx'], closeTo(expected, 1e-9));
+    expect(r.state['x'], closeTo(.5 * expected, 1e-9));
+    expect(
+      r.state['tension'],
+      closeTo(.5 * (standardGravity - expected), 1e-9),
+    );
+    final stuck = make(13, {
+      'm': 2,
+      'hanger': .1,
+      'trackFriction': .5,
+      'v0': 0,
+    }, 1);
+    advance(stuck, 1);
+    expect(stuck.state['vx'], 0);
+  });
+
   test('Recorded configuration is a detached deep snapshot', () {
     final configuration = <String, dynamic>{
       'parameters': {'m': 2.0},

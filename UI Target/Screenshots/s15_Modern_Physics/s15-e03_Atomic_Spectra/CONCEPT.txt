@@ -1,0 +1,16 @@
+Atomic Spectra (s15-e03)
+Studio: Modern Physics
+Concept: Relate spectral lines to transitions between energy levels.
+Formula: hf=E_i-E_f
+
+Captured interaction: Upper hydrogen level: 4.0 -> 5.6 
+
+Model readings for 02_concept_interaction.png:
+wavelength: 9.3781e-8 m
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

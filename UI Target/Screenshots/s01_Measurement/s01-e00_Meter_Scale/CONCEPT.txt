@@ -1,0 +1,16 @@
+Meter Scale (s01-e00)
+Studio: Measurement
+Concept: Read two positions on a graduated ruler; subtract endpoints.
+Formula: L=|B-A|
+
+Captured interaction: Endpoint A: 0.012 -> 0.039 m
+
+Model readings for 02_concept_interaction.png:
+length: 0.027000 m
+Resolution: 0.00100 m
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

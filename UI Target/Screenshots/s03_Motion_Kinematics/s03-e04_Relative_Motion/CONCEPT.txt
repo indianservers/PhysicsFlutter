@@ -1,0 +1,17 @@
+Relative Motion (s03-e04)
+Studio: Motion & Kinematics
+Concept: Transform velocities between inertial reference frames.
+Formula: \vec v_{AB}=\vec v_A-\vec v_B
+
+Captured interaction: Initial position A: 0.05 -> 1.0 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+relativeVelocity: 3.0000 m/s
+Model t: 8.975 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

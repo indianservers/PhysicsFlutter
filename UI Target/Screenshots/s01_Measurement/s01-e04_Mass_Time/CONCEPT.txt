@@ -1,0 +1,17 @@
+Mass & Time (s01-e04)
+Studio: Measurement
+Concept: Separate mass from gravitational force; time ideal track motion.
+Formula: x=v_0t+\tfrac12at^2
+
+Captured interaction: Track: 0.5 -> 1.24 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+speed: 0.54272 m/s
+Resolution: 0.00100 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

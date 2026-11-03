@@ -1,0 +1,17 @@
+Amplifiers (s12-e03)
+Studio: Electronics
+Concept: Compare output and input signal amplitudes in a linear range.
+Formula: A_v=V_{out}/V_{in}
+
+Captured interaction: Input amplitude: 0.2 -> 0.6 V
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+gain: 6.0000 
+Model t: 0.1200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -31,12 +31,12 @@ void main() {
       );
     },
   );
-  test('Curriculum has exactly 17 studios, at least six entries each, 122 distinct IDs', () {
+  test('Curriculum has exactly 17 studios, at least six entries each, 125 distinct IDs', () {
     expect(studios.length, 17);
     expect(studios.every((s) => s.entries.length >= 6), true);
-    expect(allEntries.length, 122);
-    expect(allEntries.map((e) => e.id).toSet().length, 122);
-    expect(allEntries.where((e) => e.interactive).length, 116);
+    expect(allEntries.length, 125);
+    expect(allEntries.map((e) => e.id).toSet().length, 125);
+    expect(allEntries.where((e) => e.interactive).length, 119);
     expect(studios[1].entries.where((e) => e.interactive).length, 6);
     expect(allEntries.where((e) => e.tool).length, 6);
     expect(studios[1].entries.map((e) => e.title), [

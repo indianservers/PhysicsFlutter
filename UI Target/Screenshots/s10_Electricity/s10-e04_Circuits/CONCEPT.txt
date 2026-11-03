@@ -1,0 +1,16 @@
+Circuits (s10-e04)
+Studio: Electricity
+Concept: Apply Ohm law to an ideal resistor.
+Formula: V=IR
+
+Captured interaction: R1: 10.0 -> 6000.04 Ω
+
+Model readings for 02_concept_interaction.png:
+current: 0.00099667 A
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

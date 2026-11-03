@@ -1,0 +1,17 @@
+Induction (s11-e04)
+Studio: Magnetism
+Concept: Connect changing magnetic flux to induced emf.
+Formula: \mathcal E=-d\Phi_B/dt
+
+Captured interaction: Signed magnetic moment: 0.15 -> 0.06 A·m²
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+emf: -0.00037177 V
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,3 +1,4 @@
+import 'package:physics_atelier/core/rendering/interactive_mechanics.dart';
 import 'package:physics_atelier/features/supplemental/scene.dart';
 import 'package:physics_atelier/features/advanced/scene.dart' show LabPlot;
 import 'package:physics_atelier/features/lab_workspace/workspace.dart'
@@ -16,6 +17,29 @@ import 'package:physics_atelier/features/workbench/workbench.dart';
 import 'app_test.dart' show notebook;
 import 'ui_navigation.dart';
 
+({Map<String, double> parameters, Map<String, double> state, double time})
+visibleApparatus(WidgetTester t) {
+  final candidates = t.widgetList<CustomPaint>(find.byType(CustomPaint));
+  for (final paint in candidates) {
+    final painter = paint.painter;
+    if (painter is RealisticMechanicsPainter) {
+      return (
+        parameters: painter.l.p,
+        state: painter.l.q,
+        time: painter.l.time,
+      );
+    }
+    if (painter is SupplementalPainter) {
+      return (
+        parameters: painter.parameters,
+        state: painter.state,
+        time: painter.time,
+      );
+    }
+  }
+  throw StateError('No model-driven apparatus is visible');
+}
+
 void main() {
   testWidgets(
     'Every new lab manipulates, records and restores independently with graph and learning routes',
@@ -32,7 +56,7 @@ void main() {
         ),
       );
       for (final lab in supplementalLabs) {
-        router.go('/lab/${lab.id}');
+        router.go('/lab/${lab.id}${lab.studio == 9 ? '?classic=1' : ''}');
         await t.pumpAndSettle();
         final source = t.state<SupplementalWorkspaceState>(
           find.byType(SupplementalWorkspace),
@@ -46,20 +70,21 @@ void main() {
             c.max,
           ),
         );
+        if (lab.kind == 22) {
+          expect(
+            source.state,
+            isEmpty,
+            reason: 'defocused telescope has no afocal magnification',
+          );
+          source.change(
+            'separation',
+            source.parameters['f1']! + source.parameters['f2']!,
+          );
+        }
         await t.pumpAndSettle();
         source.notes.text =
             'Independent ${lab.title} prediction and observation.';
-        final painted =
-            t
-                    .widget<CustomPaint>(
-                      find.byWidgetPredicate(
-                        (w) =>
-                            w is CustomPaint &&
-                            w.painter is SupplementalPainter,
-                      ),
-                    )
-                    .painter!
-                as SupplementalPainter;
+        final painted = visibleApparatus(t);
         expect(
           painted.parameters,
           source.parameters,
@@ -129,7 +154,7 @@ void main() {
         }
         router.go('/');
         await t.pumpAndSettle();
-        router.go('/lab/${lab.id}');
+        router.go('/lab/${lab.id}${lab.studio == 9 ? '?classic=1' : ''}');
         await t.pumpAndSettle();
         final reopened = t.state<SupplementalWorkspaceState>(
           find.byType(SupplementalWorkspace),
@@ -142,7 +167,7 @@ void main() {
         );
         expect(t.takeException(), isNull, reason: '${lab.id} reopen');
       }
-      expect(store.trials.length, 20);
+      expect(store.trials.length, 23);
       expect(store.completed, isEmpty);
       router.go('/');
       await t.pumpAndSettle();
@@ -259,16 +284,8 @@ void main() {
       final falling = t.state<SupplementalWorkspaceState>(
         find.byType(SupplementalWorkspace),
       );
-      SupplementalPainter apparatus() =>
-          t
-                  .widget<CustomPaint>(
-                    find.byWidgetPredicate(
-                      (w) =>
-                          w is CustomPaint && w.painter is SupplementalPainter,
-                    ),
-                  )
-                  .painter!
-              as SupplementalPainter;
+      ({Map<String, double> parameters, Map<String, double> state, double time})
+      apparatus() => visibleApparatus(t);
       final initialHeight = apparatus().state['height']!;
       falling.play();
       await t.pump();

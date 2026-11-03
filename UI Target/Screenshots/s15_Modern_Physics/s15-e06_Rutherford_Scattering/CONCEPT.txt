@@ -1,0 +1,15 @@
+Rutherford Scattering (s15-e06)
+Studio: Modern Physics
+Concept: Coulomb repulsion deflects an alpha particle near a positive nucleus.
+Formula: \theta=2\tan^{-1}(kZze^2/(2Eb))
+
+Captured interaction: Nuclear charge Z: 79.0 -> 55.4 
+
+Model readings for 02_concept_interaction.png:
+angle: 43.206 °
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

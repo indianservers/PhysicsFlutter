@@ -1,0 +1,15 @@
+Polarization (s09-e06)
+Studio: Optics
+Concept: An analyzer transmits the squared projection of polarized light.
+Formula: I=\frac{I_0}{2}\cos^2\theta
+
+Captured interaction: Incident intensity: 60.0 -> 60.4 W/m²
+
+Model readings for 02_concept_interaction.png:
+intensity: 15.100 W/m²
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

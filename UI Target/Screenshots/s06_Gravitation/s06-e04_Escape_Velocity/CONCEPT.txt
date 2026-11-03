@@ -1,0 +1,17 @@
+Escape Velocity (s06-e04)
+Studio: Gravitation
+Concept: Find the ideal launch speed for zero total energy at infinity.
+Formula: v_e=\sqrt{2GM/R}
+
+Captured interaction: Source mass: 1.02 -> 1.84 Earth masses
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+escape: 8551.8 m/s
+Model t: 4304 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

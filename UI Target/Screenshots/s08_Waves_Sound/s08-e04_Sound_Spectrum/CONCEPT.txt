@@ -1,0 +1,17 @@
+Sound Spectrum (s08-e04)
+Studio: Waves & Sound
+Concept: Resolve a sound signal into its frequency components.
+Formula: T=1/f
+
+Captured interaction: Fundamental frequency: 440.0 -> 1240.0 Hz
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+peakFrequency: 1240.0 Hz
+Model t: 0.0008983 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -7,16 +7,40 @@ import 'package:physics_atelier/core/physics/supplemental_labs.dart';
 import 'package:physics_atelier/core/persistence/notebook.dart';
 
 void main() {
+  test(
+    'Disk flick speed and rolling release distance enter the analytic model',
+    () {
+      final disk = supplementalLabs.firstWhere((l) => l.id == 's02-e06');
+      final p = {...disk.defaults, 'omega0': -3.0, 'torque': 0.0};
+      final state = disk.evaluate(p, .5);
+      expect(state['angularSpeed'], -3);
+      expect(state['angle'], -1.5);
+      expect(
+        state['energy'],
+        closeTo(.5 * .5 * p['mass']! * p['radius']! * p['radius']! * 9, 1e-10),
+      );
+      final roll = supplementalLabs.firstWhere((l) => l.id == 's02-e07');
+      final released = {...roll.defaults, 'start': .7};
+      expect(roll.evaluate(released, 0)['distance'], .7);
+      expect(
+        roll.evaluate(released, roll.duration(released))['distance'],
+        closeTo(released['length']!, 1e-10),
+      );
+      expect(roll.duration({...released, 'start': 3.0}).isFinite, true);
+      expect(roll.invalid({...released, 'start': 3.0}), isNotEmpty);
+    },
+  );
+
   SupplementalLab lab(int k) => supplementalLabs.firstWhere((l) => l.kind == k);
   Map<String, double> value(
     int k, [
     Map<String, double> overrides = const {},
     double t = 0,
   ]) => lab(k).evaluate({...lab(k).defaults, ...overrides}, t);
-  test('Twenty appended labs keep all original catalog identities and path progress', () {
-    expect(supplementalLabs.length, 20);
-    expect(allEntries.length, 122);
-    expect(labInventory.length, 116);
+  test('Twenty-three appended labs keep all original catalog identities and path progress', () {
+    expect(supplementalLabs.length, 23);
+    expect(allEntries.length, 125);
+    expect(labInventory.length, 119);
     for (int studio = 0; studio < 17; studio++) {
       for (int i = 0; i < 6; i++) {
         final e = entryById('s${studio.toString().padLeft(2, '0')}-e0$i');
@@ -63,7 +87,7 @@ void main() {
           expect(s[l.quantity], isNotNull);
           expect(s.values.every((v) => v.isFinite), true);
         }
-        expect(l.curve(p).length, 241);
+        expect(l.curve(p).length, l.kind == 22 ? 1 : 241);
         expect(
           l.curve(p).every((s) => s.values.every((v) => v.isFinite)),
           true,

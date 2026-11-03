@@ -1,0 +1,15 @@
+Calorimetry (s13-e06)
+Studio: Thermodynamics
+Concept: Heat lost by a hot body equals heat gained by water and the calorimeter.
+Formula: \sum_i C_i(T_f-T_i)=0
+
+Captured interaction: Hot body mass: 0.2 -> 0.608 kg
+
+Model readings for 02_concept_interaction.png:
+Equilibrium temperature: 316.04 K
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

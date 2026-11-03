@@ -1,0 +1,17 @@
+Exoplanets (s16-e05)
+Studio: Astronomy & Astrophysics
+Concept: Estimate a planet-to-star radius ratio from ideal transit depth.
+Formula: \delta\approx(R_p/R_*)^2
+
+Captured interaction: Stellar mass: 1.0 -> 1.4 M☉
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+midDepth: 0.010000 
+Playback: 1.175 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

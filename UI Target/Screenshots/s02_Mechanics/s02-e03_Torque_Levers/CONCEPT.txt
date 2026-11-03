@@ -1,0 +1,16 @@
+Torque Levers (s02-e03)
+Studio: Mechanics
+Concept: Relate moment of a force to its perpendicular lever arm.
+Formula: \tau=rF\sin\theta
+
+Captured interaction: Force A: 21.0 -> 60.0 N
+
+Model readings for 02_concept_interaction.png:
+netTorque: 20.000 N·m
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

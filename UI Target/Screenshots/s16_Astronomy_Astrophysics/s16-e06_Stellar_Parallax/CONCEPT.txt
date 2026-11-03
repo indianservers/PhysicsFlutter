@@ -1,0 +1,15 @@
+Stellar Parallax (s16-e06)
+Studio: Astronomy & Astrophysics
+Concept: Nearby stars shift against distant background stars as the observer moves.
+Formula: p=\tan^{-1}(B/d)
+
+Captured interaction: Star distance: 10.0 -> 600.4 pc
+
+Model readings for 02_concept_interaction.png:
+Parallax angle: 1.6656 mas
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

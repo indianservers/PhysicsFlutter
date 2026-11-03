@@ -1,0 +1,17 @@
+Resonance (s07-e04)
+Studio: Oscillations
+Concept: Relate driving frequency to enhanced steady response.
+Formula: \omega_0=\sqrt{k/m}
+
+Captured interaction: Mass: 1.02 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+naturalOmega: 2.5482 rad/s
+Model t: 8.967 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

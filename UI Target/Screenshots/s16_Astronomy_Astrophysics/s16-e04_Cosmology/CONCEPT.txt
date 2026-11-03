@@ -1,0 +1,16 @@
+Cosmology (s16-e04)
+Studio: Astronomy & Astrophysics
+Concept: Introduce the local low-redshift Hubble relation.
+Formula: v\approx H_0d
+
+Captured interaction: Cosmological redshift: 0.5 -> 3.0 
+
+Model readings for 02_concept_interaction.png:
+comovingDistance: 1.9607e+26 m
+Playback: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

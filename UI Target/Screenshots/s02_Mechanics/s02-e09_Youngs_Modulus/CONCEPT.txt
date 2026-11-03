@@ -1,0 +1,15 @@
+Young’s Modulus (s02-e09)
+Studio: Mechanics
+Concept: Tensile extension depends on stress, cross section and elastic modulus.
+Formula: \Delta L=\frac{FL}{AE}
+
+Captured interaction: Tensile force: 50.0 -> 90.0 N
+
+Model readings for 02_concept_interaction.png:
+Extension: 5.730e-4 m
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

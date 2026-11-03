@@ -1,0 +1,17 @@
+Friction (s04-e03)
+Studio: Force & Newton’s Laws
+Concept: Distinguish static friction bounds from sliding friction.
+Formula: f_k=\mu_kN
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+friction: -5.0000 N
+Model t: 8.958 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

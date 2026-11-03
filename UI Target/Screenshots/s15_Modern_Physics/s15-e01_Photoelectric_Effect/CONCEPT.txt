@@ -1,0 +1,16 @@
+Photoelectric Effect (s15-e01)
+Studio: Modern Physics
+Concept: Apply photon energy balance to electron emission.
+Formula: K_{max}=hf-\phi
+
+Captured interaction: Incident vacuum wavelength: 4e-7 -> 5.599999999999999e-7 m
+
+Model readings for 02_concept_interaction.png:
+current: 0.000045167 A
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

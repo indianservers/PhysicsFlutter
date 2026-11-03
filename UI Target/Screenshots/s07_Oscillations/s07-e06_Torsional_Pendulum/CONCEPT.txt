@@ -1,0 +1,17 @@
+Torsional Pendulum (s07-e06)
+Studio: Oscillations
+Concept: A twisting suspension supplies restoring torque proportional to angular displacement.
+Formula: T=2\pi\sqrt{I/\kappa}
+
+Captured interaction: Moment of inertia: 0.02 -> 0.0604 kg·m²
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+period: 4.8831 s
+Model time: 8.7571 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,16 @@
+Galaxies (s16-e03)
+Studio: Astronomy & Astrophysics
+Concept: Infer enclosed mass from circular motion with stated assumptions.
+Formula: M(r)=v^2r/G
+
+Captured interaction: Radius probe: 8.0 -> 18.04 kpc
+
+Model readings for 02_concept_interaction.png:
+speed: 1.5940e+5 m/s
+Playback: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

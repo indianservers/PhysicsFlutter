@@ -1,0 +1,17 @@
+Free Body Diagrams (s02-e00)
+Studio: Mechanics
+Concept: Represent every external force on an isolated body.
+Formula: \sum\vec F=m\vec a
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+ax: 0.0000 m/s²
+Model t: 8.983 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -387,7 +387,12 @@ String unitFor(String key) => switch (key) {
   'ax' || 'field' || 'gx' || 'gy' => 'm/s²',
   'force' || 'force2' || 'normal' || 'tension' || 'liftForce' => 'N',
   'potential' || 'specificEnergy' => 'J/kg',
-  'period' || 'smallPeriod' || 'measuredPeriod' || 't' => 's',
+  'period' ||
+  'naturalPeriod' ||
+  'drivePeriod' ||
+  'smallPeriod' ||
+  'measuredPeriod' ||
+  't' => 's',
   'power' || 'instantPower' || 'conversionPower' => 'W',
   'angle' => '°',
   'angularVelocity' ||
@@ -399,7 +404,11 @@ String unitFor(String key) => switch (key) {
   'angularMomentum' => 'm²/s',
   'phase' => 'rad',
   'efficiency' || 'bound' || 'collision' || 'regime' || 'eccentricity' => '',
-  'frequency' || 'lowFrequency' || 'highFrequency' => 'Hz',
+  'frequency' ||
+  'naturalFrequency' ||
+  'driveFrequency' ||
+  'lowFrequency' ||
+  'highFrequency' => 'Hz',
   _ => 'J',
 };
 
@@ -454,6 +463,10 @@ String labelFor(String key) =>
       'tension': 'String tension',
       'smallPeriod': 'Small-angle period estimate',
       'measuredPeriod': 'Measured crossing period',
+      'naturalPeriod': 'Undamped natural period',
+      'naturalFrequency': 'Undamped natural frequency',
+      'drivePeriod': 'Drive period',
+      'driveFrequency': 'Drive frequency',
       'critical': 'Critical damping coefficient',
       'regime': 'Regime code (−1 under, 0 critical, +1 over)',
       'envelope': 'Underdamped envelope',

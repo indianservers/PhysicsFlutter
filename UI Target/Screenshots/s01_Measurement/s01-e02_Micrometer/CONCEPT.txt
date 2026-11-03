@@ -1,0 +1,18 @@
+Micrometer (s01-e02)
+Studio: Measurement
+Concept: Convert screw rotation into precise linear displacement.
+Formula: LC=p/N
+
+Captured interaction: Fine opening: 0.5199999999999999 -> 15.2 mm
+
+Model readings for 02_concept_interaction.png:
+Observed: 15.20 mm
+Zero: 0.00 mm
+Corrected: 15.20 mm
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png
+05_wire_contact_reading.png

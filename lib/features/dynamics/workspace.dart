@@ -67,7 +67,19 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
     kind = (entry.studioIndex - 2) * 6 + entry.index;
     lesson = lessons[kind];
     parameters = lesson.defaults;
-    run = DynamicsRun(kind, parameters);
+    if (kind == 0) parameters['m'] = 2.1;
+    if (kind == 2) {
+      parameters['m'] = 2.1;
+      mode = 1;
+    }
+    if (kind == 3) parameters['force'] = 21;
+    if (kind == 5) parameters.addAll({'m': 1, 'm2': 1, 'v0': 1.8});
+    if (kind == 13) {
+      parameters['m'] = 1;
+      parameters['v0'] = 0;
+      mode = 1;
+    }
+    run = DynamicsRun(kind, parameters, mode: mode);
     channel = channels.first;
     store = ref.read(notebookProvider);
     ticker = createTicker(onFrame);
@@ -221,7 +233,14 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
       final raw = Map<String, dynamic>.from(data['parameters']);
       final next = <String, double>{};
       for (final item in lesson.controls) {
-        final value = (raw[item.key] as num).toDouble();
+        // Additive interaction inputs are absent in pre-interaction sessions.
+        final added =
+            (kind == 0 && item.key == 'x0') ||
+            (kind == 2 && item.key == 'release') ||
+            (kind == 13 &&
+                ['hanger', 'trackFriction', 'x0'].contains(item.key));
+        final value = ((raw[item.key] ?? (added ? item.initial : null)) as num)
+            .toDouble();
         if (!value.isFinite ||
             value < item.min - 1e-9 ||
             value > item.max + 1e-9) {
@@ -433,7 +452,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
   Widget build(BuildContext context) {
     if (ready && (section == 1 || section == 2 || section == 4)) {
       return InstrumentShell(
-        researchSelection: [2, 4, 8, 10, 16].contains(kind)
+        researchSelection: [2, 4, 8, 10, 13, 16].contains(kind)
             ? () => Column(children: modeControls())
             : null,
         researchReadings: () => [
@@ -448,6 +467,15 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
         modelLimits: () => lesson.limits,
         equation: lesson.formula,
         investigationTools: () => [
+          if (kind == 4)
+            SwitchListTile(
+              title: const Text('Show plumb line'),
+              value: components,
+              onChanged: (v) {
+                setState(() => components = v);
+                tick.value++;
+              },
+            ),
           if ([0, 1, 15, 16].contains(kind))
             SwitchListTile(
               title: const Text('Isolated body diagram'),
@@ -800,6 +828,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
         frame: frame,
         isolated: isolated,
         components: components,
+        showPlumbLine: components,
         labels: labels,
         trails: trails && !store.reducedMotion,
       );
@@ -839,6 +868,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
         frame: frame,
         isolated: isolated,
         components: components,
+        showPlumbLine: components,
         labels: labels,
         trails: trails && !store.reducedMotion,
       );
@@ -1143,7 +1173,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
     ),
   );
   List<Widget> modeControls() => [
-    if ([2, 4, 8, 16].contains(kind))
+    if ([2, 4, 8, 13, 16].contains(kind))
       Padding(
         padding: const EdgeInsets.only(bottom: 14),
         child: DropdownButtonFormField<int>(
@@ -1158,6 +1188,7 @@ class _DynamicsState extends ConsumerState<DynamicsWorkspace>
                 value: i,
                 child: Text(switch (kind) {
                   2 => ['Fixed Atwood', 'One movable pulley'][i],
+                  13 => ['Applied force', 'Cart & hanging mass'][i],
                   4 => ['Supported base', 'Suspended equilibrium'][i],
                   8 => ['Constant acceleration', 'Two-segment schedule'][i],
                   _ => ['Hanging mass', 'Block on table'][i],

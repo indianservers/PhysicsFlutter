@@ -1,0 +1,17 @@
+Uncertainty (s01-e05)
+Studio: Measurement
+Concept: Distinguish spread, uncertainty of a mean and resolution.
+Formula: u_c=\sqrt{(s/\sqrt{n})^2+(q/\sqrt{12})^2}
+
+Captured interaction: Resolution: 0.001 -> 0.006004 m
+
+Model readings for 02_concept_interaction.png:
+length: Undefined m
+Resolution: 0.00600 m
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png
+05_example_readings_error_bars.png

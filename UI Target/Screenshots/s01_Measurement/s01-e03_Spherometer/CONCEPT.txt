@@ -1,0 +1,18 @@
+Spherometer (s01-e03)
+Studio: Measurement
+Concept: Infer spherical curvature from a signed sagitta and leg radius.
+Formula: R=(r^2+h^2)/(2h)
+
+Captured interaction: Screw: 0.00044 -> 0.0005999999999999998 m
+
+Model readings for 02_concept_interaction.png:
+Current: 0.60 mm
+Reference: — mm
+h / R: Measure 
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png
+05_curved_surface_contact_section.png

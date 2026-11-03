@@ -1,0 +1,16 @@
+Diodes (s12-e01)
+Studio: Electronics
+Concept: Describe a junction using an idealized diode equation.
+Formula: I=I_s(e^{V/(nV_T)}-1)
+
+Captured interaction: Supply: 1.0 -> 5.199999999999999 V
+
+Model readings for 02_concept_interaction.png:
+current: 0.0043395 A
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

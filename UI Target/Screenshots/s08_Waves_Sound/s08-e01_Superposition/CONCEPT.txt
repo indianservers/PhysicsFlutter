@@ -1,0 +1,17 @@
+Superposition (s08-e01)
+Studio: Waves & Sound
+Concept: Add displacements in a linear medium.
+Formula: y=y_1+y_2
+
+Captured interaction: Pulse 1 signed amplitude: 0.025500000000000002 -> 0.009999999999999995 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+sum: -0.0036834 m
+Model t: 0.8967 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

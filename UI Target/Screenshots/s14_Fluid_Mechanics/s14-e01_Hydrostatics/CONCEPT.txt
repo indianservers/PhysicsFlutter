@@ -1,0 +1,16 @@
+Hydrostatics (s14-e01)
+Studio: Fluid Mechanics
+Concept: Find pressure increase with depth in a stationary fluid.
+Formula: \Delta p=\rho gh
+
+Captured interaction: Model liquid density at fixed reference temperature: 1000.0 -> 1080.0 kg/m³
+
+Model readings for 02_concept_interaction.png:
+heightDifference: 0.092593 m
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,17 @@
+Rotational Inertia (s02-e06)
+Studio: Mechanics
+Concept: A solid disk resists angular acceleration according to its moment of inertia.
+Formula: I=\frac12mR^2,\quad\alpha=\tau/I
+
+Captured interaction: Disk mass: 1.0 -> 6.04 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+Moment of inertia: 0.27180 kg·m²
+Model time: 8.9833 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

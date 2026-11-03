@@ -1,0 +1,17 @@
+Pendulum (s07-e01)
+Studio: Oscillations
+Concept: Approximate a pendulum at small angles.
+Formula: T=2\pi\sqrt{L/g}
+
+Captured interaction: Mass: 1.02 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+period: 7.0306 s
+Model t: 8.958 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

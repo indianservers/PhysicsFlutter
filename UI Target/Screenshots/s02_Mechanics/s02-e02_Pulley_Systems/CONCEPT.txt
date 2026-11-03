@@ -1,0 +1,17 @@
+Pulley Systems (s02-e02)
+Studio: Mechanics
+Concept: Apply tension constraints to ideal massless ropes.
+Formula: \sum F=ma
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+ax: 0.0000 m/s²
+Model t: 5.883 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

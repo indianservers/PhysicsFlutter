@@ -1,0 +1,17 @@
+Free Fall (s03-e06)
+Studio: Motion & Kinematics
+Concept: In vacuum, objects released from rest gain speed under constant gravity.
+Formula: h(t)=h_0-\frac12gt^2
+
+Captured interaction: Release height: 20.0 -> 60.4 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+speed: 30.862 m/s
+Model time: 3.1471 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

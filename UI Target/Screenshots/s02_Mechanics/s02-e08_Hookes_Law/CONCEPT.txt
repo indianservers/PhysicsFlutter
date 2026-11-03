@@ -1,0 +1,15 @@
+Hooke’s Law (s02-e08)
+Studio: Mechanics
+Concept: Restoring force magnitude is proportional to spring extension.
+Formula: F=kx,\quad U=\frac12kx^2
+
+Captured interaction: Spring stiffness: 50.0 -> 124.0 N/m
+
+Model readings for 02_concept_interaction.png:
+force: 9.9200 N
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,17 @@
+Bernoulli (s14-e04)
+Studio: Fluid Mechanics
+Concept: Relate pressure, speed and height along an ideal streamline.
+Formula: p+\tfrac12\rho v^2+\rho gh=C
+
+Captured interaction: Inlet / outlet radius: 0.015 -> 0.019999999999999997 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+pressure: 1.0182e+5 Pa
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

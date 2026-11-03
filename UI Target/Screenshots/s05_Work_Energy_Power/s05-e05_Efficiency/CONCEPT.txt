@@ -1,0 +1,17 @@
+Efficiency (s05-e05)
+Studio: Work, Energy & Power
+Concept: Compare useful output to total input energy.
+Formula: \eta=E_{out}/E_{in}
+
+Captured interaction: Total input energy: 0.0 -> 600.0 J
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+efficiency: 0.80000 
+Model t: 5.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

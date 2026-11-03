@@ -1,0 +1,16 @@
+Gravitational Potential (s06-e02)
+Studio: Gravitation
+Concept: Reference gravitational potential to zero at infinity.
+Formula: V=-GM/r
+
+Captured interaction: Source mass: 1.02 -> 1.84 Earth masses
+
+Model readings for 02_concept_interaction.png:
+potential: -5.7560e+7 J/kg
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

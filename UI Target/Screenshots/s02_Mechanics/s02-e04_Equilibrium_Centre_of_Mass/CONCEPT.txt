@@ -1,0 +1,16 @@
+Equilibrium & Centre of Mass (s02-e04)
+Studio: Mechanics
+Concept: Locate mass-weighted position and require zero net force and torque.
+Formula: x_c=\frac{\sum m_ix_i}{\sum m_i}
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+
+Model readings for 02_concept_interaction.png:
+x: -0.30556 m
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

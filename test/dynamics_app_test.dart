@@ -1,3 +1,5 @@
+import 'package:physics_atelier/features/workbench/workbench.dart';
+
 import 'ui_navigation.dart';
 import 'waves_app_test.dart' as controls;
 
@@ -71,6 +73,19 @@ void main() {
       router.go('/lab/s04-e01');
       await tester.pumpAndSettle();
       await chooseSection(tester, 'Experiment');
+      await tester.pumpAndSettle();
+      // This scenario verifies the original applied-force mode; the new
+      // hanging-mass configuration has its own analytic regression test.
+      final shell = tester.widget<InstrumentShell>(
+        find.byType(InstrumentShell),
+      );
+      expect(
+        shell.restoreConfiguration!({
+          ...shell.captureConfiguration!(),
+          'mode': 0,
+        }),
+        true,
+      );
       await tester.pumpAndSettle();
       Future<void> show(Finder target) => controls.show(tester, target);
 

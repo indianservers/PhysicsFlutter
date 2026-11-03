@@ -1,0 +1,16 @@
+Current-Carrying Wire (s11-e02)
+Studio: Magnetism
+Concept: Estimate field around a long straight current-carrying wire.
+Formula: B=\mu_0I/(2\pi r)
+
+Captured interaction: Signed current (+ out of board): 5.0 -> 2.0 A
+
+Model readings for 02_concept_interaction.png:
+field: 0.0000018490 T
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

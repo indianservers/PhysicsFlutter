@@ -1,0 +1,17 @@
+Reflection (s09-e00)
+Studio: Optics
+Concept: Relate incident and reflected ray angles to the normal.
+Formula: \theta_i=\theta_r
+
+Captured interaction: Incident angle from normal: 30.6 -> 51.0 °
+
+Model readings for 02_concept_interaction.png:
+reflectedAngle: 51.000 °
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png
+06_material_optical_bench.png

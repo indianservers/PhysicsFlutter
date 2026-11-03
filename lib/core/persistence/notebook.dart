@@ -1,3 +1,5 @@
+import '../physics/live_optics.dart'
+    show liveOpticsVersion, legacyLiveOpticsVersion;
 import '../physics/supplemental_labs.dart';
 
 import 'dart:convert';
@@ -72,6 +74,8 @@ class Trial {
       'angle': '°',
       'vergence': 'm⁻¹',
       'relativeIntensity': '',
+      'index': '',
+      'magnification': '',
       'electricField': 'N/C',
       'magneticField': 'T',
       'voltage': 'V',
@@ -113,6 +117,8 @@ class Trial {
           fmVersion,
           astroVersion,
           supplementalVersion,
+          liveOpticsVersion,
+          legacyLiveOpticsVersion,
         ].contains(m['model'])) {
       throw const FormatException('Invalid trial/model');
     }

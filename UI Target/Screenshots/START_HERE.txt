@@ -1,0 +1,24 @@
+PHYSICS ATELIER - LAB UI SCREENSHOTS
+Captured: 28 October 2026, Android emulator
+
+Coverage: 116 physical labs + 6 learning tools, across 17 studios.
+481 actual rendered screenshots, each 720 x 1280 pixels.
+
+Browse: studio folder > lab ID and name.
+00_LAB_OVERVIEW.jpg in each studio is a quick visual index.
+LAB_INDEX.csv lists every lab and its scientific concept.
+CONCEPT.txt in each lab gives its principle, formula and captured control change.
+
+01_apparatus.png: initial apparatus state.
+02_concept_interaction.png: changed control and evolved/paused state where supported.
+03_graph.png: model graph.
+04_controls_readings.png: inspection controls and readings.
+05_*.png: additional concept setups (contact, refraction, real-image rays, example uncertainty readings).
+06_*.png: material or optical bench.
+Learning tools use 01_learning_tool.png.
+
+Uncertainty supplemental screenshot uses explicitly supplied example readings [0.100, 0.101, 0.099, 0.1005, 0.1002] m to show the error bars.
+These are screenshots of the current implemented UI for redesign reference.
+No UI implementation changes were made.
+
+Verification: all 122 destinations indexed; all 481 indexed PNG files exist, open successfully, and have the expected dimensions.

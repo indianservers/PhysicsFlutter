@@ -1,0 +1,15 @@
+Thermal Expansion (s13-e08)
+Studio: Thermodynamics
+Concept: A uniform rod expands approximately in proportion to temperature change.
+Formula: \Delta L=\alpha L_0\Delta T
+
+Captured interaction: Original rod length: 1.0 -> 1.24 m
+
+Model readings for 02_concept_interaction.png:
+Extension: 0.0014880 m
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

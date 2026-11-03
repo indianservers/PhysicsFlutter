@@ -1,0 +1,16 @@
+Vernier Caliper (s01-e01)
+Studio: Measurement
+Concept: Combine a main scale with a vernier coincidence.
+Formula: x=M+n\,LC-e_0
+
+Captured interaction: Jaw opening: 0.0236 -> 0.03 m
+
+Model readings for 02_concept_interaction.png:
+length: 0.030000 m
+Resolution: 0.000100 m
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

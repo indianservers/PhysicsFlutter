@@ -228,14 +228,25 @@ class Spectrum {
             (i == 0 || i == n ~/ 2 ? 1 : 2) /
             windowSum,
     ];
+    // Rank by one-sided bin power. The edge bins have no negative-frequency
+    // partner: comparing their peak-amplitude scaling directly with doubled
+    // interior amplitudes can promote a Hann sidelobe above the Nyquist tone.
+    final powers = [
+      for (int i = 0; i < amplitudes.length; i++)
+        amplitudes[i] * amplitudes[i] / (i == 0 || i == n ~/ 2 ? 1 : 2),
+    ];
     final local = <int>[];
     for (int i = 1; i < amplitudes.length - 1; i++) {
-      if (amplitudes[i] > amplitudes[i - 1] &&
-          amplitudes[i] >= amplitudes[i + 1]) {
+      if (powers[i] > powers[i - 1] && powers[i] >= powers[i + 1]) {
         local.add(i);
       }
     }
-    local.sort((a, b) => amplitudes[b].compareTo(amplitudes[a]));
+    // The Nyquist bin has no right neighbour, but is still a measurable bin
+    // for real PCM. Omitting it mislabels an alternating signal as silence.
+    if (powers.last > powers[powers.length - 2]) {
+      local.add(amplitudes.length - 1);
+    }
+    local.sort((a, b) => powers[b].compareTo(powers[a]));
     final index = local.isEmpty ? 0 : local.first,
         maxAmplitude = amplitudes[index];
     final peaks = local

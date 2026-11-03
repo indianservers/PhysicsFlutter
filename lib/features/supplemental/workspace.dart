@@ -199,6 +199,8 @@ class SupplementalWorkspaceState extends ConsumerState<SupplementalWorkspace>
         return false;
       }
       final raw = Map<String, dynamic>.from(data['parameters']);
+      if (lab.kind == 0) raw.putIfAbsent('omega0', () => 0.0);
+      if (lab.kind == 1) raw.putIfAbsent('start', () => 0.0);
       final p = raw.map((k, v) => MapEntry(k, (v as num).toDouble()));
       if (p.length != lab.inputs.length ||
           lab.inputs.any(

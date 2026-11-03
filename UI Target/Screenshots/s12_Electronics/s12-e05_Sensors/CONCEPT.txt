@@ -1,0 +1,16 @@
+Sensors (s12-e05)
+Studio: Electronics
+Concept: Relate sensor output to a calibrated physical input.
+Formula: y=ax+b
+
+Captured interaction: Simulated temperature: 301.65 -> 346.0 K
+
+Model readings for 02_concept_interaction.png:
+sensorOutput: 1.2285 V
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,17 @@
+Kinetic Energy (s05-e01)
+Studio: Work, Energy & Power
+Concept: Relate translational kinetic energy to mass and speed.
+Formula: K=\tfrac12mv^2
+
+Captured interaction: Mass: 1.02 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+K: 13.860 J
+Model t: 8.975 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

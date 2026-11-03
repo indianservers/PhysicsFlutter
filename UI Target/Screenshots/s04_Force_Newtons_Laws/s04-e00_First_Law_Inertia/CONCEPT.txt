@@ -1,0 +1,17 @@
+First Law / Inertia (s04-e00)
+Studio: Force & Newton’s Laws
+Concept: Recognize constant velocity when net external force vanishes.
+Formula: \sum\vec F=0
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+vx: 0.16447 m/s
+Model t: 8.958 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

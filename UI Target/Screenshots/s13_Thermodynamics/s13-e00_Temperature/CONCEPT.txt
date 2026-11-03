@@ -1,0 +1,18 @@
+Temperature (s13-e00)
+Studio: Thermodynamics
+Concept: Convert absolute and Celsius temperatures.
+Formula: T_K=T_C+273.15
+
+Captured interaction: Initial sample temperature: 333.15 -> 325.15 K
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+probeTemperature: 299.98 K
+Celsius: 26.8 °C
+Model t: 0.9600 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,17 @@
+Potential Energy (s05-e02)
+Studio: Work, Energy & Power
+Concept: Track near-Earth gravitational potential differences.
+Formula: \Delta U=mg\Delta h
+
+Captured interaction: Mass: 1.02 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+targetDeltaU: 120.82 J
+Model t: 4.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

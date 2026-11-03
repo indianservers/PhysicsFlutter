@@ -27,7 +27,7 @@ class DynamicsPainter extends ScientificScene {
   final Observation s;
   final Map<String, double> p;
   final List<Observation> samples;
-  final bool isolated, components, labels, trails;
+  final bool isolated, components, labels, trails, showPlumbLine;
   const DynamicsPainter({
     required this.kind,
     required this.s,
@@ -35,6 +35,7 @@ class DynamicsPainter extends ScientificScene {
     required this.samples,
     this.mode = 0,
     this.frame = 0,
+    this.showPlumbLine = true,
     this.isolated = false,
     this.components = true,
     this.labels = true,
@@ -214,7 +215,51 @@ class DynamicsPainter extends ScientificScene {
         teal = Color(0xff009b94),
         amber = Color(0xffd39928),
         red = Color(0xffcb5355);
-    if (kind == 2) {
+    if (kind == 13 && mode == 1) {
+      final travel = q('x');
+      final viewScale = 240 / math.max(3, travel.abs() + 1);
+      final cartPoint = Offset(55 + travel * viewScale, 145);
+      final hangerY = 175 + travel * (65 / math.max(2, travel.abs() + 1));
+      metal(c, const Rect.fromLTWH(25, 145, 292, 15));
+      metal(c, const Rect.fromLTWH(286, 60, 10, 155));
+      metal(c, const Rect.fromLTWH(270, 210, 44, 8));
+      final rope = Path()
+        ..moveTo(cartPoint.dx + 22, cartPoint.dy - 21)
+        ..lineTo(295, 64)
+        ..quadraticBezierTo(318, 53, 322, 78)
+        ..lineTo(322, hangerY);
+      c.drawPath(
+        rope,
+        Paint()
+          ..color = const Color(0xffbb9562)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2,
+      );
+      c.drawCircle(
+        const Offset(305, 75),
+        16,
+        Paint()
+          ..shader = const RadialGradient(
+            colors: [Colors.white, Color(0xff778a99), Color(0xff263c50)],
+          ).createShader(const Rect.fromLTWH(289, 59, 32, 32)),
+      );
+      c.drawCircle(const Offset(305, 75), 4, Paint()..color = cobalt);
+      cart(c, cartPoint);
+      metal(c, Rect.fromLTWH(308, hangerY, 28, 30));
+      text(
+        c,
+        '${v('m').toStringAsFixed(2)} kg',
+        cartPoint + const Offset(-20, 20),
+      );
+      text(
+        c,
+        '${v('hanger', .5).toStringAsFixed(2)} kg',
+        Offset(291, hangerY + 35),
+      );
+      text(c, 'a = ${q('ax').toStringAsFixed(3)} m/s²', const Offset(20, 25));
+      text(c, 'v = ${q('vx').toStringAsFixed(3)} m/s', const Offset(20, 42));
+      text(c, 'T = ${q('tension').toStringAsFixed(3)} N', const Offset(20, 59));
+    } else if (kind == 2) {
       wood(c, const Rect.fromLTWH(32, 32, 296, 14));
       final shift = q('x') * 40;
       final points = mode == 0
@@ -422,17 +467,29 @@ class DynamicsPainter extends ScientificScene {
       c.drawCircle(screen(centre), 5, Paint()..color = red);
       text(c, 'COM', screen(centre) + const Offset(8, -8), color: red);
       if (mode == 1) {
-        final top = screen(hang);
-        c.drawLine(
-          top,
-          Offset(top.dx, 242),
-          Paint()
-            ..color = cobalt
-            ..strokeWidth = 1.5,
-        );
-        c.drawCircle(top, 5, Paint()..color = cobalt);
-        text(c, 'Plumb line', Offset(top.dx + 6, 35), color: cobalt);
+        if (showPlumbLine) {
+          final top = screen(hang);
+          c.drawLine(
+            top,
+            Offset(top.dx, 242),
+            Paint()
+              ..color = cobalt
+              ..strokeWidth = 1.5,
+          );
+          c.drawCircle(top, 5, Paint()..color = cobalt);
+          text(c, 'Plumb line', Offset(top.dx + 6, 35), color: cobalt);
+        }
       } else {
+        if (showPlumbLine) {
+          final centreX = screen(centre).dx;
+          c.drawLine(
+            Offset(centreX, 24),
+            Offset(centreX, 240),
+            Paint()
+              ..color = cobalt
+              ..strokeWidth = 1.5,
+          );
+        }
         wood(
           c,
           Rect.fromLTWH(

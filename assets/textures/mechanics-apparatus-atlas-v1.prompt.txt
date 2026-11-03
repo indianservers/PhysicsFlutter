@@ -1,0 +1,7 @@
+Built-in image_gen tool. Transparent background. scientific-educational.
+ONE coherent production sprite atlas texture for a live interactive physics simulator, never a UI screen.
+4 columns by 3 rows, equal cells, each object isolated with transparent margin. No lettering, numbers, arrows, hands, backgrounds or frames. Photorealistic physics-lab product photography, soft upper-left lighting, cool blue rim and warm reflections, nearly front view with slight visible top/right sides.
+Row 1: oak crate with screws; blue two-wheel dynamics cart with polished right bumper; matching red cart; mirror-polished steel sphere.
+Row 2: brushed metal grooved pulley wheel with hub, no rope; brass slotted weight with knob; stainless slotted weight with knob; solid brushed steel disk with hub and no shaft.
+Row 3: cast-steel triangular lever fulcrum and foot; triangular brushed-metal plate with three red corner pins and no letters; blue square hanging weight with top hook; matching red hanging weight.
+Render each object independently in its grid cell with transparent separation so code can move, rotate and deform it according to live physics.

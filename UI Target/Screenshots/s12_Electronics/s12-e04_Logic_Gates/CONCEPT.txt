@@ -1,0 +1,17 @@
+Logic Gates (s12-e04)
+Studio: Electronics
+Concept: Evaluate Boolean inputs with a basic conjunction.
+Formula: Y=A\land B
+
+Captured interaction: Input A: 0.0 -> 0.6 
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+logicOutput: 1.0000 
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

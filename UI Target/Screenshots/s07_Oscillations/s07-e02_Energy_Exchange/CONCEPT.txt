@@ -1,0 +1,17 @@
+Energy Exchange (s07-e02)
+Studio: Oscillations
+Concept: Track kinetic and elastic potential energy in SHM.
+Formula: E=\tfrac12kx^2+\tfrac12mv^2
+
+Captured interaction: Mass: 1.02 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+total: 0.22500 J
+Model t: 8.958 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

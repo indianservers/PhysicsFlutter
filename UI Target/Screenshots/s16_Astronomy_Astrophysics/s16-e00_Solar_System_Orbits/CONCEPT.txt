@@ -1,0 +1,17 @@
+Solar System Orbits (s16-e00)
+Studio: Astronomy & Astrophysics
+Concept: Approximate planetary orbits with a central gravitational field.
+Formula: T^2=4\pi^2a^3/(GM)
+
+Captured interaction: Elapsed Julian days from J2000 educational epoch: 0.0 -> 14610.0 d
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+distance: 6.9441e+10 m
+Playback: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,17 @@
+Doppler Effect (s08-e05)
+Studio: Waves & Sound
+Concept: Relate sound frequency shifts to relative source motion.
+Formula: f'=f\frac{v+v_o}{v-v_s}
+
+Captured interaction: Signed source Mach fraction: 0.10200000000000001 -> 0.14 
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+observedFrequency: 526.32 Hz
+Model t: 4.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

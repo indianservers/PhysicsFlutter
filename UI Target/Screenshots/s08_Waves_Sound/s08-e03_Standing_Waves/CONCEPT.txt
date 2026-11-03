@@ -1,0 +1,17 @@
+Standing Waves (s08-e03)
+Studio: Waves & Sound
+Concept: Locate nodes and allowed string frequencies.
+Formula: f_n=nv/(2L)
+
+Captured interaction: String length: 1.0 -> 1.4 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+frequency: 53.571 Hz
+Model t: 0.008975 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

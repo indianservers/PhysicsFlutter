@@ -1,0 +1,17 @@
+Heating Curve & Latent Heat (s13-e07)
+Studio: Thermodynamics
+Concept: Energy can change phase while temperature remains constant.
+Formula: Q=mc\Delta T,\quad Q=mL
+
+Captured interaction: Water / ice mass: 0.2 -> 0.64 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+temperature: 275.19 K
+Model time: 465.35 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

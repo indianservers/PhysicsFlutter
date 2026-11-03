@@ -1,0 +1,2348 @@
+[
+  {
+    "id": "s00-e00",
+    "studio": "Concept Overview",
+    "lab": "Physics Atlas",
+    "concept": "Organize physics by scales, systems and interactions.",
+    "formula": "L,T,M",
+    "folder": "s00_Concept_Overview/s00-e00_Physics_Atlas",
+    "files": [
+      "01_learning_tool.png"
+    ]
+  },
+  {
+    "id": "s00-e01",
+    "studio": "Concept Overview",
+    "lab": "Relationship Map",
+    "concept": "Connect force, motion and energy through shared quantities.",
+    "formula": "F=ma",
+    "folder": "s00_Concept_Overview/s00-e01_Relationship_Map",
+    "files": [
+      "01_learning_tool.png"
+    ]
+  },
+  {
+    "id": "s00-e02",
+    "studio": "Concept Overview",
+    "lab": "Guided Path",
+    "concept": "Build understanding from measurement to models.",
+    "formula": "v=\\Delta x/\\Delta t",
+    "folder": "s00_Concept_Overview/s00-e02_Guided_Path",
+    "files": [
+      "01_learning_tool.png"
+    ]
+  },
+  {
+    "id": "s00-e03",
+    "studio": "Concept Overview",
+    "lab": "Experiment Launcher",
+    "concept": "Choose an available experiment and test a prediction.",
+    "formula": "x=x_0+vt",
+    "folder": "s00_Concept_Overview/s00-e03_Experiment_Launcher",
+    "files": [
+      "01_learning_tool.png"
+    ]
+  },
+  {
+    "id": "s00-e04",
+    "studio": "Concept Overview",
+    "lab": "Compare Phenomena",
+    "concept": "Compare assumptions and measurable outcomes across models.",
+    "formula": "E=K+U",
+    "folder": "s00_Concept_Overview/s00-e04_Compare_Phenomena",
+    "files": [
+      "01_learning_tool.png"
+    ]
+  },
+  {
+    "id": "s00-e05",
+    "studio": "Concept Overview",
+    "lab": "Mastery Challenge",
+    "concept": "Check understanding with an introductory measurement question.",
+    "formula": "L=B-A",
+    "folder": "s00_Concept_Overview/s00-e05_Mastery_Challenge",
+    "files": [
+      "01_learning_tool.png"
+    ]
+  },
+  {
+    "id": "s01-e00",
+    "studio": "Measurement",
+    "lab": "Meter Scale",
+    "concept": "Read two positions on a graduated ruler; subtract endpoints.",
+    "formula": "L=|B-A|",
+    "folder": "s01_Measurement/s01-e00_Meter_Scale",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Endpoint A: 0.012 -> 0.039 m",
+    "readings": [
+      "length: 0.027000 m",
+      "Resolution: 0.00100 m"
+    ]
+  },
+  {
+    "id": "s01-e01",
+    "studio": "Measurement",
+    "lab": "Vernier Caliper",
+    "concept": "Combine a main scale with a vernier coincidence.",
+    "formula": "x=M+n\\,LC-e_0",
+    "folder": "s01_Measurement/s01-e01_Vernier_Caliper",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Jaw opening: 0.0236 -> 0.03 m",
+    "readings": [
+      "length: 0.030000 m",
+      "Resolution: 0.000100 m"
+    ]
+  },
+  {
+    "id": "s01-e02",
+    "studio": "Measurement",
+    "lab": "Micrometer",
+    "concept": "Convert screw rotation into precise linear displacement.",
+    "formula": "LC=p/N",
+    "folder": "s01_Measurement/s01-e02_Micrometer",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "05_wire_contact_reading.png"
+    ],
+    "interaction": "Fine opening: 0.5199999999999999 -> 15.2 mm",
+    "readings": [
+      "Observed: 15.20 mm",
+      "Zero: 0.00 mm",
+      "Corrected: 15.20 mm"
+    ]
+  },
+  {
+    "id": "s01-e03",
+    "studio": "Measurement",
+    "lab": "Spherometer",
+    "concept": "Infer spherical curvature from a signed sagitta and leg radius.",
+    "formula": "R=(r^2+h^2)/(2h)",
+    "folder": "s01_Measurement/s01-e03_Spherometer",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "05_curved_surface_contact_section.png"
+    ],
+    "interaction": "Screw: 0.00044 -> 0.0005999999999999998 m",
+    "readings": [
+      "Current: 0.60 mm",
+      "Reference: — mm",
+      "h / R: Measure "
+    ]
+  },
+  {
+    "id": "s01-e04",
+    "studio": "Measurement",
+    "lab": "Mass & Time",
+    "concept": "Separate mass from gravitational force; time ideal track motion.",
+    "formula": "x=v_0t+\\tfrac12at^2",
+    "folder": "s01_Measurement/s01-e04_Mass_Time",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Track: 0.5 -> 1.24 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "speed: 0.54272 m/s",
+      "Resolution: 0.00100 s"
+    ]
+  },
+  {
+    "id": "s01-e05",
+    "studio": "Measurement",
+    "lab": "Uncertainty",
+    "concept": "Distinguish spread, uncertainty of a mean and resolution.",
+    "formula": "u_c=\\sqrt{(s/\\sqrt{n})^2+(q/\\sqrt{12})^2}",
+    "folder": "s01_Measurement/s01-e05_Uncertainty",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "05_example_readings_error_bars.png"
+    ],
+    "interaction": "Resolution: 0.001 -> 0.006004 m",
+    "readings": [
+      "length: Undefined m",
+      "Resolution: 0.00600 m"
+    ],
+    "exampleDataset": [
+      0.1,
+      0.101,
+      0.099,
+      0.1005,
+      0.1002
+    ]
+  },
+  {
+    "id": "s02-e00",
+    "studio": "Mechanics",
+    "lab": "Free Body Diagrams",
+    "concept": "Represent every external force on an isolated body.",
+    "formula": "\\sum\\vec F=m\\vec a",
+    "folder": "s02_Mechanics/s02-e00_Free_Body_Diagrams",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "ax: 0.0000 m/s²",
+      "Model t: 8.983 s"
+    ]
+  },
+  {
+    "id": "s02-e01",
+    "studio": "Mechanics",
+    "lab": "Inclined Plane",
+    "concept": "Resolve gravity parallel and normal to a plane.",
+    "formula": "F_\\parallel=mg\\sin\\theta",
+    "folder": "s02_Mechanics/s02-e01_Inclined_Plane",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "ax: 0.0000 m/s²",
+      "Model t: 1.475 s"
+    ]
+  },
+  {
+    "id": "s02-e02",
+    "studio": "Mechanics",
+    "lab": "Pulley Systems",
+    "concept": "Apply tension constraints to ideal massless ropes.",
+    "formula": "\\sum F=ma",
+    "folder": "s02_Mechanics/s02-e02_Pulley_Systems",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "ax: 0.0000 m/s²",
+      "Model t: 5.883 s"
+    ]
+  },
+  {
+    "id": "s02-e03",
+    "studio": "Mechanics",
+    "lab": "Torque Levers",
+    "concept": "Relate moment of a force to its perpendicular lever arm.",
+    "formula": "\\tau=rF\\sin\\theta",
+    "folder": "s02_Mechanics/s02-e03_Torque_Levers",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Force A: 21.0 -> 60.0 N",
+    "readings": [
+      "netTorque: 20.000 N·m",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s02-e04",
+    "studio": "Mechanics",
+    "lab": "Equilibrium & Centre of Mass",
+    "concept": "Locate mass-weighted position and require zero net force and torque.",
+    "formula": "x_c=\\frac{\\sum m_ix_i}{\\sum m_i}",
+    "folder": "s02_Mechanics/s02-e04_Equilibrium_Centre_of_Mass",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "readings": [
+      "x: -0.30556 m",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s02-e05",
+    "studio": "Mechanics",
+    "lab": "Momentum & Collisions",
+    "concept": "Track momentum transfer in an isolated collision.",
+    "formula": "\\vec p=m\\vec v",
+    "folder": "s02_Mechanics/s02-e05_Momentum_Collisions",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "momentum: 12.160 kg·m/s",
+      "Model t: 9.000 s"
+    ]
+  },
+  {
+    "id": "s02-e06",
+    "studio": "Mechanics",
+    "lab": "Rotational Inertia",
+    "concept": "A solid disk resists angular acceleration according to its moment of inertia.",
+    "formula": "I=\\frac12mR^2,\\quad\\alpha=\\tau/I",
+    "folder": "s02_Mechanics/s02-e06_Rotational_Inertia",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Disk mass: 1.0 -> 6.04 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "Moment of inertia: 0.27180 kg·m²",
+      "Model time: 8.9833 s"
+    ]
+  },
+  {
+    "id": "s02-e07",
+    "studio": "Mechanics",
+    "lab": "Rolling Motion",
+    "concept": "A solid sphere shares gravitational energy between translation and rotation.",
+    "formula": "a=\\frac{g\\sin\\theta}{1+2/5}",
+    "folder": "s02_Mechanics/s02-e07_Rolling_Motion",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Sphere mass: 1.0 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "speed: 2.7861 m/s",
+      "Model time: 1.1629 s"
+    ]
+  },
+  {
+    "id": "s02-e08",
+    "studio": "Mechanics",
+    "lab": "Hooke’s Law",
+    "concept": "Restoring force magnitude is proportional to spring extension.",
+    "formula": "F=kx,\\quad U=\\frac12kx^2",
+    "folder": "s02_Mechanics/s02-e08_Hookes_Law",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Spring stiffness: 50.0 -> 124.0 N/m",
+    "readings": [
+      "force: 9.9200 N"
+    ]
+  },
+  {
+    "id": "s02-e09",
+    "studio": "Mechanics",
+    "lab": "Young’s Modulus",
+    "concept": "Tensile extension depends on stress, cross section and elastic modulus.",
+    "formula": "\\Delta L=\\frac{FL}{AE}",
+    "folder": "s02_Mechanics/s02-e09_Youngs_Modulus",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Tensile force: 50.0 -> 90.0 N",
+    "readings": [
+      "Extension: 5.730e-4 m"
+    ]
+  },
+  {
+    "id": "s03-e00",
+    "studio": "Motion & Kinematics",
+    "lab": "Position–Time",
+    "concept": "Interpret the slope of a position graph as velocity.",
+    "formula": "v=dx/dt",
+    "folder": "s03_Motion_Kinematics/s03-e00_PositionTime",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Initial position A: 0.05 -> 1.0 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "vx: 10.000 m/s",
+      "Model t: 9.000 s"
+    ]
+  },
+  {
+    "id": "s03-e01",
+    "studio": "Motion & Kinematics",
+    "lab": "Velocity–Time",
+    "concept": "Interpret velocity graph area as displacement.",
+    "formula": "\\Delta x=\\int v\\,dt",
+    "folder": "s03_Motion_Kinematics/s03-e01_VelocityTime",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Initial position A: 0.05 -> 1.0 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "displacement: 49.500 m",
+      "Model t: 9.000 s"
+    ]
+  },
+  {
+    "id": "s03-e02",
+    "studio": "Motion & Kinematics",
+    "lab": "Acceleration–Time",
+    "concept": "Interpret acceleration graph area as velocity change.",
+    "formula": "\\Delta v=\\int a\\,dt",
+    "folder": "s03_Motion_Kinematics/s03-e02_AccelerationTime",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Initial position A: 0.05 -> 1.0 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "vx: -4.9667 m/s",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s03-e03",
+    "studio": "Motion & Kinematics",
+    "lab": "Projectile Motion",
+    "concept": "Separate horizontal and vertical motion without air resistance.",
+    "formula": "y=v_{0y}t-\\tfrac12gt^2",
+    "folder": "s03_Motion_Kinematics/s03-e03_Projectile_Motion",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Launch speed: 12.25 -> 15.0 m/s",
+    "simulationAdvanced": true,
+    "readings": [
+      "range: 23.730 m",
+      "Model t: 2.067 s"
+    ]
+  },
+  {
+    "id": "s03-e04",
+    "studio": "Motion & Kinematics",
+    "lab": "Relative Motion",
+    "concept": "Transform velocities between inertial reference frames.",
+    "formula": "\\vec v_{AB}=\\vec v_A-\\vec v_B",
+    "folder": "s03_Motion_Kinematics/s03-e04_Relative_Motion",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Initial position A: 0.05 -> 1.0 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "relativeVelocity: 3.0000 m/s",
+      "Model t: 8.975 s"
+    ]
+  },
+  {
+    "id": "s03-e05",
+    "studio": "Motion & Kinematics",
+    "lab": "Circular Motion",
+    "concept": "Relate centripetal acceleration to speed and radius.",
+    "formula": "a_c=v^2/r",
+    "folder": "s03_Motion_Kinematics/s03-e05_Circular_Motion",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "radialForce: 24.320 N",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s03-e06",
+    "studio": "Motion & Kinematics",
+    "lab": "Free Fall",
+    "concept": "In vacuum, objects released from rest gain speed under constant gravity.",
+    "formula": "h(t)=h_0-\\frac12gt^2",
+    "folder": "s03_Motion_Kinematics/s03-e06_Free_Fall",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Release height: 20.0 -> 60.4 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "speed: 30.862 m/s",
+      "Model time: 3.1471 s"
+    ]
+  },
+  {
+    "id": "s04-e00",
+    "studio": "Force & Newton’s Laws",
+    "lab": "First Law / Inertia",
+    "concept": "Recognize constant velocity when net external force vanishes.",
+    "formula": "\\sum\\vec F=0",
+    "folder": "s04_Force_Newtons_Laws/s04-e00_First_Law_Inertia",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "vx: 0.16447 m/s",
+      "Model t: 8.958 s"
+    ]
+  },
+  {
+    "id": "s04-e01",
+    "studio": "Force & Newton’s Laws",
+    "lab": "Second Law / F = ma",
+    "concept": "Connect net force to acceleration for constant mass.",
+    "formula": "\\vec F=m\\vec a",
+    "folder": "s04_Force_Newtons_Laws/s04-e01_Second_Law_F_ma",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "ax: 0.98684 m/s²",
+      "Model t: 8.983 s"
+    ]
+  },
+  {
+    "id": "s04-e02",
+    "studio": "Force & Newton’s Laws",
+    "lab": "Third Law / Action–Reaction Pairs",
+    "concept": "Identify equal opposite forces acting on different bodies.",
+    "formula": "\\vec F_{AB}=-\\vec F_{BA}",
+    "folder": "s04_Force_Newtons_Laws/s04-e02_Third_Law_ActionReaction_Pairs",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "ax: 0.0000 m/s²",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s04-e03",
+    "studio": "Force & Newton’s Laws",
+    "lab": "Friction",
+    "concept": "Distinguish static friction bounds from sliding friction.",
+    "formula": "f_k=\\mu_kN",
+    "folder": "s04_Force_Newtons_Laws/s04-e03_Friction",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "friction: -5.0000 N",
+      "Model t: 8.958 s"
+    ]
+  },
+  {
+    "id": "s04-e04",
+    "studio": "Force & Newton’s Laws",
+    "lab": "Tension & Normal Force",
+    "concept": "Resolve contact and rope forces from constraints.",
+    "formula": "\\sum F_y=ma_y",
+    "folder": "s04_Force_Newtons_Laws/s04-e04_Tension_Normal_Force",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "supportForce: 57.124 N",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s04-e05",
+    "studio": "Force & Newton’s Laws",
+    "lab": "Multi-Force Challenge",
+    "concept": "Combine force vectors before predicting acceleration.",
+    "formula": "\\vec a=\\sum\\vec F/m",
+    "folder": "s04_Force_Newtons_Laws/s04-e05_Multi-Force_Challenge",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Body A mass: 2.1 -> 6.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "ax: 0.65789 m/s²",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s05-e00",
+    "studio": "Work, Energy & Power",
+    "lab": "Work",
+    "concept": "Calculate energy transferred by force along displacement.",
+    "formula": "W=Fd\\cos\\theta",
+    "folder": "s05_Work_Energy_Power/s05-e00_Work",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "netWork: 29.890 J",
+      "Model t: 1.817 s"
+    ]
+  },
+  {
+    "id": "s05-e01",
+    "studio": "Work, Energy & Power",
+    "lab": "Kinetic Energy",
+    "concept": "Relate translational kinetic energy to mass and speed.",
+    "formula": "K=\\tfrac12mv^2",
+    "folder": "s05_Work_Energy_Power/s05-e01_Kinetic_Energy",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "K: 13.860 J",
+      "Model t: 8.975 s"
+    ]
+  },
+  {
+    "id": "s05-e02",
+    "studio": "Work, Energy & Power",
+    "lab": "Potential Energy",
+    "concept": "Track near-Earth gravitational potential differences.",
+    "formula": "\\Delta U=mg\\Delta h",
+    "folder": "s05_Work_Energy_Power/s05-e02_Potential_Energy",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "targetDeltaU: 120.82 J",
+      "Model t: 4.000 s"
+    ]
+  },
+  {
+    "id": "s05-e03",
+    "studio": "Work, Energy & Power",
+    "lab": "Energy Conservation",
+    "concept": "Conserve total mechanical energy when nonconservative work vanishes.",
+    "formula": "K_i+U_i=K_f+U_f",
+    "folder": "s05_Work_Energy_Power/s05-e03_Energy_Conservation",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "total: 30.204 J",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s05-e04",
+    "studio": "Work, Energy & Power",
+    "lab": "Power",
+    "concept": "Measure the rate of energy transfer.",
+    "formula": "P=dW/dt",
+    "folder": "s05_Work_Energy_Power/s05-e04_Power",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Load mass: 10.2 -> 18.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "power: 88.652 W",
+      "Model t: 4.000 s"
+    ]
+  },
+  {
+    "id": "s05-e05",
+    "studio": "Work, Energy & Power",
+    "lab": "Efficiency",
+    "concept": "Compare useful output to total input energy.",
+    "formula": "\\eta=E_{out}/E_{in}",
+    "folder": "s05_Work_Energy_Power/s05-e05_Efficiency",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Total input energy: 0.0 -> 600.0 J",
+    "simulationAdvanced": true,
+    "readings": [
+      "efficiency: 0.80000 ",
+      "Model t: 5.000 s"
+    ]
+  },
+  {
+    "id": "s06-e00",
+    "studio": "Gravitation",
+    "lab": "Universal Gravitation",
+    "concept": "Model attraction of spherical masses separated by a distance.",
+    "formula": "F=Gm_1m_2/r^2",
+    "folder": "s06_Gravitation/s06-e00_Universal_Gravitation",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Source mass: 1.02 -> 1.84 Earth masses",
+    "readings": [
+      "force: 3.3166e+21 N",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s06-e01",
+    "studio": "Gravitation",
+    "lab": "Gravitational Field",
+    "concept": "Define gravitational field as force per unit test mass.",
+    "formula": "g=GM/r^2",
+    "folder": "s06_Gravitation/s06-e01_Gravitational_Field",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Source mass: 1.02 -> 1.84 Earth masses",
+    "readings": [
+      "field: 4.5173 m/s²",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s06-e02",
+    "studio": "Gravitation",
+    "lab": "Gravitational Potential",
+    "concept": "Reference gravitational potential to zero at infinity.",
+    "formula": "V=-GM/r",
+    "folder": "s06_Gravitation/s06-e02_Gravitational_Potential",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Source mass: 1.02 -> 1.84 Earth masses",
+    "readings": [
+      "potential: -5.7560e+7 J/kg",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s06-e03",
+    "studio": "Gravitation",
+    "lab": "Orbits",
+    "concept": "Balance circular acceleration and gravity.",
+    "formula": "v=\\sqrt{GM/r}",
+    "folder": "s06_Gravitation/s06-e03_Orbits",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Source mass: 1.02 -> 1.84 Earth masses",
+    "simulationAdvanced": true,
+    "readings": [
+      "specificEnergy: -4.1606e+7 J/kg",
+      "Model t: 2504 s"
+    ]
+  },
+  {
+    "id": "s06-e04",
+    "studio": "Gravitation",
+    "lab": "Escape Velocity",
+    "concept": "Find the ideal launch speed for zero total energy at infinity.",
+    "formula": "v_e=\\sqrt{2GM/R}",
+    "folder": "s06_Gravitation/s06-e04_Escape_Velocity",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Source mass: 1.02 -> 1.84 Earth masses",
+    "simulationAdvanced": true,
+    "readings": [
+      "escape: 8551.8 m/s",
+      "Model t: 4304 s"
+    ]
+  },
+  {
+    "id": "s06-e05",
+    "studio": "Gravitation",
+    "lab": "Kepler’s Laws",
+    "concept": "Relate orbital period to semimajor axis for a two-body orbit.",
+    "formula": "T^2=4\\pi^2a^3/(GM)",
+    "folder": "s06_Gravitation/s06-e05_Keplers_Laws",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Source mass: 1.02 -> 1.84 Earth masses",
+    "simulationAdvanced": true,
+    "readings": [
+      "period: 29847 s",
+      "Model t: 4308 s"
+    ]
+  },
+  {
+    "id": "s07-e00",
+    "studio": "Oscillations",
+    "lab": "Spring SHM",
+    "concept": "Model a linear restoring force around equilibrium.",
+    "formula": "T=2\\pi\\sqrt{m/k}",
+    "folder": "s07_Oscillations/s07-e00_Spring_SHM",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "period: 2.4657 s",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s07-e01",
+    "studio": "Oscillations",
+    "lab": "Pendulum",
+    "concept": "Approximate a pendulum at small angles.",
+    "formula": "T=2\\pi\\sqrt{L/g}",
+    "folder": "s07_Oscillations/s07-e01_Pendulum",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "period: 7.0306 s",
+      "Model t: 8.958 s"
+    ]
+  },
+  {
+    "id": "s07-e02",
+    "studio": "Oscillations",
+    "lab": "Energy Exchange",
+    "concept": "Track kinetic and elastic potential energy in SHM.",
+    "formula": "E=\\tfrac12kx^2+\\tfrac12mv^2",
+    "folder": "s07_Oscillations/s07-e02_Energy_Exchange",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "total: 0.22500 J",
+      "Model t: 8.958 s"
+    ]
+  },
+  {
+    "id": "s07-e03",
+    "studio": "Oscillations",
+    "lab": "Damping",
+    "concept": "Describe energy loss with linear viscous damping.",
+    "formula": "m\\ddot x+b\\dot x+kx=0",
+    "folder": "s07_Oscillations/s07-e03_Damping",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "critical: 15.697 kg/s",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s07-e04",
+    "studio": "Oscillations",
+    "lab": "Resonance",
+    "concept": "Relate driving frequency to enhanced steady response.",
+    "formula": "\\omega_0=\\sqrt{k/m}",
+    "folder": "s07_Oscillations/s07-e04_Resonance",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.02 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "naturalOmega: 2.5482 rad/s",
+      "Model t: 8.967 s"
+    ]
+  },
+  {
+    "id": "s07-e05",
+    "studio": "Oscillations",
+    "lab": "Coupled Oscillators",
+    "concept": "Analyze energy exchange through coupled normal modes.",
+    "formula": "m\\ddot x_1=-kx_1-k_c(x_1-x_2)",
+    "folder": "s07_Oscillations/s07-e05_Coupled_Oscillators",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Mass: 1.0 -> 3.08 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "total: 0.24750 J",
+      "Model t: 8.975 s"
+    ]
+  },
+  {
+    "id": "s07-e06",
+    "studio": "Oscillations",
+    "lab": "Torsional Pendulum",
+    "concept": "A twisting suspension supplies restoring torque proportional to angular displacement.",
+    "formula": "T=2\\pi\\sqrt{I/\\kappa}",
+    "folder": "s07_Oscillations/s07-e06_Torsional_Pendulum",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Moment of inertia: 0.02 -> 0.0604 kg·m²",
+    "simulationAdvanced": true,
+    "readings": [
+      "period: 4.8831 s",
+      "Model time: 8.7571 s"
+    ]
+  },
+  {
+    "id": "s08-e00",
+    "studio": "Waves & Sound",
+    "lab": "Wave Properties",
+    "concept": "Connect wavelength, frequency and propagation speed.",
+    "formula": "v=f\\lambda",
+    "folder": "s08_Waves_Sound/s08-e00_Wave_Properties",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Displacement amplitude: 0.0204 -> 0.024 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "waveSpeed: 0.80000 m/s",
+      "Model t: 0.9000 s"
+    ]
+  },
+  {
+    "id": "s08-e01",
+    "studio": "Waves & Sound",
+    "lab": "Superposition",
+    "concept": "Add displacements in a linear medium.",
+    "formula": "y=y_1+y_2",
+    "folder": "s08_Waves_Sound/s08-e01_Superposition",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Pulse 1 signed amplitude: 0.025500000000000002 -> 0.009999999999999995 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "sum: -0.0036834 m",
+      "Model t: 0.8967 s"
+    ]
+  },
+  {
+    "id": "s08-e02",
+    "studio": "Waves & Sound",
+    "lab": "Interference",
+    "concept": "Use phase differences to predict constructive interference.",
+    "formula": "\\Delta\\phi=2\\pi\\Delta x/\\lambda",
+    "folder": "s08_Waves_Sound/s08-e02_Interference",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Source separation: 0.5 -> 0.64 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "intensity: 1.0000 ",
+      "Model t: 0.8967 s"
+    ]
+  },
+  {
+    "id": "s08-e03",
+    "studio": "Waves & Sound",
+    "lab": "Standing Waves",
+    "concept": "Locate nodes and allowed string frequencies.",
+    "formula": "f_n=nv/(2L)",
+    "folder": "s08_Waves_Sound/s08-e03_Standing_Waves",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "String length: 1.0 -> 1.4 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "frequency: 53.571 Hz",
+      "Model t: 0.008975 s"
+    ]
+  },
+  {
+    "id": "s08-e04",
+    "studio": "Waves & Sound",
+    "lab": "Sound Spectrum",
+    "concept": "Resolve a sound signal into its frequency components.",
+    "formula": "T=1/f",
+    "folder": "s08_Waves_Sound/s08-e04_Sound_Spectrum",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Fundamental frequency: 440.0 -> 1240.0 Hz",
+    "simulationAdvanced": true,
+    "readings": [
+      "peakFrequency: 1240.0 Hz",
+      "Model t: 0.0008983 s"
+    ]
+  },
+  {
+    "id": "s08-e05",
+    "studio": "Waves & Sound",
+    "lab": "Doppler Effect",
+    "concept": "Relate sound frequency shifts to relative source motion.",
+    "formula": "f'=f\\frac{v+v_o}{v-v_s}",
+    "folder": "s08_Waves_Sound/s08-e05_Doppler_Effect",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Signed source Mach fraction: 0.10200000000000001 -> 0.14 ",
+    "simulationAdvanced": true,
+    "readings": [
+      "observedFrequency: 526.32 Hz",
+      "Model t: 4.000 s"
+    ]
+  },
+  {
+    "id": "s08-e06",
+    "studio": "Waves & Sound",
+    "lab": "Beats",
+    "concept": "Nearby frequencies superpose to produce a slowly changing amplitude envelope.",
+    "formula": "f_b=|f_2-f_1|",
+    "folder": "s08_Waves_Sound/s08-e06_Beats",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "First frequency: 220.0 -> 340.0 Hz",
+    "simulationAdvanced": true,
+    "readings": [
+      "frequency: 3.0000 Hz",
+      "Model time: 1.7933 s"
+    ]
+  },
+  {
+    "id": "s09-e00",
+    "studio": "Optics",
+    "lab": "Reflection",
+    "concept": "Relate incident and reflected ray angles to the normal.",
+    "formula": "\\theta_i=\\theta_r",
+    "folder": "s09_Optics/s09-e00_Reflection",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "06_material_optical_bench.png"
+    ],
+    "interaction": "Incident angle from normal: 30.6 -> 51.0 °",
+    "readings": [
+      "reflectedAngle: 51.000 °",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s09-e01",
+    "studio": "Optics",
+    "lab": "Refraction",
+    "concept": "Apply Snell law at a transparent interface.",
+    "formula": "n_1\\sin\\theta_1=n_2\\sin\\theta_2",
+    "folder": "s09_Optics/s09-e01_Refraction",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "05_refracted_ray.png",
+      "06_material_optical_bench.png"
+    ],
+    "interaction": "Incidence from normal: 60.0 -> 51.0 °",
+    "readings": [
+      "incidentAngle: 51.000 °",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s09-e02",
+    "studio": "Optics",
+    "lab": "Lenses",
+    "concept": "Use a thin lens model for paraxial rays.",
+    "formula": "1/f=1/d_o+1/d_i",
+    "folder": "s09_Optics/s09-e02_Lenses",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "05_real_image_ray_construction.png",
+      "06_material_optical_bench.png"
+    ],
+    "interaction": "Object distance u: 0.05 -> 0.62 m",
+    "readings": [
+      "imageVergence: -11.613 m⁻¹",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s09-e03",
+    "studio": "Optics",
+    "lab": "Mirrors",
+    "concept": "Locate paraxial images in spherical mirrors.",
+    "formula": "1/f=1/d_o+1/d_i",
+    "folder": "s09_Optics/s09-e03_Mirrors",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "05_real_image_ray_construction.png",
+      "06_material_optical_bench.png"
+    ],
+    "interaction": "Object distance u: 0.075 -> 0.62 m",
+    "readings": [
+      "imageVergence: -8.2796 m⁻¹",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s09-e04",
+    "studio": "Optics",
+    "lab": "Interference",
+    "concept": "Predict bright fringes for coherent double slits.",
+    "formula": "d\\sin\\theta=m\\lambda",
+    "folder": "s09_Optics/s09-e04_Interference",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Vacuum wavelength: 6.63e-7 -> 6.02e-7 m",
+    "readings": [
+      "spacing: 0.0030100 m",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s09-e05",
+    "studio": "Optics",
+    "lab": "Diffraction",
+    "concept": "Predict single-slit minima in far-field diffraction.",
+    "formula": "a\\sin\\theta=m\\lambda",
+    "folder": "s09_Optics/s09-e05_Diffraction",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Vacuum wavelength: 6.5e-7 -> 6.02e-7 m",
+    "readings": [
+      "centralWidth: 0.012040 m",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s09-e06",
+    "studio": "Optics",
+    "lab": "Polarization",
+    "concept": "An analyzer transmits the squared projection of polarized light.",
+    "formula": "I=\\frac{I_0}{2}\\cos^2\\theta",
+    "folder": "s09_Optics/s09-e06_Polarization",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Incident intensity: 60.0 -> 60.4 W/m²",
+    "readings": [
+      "intensity: 15.100 W/m²"
+    ]
+  },
+  {
+    "id": "s10-e00",
+    "studio": "Electricity",
+    "lab": "Coulomb Force",
+    "concept": "Model electrostatic force between point charges.",
+    "formula": "F=k_e|q_1q_2|/r^2",
+    "folder": "s10_Electricity/s10-e00_Coulomb_Force",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Signed charge 1: 0.000002 -> 9.999999999999997e-7 C",
+    "readings": [
+      "force: 0.44938 N",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s10-e01",
+    "studio": "Electricity",
+    "lab": "Electric Field",
+    "concept": "Define vector force per unit positive test charge.",
+    "formula": "\\vec E=\\vec F/q",
+    "folder": "s10_Electricity/s10-e01_Electric_Field",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Number of source charges: 2.0 -> 2.2 ",
+    "readings": [
+      "field: 2193.5 N/C",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s10-e02",
+    "studio": "Electricity",
+    "lab": "Electric Potential",
+    "concept": "Relate potential difference to work per charge.",
+    "formula": "\\Delta V=\\Delta U/q",
+    "folder": "s10_Electricity/s10-e02_Electric_Potential",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Number of source charges: 2.0 -> 2.2 ",
+    "readings": [
+      "potential: -195.87 V",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s10-e03",
+    "studio": "Electricity",
+    "lab": "Current",
+    "concept": "Define current as charge flow per unit time.",
+    "formula": "I=dQ/dt",
+    "folder": "s10_Electricity/s10-e03_Current",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Supply voltage: 6.0 -> 2.3999999999999986 V",
+    "simulationAdvanced": true,
+    "readings": [
+      "current: 0.16000 A",
+      "Model t: 8.975 s"
+    ]
+  },
+  {
+    "id": "s10-e04",
+    "studio": "Electricity",
+    "lab": "Circuits",
+    "concept": "Apply Ohm law to an ideal resistor.",
+    "formula": "V=IR",
+    "folder": "s10_Electricity/s10-e04_Circuits",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "R1: 10.0 -> 6000.04 Ω",
+    "readings": [
+      "current: 0.00099667 A",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s10-e05",
+    "studio": "Electricity",
+    "lab": "Capacitors",
+    "concept": "Relate stored charge to voltage in an ideal capacitor.",
+    "formula": "Q=CV",
+    "folder": "s10_Electricity/s10-e05_Capacitors",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Plate area: 0.005 -> 0.0128 m²",
+    "readings": [
+      "capacitance: 1.1333e-10 F",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s10-e06",
+    "studio": "Electricity",
+    "lab": "Wire Resistivity",
+    "concept": "Resistance increases with length and decreases with cross-sectional area.",
+    "formula": "R=\\rho L/(\\pi r^2)",
+    "folder": "s10_Electricity/s10-e06_Wire_Resistivity",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Resistivity: 1.68e-8 -> 6.0672e-7 Ω·m",
+    "readings": [
+      "resistance: 1.5450 Ω"
+    ]
+  },
+  {
+    "id": "s10-e07",
+    "studio": "Electricity",
+    "lab": "Wheatstone Bridge",
+    "concept": "A null detector compares two resistor-divider midpoint potentials.",
+    "formula": "R_x=R_2R_3/R_1",
+    "folder": "s10_Electricity/s10-e07_Wheatstone_Bridge",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Left upper R1: 100.0 -> 604.0 Ω",
+    "readings": [
+      "Detector voltage: -2.5075 V"
+    ]
+  },
+  {
+    "id": "s10-e08",
+    "studio": "Electricity",
+    "lab": "AC RLC Circuits",
+    "concept": "Inductive and capacitive reactance set current amplitude and phase.",
+    "formula": "Z=\\sqrt{R^2+(\\omega L-1/(\\omega C))^2}",
+    "folder": "s10_Electricity/s10-e08_AC_RLC_Circuits",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Supply RMS voltage: 12.0 -> 72.39999999999999 V",
+    "simulationAdvanced": true,
+    "readings": [
+      "RMS current: 2.4131 A",
+      "Model time: 0.071733 s"
+    ]
+  },
+  {
+    "id": "s11-e00",
+    "studio": "Magnetism",
+    "lab": "Field Lines",
+    "concept": "Represent magnetic field direction with tangent vectors.",
+    "formula": "\\nabla\\cdot\\vec B=0",
+    "folder": "s11_Magnetism/s11-e00_Field_Lines",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Signed magnetic moment: 0.15 -> 0.06 A·m²",
+    "readings": [
+      "field: 0.0000010395 T",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s11-e01",
+    "studio": "Magnetism",
+    "lab": "Lorentz Force",
+    "concept": "Predict force on a moving charge in a magnetic field.",
+    "formula": "\\vec F=q\\vec v\\times\\vec B",
+    "folder": "s11_Magnetism/s11-e01_Lorentz_Force",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Signed particle charge: 1.602176634e-19 -> 6.400000000000001e-20 C",
+    "simulationAdvanced": true,
+    "readings": [
+      "force: 1.2800e-16 N",
+      "Model t: 0.000001200 s"
+    ]
+  },
+  {
+    "id": "s11-e02",
+    "studio": "Magnetism",
+    "lab": "Current-Carrying Wire",
+    "concept": "Estimate field around a long straight current-carrying wire.",
+    "formula": "B=\\mu_0I/(2\\pi r)",
+    "folder": "s11_Magnetism/s11-e02_Current-Carrying_Wire",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Signed current (+ out of board): 5.0 -> 2.0 A",
+    "readings": [
+      "field: 0.0000018490 T",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s11-e03",
+    "studio": "Magnetism",
+    "lab": "Solenoids",
+    "concept": "Estimate the interior field of a long ideal solenoid.",
+    "formula": "B=\\mu_0nI",
+    "folder": "s11_Magnetism/s11-e03_Solenoids",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Turns N: 500.0 -> 620.0 ",
+    "readings": [
+      "field: 0.014468 T",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s11-e04",
+    "studio": "Magnetism",
+    "lab": "Induction",
+    "concept": "Connect changing magnetic flux to induced emf.",
+    "formula": "\\mathcal E=-d\\Phi_B/dt",
+    "folder": "s11_Magnetism/s11-e04_Induction",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Signed magnetic moment: 0.15 -> 0.06 A·m²",
+    "simulationAdvanced": true,
+    "readings": [
+      "emf: -0.00037177 V",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s11-e05",
+    "studio": "Magnetism",
+    "lab": "Electromagnets",
+    "concept": "Relate coil current and turns to ideal magnetic field.",
+    "formula": "B\\approx\\mu nI",
+    "folder": "s11_Magnetism/s11-e05_Electromagnets",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Turns N: 400.0 -> 640.0 ",
+    "readings": [
+      "force: 2.2876 N",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s11-e06",
+    "studio": "Magnetism",
+    "lab": "Transformer",
+    "concept": "AC voltage follows the turns ratio while ideal power is conserved.",
+    "formula": "V_s/V_p=N_s/N_p",
+    "folder": "s11_Magnetism/s11-e06_Transformer",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Primary RMS voltage: 12.0 -> 14.799999999999999 V",
+    "simulationAdvanced": true,
+    "readings": [
+      "Secondary RMS voltage: 29.600 V",
+      "Model time: 0.0096000 s"
+    ]
+  },
+  {
+    "id": "s12-e00",
+    "studio": "Electronics",
+    "lab": "Semiconductors",
+    "concept": "Explain charge carriers and a simplified band gap model.",
+    "formula": "\\sigma=q(n\\mu_n+p\\mu_p)",
+    "folder": "s12_Electronics/s12-e00_Semiconductors",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Temperature: 300.0 -> 340.0 K",
+    "readings": [
+      "conductivity: 0.0035661 S/m",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s12-e01",
+    "studio": "Electronics",
+    "lab": "Diodes",
+    "concept": "Describe a junction using an idealized diode equation.",
+    "formula": "I=I_s(e^{V/(nV_T)}-1)",
+    "folder": "s12_Electronics/s12-e01_Diodes",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Supply: 1.0 -> 5.199999999999999 V",
+    "readings": [
+      "current: 0.0043395 A",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s12-e02",
+    "studio": "Electronics",
+    "lab": "Transistors",
+    "concept": "Relate currents in an active-region bipolar transistor.",
+    "formula": "I_C\\approx\\beta I_B",
+    "folder": "s12_Electronics/s12-e02_Transistors",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Base drive: 1.2 -> 3.0 V",
+    "readings": [
+      "collectorCurrent: 0.0049683 A",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s12-e03",
+    "studio": "Electronics",
+    "lab": "Amplifiers",
+    "concept": "Compare output and input signal amplitudes in a linear range.",
+    "formula": "A_v=V_{out}/V_{in}",
+    "folder": "s12_Electronics/s12-e03_Amplifiers",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Input amplitude: 0.2 -> 0.6 V",
+    "simulationAdvanced": true,
+    "readings": [
+      "gain: 6.0000 ",
+      "Model t: 0.1200 s"
+    ]
+  },
+  {
+    "id": "s12-e04",
+    "studio": "Electronics",
+    "lab": "Logic Gates",
+    "concept": "Evaluate Boolean inputs with a basic conjunction.",
+    "formula": "Y=A\\land B",
+    "folder": "s12_Electronics/s12-e04_Logic_Gates",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Input A: 0.0 -> 0.6 ",
+    "simulationAdvanced": true,
+    "readings": [
+      "logicOutput: 1.0000 ",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s12-e05",
+    "studio": "Electronics",
+    "lab": "Sensors",
+    "concept": "Relate sensor output to a calibrated physical input.",
+    "formula": "y=ax+b",
+    "folder": "s12_Electronics/s12-e05_Sensors",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Simulated temperature: 301.65 -> 346.0 K",
+    "readings": [
+      "sensorOutput: 1.2285 V",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s12-e06",
+    "studio": "Electronics",
+    "lab": "Full-wave Rectifier",
+    "concept": "A diode bridge converts both AC half-cycles into a single output polarity.",
+    "formula": "v_o=|V_{pk}\\sin\\omega t|",
+    "folder": "s12_Electronics/s12-e06_Full-wave_Rectifier",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Input RMS voltage: 12.0 -> 14.799999999999999 V",
+    "simulationAdvanced": true,
+    "readings": [
+      "Mean output voltage: 13.325 V",
+      "Model time: 0.0094667 s"
+    ]
+  },
+  {
+    "id": "s13-e00",
+    "studio": "Thermodynamics",
+    "lab": "Temperature",
+    "concept": "Convert absolute and Celsius temperatures.",
+    "formula": "T_K=T_C+273.15",
+    "folder": "s13_Thermodynamics/s13-e00_Temperature",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Initial sample temperature: 333.15 -> 325.15 K",
+    "simulationAdvanced": true,
+    "readings": [
+      "probeTemperature: 299.98 K",
+      "Celsius: 26.8 °C",
+      "Model t: 0.9600 s"
+    ]
+  },
+  {
+    "id": "s13-e01",
+    "studio": "Thermodynamics",
+    "lab": "Heat Transfer",
+    "concept": "Model one-dimensional steady heat conduction.",
+    "formula": "\\dot Q=kA\\Delta T/L",
+    "folder": "s13_Thermodynamics/s13-e01_Heat_Transfer",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png",
+      "06_material_optical_bench.png"
+    ],
+    "interaction": "Thermal conductivity: 205.0 -> 240.03999999999996 W/(m K)",
+    "readings": [
+      "heatRate: 9.6016 W",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s13-e02",
+    "studio": "Thermodynamics",
+    "lab": "Gas Laws",
+    "concept": "Connect ideal gas state variables at equilibrium.",
+    "formula": "PV=nRT",
+    "folder": "s13_Thermodynamics/s13-e02_Gas_Laws",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Amount: 0.1 -> 0.12399999999999999 mol",
+    "simulationAdvanced": true,
+    "readings": [
+      "pressure: 1.1288e+5 Pa",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s13-e03",
+    "studio": "Thermodynamics",
+    "lab": "First Law",
+    "concept": "Account for heat and work with work done by the gas positive.",
+    "formula": "\\Delta U=Q-W",
+    "folder": "s13_Thermodynamics/s13-e03_First_Law",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Amount: 0.1 -> 0.12399999999999999 mol",
+    "simulationAdvanced": true,
+    "readings": [
+      "deltaU: 11.135 J",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s13-e04",
+    "studio": "Thermodynamics",
+    "lab": "Entropy",
+    "concept": "Relate reversible heat transfer to entropy change.",
+    "formula": "dS=\\delta Q_{rev}/T",
+    "folder": "s13_Thermodynamics/s13-e04_Entropy",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Amount: 0.1 -> 0.12399999999999999 mol",
+    "simulationAdvanced": true,
+    "readings": [
+      "entropy: 0.089271 J/K",
+      "Model t: 1.175 s"
+    ]
+  },
+  {
+    "id": "s13-e05",
+    "studio": "Thermodynamics",
+    "lab": "Heat Engines",
+    "concept": "Bound engine efficiency between ideal heat reservoirs.",
+    "formula": "\\eta_C=1-T_c/T_h",
+    "folder": "s13_Thermodynamics/s13-e05_Heat_Engines",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Amount: 0.1 -> 0.12399999999999999 mol",
+    "simulationAdvanced": true,
+    "readings": [
+      "efficiency: 0.50000 ",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s13-e06",
+    "studio": "Thermodynamics",
+    "lab": "Calorimetry",
+    "concept": "Heat lost by a hot body equals heat gained by water and the calorimeter.",
+    "formula": "\\sum_i C_i(T_f-T_i)=0",
+    "folder": "s13_Thermodynamics/s13-e06_Calorimetry",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Hot body mass: 0.2 -> 0.608 kg",
+    "readings": [
+      "Equilibrium temperature: 316.04 K"
+    ]
+  },
+  {
+    "id": "s13-e07",
+    "studio": "Thermodynamics",
+    "lab": "Heating Curve & Latent Heat",
+    "concept": "Energy can change phase while temperature remains constant.",
+    "formula": "Q=mc\\Delta T,\\quad Q=mL",
+    "folder": "s13_Thermodynamics/s13-e07_Heating_Curve_Latent_Heat",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Water / ice mass: 0.2 -> 0.64 kg",
+    "simulationAdvanced": true,
+    "readings": [
+      "temperature: 275.19 K",
+      "Model time: 465.35 s"
+    ]
+  },
+  {
+    "id": "s13-e08",
+    "studio": "Thermodynamics",
+    "lab": "Thermal Expansion",
+    "concept": "A uniform rod expands approximately in proportion to temperature change.",
+    "formula": "\\Delta L=\\alpha L_0\\Delta T",
+    "folder": "s13_Thermodynamics/s13-e08_Thermal_Expansion",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Original rod length: 1.0 -> 1.24 m",
+    "readings": [
+      "Extension: 0.0014880 m"
+    ]
+  },
+  {
+    "id": "s14-e00",
+    "studio": "Fluid Mechanics",
+    "lab": "Density & Pressure",
+    "concept": "Relate mass density and normal force per unit area.",
+    "formula": "\\rho=m/V,\\quad p=F/A",
+    "folder": "s14_Fluid_Mechanics/s14-e00_Density_Pressure",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Model liquid density at fixed reference temperature: 1000.0 -> 1080.0 kg/m³",
+    "readings": [
+      "gaugePressure: 3177.4 Pa",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s14-e01",
+    "studio": "Fluid Mechanics",
+    "lab": "Hydrostatics",
+    "concept": "Find pressure increase with depth in a stationary fluid.",
+    "formula": "\\Delta p=\\rho gh",
+    "folder": "s14_Fluid_Mechanics/s14-e01_Hydrostatics",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Model liquid density at fixed reference temperature: 1000.0 -> 1080.0 kg/m³",
+    "readings": [
+      "heightDifference: 0.092593 m",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s14-e02",
+    "studio": "Fluid Mechanics",
+    "lab": "Buoyancy",
+    "concept": "Calculate buoyancy from displaced fluid mass.",
+    "formula": "F_b=\\rho_f gV_{disp}",
+    "folder": "s14_Fluid_Mechanics/s14-e02_Buoyancy",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Model liquid density at fixed reference temperature: 1000.0 -> 1080.0 kg/m³",
+    "readings": [
+      "buoyantForce: 3.9540 N",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s14-e03",
+    "studio": "Fluid Mechanics",
+    "lab": "Continuity",
+    "concept": "Conserve mass for steady incompressible flow.",
+    "formula": "A_1v_1=A_2v_2",
+    "folder": "s14_Fluid_Mechanics/s14-e03_Continuity",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Inlet / outlet radius: 0.015 -> 0.019999999999999997 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "speed: 0.099472 m/s",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s14-e04",
+    "studio": "Fluid Mechanics",
+    "lab": "Bernoulli",
+    "concept": "Relate pressure, speed and height along an ideal streamline.",
+    "formula": "p+\\tfrac12\\rho v^2+\\rho gh=C",
+    "folder": "s14_Fluid_Mechanics/s14-e04_Bernoulli",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Inlet / outlet radius: 0.015 -> 0.019999999999999997 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "pressure: 1.0182e+5 Pa",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s14-e05",
+    "studio": "Fluid Mechanics",
+    "lab": "Viscosity",
+    "concept": "Relate laminar Newtonian shear stress to velocity gradient.",
+    "formula": "\\tau=\\mu\\,du/dy",
+    "folder": "s14_Fluid_Mechanics/s14-e05_Viscosity",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Sphere radius: 0.0005 -> 0.00062 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "terminalSpeed: 0.0012566 m/s",
+      "Model t: 15.58 s"
+    ]
+  },
+  {
+    "id": "s14-e06",
+    "studio": "Fluid Mechanics",
+    "lab": "Capillary Rise",
+    "concept": "Surface tension and contact angle can raise or depress a narrow liquid column.",
+    "formula": "h=2\\gamma\\cos\\theta/(\\rho gr)",
+    "folder": "s14_Fluid_Mechanics/s14-e06_Capillary_Rise",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Surface tension: 0.072 -> 0.055999999999999994 N/m",
+    "readings": [
+      "Capillary height: 0.053660 m"
+    ]
+  },
+  {
+    "id": "s15-e00",
+    "studio": "Modern Physics",
+    "lab": "Quantum Ideas",
+    "concept": "Introduce photon energy and model-dependent quantum descriptions.",
+    "formula": "E=hf",
+    "folder": "s15_Modern_Physics/s15-e00_Quantum_Ideas",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Well width: 1e-9 -> 1.4000000000000001e-9 m",
+    "simulationAdvanced": true,
+    "readings": [
+      "Quantum energy: 1.2295e-19 J",
+      "Model t: 1.175 s"
+    ]
+  },
+  {
+    "id": "s15-e01",
+    "studio": "Modern Physics",
+    "lab": "Photoelectric Effect",
+    "concept": "Apply photon energy balance to electron emission.",
+    "formula": "K_{max}=hf-\\phi",
+    "folder": "s15_Modern_Physics/s15-e01_Photoelectric_Effect",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Incident vacuum wavelength: 4e-7 -> 5.599999999999999e-7 m",
+    "readings": [
+      "current: 0.000045167 A",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s15-e02",
+    "studio": "Modern Physics",
+    "lab": "Matter Waves",
+    "concept": "Associate wavelength with particle momentum.",
+    "formula": "\\lambda=h/p",
+    "folder": "s15_Modern_Physics/s15-e02_Matter_Waves",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Electron accelerating voltage: 100.0 -> 120.39999999999999 V",
+    "simulationAdvanced": true,
+    "readings": [
+      "wavelength: 1.1177e-10 m",
+      "Model t: 1.200 s"
+    ]
+  },
+  {
+    "id": "s15-e03",
+    "studio": "Modern Physics",
+    "lab": "Atomic Spectra",
+    "concept": "Relate spectral lines to transitions between energy levels.",
+    "formula": "hf=E_i-E_f",
+    "folder": "s15_Modern_Physics/s15-e03_Atomic_Spectra",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Upper hydrogen level: 4.0 -> 5.6 ",
+    "readings": [
+      "wavelength: 9.3781e-8 m",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s15-e04",
+    "studio": "Modern Physics",
+    "lab": "Nuclear Structure",
+    "concept": "Track charge and nucleon number in nuclear structure.",
+    "formula": "A=Z+N",
+    "folder": "s15_Modern_Physics/s15-e04_Nuclear_Structure",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Schematic camera rotation: 0.6 -> 0.6283185307179586 rad",
+    "readings": [
+      "bindingPerNucleon: 1.7821e-13 J",
+      "Model t: 0.000 s"
+    ]
+  },
+  {
+    "id": "s15-e05",
+    "studio": "Modern Physics",
+    "lab": "Radioactivity",
+    "concept": "Model independent spontaneous decays statistically.",
+    "formula": "N=N_0e^{-\\lambda t}",
+    "folder": "s15_Modern_Physics/s15-e05_Radioactivity",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Initial parent nuclei: 1000000.0 -> 600000400.0 ",
+    "simulationAdvanced": true,
+    "readings": [
+      "expectedActivity: 0.42106 Bq",
+      "Model t: 5.571e+7 s"
+    ]
+  },
+  {
+    "id": "s15-e06",
+    "studio": "Modern Physics",
+    "lab": "Rutherford Scattering",
+    "concept": "Coulomb repulsion deflects an alpha particle near a positive nucleus.",
+    "formula": "\\theta=2\\tan^{-1}(kZze^2/(2Eb))",
+    "folder": "s15_Modern_Physics/s15-e06_Rutherford_Scattering",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Nuclear charge Z: 79.0 -> 55.4 ",
+    "readings": [
+      "angle: 43.206 °"
+    ]
+  },
+  {
+    "id": "s15-e07",
+    "studio": "Modern Physics",
+    "lab": "Time Dilation & Length Contraction",
+    "concept": "Inertial observers relate proper intervals through the Lorentz factor.",
+    "formula": "\\gamma=(1-\\beta^2)^{-1/2},\\quad t=\\gamma\\tau,\\quad L=L_0/\\gamma",
+    "folder": "s15_Modern_Physics/s15-e07_Time_Dilation_Length_Contraction",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Speed / speed of light: 0.6 -> 0.594 ",
+    "readings": [
+      "time: 6.2153 s"
+    ]
+  },
+  {
+    "id": "s16-e00",
+    "studio": "Astronomy & Astrophysics",
+    "lab": "Solar System Orbits",
+    "concept": "Approximate planetary orbits with a central gravitational field.",
+    "formula": "T^2=4\\pi^2a^3/(GM)",
+    "folder": "s16_Astronomy_Astrophysics/s16-e00_Solar_System_Orbits",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Elapsed Julian days from J2000 educational epoch: 0.0 -> 14610.0 d",
+    "simulationAdvanced": true,
+    "readings": [
+      "distance: 6.9441e+10 m",
+      "Playback: 1.200 s"
+    ]
+  },
+  {
+    "id": "s16-e01",
+    "studio": "Astronomy & Astrophysics",
+    "lab": "Stellar Life",
+    "concept": "Relate stellar luminosity, radius and effective temperature.",
+    "formula": "L=4\\pi R^2\\sigma T^4",
+    "folder": "s16_Astronomy_Astrophysics/s16-e01_Stellar_Life",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Fraction of supported reference-track age: 0.4 -> 0.6 ",
+    "simulationAdvanced": true,
+    "readings": [
+      "luminosity: 5.8083e+26 W",
+      "Playback: 1.175 s"
+    ]
+  },
+  {
+    "id": "s16-e02",
+    "studio": "Astronomy & Astrophysics",
+    "lab": "Spectroscopy",
+    "concept": "Infer line-of-sight speed from small spectral shifts.",
+    "formula": "\\Delta\\lambda/\\lambda\\approx v_r/c",
+    "folder": "s16_Astronomy_Astrophysics/s16-e02_Spectroscopy",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Effective temperature: 5800.0 -> 13200.0 K",
+    "readings": [
+      "peakWavelength: 2.1953e-7 m",
+      "Playback: 0.000 s"
+    ]
+  },
+  {
+    "id": "s16-e03",
+    "studio": "Astronomy & Astrophysics",
+    "lab": "Galaxies",
+    "concept": "Infer enclosed mass from circular motion with stated assumptions.",
+    "formula": "M(r)=v^2r/G",
+    "folder": "s16_Astronomy_Astrophysics/s16-e03_Galaxies",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Radius probe: 8.0 -> 18.04 kpc",
+    "readings": [
+      "speed: 1.5940e+5 m/s",
+      "Playback: 0.000 s"
+    ]
+  },
+  {
+    "id": "s16-e04",
+    "studio": "Astronomy & Astrophysics",
+    "lab": "Cosmology",
+    "concept": "Introduce the local low-redshift Hubble relation.",
+    "formula": "v\\approx H_0d",
+    "folder": "s16_Astronomy_Astrophysics/s16-e04_Cosmology",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Cosmological redshift: 0.5 -> 3.0 ",
+    "readings": [
+      "comovingDistance: 1.9607e+26 m",
+      "Playback: 0.000 s"
+    ]
+  },
+  {
+    "id": "s16-e05",
+    "studio": "Astronomy & Astrophysics",
+    "lab": "Exoplanets",
+    "concept": "Estimate a planet-to-star radius ratio from ideal transit depth.",
+    "formula": "\\delta\\approx(R_p/R_*)^2",
+    "folder": "s16_Astronomy_Astrophysics/s16-e05_Exoplanets",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Stellar mass: 1.0 -> 1.4 M☉",
+    "simulationAdvanced": true,
+    "readings": [
+      "midDepth: 0.010000 ",
+      "Playback: 1.175 s"
+    ]
+  },
+  {
+    "id": "s16-e06",
+    "studio": "Astronomy & Astrophysics",
+    "lab": "Stellar Parallax",
+    "concept": "Nearby stars shift against distant background stars as the observer moves.",
+    "formula": "p=\\tan^{-1}(B/d)",
+    "folder": "s16_Astronomy_Astrophysics/s16-e06_Stellar_Parallax",
+    "files": [
+      "01_apparatus.png",
+      "02_concept_interaction.png",
+      "03_graph.png",
+      "04_controls_readings.png"
+    ],
+    "interaction": "Star distance: 10.0 -> 600.4 pc",
+    "readings": [
+      "Parallax angle: 1.6656 mas"
+    ]
+  }
+]

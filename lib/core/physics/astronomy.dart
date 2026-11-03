@@ -205,7 +205,9 @@ AstroState stellar(int track, double fraction) {
     }
   }
   final a = rows[lo], b = rows[hi];
-  final f = a[3] == b[3]
+  final f = fraction == 1
+      ? 1.0
+      : a[3] == b[3]
       ? ((age - a[0]) / (b[0] - a[0])).clamp(0, 1).toDouble()
       : 0.0;
   final logL = a[1] + f * (b[1] - a[1]), logT = a[2] + f * (b[2] - a[2]);

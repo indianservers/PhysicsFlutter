@@ -39,15 +39,29 @@ Vec2 centreOfMass(List<double> masses, List<Vec2> points) {
   return sum * (1 / total);
 }
 
-({double a, double tension}) atwood(double m1, double m2) {
-  final a = (m2 - m1) * standardGravity / (m1 + m2);
-  return (a: a, tension: m1 * (standardGravity + a));
+({double a, double tension}) atwood(
+  double m1,
+  double m2, {
+  double gravity = standardGravity,
+}) {
+  if (![m1, m2, gravity].every((x) => x.isFinite && x > 0)) {
+    throw ArgumentError('Positive finite masses and gravity required');
+  }
+  final a = (m2 - m1) * gravity / (m1 + m2);
+  return (a: a, tension: m1 * (gravity + a));
 }
 
 /// One movable sheave: two segments support load M, effort mass m falls twice as far.
-({double a, double tension}) movablePulley(double load, double effort) {
-  final a = (2 * effort - load) * standardGravity / (load + 4 * effort);
-  return (a: a, tension: effort * (standardGravity - 2 * a));
+({double a, double tension}) movablePulley(
+  double load,
+  double effort, {
+  double gravity = standardGravity,
+}) {
+  if (![load, effort, gravity].every((x) => x.isFinite && x > 0)) {
+    throw ArgumentError('Positive finite masses and gravity required');
+  }
+  final a = (2 * effort - load) * gravity / (load + 4 * effort);
+  return (a: a, tension: effort * (gravity - 2 * a));
 }
 
 ({double v1, double v2, double impulse}) collision(
@@ -156,11 +170,13 @@ class DynamicsRun {
     if (kind == 0 || (kind == 16 && mode == 1)) {
       final upward =
           (p['force'] ?? 0) * math.sin((p['angle'] ?? 0) * math.pi / 180);
-      if (upward > (p['m'] ?? 2) * standardGravity + 1e-8) {
+      if (upward > (p['m'] ?? 2) * (p['g'] ?? standardGravity) + 1e-8) {
         throw ArgumentError('This contact model requires N ≥ 0');
       }
     }
-    if (kind == 16 && mode == 0 && (p['a'] ?? 0) < -standardGravity) {
+    if (kind == 16 &&
+        mode == 0 &&
+        (p['a'] ?? 0) < -(p['g'] ?? standardGravity)) {
       throw ArgumentError('A taut rope cannot supply negative tension');
     }
     reset();
@@ -273,9 +289,11 @@ class DynamicsRun {
         finished = true;
       }
     } else if (kind == 2) {
-      final r = mode == 0 ? atwood(m, m2) : movablePulley(m, m2);
+      final r = mode == 0
+          ? atwood(m, m2, gravity: g)
+          : movablePulley(m, m2, gravity: g);
       final a = r.a;
-      var displacement = v('v0') * t + .5 * a * t * t;
+      var displacement = v('release') + v('v0') * t + .5 * a * t * t;
       var speed = v('v0') + a * t;
       final travel = mode == 0 ? 1.5 : .75;
       if (displacement.abs() > travel) {
@@ -284,10 +302,10 @@ class DynamicsRun {
         final roots = <double>[];
         if (a.abs() < 1e-12) {
           if (v('v0') != 0) {
-            roots.add(target / v('v0'));
+            roots.add((target - v('release')) / v('v0'));
           }
         } else {
-          final d = v('v0') * v('v0') + 2 * a * target;
+          final d = v('v0') * v('v0') + 2 * a * (target - v('release'));
           if (d >= 0) {
             roots.addAll([
               (-v('v0') + math.sqrt(d)) / a,
@@ -535,13 +553,38 @@ class DynamicsRun {
         'distance': initial.abs() * t,
       });
     } else if (kind == 13) {
-      final a = v('force') / m;
-      state.addAll({
-        'x': v('x0') + v('v0') * t + .5 * a * t * t,
-        'vx': v('v0') + a * t,
-        'ax': a,
-        'fx': v('force'),
-      });
+      if (mode == 1) {
+        // Rope constraint gives both bodies the same acceleration. Friction
+        // acts at the cart; the inertia includes the hanging mass as well.
+        final hanger = v('hanger', .5), mu = v('trackFriction', .05);
+        final motion = frictionStep(
+          x,
+          u,
+          hanger * g,
+          m + hanger,
+          m * g,
+          mu,
+          mu,
+          h,
+        );
+        state.addAll({
+          'x': motion.x,
+          'vx': motion.v,
+          'ax': motion.a,
+          'fx': m * motion.a,
+          'normal': m * g,
+          'friction': motion.friction,
+          'tension': hanger * (g - motion.a),
+        });
+      } else {
+        final a = v('force') / m;
+        state.addAll({
+          'x': v('x0') + v('v0') * t + .5 * a * t * t,
+          'vx': v('v0') + a * t,
+          'ax': a,
+          'fx': v('force'),
+        });
+      }
     } else if (kind == 14) {
       final duration = v('pushTime'),
           active = math.min(t, duration),

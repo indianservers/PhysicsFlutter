@@ -1,0 +1,17 @@
+Radioactivity (s15-e05)
+Studio: Modern Physics
+Concept: Model independent spontaneous decays statistically.
+Formula: N=N_0e^{-\lambda t}
+
+Captured interaction: Initial parent nuclei: 1000000.0 -> 600000400.0 
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+expectedActivity: 0.42106 Bq
+Model t: 5.571e+7 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

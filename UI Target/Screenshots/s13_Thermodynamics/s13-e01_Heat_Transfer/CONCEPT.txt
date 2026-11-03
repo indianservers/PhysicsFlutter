@@ -1,0 +1,17 @@
+Heat Transfer (s13-e01)
+Studio: Thermodynamics
+Concept: Model one-dimensional steady heat conduction.
+Formula: \dot Q=kA\Delta T/L
+
+Captured interaction: Thermal conductivity: 205.0 -> 240.03999999999996 W/(m K)
+
+Model readings for 02_concept_interaction.png:
+heatRate: 9.6016 W
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png
+06_material_optical_bench.png

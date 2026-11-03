@@ -1,0 +1,17 @@
+Gas Laws (s13-e02)
+Studio: Thermodynamics
+Concept: Connect ideal gas state variables at equilibrium.
+Formula: PV=nRT
+
+Captured interaction: Amount: 0.1 -> 0.12399999999999999 mol
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+pressure: 1.1288e+5 Pa
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -23,7 +23,7 @@ void main() {
       ),
     );
     for (final id in ['s03-e00', 's09-e00', 's13-e00', 's16-e00']) {
-      router.go('/lab/$id');
+      router.go('/lab/$id${id.startsWith('s09-') ? '?classic=1' : ''}');
       await t.pumpAndSettle();
       final chart = find.byKey(const Key('reference-compact-chart'));
       expect(t.getSize(chart).height, greaterThanOrEqualTo(90), reason: id);
@@ -56,7 +56,7 @@ void main() {
         's14-e00',
         's16-e00',
       ]) {
-        router.go('/lab/$id');
+        router.go('/lab/$id${id.startsWith('s09-') ? '?classic=1' : ''}');
         await t.pumpAndSettle();
         final before = t
             .widget<InstrumentShell>(find.byType(InstrumentShell))

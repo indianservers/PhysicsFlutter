@@ -1,3 +1,4 @@
+import '../measurement/mass_time_lab.dart';
 import '../workbench/learning_header.dart';
 
 import 'dart:math' as math;
@@ -204,8 +205,8 @@ class _WorkspaceState extends ConsumerState<Workspace>
           (
             quantity: 'time',
             unit: 's',
-            value: experiment.elapsed,
-            resolution: .001,
+            value: experiment.timerReading,
+            resolution: experiment.resolution,
           ),
         ]) {
           await store.addTrial(
@@ -259,6 +260,12 @@ class _WorkspaceState extends ConsumerState<Workspace>
   String? highlightControl;
   @override
   Widget build(BuildContext context) {
+    if (entry.index == 4 &&
+        section == 1 &&
+        MediaQuery.sizeOf(context).aspectRatio <= .8 &&
+        MediaQuery.textScalerOf(context).scale(1) <= 1.2) {
+      return MassTimeLab(experiment: experiment);
+    }
     if (ready && entry.index == 3 && experiment.spherometer == null) {
       // Legacy direct-reading sessions retain their measured estimate and note.
       experiment.spherometer = SpherometerSetup()
@@ -768,7 +775,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
           r('sagitta', e.spherometer!.measuredH!, 'm'),
       ],
       if (e.kind == 4) ...[
-        r('elapsed', e.elapsed, 's'),
+        r('elapsed', e.timerReading, 's'),
         r('travelled', e.travelled, 'm'),
         r('instantaneousSpeed', e.v0 + e.acceleration * e.elapsed, 'm/s'),
       ],
@@ -1346,7 +1353,7 @@ class _WorkspaceState extends ConsumerState<Workspace>
             ? 'Convex rise'
             : 'Concave depression'} · signed R ${display(e.result)}',
       4 =>
-        'Elapsed ${e.elapsed.toStringAsFixed(3)} s · travelled ${e.travelled.toStringAsFixed(4)} m · average speed ${display(e.result)}',
+        'Elapsed ${e.timerReading.toStringAsFixed(3)} s · travelled ${e.travelled.toStringAsFixed(4)} m · average speed ${display(e.result)}',
       _ => '${e.samples.length} readings · mean ${display(e.result)}',
     };
   }

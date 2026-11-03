@@ -1,0 +1,17 @@
+Velocity–Time (s03-e01)
+Studio: Motion & Kinematics
+Concept: Interpret velocity graph area as displacement.
+Formula: \Delta x=\int v\,dt
+
+Captured interaction: Initial position A: 0.05 -> 1.0 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+displacement: 49.500 m
+Model t: 9.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

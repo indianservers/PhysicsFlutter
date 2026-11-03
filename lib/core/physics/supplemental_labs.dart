@@ -1,3 +1,5 @@
+import 'live_optics.dart' show solveLiveOptics;
+
 import 'dart:math' as m;
 
 const supplementalVersion = 'supplemental-1.0';
@@ -122,7 +124,9 @@ class SupplementalLab {
   };
   double duration(Map<String, double> p) => switch (kind) {
     1 => m.sqrt(
-      2 * p['length']! / (9.80665 * m.sin(p['incline']! * m.pi / 180) / 1.4),
+      2 *
+          m.max(0, p['length']! - (p['start'] ?? 0)) /
+          (9.80665 * m.sin(p['incline']! * m.pi / 180) / 1.4),
     ),
     4 => m.sqrt(2 * p['height']! / p['gravity']!),
     5 => 4 * m.pi * m.sqrt(p['inertia']! / p['torsion']!),
@@ -152,6 +156,9 @@ class SupplementalLab {
     )) {
       return 'Turns and nuclear charge must be whole numbers.';
     }
+    if (kind == 1 && (p['start'] ?? 0) > p['length']!) {
+      return 'Release distance must lie on the ramp.';
+    }
     if (kind == 1 &&
         p['friction']! < .4 / 1.4 * m.tan(p['incline']! * m.pi / 180)) {
       return 'Insufficient static friction for pure rolling. Increase friction or reduce the incline.';
@@ -160,6 +167,9 @@ class SupplementalLab {
         p['force']! / (m.pi * p['radius']! * p['radius']! * p['modulus']!) >
             .005) {
       return 'Strain exceeds the 0.5% small-strain teaching limit. Reduce force or increase radius.';
+    }
+    if (kind == 22 && (p['separation']! - p['f1']! - p['f2']!).abs() > 1e-10) {
+      return 'Angular magnification requires afocal spacing f₁ + f₂. Adjust separation to focus the telescope.';
     }
     return '';
   }
@@ -175,18 +185,18 @@ class SupplementalLab {
         return {
           'inertia': i,
           'angularAcceleration': a,
-          'angularSpeed': a * t,
-          'angle': .5 * a * t * t,
-          'energy': .5 * i * a * a * t * t,
+          'angularSpeed': (p['omega0'] ?? 0) + a * t,
+          'angle': (p['omega0'] ?? 0) * t + .5 * a * t * t,
+          'energy': .5 * i * m.pow((p['omega0'] ?? 0) + a * t, 2),
         };
       case 1:
         final a = 9.80665 * m.sin(v('incline') * pi / 180) / 1.4,
-            end = m.sqrt(2 * v('length') / a),
+            end = m.sqrt(2 * m.max(0, v('length') - (p['start'] ?? 0)) / a),
             u = m.min(t, end),
             speed = a * u;
         return {
           'acceleration': a,
-          'distance': .5 * a * u * u,
+          'distance': (p['start'] ?? 0) + .5 * a * u * u,
           'speed': speed,
           'angularSpeed': speed / v('radius'),
           'energy': .7 * v('mass') * speed * speed,
@@ -366,6 +376,15 @@ class SupplementalLab {
           'finalLength': v('length') * (1 + strain),
           'strain': strain,
         };
+      case 20:
+        final s = solveLiveOptics(7, p, 0);
+        return {...s, 'index': s['Index']!};
+      case 21:
+        final s = solveLiveOptics(8, p, 0);
+        return {...s, 'relativeIntensity': s['Reflectance']!};
+      case 22:
+        final s = solveLiveOptics(9, p, 0);
+        return {...s, 'magnification': s['Angular magnification']!};
       default:
         return {};
     }
@@ -407,7 +426,8 @@ const supplementalLabs = <SupplementalLab>[
     [
       LabInput('mass', 'Disk mass', 'kg', .1, 10, 1),
       LabInput('radius', 'Disk radius', 'm', .05, 1, .3),
-      LabInput('torque', 'Applied torque', 'N·m', 0, 2, .2),
+      LabInput('torque', 'Applied torque', 'N·m', -2, 2, .2),
+      LabInput('omega0', 'Initial angular speed', 'rad/s', -15, 15, 0),
     ],
   ),
   SupplementalLab(
@@ -428,6 +448,7 @@ const supplementalLabs = <SupplementalLab>[
       LabInput('incline', 'Ramp angle', '°', 5, 45, 20),
       LabInput('length', 'Ramp length', 'm', .5, 5, 2),
       LabInput('friction', 'Static friction coefficient', '', 0, 1, .5),
+      LabInput('start', 'Sphere release distance', 'm', 0, 5, 0),
     ],
   ),
   SupplementalLab(
@@ -774,6 +795,60 @@ const supplementalLabs = <SupplementalLab>[
         12e-6,
       ),
       LabInput('temperatureChange', 'Temperature increase', 'K', 0, 200, 100),
+    ],
+  ),
+  SupplementalLab(
+    20,
+    9,
+    's09-e07',
+    'Prism',
+    'Dispersion follows the wavelength-dependent refractive index of glass.',
+    'n₁ sin θ₁ = n₂ sin θ₂',
+    'N-BK7 Sellmeier dispersion; ideal triangular prism and lossless surfaces.',
+    'Change wavelength and compare refractive index.',
+    'index',
+    '',
+    'wavelength',
+    [
+      LabInput('angle', 'Incident angle', '°', 25, 75, 50),
+      LabInput('wavelength', 'Wavelength', 'm', 400e-9, 700e-9, 650e-9),
+    ],
+  ),
+  SupplementalLab(
+    21,
+    9,
+    's09-e08',
+    'Thin Film Interference',
+    'Coherent reflection at two film surfaces creates a thickness-dependent spectrum.',
+    'φ (round trip) = 4πnt cos r/λ',
+    'Air/film/air; ideal coherent, lossless, uniform local thickness.',
+    'Change thickness and observe constructive and destructive reflection.',
+    'relativeIntensity',
+    '',
+    'thickness',
+    [
+      LabInput('thickness', 'Film thickness', 'm', 0, 2000e-9, 500e-9),
+      LabInput('wavelength', 'Wavelength', 'm', 400e-9, 700e-9, 550e-9),
+      LabInput('filmIndex', 'Film index', '', 1.05, 2, 1.33),
+      LabInput('angle', 'Incident angle', '°', 0, 70, 15),
+    ],
+  ),
+  SupplementalLab(
+    22,
+    9,
+    's09-e09',
+    'Optical Instruments',
+    'Two lenses produce a telescope or microscope.',
+    'M = −f₁/f₂',
+    'Paraxial, ideal thin lenses. An astronomical telescope is afocal at separation f₁+f₂.',
+    'Move the eyepiece away from the afocal position.',
+    'magnification',
+    '',
+    'f1',
+    [
+      LabInput('f1', 'Objective focal length', 'm', .05, .5, .2),
+      LabInput('f2', 'Eyepiece focal length', 'm', .02, .2, .05),
+      LabInput('separation', 'Lens separation', 'm', .07, .8, .25),
     ],
   ),
 ];

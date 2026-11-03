@@ -1,0 +1,15 @@
+Capillary Rise (s14-e06)
+Studio: Fluid Mechanics
+Concept: Surface tension and contact angle can raise or depress a narrow liquid column.
+Formula: h=2\gamma\cos\theta/(\rho gr)
+
+Captured interaction: Surface tension: 0.072 -> 0.055999999999999994 N/m
+
+Model readings for 02_concept_interaction.png:
+Capillary height: 0.053660 m
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

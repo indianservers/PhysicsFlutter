@@ -1,0 +1,16 @@
+Electric Potential (s10-e02)
+Studio: Electricity
+Concept: Relate potential difference to work per charge.
+Formula: \Delta V=\Delta U/q
+
+Captured interaction: Number of source charges: 2.0 -> 2.2 
+
+Model readings for 02_concept_interaction.png:
+potential: -195.87 V
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

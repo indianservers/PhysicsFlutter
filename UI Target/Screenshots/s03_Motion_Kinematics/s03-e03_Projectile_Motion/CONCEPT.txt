@@ -1,0 +1,17 @@
+Projectile Motion (s03-e03)
+Studio: Motion & Kinematics
+Concept: Separate horizontal and vertical motion without air resistance.
+Formula: y=v_{0y}t-\tfrac12gt^2
+
+Captured interaction: Launch speed: 12.25 -> 15.0 m/s
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+range: 23.730 m
+Model t: 2.067 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,18 @@
+Mirrors (s09-e03)
+Studio: Optics
+Concept: Locate paraxial images in spherical mirrors.
+Formula: 1/f=1/d_o+1/d_i
+
+Captured interaction: Object distance u: 0.075 -> 0.62 m
+
+Model readings for 02_concept_interaction.png:
+imageVergence: -8.2796 m⁻¹
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png
+05_real_image_ray_construction.png
+06_material_optical_bench.png

@@ -1,0 +1,17 @@
+Matter Waves (s15-e02)
+Studio: Modern Physics
+Concept: Associate wavelength with particle momentum.
+Formula: \lambda=h/p
+
+Captured interaction: Electron accelerating voltage: 100.0 -> 120.39999999999999 V
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+wavelength: 1.1177e-10 m
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

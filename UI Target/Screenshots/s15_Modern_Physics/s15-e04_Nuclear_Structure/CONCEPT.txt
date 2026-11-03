@@ -1,0 +1,16 @@
+Nuclear Structure (s15-e04)
+Studio: Modern Physics
+Concept: Track charge and nucleon number in nuclear structure.
+Formula: A=Z+N
+
+Captured interaction: Schematic camera rotation: 0.6 -> 0.6283185307179586 rad
+
+Model readings for 02_concept_interaction.png:
+bindingPerNucleon: 1.7821e-13 J
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

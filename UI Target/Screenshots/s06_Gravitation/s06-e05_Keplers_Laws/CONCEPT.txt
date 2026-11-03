@@ -1,0 +1,17 @@
+Kepler’s Laws (s06-e05)
+Studio: Gravitation
+Concept: Relate orbital period to semimajor axis for a two-body orbit.
+Formula: T^2=4\pi^2a^3/(GM)
+
+Captured interaction: Source mass: 1.02 -> 1.84 Earth masses
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+period: 29847 s
+Model t: 4308 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

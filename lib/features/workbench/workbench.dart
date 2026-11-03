@@ -1,3 +1,4 @@
+import 'mechanics_reference_lab.dart';
 import '../../content/lab_research_profiles.dart';
 import 'lab_research.dart';
 import 'focus_lab.dart';
@@ -294,6 +295,7 @@ class InstrumentShell extends StatefulWidget {
 }
 
 class _InstrumentShellState extends State<InstrumentShell> {
+  bool referenceMode = true;
   FocusLabSession? focusSession;
   Future<void> openFocus() async {
     widget.pause();
@@ -1799,7 +1801,17 @@ class _InstrumentShellState extends State<InstrumentShell> {
     },
   );
   @override
-  Widget build(BuildContext context) => PopScope(
+  Widget build(BuildContext context) {
+    if (referenceMode && widget.section == 1 && mechanicsReferences.containsKey(widget.id)
+        && MediaQuery.textScalerOf(context).scale(1) <= 1.2
+        && MediaQuery.sizeOf(context).aspectRatio <= .8) {
+      return MechanicsReferenceLab(key: ValueKey('reference-${widget.id}'), shell: widget,
+        openSection: (section) { setState(() => referenceMode = false); widget.selectSection(section); });
+    }
+    return standardBuild(context);
+  }
+
+  Widget standardBuild(BuildContext context) => PopScope(
     canPop: !full,
     onPopInvokedWithResult: (didPop, result) {
       if (!didPop && full) {

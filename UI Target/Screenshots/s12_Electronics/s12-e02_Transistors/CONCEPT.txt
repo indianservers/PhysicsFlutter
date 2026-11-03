@@ -1,0 +1,16 @@
+Transistors (s12-e02)
+Studio: Electronics
+Concept: Relate currents in an active-region bipolar transistor.
+Formula: I_C\approx\beta I_B
+
+Captured interaction: Base drive: 1.2 -> 3.0 V
+
+Model readings for 02_concept_interaction.png:
+collectorCurrent: 0.0049683 A
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

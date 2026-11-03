@@ -1,0 +1,17 @@
+First Law (s13-e03)
+Studio: Thermodynamics
+Concept: Account for heat and work with work done by the gas positive.
+Formula: \Delta U=Q-W
+
+Captured interaction: Amount: 0.1 -> 0.12399999999999999 mol
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+deltaU: 11.135 J
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

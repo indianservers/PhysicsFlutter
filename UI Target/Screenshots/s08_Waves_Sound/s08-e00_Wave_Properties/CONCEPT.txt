@@ -1,0 +1,17 @@
+Wave Properties (s08-e00)
+Studio: Waves & Sound
+Concept: Connect wavelength, frequency and propagation speed.
+Formula: v=f\lambda
+
+Captured interaction: Displacement amplitude: 0.0204 -> 0.024 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+waveSpeed: 0.80000 m/s
+Model t: 0.9000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,3 +1,5 @@
+import '../../core/physics/live_optics.dart';
+import '../optics_live/scene.dart';
 import '../../core/physics/supplemental_labs.dart';
 import '../supplemental/scene.dart';
 
@@ -39,7 +41,11 @@ class LabThumbnail extends StatelessWidget {
   Widget build(BuildContext context) => Semantics(
     image: true,
     label: '${entry.title}, static reference illustration',
-    child: entry.supplemental || entry.studioIndex == 1 && entry.index == 5
+    child: entry.studioIndex == 9
+        ? RepaintBoundary(
+            child: CustomPaint(painter: _LiveOpticsPreview(entry.id)),
+          )
+        : entry.supplemental || entry.studioIndex == 1 && entry.index == 5
         ? RepaintBoundary(child: CustomPaint(painter: _Preview(entry)))
         : ReferencePreview(
             entry,
@@ -198,4 +204,22 @@ class _Preview extends CustomPainter {
   @override
   bool shouldRepaint(covariant _Preview oldDelegate) =>
       oldDelegate.entry.id != entry.id;
+}
+
+class _LiveOpticsPreview extends CustomPainter {
+  final String id;
+  const _LiveOpticsPreview(this.id);
+  @override
+  void paint(Canvas canvas, Size size) {
+    const OpticalEnvironmentPainter().paint(canvas, size);
+    LiveOpticsPainter(
+      OpticalGeometry(
+        LiveOpticsModel(opticsById(id)),
+        size.height * 740 / size.width,
+      ),
+    ).paint(canvas, size);
+  }
+
+  @override
+  bool shouldRepaint(covariant _LiveOpticsPreview old) => old.id != id;
 }

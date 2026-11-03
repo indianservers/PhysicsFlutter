@@ -1,0 +1,16 @@
+Coulomb Force (s10-e00)
+Studio: Electricity
+Concept: Model electrostatic force between point charges.
+Formula: F=k_e|q_1q_2|/r^2
+
+Captured interaction: Signed charge 1: 0.000002 -> 9.999999999999997e-7 C
+
+Model readings for 02_concept_interaction.png:
+force: 0.44938 N
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

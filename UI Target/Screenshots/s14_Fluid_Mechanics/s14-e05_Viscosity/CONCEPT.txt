@@ -1,0 +1,17 @@
+Viscosity (s14-e05)
+Studio: Fluid Mechanics
+Concept: Relate laminar Newtonian shear stress to velocity gradient.
+Formula: \tau=\mu\,du/dy
+
+Captured interaction: Sphere radius: 0.0005 -> 0.00062 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+terminalSpeed: 0.0012566 m/s
+Model t: 15.58 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

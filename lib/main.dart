@@ -1,3 +1,6 @@
+import 'core/rendering/optics_assets.dart';
+import 'core/rendering/apparatus_sprites.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +13,8 @@ Future<void> main() async {
   final notebook = LocalNotebook();
   await notebook.initialize();
   await LabMaterials.initialize();
+  await ApparatusSprites.initialize();
+  await OpticsAssets.initialize();
   runApp(
     ProviderScope(
       overrides: [notebookProvider.overrideWithValue(notebook)],

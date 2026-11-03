@@ -1,0 +1,17 @@
+Tension & Normal Force (s04-e04)
+Studio: Force & Newton’s Laws
+Concept: Resolve contact and rope forces from constraints.
+Formula: \sum F_y=ma_y
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+supportForce: 57.124 N
+Model t: 8.967 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

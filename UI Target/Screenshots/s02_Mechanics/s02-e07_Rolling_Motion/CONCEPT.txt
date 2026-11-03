@@ -1,0 +1,17 @@
+Rolling Motion (s02-e07)
+Studio: Mechanics
+Concept: A solid sphere shares gravitational energy between translation and rotation.
+Formula: a=\frac{g\sin\theta}{1+2/5}
+
+Captured interaction: Sphere mass: 1.0 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+speed: 2.7861 m/s
+Model time: 1.1629 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

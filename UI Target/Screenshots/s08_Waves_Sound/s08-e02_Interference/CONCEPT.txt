@@ -1,0 +1,17 @@
+Interference (s08-e02)
+Studio: Waves & Sound
+Concept: Use phase differences to predict constructive interference.
+Formula: \Delta\phi=2\pi\Delta x/\lambda
+
+Captured interaction: Source separation: 0.5 -> 0.64 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+intensity: 1.0000 
+Model t: 0.8967 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,17 @@
+AC RLC Circuits (s10-e08)
+Studio: Electricity
+Concept: Inductive and capacitive reactance set current amplitude and phase.
+Formula: Z=\sqrt{R^2+(\omega L-1/(\omega C))^2}
+
+Captured interaction: Supply RMS voltage: 12.0 -> 72.39999999999999 V
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+RMS current: 2.4131 A
+Model time: 0.071733 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,16 @@
+Diffraction (s09-e05)
+Studio: Optics
+Concept: Predict single-slit minima in far-field diffraction.
+Formula: a\sin\theta=m\lambda
+
+Captured interaction: Vacuum wavelength: 6.5e-7 -> 6.02e-7 m
+
+Model readings for 02_concept_interaction.png:
+centralWidth: 0.012040 m
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

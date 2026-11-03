@@ -1,0 +1,15 @@
+Wire Resistivity (s10-e06)
+Studio: Electricity
+Concept: Resistance increases with length and decreases with cross-sectional area.
+Formula: R=\rho L/(\pi r^2)
+
+Captured interaction: Resistivity: 1.68e-8 -> 6.0672e-7 Ω·m
+
+Model readings for 02_concept_interaction.png:
+resistance: 1.5450 Ω
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

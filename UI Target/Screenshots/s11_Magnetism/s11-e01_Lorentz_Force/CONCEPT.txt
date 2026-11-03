@@ -1,0 +1,17 @@
+Lorentz Force (s11-e01)
+Studio: Magnetism
+Concept: Predict force on a moving charge in a magnetic field.
+Formula: \vec F=q\vec v\times\vec B
+
+Captured interaction: Signed particle charge: 1.602176634e-19 -> 6.400000000000001e-20 C
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+force: 1.2800e-16 N
+Model t: 0.000001200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

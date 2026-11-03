@@ -50,10 +50,25 @@ double? curvatureFromLegSeparation(double l, double h) =>
     curvatureRadius(l / math.sqrt(3), h);
 double trackPosition(double t, double v0, double acceleration) =>
     v0 * t + .5 * acceleration * t * t;
-double finishTime(double distance, double v0, double acceleration) =>
-    acceleration == 0
-    ? distance / v0
-    : (-v0 + math.sqrt(v0 * v0 + 2 * acceleration * distance)) / acceleration;
+
+/// First nonnegative arrival. Null arrival is represented by infinity, never
+/// a negative time or a NaN. The rationalized root avoids cancellation at a≈0.
+double finishTime(double distance, double v0, double acceleration) {
+  if (![distance, v0, acceleration].every((v) => v.isFinite) || distance < 0) {
+    throw ArgumentError(
+      'Finite motion inputs and nonnegative distance required',
+    );
+  }
+  if (distance == 0) return 0;
+  if (acceleration == 0) return v0 > 0 ? distance / v0 : double.infinity;
+  final discriminant = v0 * v0 + 2 * acceleration * distance;
+  if (discriminant < 0) return double.infinity;
+  final root = math.sqrt(discriminant), denominator = v0 + root;
+  final t = denominator > 0
+      ? 2 * distance / denominator
+      : (-v0 + root) / acceleration;
+  return t >= 0 ? t : double.infinity;
+}
 
 class Statistics {
   final List<double> values;

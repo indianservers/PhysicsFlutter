@@ -79,6 +79,7 @@ const lessons = <DynamicsLesson>[
       staticCoefficient,
       kineticCoefficient,
       Parameter('v0', 'Initial velocity', 'm/s', -3, 3, 0),
+      Parameter('x0', 'Crate release position', 'm', -2, 2, 0),
     ],
   ),
   DynamicsLesson(
@@ -118,6 +119,7 @@ const lessons = <DynamicsLesson>[
       mass,
       otherMass,
       Parameter('v0', 'Initial A/load speed', 'm/s', -.5, .5, 0),
+      Parameter('release', 'Release displacement', 'm', -.5, .5, 0),
     ],
   ),
   DynamicsLesson(
@@ -318,9 +320,9 @@ const lessons = <DynamicsLesson>[
   ),
   DynamicsLesson(
     'Driven cart and force/mass sweep table.',
-    'The cart’s acceleration uses net force divided by mass. With no resistance in this model, the horizontal applied force is the net force. Sweeps recalculate a for each selected F or m.',
+    'Applied force mode uses a=F/m for a driven cart without resistance. Cart & hanging mass mode uses a=(m_h g−f)/(m_c+m_h), with track friction on the cart and both masses contributing inertia. Sweeps use the applied force mode.',
     'Choose mass and signed force. Predict acceleration, run and record. Use Force sweep and Mass sweep to compare real model evaluations.',
-    'Constant net horizontal force; fixed mass per run; no drag. Changing an initial condition pauses and restarts the trajectory.',
+    'Applied force mode: constant net horizontal force and no drag. Cart & hanging mass mode: ideal massless rope and pulley, horizontal cart track, Coulomb friction with equal static and kinetic coefficients. Changing an initial condition pauses and restarts the trajectory.',
     'Applied and net force coincide only because this supported model has no horizontal resistance.',
     'What is the cart’s acceleration?',
     r'a=\Sigma F/m',
@@ -332,6 +334,9 @@ const lessons = <DynamicsLesson>[
       mass,
       Parameter('force', 'Net horizontal force', 'N', -20, 20, 6),
       velocity,
+      Parameter('hanger', 'Hanging mass', 'kg', .05, 3, .5),
+      Parameter('trackFriction', 'Track friction', '', 0, 1, .05),
+      Parameter('x0', 'Cart release position', 'm', 0, 2, 0),
     ],
   ),
   DynamicsLesson(

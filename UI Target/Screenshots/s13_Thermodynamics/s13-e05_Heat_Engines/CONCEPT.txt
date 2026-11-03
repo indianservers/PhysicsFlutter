@@ -1,0 +1,17 @@
+Heat Engines (s13-e05)
+Studio: Thermodynamics
+Concept: Bound engine efficiency between ideal heat reservoirs.
+Formula: \eta_C=1-T_c/T_h
+
+Captured interaction: Amount: 0.1 -> 0.12399999999999999 mol
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+efficiency: 0.50000 
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

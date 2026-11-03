@@ -1,0 +1,17 @@
+Entropy (s13-e04)
+Studio: Thermodynamics
+Concept: Relate reversible heat transfer to entropy change.
+Formula: dS=\delta Q_{rev}/T
+
+Captured interaction: Amount: 0.1 -> 0.12399999999999999 mol
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+entropy: 0.089271 J/K
+Model t: 1.175 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

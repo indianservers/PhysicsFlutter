@@ -1,0 +1,17 @@
+Continuity (s14-e03)
+Studio: Fluid Mechanics
+Concept: Conserve mass for steady incompressible flow.
+Formula: A_1v_1=A_2v_2
+
+Captured interaction: Inlet / outlet radius: 0.015 -> 0.019999999999999997 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+speed: 0.099472 m/s
+Model t: 1.200 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,17 @@
+Momentum & Collisions (s02-e05)
+Studio: Mechanics
+Concept: Track momentum transfer in an isolated collision.
+Formula: \vec p=m\vec v
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+momentum: 12.160 kg·m/s
+Model t: 9.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

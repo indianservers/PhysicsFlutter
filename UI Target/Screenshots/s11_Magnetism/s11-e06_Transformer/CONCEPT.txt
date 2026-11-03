@@ -1,0 +1,17 @@
+Transformer (s11-e06)
+Studio: Magnetism
+Concept: AC voltage follows the turns ratio while ideal power is conserved.
+Formula: V_s/V_p=N_s/N_p
+
+Captured interaction: Primary RMS voltage: 12.0 -> 14.799999999999999 V
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+Secondary RMS voltage: 29.600 V
+Model time: 0.0096000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

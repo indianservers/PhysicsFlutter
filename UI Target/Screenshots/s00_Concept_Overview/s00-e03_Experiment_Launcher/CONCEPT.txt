@@ -1,0 +1,12 @@
+Experiment Launcher (s00-e03)
+Studio: Concept Overview
+Concept: Choose an available experiment and test a prediction.
+Formula: x=x_0+vt
+
+Captured interaction: Learning-tool overview
+
+Model readings for 02_concept_interaction.png:
+
+
+Screenshots:
+01_learning_tool.png

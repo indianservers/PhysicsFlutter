@@ -1,0 +1,17 @@
+Full-wave Rectifier (s12-e06)
+Studio: Electronics
+Concept: A diode bridge converts both AC half-cycles into a single output polarity.
+Formula: v_o=|V_{pk}\sin\omega t|
+
+Captured interaction: Input RMS voltage: 12.0 -> 14.799999999999999 V
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+Mean output voltage: 13.325 V
+Model time: 0.0094667 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

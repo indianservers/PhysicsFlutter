@@ -1,0 +1,15 @@
+Wheatstone Bridge (s10-e07)
+Studio: Electricity
+Concept: A null detector compares two resistor-divider midpoint potentials.
+Formula: R_x=R_2R_3/R_1
+
+Captured interaction: Left upper R1: 100.0 -> 604.0 Ω
+
+Model readings for 02_concept_interaction.png:
+Detector voltage: -2.5075 V
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,16 @@
+Universal Gravitation (s06-e00)
+Studio: Gravitation
+Concept: Model attraction of spherical masses separated by a distance.
+Formula: F=Gm_1m_2/r^2
+
+Captured interaction: Source mass: 1.02 -> 1.84 Earth masses
+
+Model readings for 02_concept_interaction.png:
+force: 3.3166e+21 N
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

@@ -1,0 +1,18 @@
+Refraction (s09-e01)
+Studio: Optics
+Concept: Apply Snell law at a transparent interface.
+Formula: n_1\sin\theta_1=n_2\sin\theta_2
+
+Captured interaction: Incidence from normal: 60.0 -> 51.0 °
+
+Model readings for 02_concept_interaction.png:
+incidentAngle: 51.000 °
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png
+05_refracted_ray.png
+06_material_optical_bench.png

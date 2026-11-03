@@ -1,0 +1,16 @@
+Spectroscopy (s16-e02)
+Studio: Astronomy & Astrophysics
+Concept: Infer line-of-sight speed from small spectral shifts.
+Formula: \Delta\lambda/\lambda\approx v_r/c
+
+Captured interaction: Effective temperature: 5800.0 -> 13200.0 K
+
+Model readings for 02_concept_interaction.png:
+peakWavelength: 2.1953e-7 m
+Playback: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

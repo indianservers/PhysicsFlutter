@@ -1,0 +1,16 @@
+Semiconductors (s12-e00)
+Studio: Electronics
+Concept: Explain charge carriers and a simplified band gap model.
+Formula: \sigma=q(n\mu_n+p\mu_p)
+
+Captured interaction: Temperature: 300.0 -> 340.0 K
+
+Model readings for 02_concept_interaction.png:
+conductivity: 0.0035661 S/m
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

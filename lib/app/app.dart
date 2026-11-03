@@ -1,3 +1,5 @@
+import '../features/optics_live/workspace.dart';
+import '../core/physics/live_optics.dart';
 import '../features/supplemental/workspace.dart';
 
 import 'dart:convert';
@@ -51,7 +53,14 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/lab/:id',
-      builder: (c, s) => entryById(s.pathParameters['id']!).supplemental
+      builder: (c, s) =>
+          opticsDefinitions.any((d) => d.id == s.pathParameters['id']) &&
+              s.uri.queryParameters['classic'] != '1'
+          ? LiveOpticsWorkspace(
+              key: ValueKey('live-${s.pathParameters['id']}'),
+              id: s.pathParameters['id']!,
+            )
+          : entryById(s.pathParameters['id']!).supplemental
           ? SupplementalWorkspace(
               key: ValueKey(s.pathParameters['id']),
               entry: entryById(s.pathParameters['id']!),

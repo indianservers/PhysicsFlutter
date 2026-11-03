@@ -1,0 +1,17 @@
+Orbits (s06-e03)
+Studio: Gravitation
+Concept: Balance circular acceleration and gravity.
+Formula: v=\sqrt{GM/r}
+
+Captured interaction: Source mass: 1.02 -> 1.84 Earth masses
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+specificEnergy: -4.1606e+7 J/kg
+Model t: 2504 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

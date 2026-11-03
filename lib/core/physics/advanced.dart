@@ -602,8 +602,10 @@ class AdvancedRun {
         'U': .5 * k * solution.x * solution.x,
         'total': energy,
         'force': force,
-        'period': 2 * math.pi / w0,
-        'frequency': w0 / (2 * math.pi),
+        'naturalPeriod': 2 * math.pi / w0,
+        'naturalFrequency': w0 / (2 * math.pi),
+        if (kind != 15 && kind != 16) 'period': 2 * math.pi / w0,
+        if (kind != 15 && kind != 16) 'frequency': w0 / (2 * math.pi),
         'critical': 2 * math.sqrt(k * m),
         'regime': b < 2 * math.sqrt(k * m) - 1e-8
             ? -1
@@ -619,6 +621,8 @@ class AdvancedRun {
             kinetic(m, v('v0')) + .5 * k * v('x0') * v('x0') - energy;
         final alpha = b / (2 * m), wd = state['dampedOmega']!;
         if (wd > 0) {
+          state['period'] = 2 * math.pi / wd;
+          state['frequency'] = wd / (2 * math.pi);
           state['envelope'] =
               math.sqrt(
                 v('x0') * v('x0') +
@@ -628,6 +632,8 @@ class AdvancedRun {
         }
       }
       if (kind == 16) {
+        state['driveFrequency'] = v('omega') / (2 * math.pi);
+        if (v('omega') > 0) state['drivePeriod'] = 2 * math.pi / v('omega');
         final response = drivenResponse(m, k, b, v('force'), v('omega'));
         if (response.amplitude.isFinite) {
           state['steadyAmplitude'] = response.amplitude;

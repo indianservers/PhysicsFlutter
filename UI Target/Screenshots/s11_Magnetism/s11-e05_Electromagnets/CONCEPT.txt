@@ -1,0 +1,16 @@
+Electromagnets (s11-e05)
+Studio: Magnetism
+Concept: Relate coil current and turns to ideal magnetic field.
+Formula: B\approx\mu nI
+
+Captured interaction: Turns N: 400.0 -> 640.0 
+
+Model readings for 02_concept_interaction.png:
+force: 2.2876 N
+Model t: 0.000 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

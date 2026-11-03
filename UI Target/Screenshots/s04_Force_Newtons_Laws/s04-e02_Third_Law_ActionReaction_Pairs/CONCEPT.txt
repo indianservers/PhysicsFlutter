@@ -1,0 +1,17 @@
+Third Law / Action–Reaction Pairs (s04-e02)
+Studio: Force & Newton’s Laws
+Concept: Identify equal opposite forces acting on different bodies.
+Formula: \vec F_{AB}=-\vec F_{BA}
+
+Captured interaction: Body A mass: 2.1 -> 6.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+ax: 0.0000 m/s²
+Model t: 8.967 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

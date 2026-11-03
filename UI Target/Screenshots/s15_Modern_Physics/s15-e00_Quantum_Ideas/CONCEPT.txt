@@ -1,0 +1,17 @@
+Quantum Ideas (s15-e00)
+Studio: Modern Physics
+Concept: Introduce photon energy and model-dependent quantum descriptions.
+Formula: E=hf
+
+Captured interaction: Well width: 1e-9 -> 1.4000000000000001e-9 m
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+Quantum energy: 1.2295e-19 J
+Model t: 1.175 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

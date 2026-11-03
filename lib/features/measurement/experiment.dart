@@ -86,6 +86,9 @@ class Experiment extends ChangeNotifier {
   }
 
   double get duration => finishTime(distance, v0, acceleration);
+
+  /// Instrument indication; the trajectory still advances in unrounded time.
+  double get timerReading => quantize(elapsed, resolution);
   ScaleReading get reading => kind == 1
       ? ScaleReading.vernier(a + zero)
       : ScaleReading.micrometer(a + zero);
@@ -98,7 +101,7 @@ class Experiment extends ChangeNotifier {
     0 => rulerLength(a, b),
     1 || 2 => corrected(reading.observed, zero),
     3 => spherometer == null ? curvatureRadius(b, h) : spherometer!.radius(b),
-    4 => elapsed > 0 ? travelled / elapsed : null,
+    4 => timerReading > 0 ? travelled / timerReading : null,
     5 => samples.isEmpty ? null : Statistics(samples, resolution).mean,
     _ => null,
   };
@@ -123,7 +126,7 @@ class Experiment extends ChangeNotifier {
     1 => .0001,
     2 => .00001,
     3 => .00001,
-    4 => .001,
+    4 => resolution,
     _ => resolution,
   };
   void changed() {
@@ -271,7 +274,7 @@ class Experiment extends ChangeNotifier {
       if (!numbers.every((n) => n.isFinite) ||
           numbers[3] <= 0 ||
           numbers[4] <= 0 ||
-          numbers[5] <= 0 ||
+          numbers[5] < 0 ||
           numbers[6] < 0 ||
           numbers[7] < 0) {
         return false;
@@ -298,9 +301,9 @@ class Experiment extends ChangeNotifier {
         _ => true,
       };
       if (!validGeometry ||
-          !within(numbers[3], .00001, .01) ||
+          !within(numbers[3], .00001, kind == 4 ? .1 : .01) ||
           !within(numbers[4], .1, 2) ||
-          !within(numbers[5], .1, 2) ||
+          !within(numbers[5], 0, 2) ||
           !within(numbers[6], 0, 2)) {
         return false;
       }

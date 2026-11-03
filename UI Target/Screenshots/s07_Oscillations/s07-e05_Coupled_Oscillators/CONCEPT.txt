@@ -1,0 +1,17 @@
+Coupled Oscillators (s07-e05)
+Studio: Oscillations
+Concept: Analyze energy exchange through coupled normal modes.
+Formula: m\ddot x_1=-kx_1-k_c(x_1-x_2)
+
+Captured interaction: Mass: 1.0 -> 3.08 kg
+Simulation advanced, then paused.
+
+Model readings for 02_concept_interaction.png:
+total: 0.24750 J
+Model t: 8.975 s
+
+Screenshots:
+01_apparatus.png
+02_concept_interaction.png
+03_graph.png
+04_controls_readings.png

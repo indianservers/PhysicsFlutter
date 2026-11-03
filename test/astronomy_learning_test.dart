@@ -424,12 +424,12 @@ void main() {
     expect(s.profile.length, greaterThan(900));
   });
   test(
-    'Stable inventory includes 116 labs and six tools with all links valid',
+    'Stable inventory includes 119 labs and six tools with all links valid',
     () {
       expect(studios.length, 17);
-      expect(allEntries.length, 122);
-      expect(allEntries.map((e) => e.id).toSet().length, 122);
-      expect(labInventory.length, 116);
+      expect(allEntries.length, 125);
+      expect(allEntries.map((e) => e.id).toSet().length, 125);
+      expect(labInventory.length, 119);
       expect(allEntries.where((e) => e.tool).length, 6);
       for (final edge in conceptEdges) {
         expect(edge.explanation, isNotEmpty);
@@ -472,8 +472,8 @@ void main() {
       );
     }
   });
-  test('Launcher metadata filters and search use the same116 identities', () {
-    expect(filterLabs().length, 116);
+  test('Launcher metadata filters and search use the same119 identities', () {
+    expect(filterLabs().length, 119);
     expect(
       filterLabs(studio: 16).map((e) => e.id).toList(),
       studios[16].entries.map((e) => e.id).toList(),
